@@ -212,7 +212,7 @@ if ( ! function_exists ( 'cntctfrmtdb_activation' ) ) {
 		global $wpdb;
 		if ( function_exists( 'is_multisite' ) && is_multisite() && $networkwide ) {
 			$cntctfrm_blog_id = $wpdb->blogid;
-			$cntctfrmtdb_get_blogids = $wpdb->get_col( "SELECT `blog_id` FROM $wpdb->blogs" );
+			$cntctfrmtdb_get_blogids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
 			foreach ( $cntctfrmtdb_get_blogids as $blog_id ) {
 				switch_to_blog( $blog_id );
 				cntctfrmtdb_settings();
@@ -1982,7 +1982,7 @@ if ( ! function_exists( 'cntctfrmtdb_show_notices' ) ) {
 			<?php }
 		}
 		if ( $hook_suffix == 'plugins.php' ) {  
-			bws_plugin_banner( $cntctfrmtdb_plugin_info, 'cntctfrmtdb', 'contact-form-to-db', 'a0297729ff05dc9a4dee809c8b8e94bf', '91', 'http://ps.w.org/contact-form-to-db/assets/icon-128x128.png' ); 
+			bws_plugin_banner( $cntctfrmtdb_plugin_info, 'cntctfrmtdb', 'contact-form-to-db', 'a0297729ff05dc9a4dee809c8b8e94bf', '91', plugins_url( 'images/banner.png', __FILE__ ) ); 
 		}
 	}
 }
