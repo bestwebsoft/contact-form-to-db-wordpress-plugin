@@ -1,10 +1,10 @@
 === Contact Form to DB by BestWebSoft ===
 Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
-Tags: attachment, browse messages, contact, contatc, conact, cnotact, contact button, contact form, contact form add-on, contact form plugin, Contact Form to DB, contact me, contacts, contacts form plugin, copy, database, delete messages, download messages, feedback, feedback form, form, manage messages, request, save messages, send, send copy, text
-Requires at least: 3.2
-Tested up to: 4.2.3
-Stable tag: 1.4.9
+Tags: attachment, add contact form add-on, add contact form addon, add cf add on, add cf addon, best contact form add on, best contact form addon, best cf add on, best cf addon, browse messages, cnotact, conact, contact, contact button, contact form, contact form add-on, contact form addon, contact form parameters, contact form plugin, contact form to db plugin, Contact Form to DB, contact me, contact me form, contact us, contact us form,  contacts, contacts form plugin, contactform, contatc, contact form save entries, copy, database, delete messages, download messages, feedback, feedback form, form, manage messages, request, save messages, send, send copy, simple contact form to db, text, web-page feedback, web form, wordpress contact form, wp form, wordpress plugin, wp plugins, wordpress contact form add on, wp form add on, wordpress contact form addon, wp form addon, wordpress plugin, wp plugins
+Requires at least: 3.3
+Tested up to: 4.3.1
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,11 +20,11 @@ Please pay attention, that this plugin is an add-on ONLY for Contact Form plugin
 
 http://www.youtube.com/watch?v=agEWy6Hc-fY
 
-<a href="http://wordpress.org/plugins/contact-form-to-db/faq/" target="_blank">FAQ</a>
+<a href="http://wordpress.org/plugins/contact-form-to-db/faq/" target="_blank">Contact Form to DB by BestWebSoft FAQ</a>
 
-<a href="http://support.bestwebsoft.com" target="_blank">Support</a>
+<a href="http://support.bestwebsoft.com" target="_blank">Contact Form to DB by BestWebSoft Support</a>
 
-<a href="http://bestwebsoft.com/products/contact-form-to-db/?k=52c469c463ea3722c39dd9c5d9ef54b2" target="_blank">Upgrade to Pro Version</a>
+<a href="http://bestwebsoft.com/products/contact-form-to-db/?k=52c469c463ea3722c39dd9c5d9ef54b2" target="_blank">Upgrade to Contact Form to DB Pro by BestWebSoft</a>
 
 <a href="http://bestwebsoft.com/products/contact-form/?k=1f9b7d7895c20420af788d9413ed8562" target="_blank">Contact Form Pro</a> 
 
@@ -32,12 +32,12 @@ http://www.youtube.com/watch?v=agEWy6Hc-fY
 
 = Features =
 
-* Actions: You can save messages that have been sent from the site via the Contact Form to your databese.
-* Actions: You can manage messages (browse, delete and download messages) from Dashboard.
+* Save messages that have been sent from the site via the Contact Form to your database.
+* Manage messages (browse, delete and download messages) from Dashboard.
 
 = Recommended Plugins =
 
-The author of the Contact Form To DB also recommends the following plugins:
+The author of the Contact Form to DB also recommends the following plugins:
 
 * <a href="http://wordpress.org/plugins/updater/">Updater</a> - This plugin updates WordPress core and the plugins to the recent versions. You can also use the auto mode or manual mode for updating and set email notifications.
 There is also a premium version of the plugin <a href="http://bestwebsoft.com/products/updater/?k=d76bbcf46476f5ab4bb7950255a738a6">Updater Pro</a> with more useful features available. It can make backup of all your files and database before updating. Also it can forbid some plugins or WordPress Core update.
@@ -107,6 +107,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 5. Spam page on the Contact Form to DB manager page display.
 
 == Changelog ==
+
+= V1.5.0 - 25.09.2015 =
+* New : We have added a column "Department" on the page with list of letters.
+* Update : We updated all functionality for wordpress 4.3.1.
 
 = V1.4.9 - 27.07.2015 =
 * Update : We updated all functionality for wordpress 4.2.3.
@@ -194,6 +198,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * NEW : Ability to manage messages that have been sent from website from Contact Form Plugin by BestWebSoft.
 
 == Upgrade Notice ==
+
+= V1.5.0 =
+We have added a column "Department" on the page with list of letters. We updated all functionality for wordpress 4.3.1.
 
 = V1.4.9 =
 We updated all functionality for wordpress 4.2.3.

@@ -61,7 +61,7 @@
 										var widthRow = $(this).parent().parent().children( '.column-message' ).width();
 										var left = offsetRow.left + widthRow/2 - 16 - $( '#adminmenuwrap' ).width();
 										var top = offsetRow.top - 24;
-										$( '.cntctfrmtdb' ).prepend( '<div class="cntctfrmtdb-preloader" style="left: ' + left + 'px;top: ' + top + 'px"><img src="' + preloaderSrc + '"/></div>' );
+										$( '.cntctfrmtdb' ).prepend( '<div class="cntctfrmtdb-preloader" style="left: ' + left + 'px;top: ' + top + 'px"><img src="' + cntctfrmtdb.preloaderSrc + '"/></div>' );
 										
 									}
 								});
@@ -166,7 +166,7 @@
 			}
 			// change text of block during clicking
 			var previousStatus = $(this).text(); 
-			var messageID = $(this).parent().parent().parent().children( '.id' ).text();
+			var messageID = $(this).parent().parent().parent().children( '.check-column' ).children( 'input[type="checkbox"]' ).val();
 			previousStatus = parseInt( previousStatus );
 			var newStatus = previousStatus;
 			if ( previousStatus <= 2 ) {
@@ -180,15 +180,15 @@
 			switch( newStatus ) {
 				case 1:
 					$(this).removeClass( 'cntctfrmtdb-trash' ).addClass( 'cntctfrmtdb-letter' );
-					$(this).attr({ title: letter });
+					$(this).attr({ title: cntctfrmtdb.letter });
 					break;
 				case 2:
 					$(this).removeClass( 'cntctfrmtdb-letter' ).addClass( 'cntctfrmtdb-spam' );
-					$(this).attr({ title: spam });
+					$(this).attr({ title: cntctfrmtdb.spam });
 					break;
 				case 3:
 					$(this).removeClass( 'cntctfrmtdb-spam' ).addClass( 'cntctfrmtdb-trash' );
-					$(this).attr({ title: trash });
+					$(this).attr({ title: cntctfrmtdb.trash });
 					break;
 			}
 			var messageId = $(this).parent().parent().children().children( 'input:checkbox' ).val();
@@ -264,15 +264,16 @@ function cntctfrmtdb_change_status( oldStatus, newStatus, messageID, nonceField 
 				type: "POST",
 				data: { action: "cntctfrmtdb_change_staus", cntctfrmtdb_ajax_nonce_field: nonceField, cntctfrmtdb_ajax_message_status: newStatus, cntctfrmtdb_ajax_message_id: messageID, cntctfrmtdb_ajax_old_status: oldStatus },
 				success: function( result ) {
+					$( '.updated' ).hide();
 					$( result ).insertAfter( '.cntctfrmtdb h2' );
-					$( '.id' ).each( function() {
-						if( $(this).text() == messageID ) {
-							$(this).parent().fadeOut( 600 );
+					$( '.check-column' ).children( 'input[type="checkbox"]' ).each( function() {
+						if( $(this).val() == messageID ) {
+							$(this).parent().parent().fadeOut( 600 );
 						}
 					});
 					// change numbers in action links row before and after list of messages
-					var oldNumber = 0;
-					var newNumber = 0;
+					var oldNumber = 0,
+					    newNumber = 0;
 					if ( oldStatus == 2 ) {
 						$( '.spam-count' ).each( function() {
 							oldNumber = $(this).text();
@@ -310,7 +311,7 @@ function cntctfrmtdb_change_status( oldStatus, newStatus, messageID, nonceField 
 					}
 				},
 				error: function() {
-					$('.cntctfrmtdb .cntctfrmtdb-notice').css( 'display', 'block' ).children( 'p' ).text( statusNotChanged );
+					$('.cntctfrmtdb .cntctfrmtdb-notice').css( 'display', 'block' ).children( 'p' ).text( cntctfrmtdb.statusNotChanged );
 				}
 			});
 		}

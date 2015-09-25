@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: contact_form_to_db\n"
+"Project-Id-Version: contact-form-to-db\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-17 11:22+0300\n"
-"PO-Revision-Date: 2015-06-17 11:22+0300\n"
+"POT-Creation-Date: 2015-09-15 13:23+0300\n"
+"PO-Revision-Date: 2015-09-25 12:20+0300\n"
 "Last-Translator: plugin@bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language-Team: Foken <foken@gmx.com>\n"
 "Language: ja_JP\n"
@@ -17,24 +17,19 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: contact_form_to_db.php:236
-msgid "The requested content cannot be loaded.<br/>Please try again later."
-msgstr ""
-"要求された連絡先を読み込めませんでした。<br/>暫くして再度お試し下さい。"
-
-#: contact_form_to_db.php:237
+#: contact_form_to_db.php:256
 msgid "Letter"
 msgstr "手紙"
 
-#: contact_form_to_db.php:238
+#: contact_form_to_db.php:257
 msgid "Spam!"
 msgstr "スパム"
 
-#: contact_form_to_db.php:239 contact_form_to_db.php:1435
+#: contact_form_to_db.php:258 contact_form_to_db.php:1743
 msgid "in Trash"
 msgstr "ゴミ箱の中"
 
-#: contact_form_to_db.php:240
+#: contact_form_to_db.php:259
 msgid "Status was not changed"
 msgstr "状況に変化はありません"
 
@@ -73,7 +68,12 @@ msgstr ""
 "Contact Formプラグインが有効化されていません。</br>Contact Form To DBを正常に"
 "動作させるためには、このプラグインを導入する必要がありませす。"
 
-#: contact_form_to_db.php:288
+#: contact_form_to_db.php:285
+#, fuzzy
+msgid "Activate plugin"
+msgstr "このプラグインを有効化"
+
+#: contact_form_to_db.php:290
 msgid ""
 "Contact Form Plugin has old version.</br>You need update this plugin for "
 "correct work with Contact Form to DB plugin."
@@ -81,38 +81,47 @@ msgstr ""
 "Contact Formプラグインが古いです。</br>Contact Form To DBを正常に動作させるた"
 "めには、このプラグインを更新する必要がありませす。"
 
-#: contact_form_to_db.php:323
+#: contact_form_to_db.php:292
+#, fuzzy
+msgid "Update plugin"
+msgstr "このプラグインを有効化"
+
+#: contact_form_to_db.php:320
+msgid "Settings saved."
+msgstr "設定保存."
+
+#: contact_form_to_db.php:327
 #, fuzzy
 msgid "All plugin settings were restored."
 msgstr "件のメッセージが復活されました。"
 
-#: contact_form_to_db.php:336 contact_form_to_db.php:338
-#: contact_form_to_db.php:1923 contact_form_to_db.php:1939
+#: contact_form_to_db.php:340 contact_form_to_db.php:342
+#: contact_form_to_db.php:1963 contact_form_to_db.php:1979
 msgid "Settings"
 msgstr "設定"
 
-#: contact_form_to_db.php:339 contact_form_to_db.php:1818
-#: contact_form_to_db.php:1940
+#: contact_form_to_db.php:343 contact_form_to_db.php:1860
+#: contact_form_to_db.php:1980
 msgid "FAQ"
 msgstr "FAQ"
 
-#: contact_form_to_db.php:340
+#: contact_form_to_db.php:344
 msgid "This setting is available in Pro version"
 msgstr "この設定は、PROバージョンで利用可能です"
 
-#: contact_form_to_db.php:340
+#: contact_form_to_db.php:344
 msgid "User guide"
 msgstr "ユーザガイド"
 
-#: contact_form_to_db.php:341
+#: contact_form_to_db.php:345
 msgid "Go PRO"
 msgstr "PROに進む"
 
-#: contact_form_to_db.php:343 contact_form_to_db.php:1992
+#: contact_form_to_db.php:347 contact_form_to_db.php:2032
 msgid "Notice:"
 msgstr "通知:"
 
-#: contact_form_to_db.php:343
+#: contact_form_to_db.php:347
 msgid ""
 "The plugin's settings have been changed. In order to save them please don't "
 "forget to click the 'Save Changes' button."
@@ -120,497 +129,494 @@ msgstr ""
 "プラグインの設定は変更されました。これらを保存するためには、'変更保存'ボタン"
 "をクリックして下さい。"
 
-#: contact_form_to_db.php:345
-msgid "Settings saved."
-msgstr "設定保存."
-
-#: contact_form_to_db.php:353
+#: contact_form_to_db.php:357
 msgid "Save messages to database"
 msgstr "メッセージをデータベースに保存"
 
-#: contact_form_to_db.php:359
+#: contact_form_to_db.php:363
 msgid "Download messages in"
 msgstr "メッセージをダウンロード"
 
-#: contact_form_to_db.php:366
+#: contact_form_to_db.php:370
 msgid "format"
 msgstr "形式"
 
-#: contact_form_to_db.php:368
+#: contact_form_to_db.php:372
 msgid "Input symbols for separator and enclosure"
 msgstr "区切り文字と括弧の記号入力"
 
-#: contact_form_to_db.php:374
+#: contact_form_to_db.php:378
 msgid " separator"
 msgstr "区切り文字"
 
-#: contact_form_to_db.php:380
+#: contact_form_to_db.php:384
 msgid " enclosure"
 msgstr "括弧"
 
-#: contact_form_to_db.php:385
-msgid "Show messages per page"
-msgstr "ページ毎にメッセージを表示"
-
-#: contact_form_to_db.php:404
+#: contact_form_to_db.php:394
 msgid "Save attachments"
 msgstr "添付ファイルを保存"
 
-#: contact_form_to_db.php:410
+#: contact_form_to_db.php:400
 msgid "Save attachments to database."
 msgstr "添付ファイルをデータベースに保存。"
 
-#: contact_form_to_db.php:412
+#: contact_form_to_db.php:402
 msgid "Save attachments to \"Uploads\"."
 msgstr "添付ファイルを \"Uploads\"に保存。"
 
-#: contact_form_to_db.php:417
+#: contact_form_to_db.php:407
 msgid "Periodically delete old messages"
 msgstr "定期的に古いメッセージを削除"
 
-#: contact_form_to_db.php:422
+#: contact_form_to_db.php:412
 msgid "every 24 hours"
 msgstr "24時間毎"
 
-#: contact_form_to_db.php:423
+#: contact_form_to_db.php:413
 msgid "every 3 days"
 msgstr "3日毎"
 
-#: contact_form_to_db.php:424
+#: contact_form_to_db.php:414
 msgid "every 1 week"
 msgstr "1周間毎"
 
-#: contact_form_to_db.php:425
+#: contact_form_to_db.php:415
 msgid "every 2 weeks"
 msgstr "2週間毎"
 
-#: contact_form_to_db.php:426
+#: contact_form_to_db.php:416
 msgid "every 1 month"
 msgstr "1ヶ月毎"
 
-#: contact_form_to_db.php:427
+#: contact_form_to_db.php:417
 msgid "every 6 months"
 msgstr "6ヶ月毎"
 
-#: contact_form_to_db.php:428
+#: contact_form_to_db.php:418
 msgid "every 1 year"
 msgstr "1年毎"
 
-#: contact_form_to_db.php:430
+#: contact_form_to_db.php:420
 msgid ""
 "(All messages older than the specified period will be deleted at the end of "
 "the same period)"
 msgstr ""
 "(特定の時期より古い全てのメッセージは、同じ時期の最後の日に削除されます)"
 
-#: contact_form_to_db.php:435
+#: contact_form_to_db.php:425
 msgid "Show attachments"
 msgstr "添付ファイルの表示"
 
-#: contact_form_to_db.php:439
+#: contact_form_to_db.php:429
 msgid "Use fancybox to image view"
 msgstr "fancyboxを画像表示に使用"
 
-#: contact_form_to_db.php:444
+#: contact_form_to_db.php:434
 msgid "If you upgrade to Pro version all your settings will be saved."
 msgstr "PROバージョンにアップグレードすると、設定が保存されます。"
 
-#: contact_form_to_db.php:451
-msgid "Unlock premium options by upgrading to a PRO version."
+#: contact_form_to_db.php:441
+#, fuzzy
+msgid "Unlock premium options by upgrading to Pro version"
 msgstr ""
 "PROバージョンにアップグレードすることにより、プレミアム・オプションが解除され"
 "ます。"
 
-#: contact_form_to_db.php:452
+#: contact_form_to_db.php:443
 msgid "Learn More"
 msgstr "もっと学ぶ"
 
-#: contact_form_to_db.php:455
-msgid "Go"
-msgstr "実行!"
-
-#: contact_form_to_db.php:462
+#: contact_form_to_db.php:449
 msgid "Save Changes"
 msgstr "更新保存"
 
-#: contact_form_to_db.php:861
+#: contact_form_to_db.php:884
 msgid "Contact from to DB"
 msgstr "Contact from to DB"
 
-#: contact_form_to_db.php:871
+#: contact_form_to_db.php:894
 msgid "This message was re-sent from "
 msgstr "このメッセージはここから再送されました:"
 
-#: contact_form_to_db.php:874
+#: contact_form_to_db.php:897
 msgid "Name"
 msgstr "名前"
 
-#: contact_form_to_db.php:879
+#: contact_form_to_db.php:902
 msgid "Address"
 msgstr "住所"
 
-#: contact_form_to_db.php:884
+#: contact_form_to_db.php:907
 msgid "Email"
 msgstr "Eメール"
 
-#: contact_form_to_db.php:889
+#: contact_form_to_db.php:912
 msgid "Phone"
 msgstr "電話"
 
-#: contact_form_to_db.php:894
+#: contact_form_to_db.php:917
 msgid "Subject"
 msgstr "件名"
 
-#: contact_form_to_db.php:897 contact_form_to_db.php:1665
+#: contact_form_to_db.php:920 contact_form_to_db.php:1527
 msgid "Message"
 msgstr "メッセージ"
 
-#: contact_form_to_db.php:900
+#: contact_form_to_db.php:923
 msgid "Site"
 msgstr "サイト"
 
-#: contact_form_to_db.php:911
+#: contact_form_to_db.php:934
 msgid "Sent from (ip address)"
 msgstr "送信した(IP-Adresse)"
 
-#: contact_form_to_db.php:916
+#: contact_form_to_db.php:939
 msgid "Date/Time"
 msgstr "日時"
 
-#: contact_form_to_db.php:921 contact_form_to_db.php:927
+#: contact_form_to_db.php:944 contact_form_to_db.php:950
 msgid "Sent from (referer)"
 msgstr "送信した(referer)"
 
-#: contact_form_to_db.php:940 contact_form_to_db.php:942
+#: contact_form_to_db.php:963 contact_form_to_db.php:965
 msgid "From: "
 msgstr "送信者:"
 
-#: contact_form_to_db.php:943
+#: contact_form_to_db.php:966
 msgid "To: "
 msgstr "受信者:"
 
-#: contact_form_to_db.php:944
+#: contact_form_to_db.php:967
 msgid "Subject: "
 msgstr "件名:"
 
-#: contact_form_to_db.php:945
+#: contact_form_to_db.php:968
 msgid "Date/Time: "
 msgstr "日時:"
 
-#: contact_form_to_db.php:1023
+#: contact_form_to_db.php:1046
 msgid "Sent from (ip address): "
 msgstr "送信した(IP-Adresse):"
 
-#: contact_form_to_db.php:1254
+#: contact_form_to_db.php:1277
 msgid "Can not create XML-files."
 msgstr "XMLファイルを作成できません。"
 
-#: contact_form_to_db.php:1258
+#: contact_form_to_db.php:1281
 msgid "Can not create ZIP-archive."
 msgstr "ZIPファイルを作成できません。"
 
-#: contact_form_to_db.php:1262
+#: contact_form_to_db.php:1285
 msgid "Unknown format."
 msgstr "未知の形式。"
 
-#: contact_form_to_db.php:1272
+#: contact_form_to_db.php:1295
 msgid "One message was deleted successfully."
 msgstr "1件のメッセージが無事削除されました。"
 
-#: contact_form_to_db.php:1272
+#: contact_form_to_db.php:1295
 msgid "messages were deleted successfully."
 msgstr "件のメッセージが無事削除されました。"
 
-#: contact_form_to_db.php:1274
+#: contact_form_to_db.php:1297
 msgid "There are some problems while deleting message."
 msgstr "メッセージ削除中に問題が発生しました。"
 
-#: contact_form_to_db.php:1289 contact_form_to_db.php:1341
-#: contact_form_to_db.php:1896
+#: contact_form_to_db.php:1312 contact_form_to_db.php:1364
+#: contact_form_to_db.php:1936
 msgid "One message was marked as Spam."
 msgstr "1件のメッセージがスパムとマークされました。"
 
-#: contact_form_to_db.php:1289
+#: contact_form_to_db.php:1312
 msgid "messages were marked as Spam."
 msgstr "件のメッセージがスパムとマークされました。"
 
-#: contact_form_to_db.php:1290 contact_form_to_db.php:1308
-#: contact_form_to_db.php:1341 contact_form_to_db.php:1344
-#: contact_form_to_db.php:1896 contact_form_to_db.php:1899
+#: contact_form_to_db.php:1313 contact_form_to_db.php:1331
+#: contact_form_to_db.php:1364 contact_form_to_db.php:1367
+#: contact_form_to_db.php:1936 contact_form_to_db.php:1939
 msgid "Undo"
 msgstr "取り消す"
 
-#: contact_form_to_db.php:1292
+#: contact_form_to_db.php:1315
 msgid "Problems while marking messages as Spam."
 msgstr "スパムとしてマーク中に問題が発生しました。"
 
-#: contact_form_to_db.php:1307
+#: contact_form_to_db.php:1330
 msgid "One message was moved to Trash."
 msgstr "1件のメッセージがゴミ箱に移動されました。"
 
-#: contact_form_to_db.php:1307
+#: contact_form_to_db.php:1330
 msgid "messages were moved to Trash."
 msgstr "件のメッセージがゴミ箱に移動されました。"
 
-#: contact_form_to_db.php:1310
+#: contact_form_to_db.php:1333
 msgid "Problems while moving messages to Trash."
 msgstr "ゴミ箱に移動中に問題が発生しました。"
 
-#: contact_form_to_db.php:1310
+#: contact_form_to_db.php:1333
 msgid " Please, try it later."
 msgstr "暫くしてお試し下さい。"
 
-#: contact_form_to_db.php:1318 contact_form_to_db.php:1327
+#: contact_form_to_db.php:1341 contact_form_to_db.php:1350
 msgid "One message was restored."
 msgstr "1件のメッセージが復活されました。"
 
-#: contact_form_to_db.php:1318 contact_form_to_db.php:1327
+#: contact_form_to_db.php:1341 contact_form_to_db.php:1350
 msgid "messages were restored."
 msgstr "件のメッセージが復活されました。"
 
-#: contact_form_to_db.php:1320 contact_form_to_db.php:1329
+#: contact_form_to_db.php:1343 contact_form_to_db.php:1352
 msgid "Problems during the restoration messages"
 msgstr "メッセージ復活中に問題が発生しました"
 
-#: contact_form_to_db.php:1338 contact_form_to_db.php:1893
+#: contact_form_to_db.php:1361 contact_form_to_db.php:1933
 msgid "One message was marked as Normal."
 msgstr "1件のメッセージが通常としてマークされました。"
 
-#: contact_form_to_db.php:1344 contact_form_to_db.php:1899
+#: contact_form_to_db.php:1367 contact_form_to_db.php:1939
 msgid "One message was marked as Trash."
 msgstr "1件のメッセージがゴミとしてマークされました。"
 
-#: contact_form_to_db.php:1347 contact_form_to_db.php:1902
+#: contact_form_to_db.php:1370 contact_form_to_db.php:1942
 msgid "Unknown result."
 msgstr "未知の結果。"
 
-#: contact_form_to_db.php:1351
+#: contact_form_to_db.php:1374
 msgid "Problems while changing status of message."
 msgstr "メッセージの状況を変更中に問題が発生しました。"
 
-#: contact_form_to_db.php:1359
+#: contact_form_to_db.php:1382
 msgid "Unknown action."
 msgstr "未知の動作。"
 
-#: contact_form_to_db.php:1361
+#: contact_form_to_db.php:1384
 msgid "Can not display results."
 msgstr "結果を表示できません。"
 
-#: contact_form_to_db.php:1367
+#: contact_form_to_db.php:1390
 msgid ""
 "Can not handle request. May be you need choose some messages to handle them."
 msgstr ""
 "要求を処理することが出来ません。これを処理するためには、幾つかのメッセージを"
 "選択する必要があるかもしれません。"
 
-#: contact_form_to_db.php:1431 contact_form_to_db.php:1760
-msgid "Mark as Spam"
-msgstr "スパムとしてマーク"
-
-#: contact_form_to_db.php:1433 contact_form_to_db.php:1769
-msgid "Mark as Trash"
-msgstr "ゴミとしてマーク"
-
-#: contact_form_to_db.php:1437
-msgid "unknown status"
-msgstr "未知の状況"
-
-#: contact_form_to_db.php:1447
-msgid "- Unknown name -"
-msgstr "- 未知の名前 -"
-
-#: contact_form_to_db.php:1472
-msgid " - No text in this message - "
-msgstr "- このメッセージにテキストがありません -"
-
-#: contact_form_to_db.php:1482 contact_form_to_db.php:1483
-#: contact_form_to_db.php:1489 contact_form_to_db.php:1784
-#: contact_form_to_db.php:1817 contact_form_to_db.php:1818
-#: contact_form_to_db.php:1819 contact_form_to_db.php:1871
-#: contact_form_to_db.php:1872
-msgid "This option is available in Pro version"
-msgstr "このオプションは、PROバージョンで利用可能です"
-
-#: contact_form_to_db.php:1482
-msgid "Download"
-msgstr "ダウンロード"
-
-#: contact_form_to_db.php:1483
-msgid "View"
-msgstr "表示"
-
-#: contact_form_to_db.php:1496
-msgid "The number of dispatches"
-msgstr "発信回数"
-
-#: contact_form_to_db.php:1498
-msgid "This message was not sent"
-msgstr "このメッセージは送信されていません"
-
-#: contact_form_to_db.php:1583
+#: contact_form_to_db.php:1452
 msgid "message"
 msgstr "メッセージ"
 
-#: contact_form_to_db.php:1584
+#: contact_form_to_db.php:1453
 msgid "messages"
 msgstr "メッセージ"
 
-#: contact_form_to_db.php:1620
+#: contact_form_to_db.php:1483
 msgid "No messages that have been sent."
 msgstr "送信されたメッセージは有りません。"
 
-#: contact_form_to_db.php:1622
+#: contact_form_to_db.php:1485
 msgid "No messages that have not been sent."
 msgstr "送信できなかったメッセージは有りません。"
 
-#: contact_form_to_db.php:1624
+#: contact_form_to_db.php:1487
 msgid "No messages that have was read."
 msgstr "既読のメッセージは有りません。"
 
-#: contact_form_to_db.php:1626
+#: contact_form_to_db.php:1489
 msgid "No messages that have was not read."
 msgstr "未読のメッセージは有りません。"
 
-#: contact_form_to_db.php:1628
+#: contact_form_to_db.php:1491
 msgid "No messages that have attachments."
 msgstr "添付ファイルがあるメッセージは有りません。"
 
-#: contact_form_to_db.php:1630
+#: contact_form_to_db.php:1493
 msgid "No messages that was marked as Spam."
 msgstr "スパムとマークされたメッセージは有りません。"
 
-#: contact_form_to_db.php:1632
+#: contact_form_to_db.php:1495
 msgid "No messages that was marked as Trash."
 msgstr "ゴミとマークされたメッセージは有りません。"
 
-#: contact_form_to_db.php:1634
+#: contact_form_to_db.php:1497
 msgid "No messages found."
 msgstr "メッセージが見つかりません。"
 
-#: contact_form_to_db.php:1664
+#: contact_form_to_db.php:1526
 msgid "From"
 msgstr "送信者"
 
-#: contact_form_to_db.php:1667
+#: contact_form_to_db.php:1529
 msgid "Send Counter"
 msgstr "送信回数"
 
-#: contact_form_to_db.php:1668
+#: contact_form_to_db.php:1530
 msgid "Date"
 msgstr "日付"
 
-#: contact_form_to_db.php:1693
+#: contact_form_to_db.php:1534
+msgid "Department"
+msgstr ""
+
+#: contact_form_to_db.php:1565
 msgid "All"
 msgstr "全て"
 
-#: contact_form_to_db.php:1694
+#: contact_form_to_db.php:1566
 msgid "Sent"
 msgstr "送信済"
 
-#: contact_form_to_db.php:1695
+#: contact_form_to_db.php:1567
 msgid "Not sent"
 msgstr "未送信"
 
-#: contact_form_to_db.php:1696
+#: contact_form_to_db.php:1568
 msgid "Read"
 msgstr "既読"
 
-#: contact_form_to_db.php:1697
+#: contact_form_to_db.php:1569
 msgid "Unread"
 msgstr "未読"
 
-#: contact_form_to_db.php:1698
+#: contact_form_to_db.php:1570
 msgid "Has attachments"
 msgstr "添付有り"
 
-#: contact_form_to_db.php:1699 contact_form_to_db.php:1786
+#: contact_form_to_db.php:1571 contact_form_to_db.php:1658
 msgid "Spam"
 msgstr "スパム"
 
-#: contact_form_to_db.php:1700 contact_form_to_db.php:1787
-#: contact_form_to_db.php:1796
+#: contact_form_to_db.php:1572 contact_form_to_db.php:1659
+#: contact_form_to_db.php:1668
 msgid "Trash"
 msgstr "ゴミ"
 
-#: contact_form_to_db.php:1759
+#: contact_form_to_db.php:1632
 msgid "Download messages"
 msgstr "メッセージのダウンロード"
 
-#: contact_form_to_db.php:1763
+#: contact_form_to_db.php:1633 contact_form_to_db.php:1739
+msgid "Mark as Spam"
+msgstr "スパムとしてマーク"
+
+#: contact_form_to_db.php:1636
 msgid "Not Spam"
 msgstr "スパムでない"
 
-#: contact_form_to_db.php:1765 contact_form_to_db.php:1792
+#: contact_form_to_db.php:1638 contact_form_to_db.php:1664
 msgid "Restore"
 msgstr "リストア"
 
-#: contact_form_to_db.php:1767 contact_form_to_db.php:1794
+#: contact_form_to_db.php:1640 contact_form_to_db.php:1666
 msgid "Delete Permanently"
 msgstr "完全に削除"
 
-#: contact_form_to_db.php:1771
+#: contact_form_to_db.php:1642 contact_form_to_db.php:1741
+msgid "Mark as Trash"
+msgstr "ゴミとしてマーク"
+
+#: contact_form_to_db.php:1644
 msgid "Re-send messages"
 msgstr "メッセージの再送信"
 
-#: contact_form_to_db.php:1772
+#: contact_form_to_db.php:1645
 msgid "Download attachments"
 msgstr "添付ファイルのダウンロード"
 
-#: contact_form_to_db.php:1784
+#: contact_form_to_db.php:1656 contact_form_to_db.php:1790
+#: contact_form_to_db.php:1791 contact_form_to_db.php:1797
+#: contact_form_to_db.php:1859 contact_form_to_db.php:1860
+#: contact_form_to_db.php:1912 contact_form_to_db.php:1913
+msgid "This option is available in Pro version"
+msgstr "このオプションは、PROバージョンで利用可能です"
+
+#: contact_form_to_db.php:1656
 msgid "Re-send Message"
 msgstr "メッセージの再送信"
 
-#: contact_form_to_db.php:1785
+#: contact_form_to_db.php:1657
 msgid "Download Message"
 msgstr "メッセージのダウンロード"
 
-#: contact_form_to_db.php:1790
+#: contact_form_to_db.php:1662
 msgid "Not spam"
 msgstr "スパムでない"
 
-#: contact_form_to_db.php:1817
+#: contact_form_to_db.php:1745
+msgid "unknown status"
+msgstr "未知の状況"
+
+#: contact_form_to_db.php:1755
+msgid "- Unknown name -"
+msgstr "- 未知の名前 -"
+
+#: contact_form_to_db.php:1780
+msgid " - No text in this message - "
+msgstr "- このメッセージにテキストがありません -"
+
+#: contact_form_to_db.php:1790
+msgid "Download"
+msgstr "ダウンロード"
+
+#: contact_form_to_db.php:1791
+msgid "View"
+msgstr "表示"
+
+#: contact_form_to_db.php:1804
+msgid "The number of dispatches"
+msgstr "発信回数"
+
+#: contact_form_to_db.php:1806
+msgid "This message was not sent"
+msgstr "このメッセージは送信されていません"
+
+#: contact_form_to_db.php:1838
+#, fuzzy
+msgid "Letters per page"
+msgstr "ページ毎にメッセージを表示"
+
+#: contact_form_to_db.php:1859
 msgid "User Guide"
 msgstr "ユーザガイド"
 
-#: contact_form_to_db.php:1819
-msgid "Screen Options"
-msgstr "画面オプション"
-
-#: contact_form_to_db.php:1824 contact_form_to_db.php:1835
-#: contact_form_to_db.php:1902 contact_form_to_db.php:1906
-#: contact_form_to_db.php:1960
+#: contact_form_to_db.php:1865 contact_form_to_db.php:1876
+#: contact_form_to_db.php:1942 contact_form_to_db.php:1946
+#: contact_form_to_db.php:2000
 #, fuzzy
 msgid "WARNING:"
 msgstr "警告:"
 
-#: contact_form_to_db.php:1824
+#: contact_form_to_db.php:1865
 msgid "For fully-functional work of plugin, please, enable javascript."
 msgstr "プラグインの全ての機能を動作させるには、javascriptを有効にして下さい。"
 
-#: contact_form_to_db.php:1831
+#: contact_form_to_db.php:1872
 #, php-format
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "&#8220;%s&#8221;の検索結果"
 
-#: contact_form_to_db.php:1835
+#: contact_form_to_db.php:1876
 #, fuzzy
 msgid "Please, try it later."
 msgstr "暫くしてお試し下さい。"
 
-#: contact_form_to_db.php:1872
+#: contact_form_to_db.php:1879
+msgid "Search mails"
+msgstr ""
+
+#: contact_form_to_db.php:1913
 msgid "Can not display thumbnail"
 msgstr "サムネイルを表示できません"
 
-#: contact_form_to_db.php:1906
+#: contact_form_to_db.php:1946
 msgid "Problems while changing status of message. Please, try it later."
 msgstr ""
 "メッセージの状況を変更中に問題が発生しました。暫くして再度お試し下さい。"
 
-#: contact_form_to_db.php:1941
+#: contact_form_to_db.php:1981
 msgid "Support"
 msgstr "サポート"
 
-#: contact_form_to_db.php:1992
+#: contact_form_to_db.php:2032
 msgid ""
 "Option \"Save messages to database\" was disabled on the plugin settings "
 "page."
@@ -618,9 +624,19 @@ msgstr ""
 "オプション\"メッセージをデータベースに保存\"が、プラグインの設定ページで無効"
 "になっています。"
 
-#: contact_form_to_db.php:1992
+#: contact_form_to_db.php:2032
 msgid "Enable it for saving messages from Contact Form"
 msgstr "Contact Formからメッセージを保存するためには、有効にして下さい"
+
+#~ msgid "Go"
+#~ msgstr "実行!"
+
+#~ msgid "The requested content cannot be loaded.<br/>Please try again later."
+#~ msgstr ""
+#~ "要求された連絡先を読み込めませんでした。<br/>暫くして再度お試し下さい。"
+
+#~ msgid "Screen Options"
+#~ msgstr "画面オプション"
 
 #~ msgid "<strong>WARNING: </strong>Unknown result."
 #~ msgstr "<strong>警告: </strong>未知の結果。"
@@ -874,9 +890,6 @@ msgstr "Contact Formからメッセージを保存するためには、有効に
 
 #~ msgid "DONATE"
 #~ msgstr "寄付"
-
-#~ msgid "Activate this plugin"
-#~ msgstr "このプラグインを有効化"
 
 #~ msgid "Recommended plugins"
 #~ msgstr "推奨プラグイン"

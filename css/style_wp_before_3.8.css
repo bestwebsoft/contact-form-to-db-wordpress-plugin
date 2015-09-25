@@ -27,9 +27,7 @@
 * styles for manager page
 */
 .cntctfrmtdb-help-pages {
-	position: absolute;
-	top: -1px;
-	right: 20px;
+	float: right;
 }
 .cntctfrmtdb-help-pages a {
 	display: block;
@@ -232,7 +230,7 @@
 .cntctfrmtdb .wp-list-table .column-message strong {
 	color: #333;
 }
-.cntctfrmtdb .cntctfrmtdb-attachment-column-title {
+.cntctfrmtdb-attachment-column-title {
 	display: inline-block;
 	width: 11px;
 	height: 16px;
@@ -256,7 +254,7 @@
 	background: url('../images/status-icons.png') -22px 0px;
 }
 .cntctfrmtdb .wp-list-table .column-sent {
-	width: 70px;
+	min-width: 70px;
 	padding: 4px 0 2px 0;
 	vertical-align: top;
 	text-align: center;
@@ -286,11 +284,12 @@
 	background: url('../images/status-icons.png') -33px 0px;
 }
 .cntctfrmtdb .wp-list-table .column-date {
-	vertical-align: top;
 	text-align: center;
+	min-width: 70px;
 }
-.cntctfrmtdb .wp-list-table .column-date span {
-	display: block;
+.cntctfrmtdb .wp-list-table .column-department {
+	min-width: 100px;
+	max-width: 150px;
 }
 @media only screen and (max-width: 700px) {
 	.cntctfrmtdb .wp-list-table .check-column input {
