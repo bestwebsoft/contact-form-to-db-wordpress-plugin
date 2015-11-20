@@ -18,13 +18,12 @@
 	font-weight: normal;
 	text-align: left;
 }
-.cntctfrmtdb_tips {
-	color: #888;
-	font-size: 10px;
-}
 /*
 * styles for manager page
 */
+.cntctfrmtdb th#message {
+	display: table-cell !important;
+}
 .cntctfrmtdb-help-pages {
 	float: right;
 }
@@ -45,8 +44,7 @@
 	border-left: 1px solid #DDD;
 	border-right: 1px solid #DDD;
 }
-.cntctfrmtdb-help-pages .user-guide-icon,
-.cntctfrmtdb-help-pages .faq-icon {
+.cntctfrmtdb-help-pages .user-guide-icon {
 	position: relative;
 	top: 3px;
 	margin-right: 7px; 
@@ -56,9 +54,6 @@
 }
 .cntctfrmtdb-help-pages .user-guide-icon {
 	background: url('../images/status-icons.png') -14px -76px;
-}
-.cntctfrmtdb-help-pages .faq-icon {
-	background: url('../images/status-icons.png') 0 -76px;
 }
 .cntctfrmtdb-help-pages a:hover {
 	background-color: transparent;
@@ -183,9 +178,6 @@
 	padding-bottom: 2px;
 	overflow: hidden;
 	color: #333;
-}
-.cntctfrmtdb .wp-list-table .column-message .message-container .message-text {
-	
 }
 .cntctfrmtdb .wp-list-table .column-message .message-container .attachments-preview {
 	margin-top: 5px;
