@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: contact-form-to-db\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-15 13:23+0300\n"
-"PO-Revision-Date: 2015-09-25 12:21+0300\n"
+"POT-Creation-Date: 2015-12-15 13:27+0300\n"
+"PO-Revision-Date: 2015-12-15 13:27+0300\n"
 "Last-Translator: plugin@bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language-Team: Ognjen Djuraskovic <ognjend@firstsiteguide.com>\n"
 "Language: ru_RU\n"
@@ -26,7 +26,7 @@ msgstr "Slovo"
 msgid "Spam!"
 msgstr "Spam!"
 
-#: contact_form_to_db.php:258 contact_form_to_db.php:1743
+#: contact_form_to_db.php:258 contact_form_to_db.php:1772
 msgid "in Trash"
 msgstr "u Otpadu"
 
@@ -87,118 +87,105 @@ msgstr ""
 msgid "Update plugin"
 msgstr "Активированные плагины"
 
-#: contact_form_to_db.php:320
+#: contact_form_to_db.php:327
 msgid "Settings saved."
 msgstr "Postavke sačuvane."
 
-#: contact_form_to_db.php:327
+#: contact_form_to_db.php:337
 #, fuzzy
 msgid "All plugin settings were restored."
 msgstr "Поле Сообщение - обязательное поле."
 
-#: contact_form_to_db.php:340 contact_form_to_db.php:342
-#: contact_form_to_db.php:1963 contact_form_to_db.php:1979
+#: contact_form_to_db.php:350 contact_form_to_db.php:352
+#: contact_form_to_db.php:1993 contact_form_to_db.php:2009
 msgid "Settings"
 msgstr "Postavke"
 
-#: contact_form_to_db.php:343 contact_form_to_db.php:1860
-#: contact_form_to_db.php:1980
-msgid "FAQ"
-msgstr "FAQ"
-
-#: contact_form_to_db.php:344
+#: contact_form_to_db.php:353
 msgid "This setting is available in Pro version"
 msgstr "Ova postavka je dostupna i u Pro verziji"
 
-#: contact_form_to_db.php:344
+#: contact_form_to_db.php:353
 msgid "User guide"
 msgstr "Vodič za korišćenje"
 
-#: contact_form_to_db.php:345
+#: contact_form_to_db.php:354
 msgid "Go PRO"
 msgstr "Idite PRO"
 
-#: contact_form_to_db.php:347 contact_form_to_db.php:2032
-msgid "Notice:"
-msgstr "Beleška:"
-
-#: contact_form_to_db.php:347
-msgid ""
-"The plugin's settings have been changed. In order to save them please don't "
-"forget to click the 'Save Changes' button."
-msgstr ""
-"Postavke plugina su promenjene. Da biste ih sačuvali ne zaboravite da "
-"kliknete na ' Sačuvajte promene' dugme."
-
-#: contact_form_to_db.php:357
+#: contact_form_to_db.php:369
 msgid "Save messages to database"
 msgstr "Sačuvajte poruke za bazu podataka."
 
-#: contact_form_to_db.php:363
+#: contact_form_to_db.php:375
 msgid "Download messages in"
 msgstr "Download-ovati poruke u"
 
-#: contact_form_to_db.php:370
+#: contact_form_to_db.php:382
 msgid "format"
 msgstr "format"
 
-#: contact_form_to_db.php:372
+#: contact_form_to_db.php:384
 msgid "Input symbols for separator and enclosure"
 msgstr "Uneti simbole za separatisanje i zatvaranje"
 
-#: contact_form_to_db.php:378
+#: contact_form_to_db.php:390
 msgid " separator"
 msgstr "separator"
 
-#: contact_form_to_db.php:384
+#: contact_form_to_db.php:396
 msgid " enclosure"
 msgstr "zatvaranje"
 
-#: contact_form_to_db.php:394
+#: contact_form_to_db.php:404
+msgid "Close"
+msgstr ""
+
+#: contact_form_to_db.php:408
 msgid "Save attachments"
 msgstr "Sačuvati dodatke"
 
-#: contact_form_to_db.php:400
+#: contact_form_to_db.php:415
 msgid "Save attachments to database."
 msgstr "Sačuvati dodatke u bazi podataka"
 
-#: contact_form_to_db.php:402
+#: contact_form_to_db.php:417
 msgid "Save attachments to \"Uploads\"."
 msgstr "Sačuvati dodatke u \"Uploads\"."
 
-#: contact_form_to_db.php:407
+#: contact_form_to_db.php:423
 msgid "Periodically delete old messages"
 msgstr "Periodično brisanje starih poruka"
 
-#: contact_form_to_db.php:412
+#: contact_form_to_db.php:428
 msgid "every 24 hours"
 msgstr "svaka 24h"
 
-#: contact_form_to_db.php:413
+#: contact_form_to_db.php:429
 msgid "every 3 days"
 msgstr "svaka 3 dana"
 
-#: contact_form_to_db.php:414
+#: contact_form_to_db.php:430
 msgid "every 1 week"
 msgstr "svake nedelje"
 
-#: contact_form_to_db.php:415
+#: contact_form_to_db.php:431
 msgid "every 2 weeks"
 msgstr "svake 2 nedelje"
 
-#: contact_form_to_db.php:416
+#: contact_form_to_db.php:432
 msgid "every 1 month"
 msgstr "svaki mesec"
 
-#: contact_form_to_db.php:417
+#: contact_form_to_db.php:433
 msgid "every 6 months"
 msgstr "svakih 6 meseci"
 
-#: contact_form_to_db.php:418
+#: contact_form_to_db.php:434
 msgid "every 1 year"
 msgstr "svake godine"
 
-#: contact_form_to_db.php:420
+#: contact_form_to_db.php:436
 msgid ""
 "(All messages older than the specified period will be deleted at the end of "
 "the same period)"
@@ -206,185 +193,186 @@ msgstr ""
 "(All messages older than the specified period will be deleted at the end of "
 "the same period)"
 
-#: contact_form_to_db.php:425
+#: contact_form_to_db.php:441
 msgid "Show attachments"
 msgstr "Prikaži dodatke"
 
-#: contact_form_to_db.php:429
+#: contact_form_to_db.php:445
 msgid "Use fancybox to image view"
 msgstr "Koristite fancybox za pregled slika"
 
-#: contact_form_to_db.php:434
+#: contact_form_to_db.php:450
 msgid "If you upgrade to Pro version all your settings will be saved."
 msgstr "Ako upgradeujete na Pro verziju sve vaše postavke će biti sačuvane.."
 
-#: contact_form_to_db.php:441
+#: contact_form_to_db.php:457
 msgid "Unlock premium options by upgrading to Pro version"
 msgstr ""
 
-#: contact_form_to_db.php:443
+#: contact_form_to_db.php:459
 msgid "Learn More"
 msgstr "Saznajte još"
 
-#: contact_form_to_db.php:449
+#: contact_form_to_db.php:466
 msgid "Save Changes"
 msgstr "Sačuvajte promene"
 
-#: contact_form_to_db.php:884
+#: contact_form_to_db.php:906
 msgid "Contact from to DB"
 msgstr "Kontakt za od DB"
 
-#: contact_form_to_db.php:894
+#: contact_form_to_db.php:916
 msgid "This message was re-sent from "
 msgstr "Ova poruka je ponovo poslata sa   "
 
-#: contact_form_to_db.php:897
+#: contact_form_to_db.php:919
 msgid "Name"
 msgstr "Ime"
 
-#: contact_form_to_db.php:902
+#: contact_form_to_db.php:924
 msgid "Address"
 msgstr "Adresa"
 
-#: contact_form_to_db.php:907
+#: contact_form_to_db.php:929
 msgid "Email"
 msgstr "Email"
 
-#: contact_form_to_db.php:912
+#: contact_form_to_db.php:934
 msgid "Phone"
 msgstr "Telefon"
 
-#: contact_form_to_db.php:917
+#: contact_form_to_db.php:939
 msgid "Subject"
 msgstr "Predmet"
 
-#: contact_form_to_db.php:920 contact_form_to_db.php:1527
+#: contact_form_to_db.php:942 contact_form_to_db.php:1534
 msgid "Message"
 msgstr "Poruka"
 
-#: contact_form_to_db.php:923
+#: contact_form_to_db.php:945
 msgid "Site"
 msgstr "Sajt"
 
-#: contact_form_to_db.php:934
+#: contact_form_to_db.php:975
 msgid "Sent from (ip address)"
 msgstr "Poslato sa (ip adresa):"
 
-#: contact_form_to_db.php:939
+#: contact_form_to_db.php:980
 msgid "Date/Time"
 msgstr "Datum/Vreme:"
 
-#: contact_form_to_db.php:944 contact_form_to_db.php:950
+#: contact_form_to_db.php:985 contact_form_to_db.php:991
 msgid "Sent from (referer)"
 msgstr "Poslato od (referer)"
 
-#: contact_form_to_db.php:963 contact_form_to_db.php:965
+#: contact_form_to_db.php:1004 contact_form_to_db.php:1006
 msgid "From: "
 msgstr "Od:"
 
-#: contact_form_to_db.php:966
+#: contact_form_to_db.php:1007
 msgid "To: "
 msgstr "Za:"
 
-#: contact_form_to_db.php:967
+#: contact_form_to_db.php:1008
 msgid "Subject: "
 msgstr "Predmet:"
 
-#: contact_form_to_db.php:968
+#: contact_form_to_db.php:1009
 msgid "Date/Time: "
 msgstr "Datum/Vreme:"
 
-#: contact_form_to_db.php:1046
+#: contact_form_to_db.php:1105
 msgid "Sent from (ip address): "
 msgstr "Poslato sa (ip adresa):"
 
-#: contact_form_to_db.php:1277
+#: contact_form_to_db.php:1239
 msgid "Can not create XML-files."
 msgstr "Ne može stvoriti XML-fajlove."
 
-#: contact_form_to_db.php:1281
+#: contact_form_to_db.php:1243
 msgid "Can not create ZIP-archive."
 msgstr "Ne može stvoriti ZIP-arhiv."
 
-#: contact_form_to_db.php:1285
+#: contact_form_to_db.php:1247
 msgid "Unknown format."
 msgstr "Nepoznato format."
 
-#: contact_form_to_db.php:1295
+#: contact_form_to_db.php:1267
 #, fuzzy
 msgid "One message was deleted successfully."
 msgstr "Одно сообщение было полностью удалено"
 
-#: contact_form_to_db.php:1295
+#: contact_form_to_db.php:1267
 #, fuzzy
 msgid "messages were deleted successfully."
 msgstr "Одно сообщение было полностью удалено"
 
-#: contact_form_to_db.php:1297
+#: contact_form_to_db.php:1269
 msgid "There are some problems while deleting message."
 msgstr "Problemi prilikom brisanja poruka."
 
-#: contact_form_to_db.php:1312 contact_form_to_db.php:1364
-#: contact_form_to_db.php:1936
+#: contact_form_to_db.php:1288 contact_form_to_db.php:1364
+#: contact_form_to_db.php:1966
 msgid "One message was marked as Spam."
 msgstr "Jedna poruka je označena kao Spam."
 
-#: contact_form_to_db.php:1312
+#: contact_form_to_db.php:1288
 #, fuzzy
 msgid "messages were marked as Spam."
 msgstr "Jedna poruka je označena kao Spam."
 
-#: contact_form_to_db.php:1313 contact_form_to_db.php:1331
+#: contact_form_to_db.php:1289 contact_form_to_db.php:1311
 #: contact_form_to_db.php:1364 contact_form_to_db.php:1367
-#: contact_form_to_db.php:1936 contact_form_to_db.php:1939
+#: contact_form_to_db.php:1966 contact_form_to_db.php:1969
 msgid "Undo"
 msgstr "Undo"
 
-#: contact_form_to_db.php:1315
+#: contact_form_to_db.php:1291
 msgid "Problems while marking messages as Spam."
 msgstr "Problemi prilikom pomeranja poruka u Spam."
 
-#: contact_form_to_db.php:1330
+#: contact_form_to_db.php:1310
 #, fuzzy
 msgid "One message was moved to Trash."
 msgstr "Одно сообщение было перемещено в козину."
 
-#: contact_form_to_db.php:1330
+#: contact_form_to_db.php:1310
 #, fuzzy
 msgid "messages were moved to Trash."
 msgstr "Одно сообщение было перемещено в козину."
 
-#: contact_form_to_db.php:1333
+#: contact_form_to_db.php:1313
 msgid "Problems while moving messages to Trash."
 msgstr "Problemi prilikom pomeranja poruka u Otpad."
 
-#: contact_form_to_db.php:1333
-msgid " Please, try it later."
+#: contact_form_to_db.php:1313 contact_form_to_db.php:1904
+#, fuzzy
+msgid "Please, try it later."
 msgstr "Pokušajte opet kasnije."
 
-#: contact_form_to_db.php:1341 contact_form_to_db.php:1350
+#: contact_form_to_db.php:1329 contact_form_to_db.php:1345
 #, fuzzy
 msgid "One message was restored."
 msgstr "Jedna poruka je označena kao Normal."
 
-#: contact_form_to_db.php:1341 contact_form_to_db.php:1350
+#: contact_form_to_db.php:1329 contact_form_to_db.php:1345
 #, fuzzy
 msgid "messages were restored."
 msgstr "Поле Сообщение - обязательное поле."
 
-#: contact_form_to_db.php:1343 contact_form_to_db.php:1352
+#: contact_form_to_db.php:1331 contact_form_to_db.php:1347
 msgid "Problems during the restoration messages"
 msgstr "Problemi tokom restauracije poruka"
 
-#: contact_form_to_db.php:1361 contact_form_to_db.php:1933
+#: contact_form_to_db.php:1361 contact_form_to_db.php:1963
 msgid "One message was marked as Normal."
 msgstr "Jedna poruka je označena kao Normal."
 
-#: contact_form_to_db.php:1367 contact_form_to_db.php:1939
+#: contact_form_to_db.php:1367 contact_form_to_db.php:1969
 msgid "One message was marked as Trash."
 msgstr "Jedna poruka je označena kao Trash."
 
-#: contact_form_to_db.php:1370 contact_form_to_db.php:1942
+#: contact_form_to_db.php:1370 contact_form_to_db.php:1972
 msgid "Unknown result."
 msgstr "Nepoznati rezultat."
 
@@ -392,13 +380,9 @@ msgstr "Nepoznati rezultat."
 msgid "Problems while changing status of message."
 msgstr "Problemi prilikom menjanja statusa poruke."
 
-#: contact_form_to_db.php:1382
+#: contact_form_to_db.php:1383
 msgid "Unknown action."
 msgstr "Nepoznata akcija."
-
-#: contact_form_to_db.php:1384
-msgid "Can not display results."
-msgstr "Ne može da prikaže rezultate."
 
 #: contact_form_to_db.php:1390
 msgid ""
@@ -415,213 +399,235 @@ msgstr "poruka"
 msgid "messages"
 msgstr "poruke"
 
-#: contact_form_to_db.php:1483
+#: contact_form_to_db.php:1490
 msgid "No messages that have been sent."
 msgstr "Nijedna poruka nije poslata."
 
-#: contact_form_to_db.php:1485
+#: contact_form_to_db.php:1492
 msgid "No messages that have not been sent."
 msgstr "Nijedna poruka nije neposlata."
 
-#: contact_form_to_db.php:1487
+#: contact_form_to_db.php:1494
 msgid "No messages that have was read."
 msgstr "Nijedna poruka nije pročitana."
 
-#: contact_form_to_db.php:1489
+#: contact_form_to_db.php:1496
 msgid "No messages that have was not read."
 msgstr "Nijedna poruka nije nepročitana."
 
-#: contact_form_to_db.php:1491
+#: contact_form_to_db.php:1498
 msgid "No messages that have attachments."
 msgstr "Nijedna poruka nema dodatak."
 
-#: contact_form_to_db.php:1493
+#: contact_form_to_db.php:1500
 msgid "No messages that was marked as Spam."
 msgstr "Nijedna poruka nije označena kao Spam."
 
-#: contact_form_to_db.php:1495
+#: contact_form_to_db.php:1502
 msgid "No messages that was marked as Trash."
 msgstr "Nijedna poruka nije označena kao Otpad."
 
-#: contact_form_to_db.php:1497
+#: contact_form_to_db.php:1504
 msgid "No messages found."
 msgstr "Nijedna poruka nije pronadjena."
 
-#: contact_form_to_db.php:1526
+#: contact_form_to_db.php:1533
 msgid "From"
 msgstr "Od"
 
-#: contact_form_to_db.php:1529
+#: contact_form_to_db.php:1535
+#, fuzzy
+msgid "Attachment"
+msgstr "Прикрепить файл:"
+
+#: contact_form_to_db.php:1536
 msgid "Send Counter"
 msgstr "Brojač poslatih"
 
-#: contact_form_to_db.php:1530
+#: contact_form_to_db.php:1537
 msgid "Date"
 msgstr "Datum"
 
-#: contact_form_to_db.php:1534
+#: contact_form_to_db.php:1541
 msgid "Department"
 msgstr ""
 
-#: contact_form_to_db.php:1565
+#: contact_form_to_db.php:1575
 msgid "All"
 msgstr "Sve"
 
-#: contact_form_to_db.php:1566
+#: contact_form_to_db.php:1576
 msgid "Sent"
 msgstr "Poslato"
 
-#: contact_form_to_db.php:1567
+#: contact_form_to_db.php:1577
 msgid "Not sent"
 msgstr "Nije poslato"
 
-#: contact_form_to_db.php:1568
+#: contact_form_to_db.php:1578
 msgid "Read"
 msgstr "Pročitano"
 
-#: contact_form_to_db.php:1569
+#: contact_form_to_db.php:1579
 msgid "Unread"
 msgstr "Nije pročitano"
 
-#: contact_form_to_db.php:1570
+#: contact_form_to_db.php:1580
 msgid "Has attachments"
 msgstr "Ima dodatak"
 
-#: contact_form_to_db.php:1571 contact_form_to_db.php:1658
+#: contact_form_to_db.php:1581 contact_form_to_db.php:1676
 msgid "Spam"
 msgstr "Spam"
 
-#: contact_form_to_db.php:1572 contact_form_to_db.php:1659
-#: contact_form_to_db.php:1668
+#: contact_form_to_db.php:1582 contact_form_to_db.php:1677
+#: contact_form_to_db.php:1686
 msgid "Trash"
 msgstr "Otpad"
 
+#: contact_form_to_db.php:1625
+msgid "Filter by department"
+msgstr ""
+
+#: contact_form_to_db.php:1627
+msgid "All departments"
+msgstr ""
+
 #: contact_form_to_db.php:1632
+msgid "Filter"
+msgstr ""
+
+#: contact_form_to_db.php:1644
 msgid "Download messages"
 msgstr "Downloaovati poruke"
 
-#: contact_form_to_db.php:1633 contact_form_to_db.php:1739
+#: contact_form_to_db.php:1645 contact_form_to_db.php:1768
 msgid "Mark as Spam"
 msgstr "Označi kao Spam"
 
-#: contact_form_to_db.php:1636
+#: contact_form_to_db.php:1648
 msgid "Not Spam"
 msgstr "Nije Spam"
 
-#: contact_form_to_db.php:1638 contact_form_to_db.php:1664
+#: contact_form_to_db.php:1650 contact_form_to_db.php:1682
 msgid "Restore"
 msgstr "Povratiti"
 
-#: contact_form_to_db.php:1640 contact_form_to_db.php:1666
+#: contact_form_to_db.php:1652 contact_form_to_db.php:1684
 msgid "Delete Permanently"
 msgstr "Obrisati zauvek"
 
-#: contact_form_to_db.php:1642 contact_form_to_db.php:1741
+#: contact_form_to_db.php:1654 contact_form_to_db.php:1770
 msgid "Mark as Trash"
 msgstr "Označi kao Otpad"
 
-#: contact_form_to_db.php:1644
+#: contact_form_to_db.php:1656
 msgid "Re-send messages"
 msgstr "Ponovo poslati poruke"
 
-#: contact_form_to_db.php:1645
+#: contact_form_to_db.php:1657
 msgid "Download attachments"
 msgstr "Download-ovati dodatak"
 
-#: contact_form_to_db.php:1656 contact_form_to_db.php:1790
-#: contact_form_to_db.php:1791 contact_form_to_db.php:1797
-#: contact_form_to_db.php:1859 contact_form_to_db.php:1860
-#: contact_form_to_db.php:1912 contact_form_to_db.php:1913
+#: contact_form_to_db.php:1673 contact_form_to_db.php:1819
+#: contact_form_to_db.php:1820 contact_form_to_db.php:1826
+#: contact_form_to_db.php:1893 contact_form_to_db.php:1942
+#: contact_form_to_db.php:1943
 msgid "This option is available in Pro version"
 msgstr "Ova opcija je dostupna u Pro verziji."
 
-#: contact_form_to_db.php:1656
+#: contact_form_to_db.php:1673
 msgid "Re-send Message"
 msgstr "Ponovo poslati poruku"
 
-#: contact_form_to_db.php:1657
+#: contact_form_to_db.php:1675
 msgid "Download Message"
 msgstr "Download-ovati poruku"
 
-#: contact_form_to_db.php:1662
+#: contact_form_to_db.php:1680
 msgid "Not spam"
 msgstr "Nije spam"
 
-#: contact_form_to_db.php:1745
+#: contact_form_to_db.php:1774
 msgid "unknown status"
 msgstr "nepoznat status"
 
-#: contact_form_to_db.php:1755
-msgid "- Unknown name -"
+#: contact_form_to_db.php:1784
+#, fuzzy
+msgid "Unknown name"
 msgstr "- Nepoznato ime -"
 
-#: contact_form_to_db.php:1780
-msgid " - No text in this message - "
+#: contact_form_to_db.php:1809
+#, fuzzy
+msgid "No text in this message"
 msgstr "- Nema tekstau ovoj poruci -"
 
-#: contact_form_to_db.php:1790
+#: contact_form_to_db.php:1819
 msgid "Download"
 msgstr "Download"
 
-#: contact_form_to_db.php:1791
+#: contact_form_to_db.php:1820
 msgid "View"
 msgstr "Pregledati"
 
-#: contact_form_to_db.php:1804
+#: contact_form_to_db.php:1833
 msgid "The number of dispatches"
 msgstr "Broj dispačera"
 
-#: contact_form_to_db.php:1806
+#: contact_form_to_db.php:1835
 msgid "This message was not sent"
 msgstr "Ova poruka nije poslata"
 
-#: contact_form_to_db.php:1838
+#: contact_form_to_db.php:1868
 #, fuzzy
 msgid "Letters per page"
 msgstr "Prikazati poruke po stranici"
 
-#: contact_form_to_db.php:1859
+#: contact_form_to_db.php:1893
 msgid "User Guide"
 msgstr "Uputstvo za korišćenje"
 
-#: contact_form_to_db.php:1865 contact_form_to_db.php:1876
-#: contact_form_to_db.php:1942 contact_form_to_db.php:1946
-#: contact_form_to_db.php:2000
+#: contact_form_to_db.php:1900 contact_form_to_db.php:1904
+#: contact_form_to_db.php:1972 contact_form_to_db.php:1976
+#: contact_form_to_db.php:2026
 #, fuzzy
 msgid "WARNING:"
 msgstr "UPOZORENJE:"
 
-#: contact_form_to_db.php:1865
+#: contact_form_to_db.php:1900
 msgid "For fully-functional work of plugin, please, enable javascript."
 msgstr "Da bi plugin bila funkcionalna u potpunosti, omogućite javascript."
 
-#: contact_form_to_db.php:1872
+#: contact_form_to_db.php:1906
 #, php-format
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "Rezultati pretrage za &#8220;%s&#8221;"
 
-#: contact_form_to_db.php:1876
-#, fuzzy
-msgid "Please, try it later."
-msgstr "Pokušajte opet kasnije."
-
-#: contact_form_to_db.php:1879
+#: contact_form_to_db.php:1911
 msgid "Search mails"
 msgstr ""
 
-#: contact_form_to_db.php:1913
+#: contact_form_to_db.php:1943
 msgid "Can not display thumbnail"
 msgstr "Ne može prikazati thumbnail"
 
-#: contact_form_to_db.php:1946
+#: contact_form_to_db.php:1976
 msgid "Problems while changing status of message. Please, try it later."
 msgstr "Problemi prilikom menjanja statusa poruke. Probajte kasnije."
 
-#: contact_form_to_db.php:1981
+#: contact_form_to_db.php:2010
+msgid "FAQ"
+msgstr "FAQ"
+
+#: contact_form_to_db.php:2011
 msgid "Support"
 msgstr "Podrška"
 
-#: contact_form_to_db.php:2032
+#: contact_form_to_db.php:2058
+msgid "Notice:"
+msgstr "Beleška:"
+
+#: contact_form_to_db.php:2058
 msgid ""
 "Option \"Save messages to database\" was disabled on the plugin settings "
 "page."
@@ -629,9 +635,22 @@ msgstr ""
 "Opcija \"Sačuvajte poruke u bazu podataka\" je onemogućena na stranici "
 "postavki plugin-a."
 
-#: contact_form_to_db.php:2032
+#: contact_form_to_db.php:2058
 msgid "Enable it for saving messages from Contact Form"
 msgstr "Omogućite za sačuvavanje poruka sa Kontakt forme"
+
+#~ msgid " Please, try it later."
+#~ msgstr "Pokušajte opet kasnije."
+
+#~ msgid "Can not display results."
+#~ msgstr "Ne može da prikaže rezultate."
+
+#~ msgid ""
+#~ "The plugin's settings have been changed. In order to save them please "
+#~ "don't forget to click the 'Save Changes' button."
+#~ msgstr ""
+#~ "Postavke plugina su promenjene. Da biste ih sačuvali ne zaboravite da "
+#~ "kliknete na ' Sačuvajte promene' dugme."
 
 #, fuzzy
 #~ msgid "Go"
@@ -1808,9 +1827,6 @@ msgstr "Omogućite za sačuvavanje poruka sa Kontakt forme"
 
 #~ msgid "Message:"
 #~ msgstr "Сообщение:"
-
-#~ msgid "Attachment:"
-#~ msgstr "Прикрепить файл:"
 
 #~ msgid "Send me a copy"
 #~ msgstr "Отправить мне копию"

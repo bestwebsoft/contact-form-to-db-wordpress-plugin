@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: attachment, add contact form add-on, add contact form addon, add cf add on, add cf addon, best contact form add on, best contact form addon, best cf add on, best cf addon, browse messages, cnotact, conact, contact, contact button, contact form, contact form add-on, contact form addon, contact form parameters, contact form plugin, contact form to db plugin, Contact Form to DB, contact me, contact me form, contact us, contact us form,  contacts, contacts form plugin, contactform, contatc, contact form save entries, copy, database, delete messages, download messages, feedback, feedback form, form, manage messages, request, save messages, send, send copy, simple contact form to db, text, web-page feedback, web form, wordpress contact form, wp form, wordpress plugin, wp plugins, wordpress contact form add on, wp form add on, wordpress contact form addon, wp form addon, wordpress plugin, wp plugins
 Requires at least: 3.8
-Tested up to: 4.3.1
-Stable tag: 1.5.1
+Tested up to: 4.4
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,6 +108,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Changelog ==
 
+= V1.5.2 - 23.12.2015 =
+* New : Department filter on Contact Form to DB manager page was added.
+* Bugfix : The bug with plugin menu duplicating was fixed.
+
 = V1.5.1 - 20.11.2015 =
 * Update : Bug with table layout (with disconnected js) on the Contact Form to DB manager page was fixed.
 * Update : The French language file is updated.
@@ -202,6 +206,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * NEW : Ability to manage messages that have been sent from website from Contact Form Plugin by BestWebSoft.
 
 == Upgrade Notice ==
+
+= V1.5.2 =
+Department filter on Contact Form to DB manager page was added. The bug with plugin menu duplicating was fixed.
 
 = V1.5.1 =
 Bug with table layout (with disconnected js) on the Contact Form to DB manager page was fixed. The French language file is updated.

@@ -8,17 +8,6 @@
     opacity: 0.7;
 }
 /*
-* styles for options page
-*/
-.cntctfrmtdb_form_table tr {
-	display: block;
-	width: 500px;
-}
-.cntctfrmtdb_form_table th {
-	font-weight: normal;
-	text-align: left;
-}
-/*
 * styles for manager page
 */
 .cntctfrmtdb th#message {
@@ -69,20 +58,6 @@
 .cntctfrmtdb_hidden {
 	display: none;
 }
-.cntctfrmtdb .tablenav .cntctfrmtdb-manager-filters { 
-	float: left;
-	padding-top: 7px;
-}
-.cntctfrmtdb .tablenav .cntctfrmtdb-manager-filters a {
-	text-decoration: none;
-}
-.cntctfrmtdb .tablenav .cntctfrmtdb-manager-filters .current {
-	color: #333;
-	font-weight: bold;
-}
-.cntctfrmtdb .tablenav .cntctfrmtdb-manager-filters a span {
-	color: #999;
-}
 .cntctfrmtdb .wp-list-table i {
 	color: #999;
 }
@@ -98,23 +73,6 @@
 .cntctfrmtdb .wp-list-table .not-sent-message th,
 .cntctfrmtdb .wp-list-table .not-sent-message td {
 	border-top-color: #ffebe8;
-}
-.cntctfrmtdb .wp-list-table .column-cb {
-	width: 25px;
-}
-.cntctfrmtdb .wp-list-table .check-column input {
-	margin-left: 10px;
-}
-.cntctfrmtdb .wp-list-table #cb #cb-select-all-1,
-.cntctfrmtdb .wp-list-table .column-cb #cb-select-all-2 {
-	margin-top: 0;
-}
-.cntctfrmtdb .wp-list-table .column-status {
-	width: 2%;
-	vertical-align: top;
-}
-.cntctfrmtdb .wp-list-table .column-status div {
-	margin: auto;
 }
 .cntctfrmtdb .wp-list-table .column-status .cntctfrmtdb-letter {
 	margin-top: 3px;
@@ -153,10 +111,6 @@
 .cntctfrmtdb .wp-list-table .column-status .cntctfrmtdb-unknown:hover {
 	background: url('../images/status-icons.png') -16px -60px;
 }
-.cntctfrmtdb .wp-list-table .column-from {
-	width: 13%;
-	vertical-align: top;
-}
 .cntctfrmtdb .wp-list-table .column-from .from-name {
 	display: block;
 	color: #333;
@@ -168,10 +122,6 @@
 }
 .cntctfrmtdb .wp-list-table .column-from .not-read-message {
 	font-weight: bold;
-}
-.cntctfrmtdb .wp-list-table .column-message {
-	width: 68%;
-	vertical-align: top;
 }
 .cntctfrmtdb .wp-list-table .column-message .message-container {
 	position: relative;
@@ -226,10 +176,6 @@
 	margin-top: 3px;
 	background: url('../images/status-icons.png') 0px 0px;
 }
-.cntctfrmtdb .wp-list-table .column-attachment {
-	width: 2%;
-	vertical-align: top;
-}
 .cntctfrmtdb .wp-list-table .column-attachment .has-attachment {
 	width: 11px;
 	height: 16px;
@@ -242,20 +188,11 @@
 	margin-top: 15px;
 	background: url('../images/status-icons.png') -22px 0px;
 }
-.cntctfrmtdb .wp-list-table .column-sent {
-	min-width: 70px;
-	padding: 4px 0 2px 0;
-	vertical-align: top;
-	text-align: center;
-}
 .cntctfrmtdb .wp-list-table .column-sent .counter {
 	display: block;
-	float: left;
 	width: 34px;
 	height: 19px;
 	padding-top: 1px;
-	margin-top: 12px;
-	margin-left: 9px;	
 	-webkit-border-radius: 2px ;
 	-moz-border-radius: 2px; 
 	border-radius: 2px;
@@ -271,23 +208,6 @@
 	margin-top: 15px;
 	margin-left: 6px;
 	background: url('../images/status-icons.png') -33px 0px;
-}
-.cntctfrmtdb .wp-list-table .column-date {
-	text-align: center;
-	min-width: 70px;
-}
-.cntctfrmtdb .wp-list-table .column-department {
-	min-width: 100px;
-	max-width: 150px;
-}
-@media only screen and (max-width: 700px) {
-	.cntctfrmtdb .wp-list-table .check-column input {
-		margin-left: 5px;
-	}
-	.cntctfrmtdb .wp-list-table .column-status {
-		width: 16px!important;
-		padding: 4px 0 2px;
-	}
 }
 .cntctfrmtdb .tablenav option[value="re_send_messages"],
 .cntctfrmtdb .tablenav option[value="download_attachments"] {
@@ -310,4 +230,20 @@ table a.bws_plugin_menu_pro_version,
 table a.bws_plugin_menu_pro_version:hover {
     background: transparent;
     color: #666666;
+}
+
+@media screen and (max-width: 782px) {
+	.cntctfrmtdb .wp-list-table .column-status,
+	.cntctfrmtdb .wp-list-table .column-from,
+	.cntctfrmtdb .wp-list-table .column-department,
+	.cntctfrmtdb .wp-list-table .column-attachment,
+	.cntctfrmtdb .wp-list-table .column-sent {
+		display: none;
+	}
+	.cntctfrmtdb .wp-list-table .column-from::before {
+		content: '' !important;
+	}
+	.cntctfrmtdb-help-pages {
+		display: none;
+	}
 }
