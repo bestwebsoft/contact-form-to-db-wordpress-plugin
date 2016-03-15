@@ -6,11 +6,11 @@ Description: Add-on for Contact Form Plugin by BestWebSoft.
 Author: BestWebSoft
 Text Domain: contact-form-to-db
 Domain Path: /languages
-Version: 1.5.2
+Version: 1.5.3
 Author URI: http://bestwebsoft.com/
 License: GPLv2 or later
 */
-/*  @ Copyright 2015  BestWebSoft  ( http://support.bestwebsoft.com )
+/*  @ Copyright 2016  BestWebSoft  ( http://support.bestwebsoft.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
@@ -111,7 +111,8 @@ if ( ! function_exists( 'cntctfrmtdb_settings' ) ) {
 			'cntctfrmtdb_delete_messages'       => 1,
 			'cntctfrmtdb_delete_messages_after' => 'daily',
 			'first_install'                     => strtotime( "now" ),
-			'display_settings_notice'			=>	1
+			'display_settings_notice'			=>	1,
+			'suggest_feature_banner'			=>	1,
 		);
 		/* add options to database */
 		if ( ! get_option( 'cntctfrmtdb_options' ) )
@@ -353,11 +354,11 @@ if ( ! function_exists( 'cntctfrmtdb_settings_page' ) ) {
 				<a class="bws_plugin_menu_pro_version nav-tab" href="http://bestwebsoft.com/products/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=<?php echo $cntctfrmtdb_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="<?php _e( 'This setting is available in Pro version', 'contact-form-to-db' ); ?>"><?php _e( 'User guide', 'contact-form-to-db' ); ?></a>
 				<a class="nav-tab bws_go_pro_tab<?php if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=cntctfrmtdb_settings&amp;action=go_pro"><?php _e( 'Go PRO', 'contact-form-to-db' ); ?></a>
 			</h2>			
-			<div class="error" <?php if ( "" == $error ) echo "style=\"display:none\""; ?>><p><strong><?php echo $error; ?></strong></p></div>
-			<div class="updated fade" <?php if ( "" == $message || "" != $error ) echo "style=\"display:none\""; ?>><p><strong><?php echo $message; ?></strong></p></div>
+			<div class="error below-h2 below-h2" <?php if ( "" == $error ) echo "style=\"display:none\""; ?>><p><strong><?php echo $error; ?></strong></p></div>
+			<div class="updated fade below-h2" <?php if ( "" == $message || "" != $error ) echo "style=\"display:none\""; ?>><p><strong><?php echo $message; ?></strong></p></div>
 			<?php bws_show_settings_notice();
 			if ( ! empty( $hide_result['message'] ) ) { ?>
-				<div class="updated fade"><p><strong><?php echo $hide_result['message']; ?></strong></p></div>
+				<div class="updated fade below-h2"><p><strong><?php echo $hide_result['message']; ?></strong></p></div>
 			<?php }
 			if ( ! isset( $_GET['action'] ) ) { 
 				if ( isset( $_REQUEST['bws_restore_default'] ) && check_admin_referer( $plugin_basename, 'bws_settings_nonce_name' ) ) {
@@ -1893,12 +1894,12 @@ if ( ! function_exists( 'cntctfrmtdb_manager_page' ) ) {
 		<div class="wrap cntctfrmtdb">			
 			<h1>Contact Form to DB</h1>
 			<noscript>
-				<div class="error">
+				<div class="error below-h2">
 					<p><strong><?php _e( 'WARNING:', 'contact-form-to-db' ); ?></strong> <?php _e( 'For fully-functional work of plugin, please, enable javascript.', 'contact-form-to-db' ); ?></p>
 				</div>
 			</noscript>
-			<div class="updated" <?php if ( '' == $cntctfrmtdb_done_message ) echo 'style="display: none;"'?>><p><?php echo $cntctfrmtdb_done_message ?></p></div>
-			<div class="error" <?php if ( '' == $cntctfrmtdb_error_message ) echo 'style="display: none;"'?>><p><strong><?php _e( 'WARNING:', 'contact-form-to-db' ); ?></strong> <?php echo $cntctfrmtdb_error_message . ' ' . __( 'Please, try it later.', 'contact-form-to-db' ); ?></p></div>
+			<div class="updated below-h2" <?php if ( '' == $cntctfrmtdb_done_message ) echo 'style="display: none;"'?>><p><?php echo $cntctfrmtdb_done_message ?></p></div>
+			<div class="error below-h2" <?php if ( '' == $cntctfrmtdb_error_message ) echo 'style="display: none;"'?>><p><strong><?php _e( 'WARNING:', 'contact-form-to-db' ); ?></strong> <?php echo $cntctfrmtdb_error_message . ' ' . __( 'Please, try it later.', 'contact-form-to-db' ); ?></p></div>
 			<?php if ( isset( $_REQUEST['s'] ) && $_REQUEST['s'] )
 					printf( '<span class="subtitle">' . sprintf( __( 'Search results for &#8220;%s&#8221;', 'contact-form-to-db' ), wp_html_excerpt( esc_html( stripslashes( $_REQUEST['s'] ) ), 50 ) ) . '</span>' );
 			$cntctfrmtdb_manager->views(); ?>
@@ -1957,20 +1958,20 @@ if ( ! function_exists( 'cntctfrmtdb_change_status' ) ) {
 		if ( ! $wpdb->last_error ) {
 			switch ( $_POST['cntctfrmtdb_ajax_message_status'] ) {
 				case 1:
-					$result = '<div class="updated"><p>' . __( 'One message was marked as Normal.', 'contact-form-to-db' ) . '</a></p></div>';
+					$result = '<div class="updated below-h2"><p>' . __( 'One message was marked as Normal.', 'contact-form-to-db' ) . '</a></p></div>';
 					break;
 				case 2:
-					$result = '<div class="updated"><p>' . __( 'One message was marked as Spam.', 'contact-form-to-db' ) . ' <a href="' . wp_nonce_url( '?page=cntctfrmtdb_manager&action=undo&message_id[]=' . $_POST['cntctfrmtdb_ajax_message_id'] . '&old_status=' . $_POST['cntctfrmtdb_ajax_old_status'], plugin_basename( __FILE__ ), 'cntctfrmtdb_manager_nonce_name' ) . '">' . __( 'Undo', 'contact-form-to-db' ) . '</a></p></div>';
+					$result = '<div class="updated below-h2"><p>' . __( 'One message was marked as Spam.', 'contact-form-to-db' ) . ' <a href="' . wp_nonce_url( '?page=cntctfrmtdb_manager&action=undo&message_id[]=' . $_POST['cntctfrmtdb_ajax_message_id'] . '&old_status=' . $_POST['cntctfrmtdb_ajax_old_status'], plugin_basename( __FILE__ ), 'cntctfrmtdb_manager_nonce_name' ) . '">' . __( 'Undo', 'contact-form-to-db' ) . '</a></p></div>';
 					break;
 				case 3:
-					$result = '<div class="updated"><p>' . __( 'One message was marked as Trash.', 'contact-form-to-db' ) . ' <a href="' . wp_nonce_url( '?page=cntctfrmtdb_manager&action=undo&message_id[]=' . $_POST['cntctfrmtdb_ajax_message_id'] . '&old_status=' . $_POST['cntctfrmtdb_ajax_old_status'], plugin_basename( __FILE__ ), 'cntctfrmtdb_manager_nonce_name' ) . '">' . __( 'Undo', 'contact-form-to-db' ) . '</a></p></div>';
+					$result = '<div class="updated below-h2"><p>' . __( 'One message was marked as Trash.', 'contact-form-to-db' ) . ' <a href="' . wp_nonce_url( '?page=cntctfrmtdb_manager&action=undo&message_id[]=' . $_POST['cntctfrmtdb_ajax_message_id'] . '&old_status=' . $_POST['cntctfrmtdb_ajax_old_status'], plugin_basename( __FILE__ ), 'cntctfrmtdb_manager_nonce_name' ) . '">' . __( 'Undo', 'contact-form-to-db' ) . '</a></p></div>';
 					break;
 				default:
-					$result = '<div class="error"><p><strong>' . __( 'WARNING:', 'contact-form-to-db' ) . '</strong> ' . __( 'Unknown result.', 'contact-form-to-db' ) . '</p></div>';
+					$result = '<div class="error below-h2"><p><strong>' . __( 'WARNING:', 'contact-form-to-db' ) . '</strong> ' . __( 'Unknown result.', 'contact-form-to-db' ) . '</p></div>';
 					break;
 			}
 		} else {
-			$result = '<div class="error"><p><strong>' . __( 'WARNING:', 'contact-form-to-db' ) . '</strong> ' . __( 'Problems while changing status of message. Please, try it later.', 'contact-form-to-db' ) . '</p></div>';
+			$result = '<div class="error below-h2"><p><strong>' . __( 'WARNING:', 'contact-form-to-db' ) . '</strong> ' . __( 'Problems while changing status of message. Please, try it later.', 'contact-form-to-db' ) . '</p></div>';
 		}
 		echo $result;
 		die();
@@ -2019,7 +2020,7 @@ if ( ! function_exists( 'cntctfrmtdb_show_notices' ) ) {
 		global $hook_suffix, $cntctfrmtdb_contact_form_not_found, $cntctfrmtdb_contact_form_not_active, $cntctfrmtdb_options, $bstwbsftwppdtplgns_cookie_add, $cntctfrmtdb_plugin_info, $cntctfrmtdb_pages;
 		if ( $hook_suffix == 'plugins.php' || ( isset( $_REQUEST['page'] ) && in_array( $_REQUEST['page'], $cntctfrmtdb_pages ) ) ) {
 			if ( '' != $cntctfrmtdb_contact_form_not_found || '' != $cntctfrmtdb_contact_form_not_active ) { ?>
-				<div class="error">
+				<div class="error below-h2">
 					<p><strong><?php _e( 'WARNING:', 'contact-form-to-db'); ?></strong> <?php echo $cntctfrmtdb_contact_form_not_found . $cntctfrmtdb_contact_form_not_active; ?></p>
 				</div>
 			<?php }
@@ -2065,6 +2066,10 @@ if ( ! function_exists( 'cntctfrmtdb_show_notices' ) ) {
 			
 			bws_plugin_banner_to_settings( $cntctfrmtdb_plugin_info, 'cntctfrmtdb_options', 'contact-form-to-db', 'admin.php?page=cntctfrmtdb_settings' );
 		}
+
+		if ( isset( $_REQUEST['page'] ) && in_array( $_REQUEST['page'], $cntctfrmtdb_pages ) ) {
+			bws_plugin_suggest_feature_banner( $cntctfrmtdb_plugin_info, 'cntctfrmtdb_options', 'contact-form-to-db' );
+		}
 	}
 }
 
@@ -2093,6 +2098,7 @@ if ( ! function_exists ( 'cntctfrmtdb_delete_options' ) ) {
 		if ( is_multisite() ) {
 			/* Get all blog ids */
 			$blogids = $wpdb->get_col( "SELECT `blog_id` FROM $wpdb->blogs" );
+			$old_blog = $wpdb->blogid;
 			foreach ( $blogids as $blog_id ) {
 				switch_to_blog( $blog_id );
 				if ( ! array_key_exists( 'contact-form-to-db-pro/contact_form_to_db_pro.php', $all_plugins ) ) {
@@ -2102,7 +2108,7 @@ if ( ! function_exists ( 'cntctfrmtdb_delete_options' ) ) {
 				}
 				delete_option( "cntctfrmtdb_options" );
 			}
-			restore_current_blog();
+			switch_to_blog( $old_blog );
 			delete_option( "cntctfrmtdb_options" );
 		} else {
 			if ( ! array_key_exists( 'contact-form-to-db-pro/contact_form_to_db_pro.php', $all_plugins ) ) {
@@ -2112,6 +2118,10 @@ if ( ! function_exists ( 'cntctfrmtdb_delete_options' ) ) {
 			}
 			delete_option( "cntctfrmtdb_options" );
 		}
+
+		require_once( dirname( __FILE__ ) . '/bws_menu/bws_include.php' );
+		bws_include_init( plugin_basename( __FILE__ ) );
+		bws_delete_plugin( plugin_basename( __FILE__ ) );
 	}
 }
 
