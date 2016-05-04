@@ -3,7 +3,7 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: attachment, add contact form add-on, add contact form addon, add cf add on, add cf addon, best contact form add on, best contact form addon, best cf add on, best cf addon, browse messages, cnotact, conact, contact, contact button, contact form, contact form add-on, contact form addon, contact form parameters, contact form plugin, contact form to db plugin, Contact Form to DB, contact me, contact me form, contact us, contact us form,  contacts, contacts form plugin, contactform, contatc, contact form save entries, copy, database, delete messages, download messages, feedback, feedback form, form, manage messages, request, save messages, send, send copy, simple contact form to db, text, web-page feedback, web form, wordpress contact form, wp form, wordpress plugin, wp plugins, wordpress contact form add on, wp form add on, wordpress contact form addon, wp form addon, wordpress plugin, wp plugins
 Requires at least: 3.8
-Tested up to: 4.4.2
+Tested up to: 4.5
 Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -57,7 +57,7 @@ If you create your own language pack or update the existing one, you can send <a
 
 = Technical support =
 
-Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in another languages won't be accepted.
+Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in other languages won't be accepted.
 
 If you notice any bugs in the plugins, you can notify us about it and we'll investigate and fix the issue then. Your request should contain URL of the website, issues description and WordPress admin panel credentials.
 Moreover we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and share with the other users then. 
