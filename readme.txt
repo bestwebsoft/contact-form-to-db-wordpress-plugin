@@ -1,10 +1,10 @@
 === Contact Form to DB by BestWebSoft ===
 Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
-Tags: attachment, add contact form add-on, add contact form addon, add cf add on, add cf addon, best contact form add on, best contact form addon, best cf add on, best cf addon, browse messages, cnotact, conact, contact, contact button, contact form, contact form add-on, contact form addon, contact form parameters, contact form plugin, contact form to db plugin, Contact Form to DB, contact me, contact me form, contact us, contact us form,  contacts, contacts form plugin, contactform, contatc, contact form save entries, copy, database, delete messages, download messages, feedback, feedback form, form, manage messages, request, save messages, send, send copy, simple contact form to db, text, web-page feedback, web form, wordpress contact form, wp form, wordpress plugin, wp plugins, wordpress contact form add on, wp form add on, wordpress contact form addon, wp form addon, wordpress plugin, wp plugins
+Tags: browse messages, cf add on, contact button, contact form add on, contact form parameters, contact form plugin, contact form to db, save messages, download messages, contact us form, web page feedback, delete messages
 Requires at least: 3.8
-Tested up to: 4.5
-Stable tag: 1.5.3
+Tested up to: 4.5.2
+Stable tag: 1.5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,7 +85,7 @@ You can save messages in "csv", "xml" and "eml" formats.
 
 This plugin was created especially as an extension for Contact Form plugin.
 It can receive messages ONLY from Contact Form plugin.
-In case you used Contact Form plugin with Contact Form to DB plugin arlier and decide to delete or deactivate it, Contact Form to DB plugin will work as an archive for your old messages.
+In case you used Contact Form plugin with Contact Form to DB plugin earlier and decide to delete or deactivate it, Contact Form to DB plugin will work as an archive for your old messages.
 
 = How can I remove the column "Send counter" from the list of messages? =
 
@@ -98,7 +98,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
-4. copy and paste into the message your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit" target="_blank">Instuction on System Status</a>
+4. copy and paste into the message your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit" target="_blank">Instruction on System Status</a>
 
 == Screenshots ==
 
@@ -109,6 +109,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 5. Spam page on the Contact Form to DB manager page display.
 
 == Changelog ==
+
+= V1.5.4 - 27.05.2016 =
+* Bugfix : The bug with downloading messages was fixed.
+* Update : The French language file is updated.
+* Update : We updated all functionality for wordpress 4.5.2.
 
 = V1.5.3 - 15.03.2016 =
 * Update : The French language file is updated.
@@ -212,6 +217,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * NEW : Ability to manage messages that have been sent from website from Contact Form Plugin by BestWebSoft.
 
 == Upgrade Notice ==
+
+= V1.5.4 =
+The bug with downloading messages was fixed. The French language file is updated. We updated all functionality for wordpress 4.5.2.
 
 = V1.5.3 =
 The French language file is updated. We updated all functionality for wordpress 4.4.2.

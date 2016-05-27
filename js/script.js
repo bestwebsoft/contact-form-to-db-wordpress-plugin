@@ -9,7 +9,7 @@
 		*/
 		$( '#cntctfrmtdb_save_messages_to_db' ).change( function() {
 			if( $(this).is( ':checked' ) )
-				$( '.cntctfrmtdb_options' ).css( 'display', 'block' );
+				$( '.cntctfrmtdb_options' ).css( 'display', 'table-row' );
 			else
 				$( '.cntctfrmtdb_options' ).css( 'display', 'none' );
 		});
@@ -20,6 +20,14 @@
 			else
 				$( '.cntctfrmtdb_delete_block' ).css( 'display', 'none' );
 		});
+
+		$( 'select[name="cntctfrmtdb_format_save_messages"]' ).change( function() {
+			if ( 'csv' == $( this ).val() )
+				$( '.cntctfrmtdb_csv_separators' ).show();
+			else
+				$( '.cntctfrmtdb_csv_separators' ).hide(); 
+		});
+
 		/*
 		* Function to change background color if message was not send 
 		*/

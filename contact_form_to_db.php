@@ -6,7 +6,7 @@ Description: Add-on for Contact Form Plugin by BestWebSoft.
 Author: BestWebSoft
 Text Domain: contact-form-to-db
 Domain Path: /languages
-Version: 1.5.3
+Version: 1.5.4
 Author URI: http://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -794,29 +794,29 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 				$message_id = ( '' != $ids ) ? $ids : $_REQUEST['message_id'];
 
 				$i = $error_counter = $counter = $have_not_attachment = $can_not_create_zip = $file_created = $can_not_create_file = $can_not_create_xml = 0;
+				/* Create ZIP-archive if:
+				create zip-archives is possible and  one embodiment of the:
+				1) need to save several messages in "csv"-format
+				2) need to save several messages in "eml"-format */
+				if ( class_exists( 'ZipArchive' ) && 'download_messages' == $action && ( 'csv' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] || 'eml' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) ) {
+					/* create new zip-archive */
+					$zip = new ZipArchive();
+					$zip_name = $save_file_path . '/' .time() . ".zip";
+					if ( ! $zip->open( $zip_name, ZIPARCHIVE::CREATE ) )
+						$can_not_create_zip = 1;
+				}
+				/* we create a new "xml"-file */
+				if ( in_array( $action, array( 'download_message', 'download_messages' ) ) && 'xml' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) {
+					$xml = new DOMDocument( '1.0','utf-8' );
+					$xml->formatOutput = true;
+					/* create main element <messages></messages> */
+					$messages = $xml->appendChild( $xml->createElement( 'cnttfrmtdb_messages' ) ); 
+				}
 				foreach ( $message_id as $id ) {
 					if ( '' != $id ) {
 						switch ( $action ) {
 							case 'download_message':
 							case 'download_messages':
-								/* Create ZIP-archive if:
-								create zip-archives is possible and  one embodiment of the:
-								1) need to save several messages in "csv"-format
-								2) need to save several messages in "eml"-format */
-								if ( class_exists( 'ZipArchive' ) && 'download_messages' == $action && ( 'csv' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] || 'eml' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) ) {
-									/* create new zip-archive */
-									$zip = new ZipArchive();
-									$zip_name = $save_file_path . '/' .time() . ".zip";
-									if ( ! $zip->open( $zip_name, ZIPARCHIVE::CREATE ) )
-										$can_not_create_zip = 1;
-								}
-								/* we create a new "xml"-file */
-								if ( 'xml' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) {
-									$xml = new DOMDocument( '1.0','utf-8' );
-									$xml->formatOutput = true;
-									$messages = $xml->appendChild( $xml->createElement( 'cnttfrmtdb_messages' ) ); /* create main element <messages></messages> */
-								}
-
 								/* we get message  content */
 								$message_text = '';
 								$message_data = $wpdb->get_results(
@@ -1144,97 +1144,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 								} else {
 									$error_counter ++;
 									$unknown_format = 1;
-								}
-
-								/* create zip-archives is possible and one embodiment of the:
-								1) need to save several messages in "csv"-format
-								2) need to save several messages in "eml"-format */
-								if ( 'download_messages' == $action && ( 'csv' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] || 'eml' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) ) {
-									if ( class_exists( 'ZipArchive' ) ) {
-										if ( 1 < count( $message_id ) && 'csv' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) {
-											$file_name = 'messages.csv';
-											$zip->addFromString( $file_name, $message ); /* add file content to zip - archive */
-										}
-										$zip->close();
-										if ( file_exists( $zip_name ) ) {
-											/* saving file to local computer */
-											header( 'Content-Description: File Transfer' );
-											header( 'Content-Type: application/x-zip-compressed' );
-											header( 'Content-Disposition: attachment; filename=' . time() . '.zip' );
-											header( 'Content-Transfer-Encoding: binary' );
-											header( 'Expires: 0' );
-											header( 'Cache-Control: must-revalidate' );
-											header( 'Pragma: public' );
-											header( 'Content-Length: ' . filesize( $zip_name ) );
-											flush();
-											$file_downloaded = readfile( $zip_name );
-											if ( $file_downloaded )
-												unlink( $zip_name );
-										}
-									} else {
-										$can_not_create_zip = 1;
-									}
-								} 
-								if ( 'download_messages' == $action && 1 < count( $message_id ) ) {
-									/* saving single chosen "csv"-file to local computer if content of attachment was include in csv */
-									$file_name = 'messages.csv';
-									if ( file_exists( $save_file_path . '/' . $file_name ) )
-										$file_name = time() . '_' . $file_name;
-									$fp = fopen( $save_file_path . '/' . $file_name, 'w');
-									fwrite( $fp, $message );
-									$file_created = fclose( $fp );
-									if ( '0' != $file_created ) {
-										header( 'Content-Description: File Transfer' );
-										header( 'Content-Type: application/force-download' );
-										header( 'Content-Disposition: attachment; filename=' . $file_name );
-										header( 'Content-Transfer-Encoding: binary' );
-										header( 'Expires: 0' );
-										header( 'Cache-Control: must-revalidate');
-										header( 'Pragma: public' );
-										header( 'Content-Length: ' . filesize( $save_file_path . '/' . $file_name )  );
-										flush();
-										$file_downloaded = readfile( $save_file_path . '/' . $file_name );
-										if ( $file_downloaded )
-											unlink( $save_file_path . '/' . $file_name );
-									} else {
-										$error_counter ++;
-									}
-								}
-								/* saving "xml"-file to local computer */
-								if ( 'xml' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) {
-									if ( 'download_message' == $action ) {
-										$random_prefix = $random_number; /* name prefix */
-										$file_name = 'message_' . 'ID_' . $id . '_' . $random_prefix . '.xml';
-									} else {
-										$file_name = 'messages_' . time() . '.xml';
-									}
-									$file_xml = $xml->saveXML(); /* create string with file content */
-									if ( '' != $file_xml ) {
-										if ( file_exists( $save_file_path . '/' . $file_name ) )
-											$file_name = time() . '_' . $file_name;
-										$fp = fopen( $save_file_path . '/' . $file_name, 'w');
-										fwrite( $fp, $file_xml );
-										$file_created = fclose( $fp );
-										if ( '0' != $file_created ) {
-											header( 'Content-Description: File Transfer' );
-											header( 'Content-Type: application/force-download' );
-											header( 'Content-Disposition: attachment; filename=' . $file_name );
-											header( 'Content-Transfer-Encoding: binary' );
-											header( 'Expires: 0' );
-											header( 'Cache-Control: must-revalidate');
-											header( 'Pragma: public' );
-											header( 'Content-Length: ' . filesize( $save_file_path . '/' . $file_name )  );
-											flush();
-											$file_downloaded = readfile( $save_file_path . '/' . $file_name );
-											if ( $file_downloaded )
-												unlink( $save_file_path . '/' . $file_name );
-										} else {
-											$error_counter ++;
-										}
-									} else {
-										$can_not_create_xml = 1;
-									}						
-								}
+								}								
 								if ( 0 != $can_not_create_xml ) {
 									$cntctfrmtdb_error_message = __( 'Can not create XML-files.', 'contact-form-to-db' );
 								}
@@ -1383,6 +1293,95 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 								$cntctfrmtdb_error_message = __( 'Unknown action.', 'contact-form-to-db' );
 								break;
 						}
+					}
+				}
+				/* create zip-archives is possible and one embodiment of the:
+				1) need to save several messages in "csv"-format
+				2) need to save several messages in "eml"-format */
+				if ( 'download_messages' == $action && ( 'csv' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] || 'eml' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) ) {
+					if ( class_exists( 'ZipArchive' ) ) {
+						if ( 1 < count( $message_id ) && 'csv' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) {
+							$file_name = 'messages.csv';
+							$zip->addFromString( $file_name, $message ); /* add file content to zip - archive */
+						}
+						$zip->close();
+						if ( file_exists( $zip_name ) ) {
+							/* saving file to local computer */
+							header( 'Content-Description: File Transfer' );
+							header( 'Content-Type: application/x-zip-compressed' );
+							header( 'Content-Disposition: attachment; filename=' . time() . '.zip' );
+							header( 'Content-Transfer-Encoding: binary' );
+							header( 'Expires: 0' );
+							header( 'Cache-Control: must-revalidate' );
+							header( 'Pragma: public' );
+							header( 'Content-Length: ' . filesize( $zip_name ) );
+							flush();
+							$file_downloaded = readfile( $zip_name );
+							if ( $file_downloaded )
+								unlink( $zip_name );
+						}
+					} else {
+						$can_not_create_zip = 1;
+					}
+				} 
+				if ( 'download_messages' == $action && 1 < count( $message_id ) && 'csv' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) {
+					/* saving single chosen "csv"-file to local computer if content of attachment was include in csv */
+					$file_name = 'messages.csv';
+					if ( file_exists( $save_file_path . '/' . $file_name ) )
+						$file_name = time() . '_' . $file_name;
+					$fp = fopen( $save_file_path . '/' . $file_name, 'w');
+					fwrite( $fp, $message );
+					$file_created = fclose( $fp );
+					if ( '0' != $file_created ) {
+						header( 'Content-Description: File Transfer' );
+						header( 'Content-Type: application/force-download' );
+						header( 'Content-Disposition: attachment; filename=' . $file_name );
+						header( 'Content-Transfer-Encoding: binary' );
+						header( 'Expires: 0' );
+						header( 'Cache-Control: must-revalidate');
+						header( 'Pragma: public' );
+						header( 'Content-Length: ' . filesize( $save_file_path . '/' . $file_name )  );
+						flush();
+						$file_downloaded = readfile( $save_file_path . '/' . $file_name );
+						if ( $file_downloaded )
+							unlink( $save_file_path . '/' . $file_name );
+					} else {
+						$error_counter ++;
+					}
+				}
+				/* saving "xml"-file to local computer */
+				if ( in_array( $action, array( 'download_message', 'download_messages' ) ) && 'xml' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) {
+					if ( 'download_message' == $action ) {
+						$random_prefix = $random_number; /* name prefix */
+						$file_name = 'message_' . 'ID_' . $id . '_' . $random_prefix . '.xml';
+					} else {
+						$file_name = 'messages_' . time() . '.xml';
+					}
+					$file_xml = $xml->saveXML(); /* create string with file content */
+					if ( '' != $file_xml ) {
+						if ( file_exists( $save_file_path . '/' . $file_name ) )
+							$file_name = time() . '_' . $file_name;
+						$fp = fopen( $save_file_path . '/' . $file_name, 'w');
+						fwrite( $fp, $file_xml );
+						$file_created = fclose( $fp );
+						if ( '0' != $file_created ) {
+							header( 'Content-Description: File Transfer' );
+							header( 'Content-Type: application/force-download' );
+							header( 'Content-Disposition: attachment; filename=' . $file_name );
+							header( 'Content-Transfer-Encoding: binary' );
+							header( 'Expires: 0' );
+							header( 'Cache-Control: must-revalidate');
+							header( 'Pragma: public' );
+							header( 'Content-Length: ' . filesize( $save_file_path . '/' . $file_name )  );
+							flush();
+							$file_downloaded = readfile( $save_file_path . '/' . $file_name );
+							if ( $file_downloaded )
+								unlink( $save_file_path . '/' . $file_name );
+						} else {
+							$error_counter ++;
+						}
+					} else {
+						$can_not_create_xml = 1;
 					}
 				}
 			} else {
@@ -2113,10 +2112,24 @@ if ( ! function_exists ( 'cntctfrmtdb_delete_options' ) ) {
 		} else {
 			if ( ! array_key_exists( 'contact-form-to-db-pro/contact_form_to_db_pro.php', $all_plugins ) ) {
 				$prefix = $wpdb->prefix . 'cntctfrmtdb_';
-				$sql = "DROP TABLE `" . $prefix . "message_status`, `" . $prefix . "blogname`, `" . $prefix . "to_email`, `" . $prefix . "hosted_site`, `" . $prefix . "refer`, `" . $prefix . "field_selection`, `" . $prefix . "message`;";
+				$sql = "DROP TABLE `" . $prefix . "message_status`, `" . $prefix . "blogname`, `" . $prefix . "to_email`, `" . $prefix . "hosted_site`, `" . $prefix . "refer`, `" . $prefix . "field_selection`;";
 				$wpdb->query( $sql );
 			}
 			delete_option( "cntctfrmtdb_options" );
+		}
+
+		/* delete images */
+		if ( ! array_key_exists( 'contact-form-to-db-pro/contact_form_to_db_pro.php', $all_plugins ) ) {			
+			if ( is_multisite() ) {
+				switch_to_blog( 1 );
+				$upload_dir = wp_upload_dir();
+				restore_current_blog();
+			} else {
+				$upload_dir = wp_upload_dir();
+			}
+			$images_dir = $upload_dir['basedir'] . '/attachments';
+			array_map( 'unlink', glob( $images_dir . "/" . "*.*" ) );
+			rmdir( $images_dir );
 		}
 
 		require_once( dirname( __FILE__ ) . '/bws_menu/bws_include.php' );

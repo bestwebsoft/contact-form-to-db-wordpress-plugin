@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: contact-form-to-db\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-15 13:27+0300\n"
-"PO-Revision-Date: 2015-12-15 13:28+0300\n"
+"PO-Revision-Date: 2016-05-19 13:13+0300\n"
 "Last-Translator: plugin@bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language-Team: bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language: ru_RU\n"
@@ -437,7 +437,7 @@ msgstr "Дата"
 
 #: contact_form_to_db.php:1541
 msgid "Department"
-msgstr "Департамент"
+msgstr "Вiддiлення"
 
 #: contact_form_to_db.php:1575
 msgid "All"
@@ -474,11 +474,11 @@ msgstr "Корзина"
 
 #: contact_form_to_db.php:1625
 msgid "Filter by department"
-msgstr "Фільтр за відділом"
+msgstr "Фільтр за відділенням"
 
 #: contact_form_to_db.php:1627
 msgid "All departments"
-msgstr "Усі відділи"
+msgstr "Усі відділення"
 
 #: contact_form_to_db.php:1632
 msgid "Filter"
