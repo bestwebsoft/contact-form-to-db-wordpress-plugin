@@ -6,7 +6,7 @@ Description: Add-on for Contact Form Plugin by BestWebSoft.
 Author: BestWebSoft
 Text Domain: contact-form-to-db
 Domain Path: /languages
-Version: 1.5.4
+Version: 1.5.5
 Author URI: http://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -33,8 +33,8 @@ License: GPLv2 or later
 if ( ! function_exists( 'cntctfrmtdb_admin_menu' ) ) {
 	function cntctfrmtdb_admin_menu() {
 		bws_general_menu();
-		$settings = add_submenu_page( 'bws_plugins', 'Contact Form to DB', 'Contact Form to DB', 'edit_themes', 'cntctfrmtdb_settings', 'cntctfrmtdb_settings_page' );
-		$hook = add_menu_page( 'CF to DB', 'CF to DB', 'edit_posts', 'cntctfrmtdb_manager', 'cntctfrmtdb_manager_page', plugins_url( "bws_menu/images/px.png", __FILE__ ), '56.1' );
+		$settings = add_submenu_page( 'bws_panel', 'Contact Form to DB', 'Contact Form to DB', 'edit_themes', 'cntctfrmtdb_settings', 'cntctfrmtdb_settings_page' );
+		$hook = add_menu_page( 'CF to DB', 'CF to DB', 'edit_posts', 'cntctfrmtdb_manager', 'cntctfrmtdb_manager_page', plugins_url( "images/menu_single.png", __FILE__ ), '56.1' );
 		add_action( 'load-' . $hook, 'cntctfrmtdb_add_options_manager' );
 		add_action( 'load-' . $settings, 'cntctfrmtdb_add_tabs' );
 	}

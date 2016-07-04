@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: browse messages, cf add on, contact button, contact form add on, contact form parameters, contact form plugin, contact form to db, save messages, download messages, contact us form, web page feedback, delete messages
 Requires at least: 3.8
-Tested up to: 4.5.2
-Stable tag: 1.5.4
+Tested up to: 4.5.3
+Stable tag: 1.5.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,7 +53,7 @@ There is also a premium version of the plugin <a href="http://bestwebsoft.com/pr
 * Spain (es_ES) (thanks to <a href="mailto:ognjend@firstsiteguide.com">Ognjen Djuraskovic</a>, www.firstsiteguide.com)
 * Ukrainian (uk)
 
-If you create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text in PO and MO files</a> for <a href="http://support.bestwebsoft.com" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
+Some of these translations are not complete. We are constantly adding new features which should be translated. If you create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text in PO and MO files</a> for <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
 
 = Technical support =
 
@@ -102,13 +102,16 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Screenshots ==
 
-1. Plugin settings in WordPress admin panel when "save message" option is disabled.
-2. Plugin settings in WordPress admin panel when "save message" option is enabled.
-3. Contact Form to DB manager page display.
-4. Message on the Contact Form to DB manager page display.
-5. Spam page on the Contact Form to DB manager page display.
+1. Plugin settings in WordPress admin panel.
+2. Contact Form to DB manager page display.
+3. Message on the Contact Form to DB manager page display.
+4. Spam page on the Contact Form to DB manager page display.
 
 == Changelog ==
+
+= V1.5.5 - 04.07.2016 =
+* Update : BWS panel section was updated.
+* Update : The French language file is updated.
 
 = V1.5.4 - 27.05.2016 =
 * Bugfix : The bug with downloading messages was fixed.
@@ -217,6 +220,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * NEW : Ability to manage messages that have been sent from website from Contact Form Plugin by BestWebSoft.
 
 == Upgrade Notice ==
+
+= V1.5.5 =
+BWS panel section was updated. The French language file is updated.
 
 = V1.5.4 =
 The bug with downloading messages was fixed. The French language file is updated. We updated all functionality for wordpress 4.5.2.

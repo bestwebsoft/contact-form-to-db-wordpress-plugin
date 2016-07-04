@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Contact Form to DB 1.5.3\n"
+"Project-Id-Version: Contact Form to DB\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-19 14:30+0300\n"
-"PO-Revision-Date: 2016-05-19 14:30+0300\n"
-"Last-Translator: plugin@bestwebsoft.com <plugin@bestwebsoft.com>\n"
+"POT-Creation-Date: 2016-07-04 13:29+0300\n"
+"PO-Revision-Date: 2016-07-04 13:29+0300\n"
+"Last-Translator: Luc Capronnier <lcapronnier@yahoo.com>\n"
 "Language-Team: Luc Capronnier <lcapronnier@yahoo.com>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
@@ -768,41 +768,17 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ msgid "Install now"
 #~ msgstr "Installer maintenant"
 
-#~ msgid "Try again"
-#~ msgstr "Essayer de nouveau"
-
-#~ msgid "Preview &#8220;%s&#8221;"
-#~ msgstr "Pré-visualiser &#8220;%s&#8221;"
-
-#~ msgid "Install %s"
-#~ msgstr "%s installé"
-
-#~ msgid "Install Now"
-#~ msgstr "Installa Ora"
-
-#~ msgid "Update to version %s"
-#~ msgstr "Mettre à jour pour la version %s"
-
-#~ msgid "Update"
-#~ msgstr "Mettre à jour"
+#~ msgid "By %s"
+#~ msgstr "Par %s"
 
 #~ msgid "This theme is already installed and is up to date"
 #~ msgstr "Le thème est déjà en place et est à jour."
 
-#~ msgid "Preview %s"
-#~ msgstr "Pré-visualiser %s"
-
-#~ msgid "Preview"
-#~ msgstr "Pré-visualiser"
-
-#~ msgid "By %s"
-#~ msgstr "Par %s"
-
-#~ msgid "Details"
-#~ msgstr "Détails"
-
 #~ msgid "Already Installed"
 #~ msgstr "Déjà installé"
+
+#~ msgid "Browse Free WordPress Themes"
+#~ msgstr "Parcourir les thèmes gratuits de WordPress"
 
 #~ msgid "Environment"
 #~ msgstr "Environment"
@@ -869,6 +845,9 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 
 #~ msgid "If there is something wrong about it, please contact us"
 #~ msgstr "Si vous avez des questions, merci de nous contacter via "
+
+#~ msgid "Donations play an important role in supporting great projects"
+#~ msgstr "Les dons jouent un rôle important de le support des projets"
 
 #~ msgid "Check premium options on the plugin settings page!"
 #~ msgstr ""
@@ -946,8 +925,8 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ msgstr "Merci de saisir votre clé de licence"
 
 #~ msgid ""
-#~ "Congratulations! The Pro version of the plugin is successfully download "
-#~ "and activated."
+#~ "Congratulations! Pro version of the plugin is successfully installed and "
+#~ "activated."
 #~ msgstr ""
 #~ "Félicitations! La version PRO de cette extension a été téléchargée et "
 #~ "activée avec succès."
@@ -964,24 +943,19 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ msgid "Show Pro features"
 #~ msgstr "Voir les fonctions PRO"
 
-#~ msgid "You can download and activate"
-#~ msgstr "Vous pouvez la télécharger et l'activer"
+#~ msgid "Enter your license key to install and activate"
+#~ msgstr "Saisissez votre clé de licence pour installer et activer"
 
-#~ msgid "version of this plugin by entering Your license key."
-#~ msgstr "version de cette extension en donnant votre clé de licence."
+#~ msgid "version of the plugin."
+#~ msgstr "version de l'extension."
 
-#~ msgid ""
-#~ "You can find your license key on your personal page Client area, by "
-#~ "clicking on the link"
+#~ msgid "License key can be found in the"
+#~ msgstr "La clé de licence peut-être trouvée dans"
+
+#~ msgid "(your username is the email address specified during the purchase)."
 #~ msgstr ""
-#~ "Vous pouvez trouver votre clé de licence sur votre page personnelle dans "
-#~ "la zone cliente en cliquant sur le lien"
-
-#~ msgid ""
-#~ "(your username is the email you specify when purchasing the product)."
-#~ msgstr ""
-#~ "(votre nom d'utilisateur est l'adresse e-mail que vous avez donné lors de "
-#~ "l'achat de l'extension)."
+#~ "(votre nom d'utilisateur est l'adresse e-mail que vous avez donnée lors "
+#~ "de l'achat de l'extension)."
 
 #~ msgid "or"
 #~ msgstr "ou"
@@ -1061,11 +1035,12 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ "web."
 
 #~ msgid ""
-#~ "(your username is the email you specify when purchasing the product). If "
+#~ "(your username is the email address specified during the purchase). If "
 #~ "necessary, please submit \"Lost your password?\" request."
 #~ msgstr ""
-#~ "(votre nom d'utilisateur est l'adresse e-mail que vous avez donné lors de "
-#~ "l'achat de l'extension)."
+#~ "(votre nom d'utilisateur est l'adresse e-mail que vous avez donnée lors "
+#~ "de l'achat de l'extension). Si nécessaire, utilisez la fonction \"mot de "
+#~ "passe perdu\" pour en avoir un nouveau."
 
 #~ msgid "Check license key"
 #~ msgstr "Vérifier la clé de licence"
@@ -1157,6 +1132,9 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ "Vous pouvez toujours consulter les options premium en cliquant sur le "
 #~ "bouton \"Voir les fonctions Pro\" dans l'onglet \"Passer PRO\""
 
+#~ msgid "Add BWS Shortcode"
+#~ msgstr "Ajouter le code court des extensions BWS"
+
 #~ msgid "Add BWS Plugins Shortcode"
 #~ msgstr "Ajouter le code court des extensions BWS"
 
@@ -1240,6 +1218,46 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ msgstr ""
 #~ "Vous devez rendre ce fichier modifiable avant de pouvoir enregistrer vos "
 #~ "modifications. Regarder %s du Codex %s pour plus d'informations."
+
+#~ msgid "Try again"
+#~ msgstr "Essayer de nouveau"
+
+#~ msgid "Preview &#8220;%s&#8221;"
+#~ msgstr "Pré-visualiser &#8220;%s&#8221;"
+
+#~ msgid "Install %s"
+#~ msgstr "%s installé"
+
+#~ msgid "Install Now"
+#~ msgstr "Installa Ora"
+
+#~ msgid "Update to version %s"
+#~ msgstr "Mettre à jour pour la version %s"
+
+#~ msgid "Update"
+#~ msgstr "Mettre à jour"
+
+#~ msgid "Preview %s"
+#~ msgstr "Pré-visualiser %s"
+
+#~ msgid "Preview"
+#~ msgstr "Pré-visualiser"
+
+#~ msgid "Details"
+#~ msgstr "Détails"
+
+#~ msgid "You can download and activate"
+#~ msgstr "Vous pouvez la télécharger et l'activer"
+
+#~ msgid "version of this plugin by entering Your license key."
+#~ msgstr "version de cette extension en donnant votre clé de licence."
+
+#~ msgid ""
+#~ "You can find your license key on your personal page Client area, by "
+#~ "clicking on the link"
+#~ msgstr ""
+#~ "Vous pouvez trouver votre clé de licence sur votre page personnelle dans "
+#~ "la zone cliente en cliquant sur le lien"
 
 #~ msgid ""
 #~ "The plugin's settings have been changed. In order to save them please "

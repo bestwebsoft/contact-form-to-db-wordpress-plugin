@@ -1,11 +1,5 @@
-#adminmenu #toplevel_page_cntctfrmtdb_manager:hover div.wp-menu-image:before,
-#adminmenu #toplevel_page_cntctfrmtdb_manager.wp-has-current-submenu div.wp-menu-image:before,
-#adminmenu #toplevel_page_cntctfrmtdb_manager div.wp-menu-image:before {
-    background: url("../images/menu_single.png") no-repeat scroll center 8px transparent;
-    content: '';
-}
-#adminmenu #toplevel_page_cntctfrmtdb_manager.wp-not-current-submenu div.wp-menu-image {
-    opacity: 0.7;
+#adminmenu #toplevel_page_cntctfrmtdb_manager.current .wp-menu-image img {
+	opacity: 1;
 }
 /*
 * styles for manager page
