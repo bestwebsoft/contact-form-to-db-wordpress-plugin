@@ -1,12 +1,12 @@
 <?php 
 /*
 Plugin Name: Contact Form to DB by BestWebSoft
-Plugin URI: http://bestwebsoft.com/products/
-Description: Add-on for Contact Form Plugin by BestWebSoft.
+Plugin URI: http://bestwebsoft.com/products/contact-form-to-db/
+Description: Save and manage contact form messages. Never lose important data.
 Author: BestWebSoft
 Text Domain: contact-form-to-db
 Domain Path: /languages
-Version: 1.5.5
+Version: 1.5.6
 Author URI: http://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -64,13 +64,14 @@ if ( ! function_exists( 'cntctfrmtdb_init' ) ) {
 		}
 
 		/* Function check if plugin is compatible with current WP version  */
-		bws_wp_min_version_check( plugin_basename( __FILE__ ), $cntctfrmtdb_plugin_info, '3.8', '3.2' );
+		bws_wp_min_version_check( plugin_basename( __FILE__ ), $cntctfrmtdb_plugin_info, '3.8' );
 
 		/* Call register settings function */
 		$cntctfrmtdb_pages = array(
 			'cntctfrmtdb_manager',
 			'cntctfrmtdb_settings'
 		);
+
 		if ( ! is_admin() || ( isset( $_REQUEST['page'] ) && in_array( $_REQUEST['page'], $cntctfrmtdb_pages ) ) )
 			cntctfrmtdb_settings();
 	}
@@ -81,14 +82,11 @@ if ( ! function_exists( 'cntctfrmtdb_admin_init' ) ) {
 		global $bws_plugin_info, $cntctfrmtdb_plugin_info;
 		
 		/* Add variable for bws_menu */
-		if ( ! isset( $bws_plugin_info ) || empty( $bws_plugin_info ) )
+		if ( empty( $bws_plugin_info ) )
 			$bws_plugin_info = array( 'id' => '91', 'version' => $cntctfrmtdb_plugin_info["Version"] );			
 
 		if ( isset( $_REQUEST['page'] ) && 'cntctfrmtdb_manager' == $_REQUEST['page'] )
-			cntctfrmtdb_action_links();	
-
-		/* Сhecking for the existence of Contact Form Plugin or Contact Form Pro Plugin */
-		cntctfrmtdb_check_contact_form();
+			cntctfrmtdb_action_links();
 	}
 }
 
@@ -99,20 +97,21 @@ if ( ! function_exists( 'cntctfrmtdb_settings' ) ) {
 	function cntctfrmtdb_settings() {
 		global $cntctfrmtdb_options, $cntctfrmtdb_option_defaults, $cntctfrmtdb_plugin_info;
 		$cntctfrmtdb_db_version = '1.2';
+
 		/* set default settings */
-		$cntctfrmtdb_option_defaults = array (
-			'plugin_option_version'             => $cntctfrmtdb_plugin_info["Version"],
-			'plugin_db_version'                 => $cntctfrmtdb_db_version,
-			'cntctfrmtdb_save_messages_to_db'   => 1,
-			'cntctfrmtdb_format_save_messages'  => 'xml',
-			'cntctfrmtdb_csv_separator'         => ",",
-			'cntctfrmtdb_csv_enclosure'         => "\"",
-			'cntctfrmtdb_mail_address'          => 1,
-			'cntctfrmtdb_delete_messages'       => 1,
-			'cntctfrmtdb_delete_messages_after' => 'daily',
-			'first_install'                     => strtotime( "now" ),
-			'display_settings_notice'			=>	1,
-			'suggest_feature_banner'			=>	1,
+		$cntctfrmtdb_option_defaults = array(
+			'plugin_option_version'     => $cntctfrmtdb_plugin_info["Version"],
+			'plugin_db_version'         => $cntctfrmtdb_db_version,
+			'save_messages_to_db'   	=> 1,
+			'format_save_messages'  	=> 'xml',
+			'csv_separator'         	=> ",",
+			'csv_enclosure'         	=> "\"",
+			'mail_address'          	=> 1,
+			'delete_messages'       	=> 1,
+			'delete_messages_after' 	=> 'daily',
+			'first_install'             => strtotime( "now" ),
+			'display_settings_notice'	=>	1,
+			'suggest_feature_banner'	=>	1,
 		);
 		/* add options to database */
 		if ( ! get_option( 'cntctfrmtdb_options' ) )
@@ -123,7 +122,17 @@ if ( ! function_exists( 'cntctfrmtdb_settings' ) ) {
 
 		/* Array merge in case this version has added new options */
 		if ( ! isset( $cntctfrmtdb_options['plugin_option_version'] ) || $cntctfrmtdb_options['plugin_option_version'] != $cntctfrmtdb_plugin_info["Version"] ) {
-			$cntctfrmtdb_option_defaults['display_settings_notice'] = 0;
+			/**
+			* @deprecated since 1.5.6
+			* @todo remove after 12.03.2017
+			*/
+			foreach ( $cntctfrmtdb_option_defaults as $key => $value ) {
+				if ( isset( $cntctfrmtdb_options['cntctfrmtdb_' . $key ] ) ) {
+					$cntctfrmtdb_options[ $key ] = $cntctfrmtdb_options['cntctfrmtdb_' . $key ];
+					unset( $cntctfrmtdb_options['cntctfrmtdb_' . $key ] );
+				}
+			}		
+
 			$cntctfrmtdb_options = array_merge( $cntctfrmtdb_option_defaults, $cntctfrmtdb_options );
 			$cntctfrmtdb_options['plugin_option_version'] = $cntctfrmtdb_plugin_info["Version"];
 			/* show pro features */
@@ -136,7 +145,7 @@ if ( ! function_exists( 'cntctfrmtdb_settings' ) ) {
 			cntctfrmtdb_create_table();
 			$cntctfrmtdb_options['plugin_db_version'] = $cntctfrmtdb_db_version;
 			$update_option = true;
-		}	
+		}
 
 		if ( isset( $update_option ) )
 			update_option( 'cntctfrmtdb_options', $cntctfrmtdb_options );
@@ -207,6 +216,7 @@ if ( ! function_exists( 'cntctfrmtdb_create_table' ) ) {
 			`field_value` CHAR(50) NOT NULL
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 		dbDelta( $sql );
+
 		$status = array( 'normal',
 			'spam',
 			'trash'
@@ -267,63 +277,30 @@ if ( ! function_exists ( 'cntctfrmtdb_admin_head' ) ) {
 }
 
 /*
-* Сhecking for the existence of Contact Form Plugin or Contact Form Pro Plugin
-*/
-if ( ! function_exists( 'cntctfrmtdb_check_contact_form' ) ) {
-	function cntctfrmtdb_check_contact_form() {
-		global $cntctfrmtdb_contact_form_not_found, $cntctfrmtdb_contact_form_not_active;
-		if ( ! function_exists( 'is_plugin_active' ) )
-			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-
-		$all_plugins = get_plugins();
-		
-		if ( ! ( array_key_exists( 'contact-form-plugin/contact_form.php', $all_plugins ) || array_key_exists( 'contact-form-pro/contact_form_pro.php', $all_plugins ) ) ) {
-			$cntctfrmtdb_contact_form_not_found = __( 'Contact Form Plugin is not found.</br>You need install and activate this plugin for correct  work with Contact Form to DB plugin.</br>You can download Contact Form Plugin from ', 'contact-form-to-db' ) . '<a href="' . esc_url( 'http://bestwebsoft.com/products/contact-form/' ) . '" title="' . __( 'Developers website', 'contact-form-to-db' ). '"target="_blank">' . __( 'website of plugin Authors ', 'contact-form-to-db' ) . '</a>' . __( 'or ', 'contact-form-to-db' ) . '<a href="' . esc_url( 'http://wordpress.org/plugins/contact-form-plugin/' ) .'" title="Wordpress" target="_blank">'. __( 'WordPress.', 'contact-form-to-db' ) . '</a>';
-		} else {
-			if ( ! ( is_plugin_active( 'contact-form-plugin/contact_form.php' ) || is_plugin_active( 'contact-form-pro/contact_form_pro.php' ) ) ) {
-				$cntctfrmtdb_contact_form_not_active = __( 'Contact Form Plugin is not active.</br>You need activate this plugin for correct work with Contact Form to DB plugin.', 'contact-form-to-db' );
-				if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array( 'cntctfrmtdb_manager', 'cntctfrmtdb_settings' ) ) )
-					$cntctfrmtdb_contact_form_not_active .= '<br/><a href="plugins.php">' . __( 'Activate plugin', 'contact-form-to-db' ) . '</a>';
-			}
-			/* old version */
-			if ( ( is_plugin_active( 'contact-form-plugin/contact_form.php' ) && isset( $all_plugins['contact-form-plugin/contact_form.php']['Version'] ) && $all_plugins['contact-form-plugin/contact_form.php']['Version'] < '3.60' ) || 
-				( is_plugin_active( 'contact-form-pro/contact_form_pro.php' ) && isset( $all_plugins['contact-form-pro/contact_form_pro.php']['Version'] ) && $all_plugins['contact-form-pro/contact_form_pro.php']['Version'] < '1.12' ) ) {
-				$cntctfrmtdb_contact_form_not_found = __( 'Contact Form Plugin has old version.</br>You need update this plugin for correct work with Contact Form to DB plugin.', 'contact-form-to-db' );
-				if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array( 'cntctfrmtdb_manager', 'cntctfrmtdb_settings' ) ) )
-					$cntctfrmtdb_contact_form_not_found .= '<br/><a href="plugins.php">' . __( 'Update plugin', 'contact-form-to-db' ) . '</a>';
-			}
-		}
-	}
-}
-
-/*
 * Function for displaying settings page of plugin 
 */
 if ( ! function_exists( 'cntctfrmtdb_settings_page' ) ) {
 	function cntctfrmtdb_settings_page() {
-		global $cntctfrmtdb_options, $cntctfrmtdb_option_defaults, $cntctfrmtdb_contact_form_not_found, $cntctfrmtdb_contact_form_not_active, $wp_version, $cntctfrmtdb_plugin_info;
+		global $cntctfrmtdb_options, $cntctfrmtdb_option_defaults, $wp_version, $cntctfrmtdb_plugin_info;
 		$message = $error = "";
 		$plugin_basename = plugin_basename( __FILE__ );
 		/* set value of input type="hidden" when options is changed */
 		if ( isset( $_POST['cntctfrmtdb_form_submit'] ) && check_admin_referer( $plugin_basename, 'cntctfrmtdb_nonce_name' ) ) {
-			$cntctfrmtdb_options_submit = array();
-
 			if ( isset( $_POST['bws_hide_premium_options'] ) ) {
-				$hide_result = bws_hide_premium_options( $cntctfrmtdb_options_submit );
+				$hide_result = bws_hide_premium_options( $cntctfrmtdb_options );
 				$cntctfrmtdb_options_submit = $hide_result['options'];
 			}
 
-			$cntctfrmtdb_options_submit['cntctfrmtdb_save_messages_to_db'] = isset( $_POST['cntctfrmtdb_save_messages_to_db'] ) ? 1 : 0;
-			$cntctfrmtdb_options_submit['cntctfrmtdb_format_save_messages'] = $_POST['cntctfrmtdb_format_save_messages'];
-			if ( 'csv' == $cntctfrmtdb_options_submit['cntctfrmtdb_format_save_messages'] ) {
-				$cntctfrmtdb_options_submit['cntctfrmtdb_csv_separator'] = $_POST['cntctfrmtdb_csv_separator'];
-				$cntctfrmtdb_options_submit['cntctfrmtdb_csv_enclosure'] = $_POST['cntctfrmtdb_csv_enclosure'];
+			$cntctfrmtdb_options['save_messages_to_db'] = isset( $_POST['cntctfrmtdb_save_messages_to_db'] ) ? 1 : 0;
+			$cntctfrmtdb_options['format_save_messages'] = $_POST['cntctfrmtdb_format_save_messages'];
+			if ( 'csv' == $cntctfrmtdb_options['format_save_messages'] ) {
+				$cntctfrmtdb_options['csv_separator'] = $_POST['cntctfrmtdb_csv_separator'];
+				$cntctfrmtdb_options['csv_enclosure'] = $_POST['cntctfrmtdb_csv_enclosure'];
 			} else {
-				$cntctfrmtdb_options_submit['cntctfrmtdb_csv_separator'] = ",";
-				$cntctfrmtdb_options_submit['cntctfrmtdb_csv_enclosure'] = '"';
+				$cntctfrmtdb_options['csv_separator'] = ",";
+				$cntctfrmtdb_options['csv_enclosure'] = '"';
 			}
 			/* update options of plugin in database */
-			$cntctfrmtdb_options = array_merge( $cntctfrmtdb_options, $cntctfrmtdb_options_submit );
 			update_option( 'cntctfrmtdb_options', $cntctfrmtdb_options );
 			$message = __( 'Settings saved.', 'contact-form-to-db' );
 		}
@@ -369,30 +346,30 @@ if ( ! function_exists( 'cntctfrmtdb_settings_page' ) ) {
 							<tr valign="top">
 								<th scope="row"><label for="cntctfrmtdb_save_messages_to_db"><?php _e( 'Save messages to database', 'contact-form-to-db' ); ?></label></th>
 								<td>
-									<input type="checkbox" id="cntctfrmtdb_save_messages_to_db" name="cntctfrmtdb_save_messages_to_db" value="1" <?php if( 1 == $cntctfrmtdb_options['cntctfrmtdb_save_messages_to_db'] ) echo "checked=\"checked\" "; ?>/>
+									<input type="checkbox" id="cntctfrmtdb_save_messages_to_db" name="cntctfrmtdb_save_messages_to_db" value="1" <?php if ( 1 == $cntctfrmtdb_options['save_messages_to_db'] ) echo "checked=\"checked\" "; ?>/>
 								</td>
 							</tr>					
-							<tr valign="top" class="cntctfrmtdb_options" <?php if ( ! 1 == $cntctfrmtdb_options['cntctfrmtdb_save_messages_to_db'] ) echo 'style="display: none;"' ;?>>
+							<tr valign="top" class="cntctfrmtdb_options" <?php if ( ! 1 == $cntctfrmtdb_options['save_messages_to_db'] ) echo 'style="display: none;"' ;?>>
 								<th scope="row"><?php _e( 'Download messages in', 'contact-form-to-db' ); ?></th>
 								<td>
 									<select name="cntctfrmtdb_format_save_messages" id="cntctfrmtdb_format_save_messages">
-										<option value='xml' <?php if ( 'xml' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) echo "selected=\"selected\" "; ?>><?php echo '.xml'; ?></option>
-										<option value='eml' <?php if ( 'eml' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) echo "selected=\"selected\" "; ?>><?php echo '.eml'; ?></option>
-										<option value='csv' <?php if ( 'csv' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) echo "selected=\"selected\" "; ?>><?php echo '.csv'; ?></option>
+										<option value='xml' <?php if ( 'xml' == $cntctfrmtdb_options['format_save_messages'] ) echo 'selected="selected" '; ?>><?php echo '.xml'; ?></option>
+										<option value='eml' <?php if ( 'eml' == $cntctfrmtdb_options['format_save_messages'] ) echo 'selected="selected" '; ?>><?php echo '.eml'; ?></option>
+										<option value='csv' <?php if ( 'csv' == $cntctfrmtdb_options['format_save_messages'] ) echo 'selected="selected" '; ?>><?php echo '.csv'; ?></option>
 									</select>
 									<label> <?php _e( 'format', 'contact-form-to-db' ); ?></label><br/>
-									<div class="cntctfrmtdb_csv_separators" <?php if ( 'csv' != $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) echo 'style="display: none;"'; ?>>
+									<div class="cntctfrmtdb_csv_separators" <?php if ( 'csv' != $cntctfrmtdb_options['format_save_messages'] ) echo 'style="display: none;"'; ?>>
 										<label><?php _e( 'Input symbols for separator and enclosure', 'contact-form-to-db' ); ?></label></br>
 										<select name="cntctfrmtdb_csv_separator" id="cntctfrmtdb_csv_separator">
-											<option value="," <?php if ( "," == $cntctfrmtdb_options['cntctfrmtdb_csv_separator'] ) echo "selected=\"selected\" "; ?>><?php echo ","; ?></option>
-											<option value=";" <?php if ( ";" == $cntctfrmtdb_options['cntctfrmtdb_csv_separator'] ) echo "selected=\"selected\" "; ?>><?php echo ";"; ?></option>
-											<option value="t" <?php if ( "t" == $cntctfrmtdb_options['cntctfrmtdb_csv_separator'] ) echo "selected=\"selected\" "; ?>><?php echo "\\t"; ?></option>
+											<option value="," <?php if ( "," == $cntctfrmtdb_options['csv_separator'] ) echo 'selected="selected" '; ?>><?php echo ","; ?></option>
+											<option value=";" <?php if ( ";" == $cntctfrmtdb_options['csv_separator'] ) echo 'selected="selected" '; ?>><?php echo ";"; ?></option>
+											<option value="t" <?php if ( "t" == $cntctfrmtdb_options['csv_separator'] ) echo 'selected="selected" '; ?>><?php echo "\\t"; ?></option>
 										</select>
 										<label for="cntctfrmtdb_csv_separator"><?php _e( ' separator', 'contact-form-to-db' ); ?></label><br/>
 										<select name="cntctfrmtdb_csv_enclosure" id="cntctfrmtdb_csv_enclosure">
-											<option value='"' <?php if ( "\"" == $cntctfrmtdb_options['cntctfrmtdb_csv_enclosure'] ) echo "selected=\"selected\" "; ?>><?php echo "\""; ?></option>
-											<option value="'" <?php if ( "'" == $cntctfrmtdb_options['cntctfrmtdb_csv_enclosure'] ) echo "selected=\"selected\" "; ?>><?php echo "'"; ?></option>
-											<option value="`" <?php if ( "`" == $cntctfrmtdb_options['cntctfrmtdb_csv_enclosure'] ) echo "selected=\"selected\" "; ?>><?php echo "`"; ?></option>
+											<option value='"' <?php if ( "\"" == $cntctfrmtdb_options['csv_enclosure'] ) echo 'selected="selected" '; ?>><?php echo "\""; ?></option>
+											<option value="'" <?php if ( "'" == $cntctfrmtdb_options['csv_enclosure'] ) echo 'selected="selected" '; ?>><?php echo "'"; ?></option>
+											<option value="`" <?php if ( "`" == $cntctfrmtdb_options['csv_enclosure'] ) echo 'selected="selected" '; ?>><?php echo "`"; ?></option>
 										</select>
 										<label for="cntctfrmtdb_csv_enclosure"><?php _e( ' enclosure', 'contact-form-to-db' ); ?></label><br/>
 									</div><!-- .cntctfrmtdb_csv_separators -->
@@ -473,7 +450,7 @@ if ( ! function_exists( 'cntctfrmtdb_settings_page' ) ) {
 			} elseif ( 'go_pro' == $_GET['action'] ) { 
 				bws_go_pro_tab_show( $bws_hide_premium_options_check, $cntctfrmtdb_plugin_info, $plugin_basename, 'cntctfrmtdb_settings', 'cntctfrmtdbpr_settings', 'contact-form-to-db-pro/contact_form_to_db_pro.php', 'contact-form-to-db', '5906020043c50e2eab1528d63b126791', '91', isset( $go_pro_result['pro_plugin_is_activated'] ) );		
 			} 
-			bws_plugin_reviews_block( $cntctfrmtdb_plugin_info['Name'], 'contact-form-to-db' );  ?>
+			bws_plugin_reviews_block( $cntctfrmtdb_plugin_info['Name'], 'contact-form-to-db' ); ?>
 		</div>
 	<?php }
 }
@@ -484,13 +461,41 @@ if ( ! function_exists( 'cntctfrmtdb_clear_data' ) ) {
 	}
 }
 
+if ( ! function_exists( 'cntctfrm_options_for_this_plugin' ) ) {
+	function cntctfrm_options_for_this_plugin() {
+		global $cntctfrm_options_for_this_plugin;
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		/**
+		* @deprecated since 1.5.6
+		* @todo update after 12.03.2017
+		*/
+		if ( is_plugin_active( 'contact-form-plugin/contact_form.php' ) ) {
+			$cntctfrm_options_for_this_plugin = get_option( 'cntctfrm_options' );
+		} elseif ( is_plugin_active( 'contact-form-pro/contact_form_pro.php' ) ) {				
+			$cntctfrm_options_for_this_plugin = get_option( 'cntctfrmpr_options' );
+			if ( empty( $cntctfrm_options_for_this_plugin ) )
+				$cntctfrm_options_for_this_plugin = get_option( 'cntctfrm_options' );
+		}
+		/**
+		* @deprecated since 1.5.6
+		* @todo remove after 12.03.2017
+		*/
+		foreach ( $cntctfrm_options_for_this_plugin as $key => $value ) {
+			if ( ! is_array( $value ) ) {
+				$cntctfrm_options_for_this_plugin[ str_replace( 'cntctfrm_', '', $key ) ] = $value;
+			}
+		}
+	}
+}
+
 /**
  * Function to get mail data from contact form
  * @param $name, $email, $address, $phone, $subject, $message, $form_action_url, $user_agent, $userdomain, $location deprecated since v1.5.0 - will be deleted in the future
  */
 if ( ! function_exists( 'cntctfrmtdb_get_mail_data' ) ) {
 	function cntctfrmtdb_get_mail_data( $to = '', $name = '', $email = '', $address = '', $phone = '', $subject = '', $message = '', $form_action_url = '', $user_agent = '', $userdomain = '', $location = '' ) {
-		global $cntctfrmtdb_mail_data;
+		global $cntctfrmtdb_mail_data, $cntctfrm_options_for_this_plugin;
+
 		$cntctfrmtdb_mail_data = array();
 		if ( is_array( $to ) ) {
 			$cntctfrmtdb_mail_data['sendto']          = $to['sendto'];
@@ -527,13 +532,26 @@ if ( ! function_exists( 'cntctfrmtdb_get_mail_data' ) ) {
 			$cntctfrmtdb_mail_data['refer']           = $form_action_url;
 			$cntctfrmtdb_mail_data['useragent']       = $user_agent;
 		}
-		if ( isset( $_POST['cntctfrmpr_department'] ) ) {
+
+		if ( isset( $_POST['cntctfrm_department'] ) ) {
+			if ( empty( $cntctfrm_options_for_this_plugin ) )
+				cntctfrm_options_for_this_plugin();
+
+			if ( isset( $cntctfrm_options_for_this_plugin['departments']['name'][ $_POST['cntctfrm_department'] ] ) )
+				$cntctfrmtdb_mail_data['department'] = cntctfrmtdb_clear_data( $cntctfrm_options_for_this_plugin['departments']['name'][ $_POST['cntctfrm_department'] ] );
+		} else
+			/**
+			* @deprecated since 1.5.6
+			* @todo update after 12.03.2017
+			*/
+			if ( isset( $_POST['cntctfrmpr_department'] ) ) {			
 			global $cntctfrmpr_options;
 			if ( empty( $cntctfrmpr_options ) )
 				$cntctfrmpr_options = get_option( 'cntctfrmpr_options' );
+
 			if ( isset( $cntctfrmpr_options['departments']['name'][ $_POST['cntctfrmpr_department'] ] ) )
 				$cntctfrmtdb_mail_data['department'] = cntctfrmtdb_clear_data( $cntctfrmpr_options['departments']['name'][ $_POST['cntctfrmpr_department'] ] );
-		}
+		}  
 	}
 }
 
@@ -557,7 +575,7 @@ if ( ! function_exists( 'cntctfrmtdb_check_dispatch' ) ) {
 		if ( empty( $cntctfrmtdb_options ) )
 			$cntctfrmtdb_options = get_option( 'cntctfrmtdb_options' );
 		$cntctfrmtdbpr_dispatched   = $cntctfrm_result ? 1 : 0;
-		$save_message = '1' == $cntctfrmtdb_options['cntctfrmtdb_save_messages_to_db'] ? true : false;
+		$save_message = '1' == $cntctfrmtdb_options['save_messages_to_db'] ? true : false;
 		$message_sent = ( isset( $_SESSION['cntctfrm_send_mail'] ) && false == $_SESSION['cntctfrm_send_mail'] ) || ( isset( $_SESSION['cntctfrmpr_send_mail'] ) && false == $_SESSION['cntctfrmpr_send_mail'] ) ? true : false;
 		if ( $save_message && $message_sent )
 			cntctfrmtdb_save_message();
@@ -575,16 +593,18 @@ if ( ! function_exists( 'cntctfrmtdb_save_new_message' ) ) {
 		if ( empty( $attachment_status ) )
 			$attachment_status = 0;
 
-		$wpdb->insert( $prefix . 'message', array(
-			'from_user'         => $cntctfrmtdb_mail_data['username'],
-			'user_email'        => $cntctfrmtdb_mail_data['useremail'],
-			'subject'           => $cntctfrmtdb_mail_data['message_subject'],
-			'message_text'      => $cntctfrmtdb_mail_data['message_text'],
-			'sent'              => $cntctfrmtdbpr_dispatched,
-			'dispatch_counter'  => '1',
-			'was_read'          => '0',
-			'status_id'         => '1',
-			'attachment_status' => $attachment_status
+		$wpdb->insert( $prefix . 'message',
+			array(
+				'from_user'         => $cntctfrmtdb_mail_data['username'],
+				'user_email'        => $cntctfrmtdb_mail_data['useremail'],
+				'subject'           => $cntctfrmtdb_mail_data['message_subject'],
+				'message_text'      => $cntctfrmtdb_mail_data['message_text'],
+				'sent'              => $cntctfrmtdbpr_dispatched,
+				'dispatch_counter'  => '1',
+				'was_read'          => '0',
+				'status_id'         => '1',
+				'attachment_status' => $attachment_status,
+				'send_date'			=> current_time( 'mysql' )
 			)
 		);
 		$message_id = $wpdb->insert_id;
@@ -594,19 +614,8 @@ if ( ! function_exists( 'cntctfrmtdb_save_new_message' ) ) {
 		$upload_path_id 	= 0;
 
 		/* get option from Contact form or Contact form PRO */
-		if ( ! $cntctfrm_options_for_this_plugin ) {
-			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-			if ( is_plugin_active( 'contact-form-plugin/contact_form.php' ) ) {
-				$cntctfrm_options_for_this_plugin = get_option( 'cntctfrm_options' );
-			} elseif ( is_plugin_active( 'contact-form-pro/contact_form_pro.php' ) ) {
-				$cntctfrmpr_options = get_option( 'cntctfrmpr_options' );
-				$cntctfrm_options_for_this_plugin = array();
-				foreach ( $cntctfrmpr_options as $key => $value ) {
-					if ( ! is_array( $value ) )
-						$cntctfrm_options_for_this_plugin[ 'cntctfrm_'. $key ] = $cntctfrmpr_options[ $key ];
-				}
-			}
-		}
+		if ( ! $cntctfrm_options_for_this_plugin )
+			cntctfrm_options_for_this_plugin();
 		
 		/* insert data about blogname */
 		$blogname_id = $wpdb->get_var( "SELECT `id` FROM `" . $prefix . "blogname` WHERE `blogname`='" . get_bloginfo( 'name' ) . "'" );
@@ -664,7 +673,7 @@ if ( ! function_exists( 'cntctfrmtdb_save_new_message' ) ) {
 				)
 			);
 		}
-		if ( '1' == $cntctfrm_options_for_this_plugin['cntctfrm_display_user_agent'] ) {
+		if ( '1' == $cntctfrm_options_for_this_plugin['display_user_agent'] ) {
 			if ( isset( $cntctfrmtdb_mail_data['useragent'] ) && '' != $cntctfrmtdb_mail_data['useragent'] ) {
 				$field_id = $wpdb->get_var( 'SELECT `id` FROM `' . $wpdb->prefix . "cntctfrm_field` WHERE `name`='user_agent'");
 				$wpdb->insert( $prefix . 'field_selection', array(
@@ -748,19 +757,8 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 				$cntctfrmtdb_options = get_option( 'cntctfrmtdb_options' );
 
 			/* get option from Contact form or Contact form PRO */
-			if ( ! $cntctfrm_options_for_this_plugin ) {
-				include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-				if ( is_plugin_active( 'contact-form-plugin/contact_form.php' ) ) {
-					$cntctfrm_options_for_this_plugin = get_option( 'cntctfrm_options' );
-				} elseif ( is_plugin_active( 'contact-form-pro/contact_form_pro.php' ) ) {
-					$cntctfrmpr_options = get_option( 'cntctfrmpr_options' );
-					$cntctfrm_options_for_this_plugin = array();
-					foreach ( $cntctfrmpr_options as $key => $value ) {
-						if ( ! is_array( $value ) )
-							$cntctfrm_options_for_this_plugin[ 'cntctfrm_'. $key ] = $cntctfrmpr_options[ $key ];
-					}
-				}
-			}
+			if ( ! $cntctfrm_options_for_this_plugin )
+				cntctfrm_options_for_this_plugin();
 			
 			$random_number = rand( 100, 999 ); /* prefix to the names of files to be saved */
 			
@@ -784,7 +782,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 			$prefix = $wpdb->prefix . 'cntctfrmtdb_';		
 		
 			$ids = '';
-			$action =  ( isset( $_REQUEST['action'] ) && '-1' != $_REQUEST['action'] ) ? $_REQUEST['action'] : $_REQUEST['action2'];
+			$action = ( isset( $_REQUEST['action'] ) && '-1' != $_REQUEST['action'] ) ? $_REQUEST['action'] : $_REQUEST['action2'];
 			
 			if ( isset( $_REQUEST['message_id'] ) && '' != $_REQUEST['message_id'] ) {
 				/* when action is "undo", "restore" or "spam" - message id`s is a string like "2,3,4,5,6," */
@@ -798,7 +796,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 				create zip-archives is possible and  one embodiment of the:
 				1) need to save several messages in "csv"-format
 				2) need to save several messages in "eml"-format */
-				if ( class_exists( 'ZipArchive' ) && 'download_messages' == $action && ( 'csv' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] || 'eml' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) ) {
+				if ( class_exists( 'ZipArchive' ) && 'download_messages' == $action && ( 'csv' == $cntctfrmtdb_options['format_save_messages'] || 'eml' == $cntctfrmtdb_options['format_save_messages'] ) ) {
 					/* create new zip-archive */
 					$zip = new ZipArchive();
 					$zip_name = $save_file_path . '/' .time() . ".zip";
@@ -806,7 +804,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 						$can_not_create_zip = 1;
 				}
 				/* we create a new "xml"-file */
-				if ( in_array( $action, array( 'download_message', 'download_messages' ) ) && 'xml' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) {
+				if ( in_array( $action, array( 'download_message', 'download_messages' ) ) && 'xml' == $cntctfrmtdb_options['format_save_messages'] ) {
 					$xml = new DOMDocument( '1.0','utf-8' );
 					$xml->formatOutput = true;
 					/* create main element <messages></messages> */
@@ -835,7 +833,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 									WHERE " . $prefix . "field_selection.message_id=" . $id
 								);
 								/* forming file in "XML" format */
-								if ( 'xml' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) {
+								if ( 'xml' == $cntctfrmtdb_options['format_save_messages'] ) {
 									foreach ( $message_data as $data ) {
 										foreach ( $additional_fields as $field ) {
 											if ( 'address' == $field->name )
@@ -889,7 +887,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 									}
 									
 								/* forming file in "EML" format */
-								} elseif ( 'eml' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) {
+								} elseif ( 'eml' == $cntctfrmtdb_options['format_save_messages'] ) {
 									foreach ( $message_data as $data ) {
 										foreach ( $additional_fields as $field ) {
 											if ( 'address' == $field->name )
@@ -950,7 +948,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 											<tr>
 												<td><br /></td><td><br /></td>
 											</tr>';
-										if ( 1 == $cntctfrm_options_for_this_plugin['cntctfrm_display_sent_from'] ) {
+										if ( 1 == $cntctfrm_options_for_this_plugin['display_sent_from'] ) {
 											$ip = '';
 											if ( isset( $_SERVER ) ) {
 												$sever_vars = array( 'HTTP_X_REAL_IP', 'HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'REMOTE_ADDR' );
@@ -1000,10 +998,10 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 									$headers = '';
 									$headers .= 'MIME-Version: 1.0' . "\n";
 									$headers .= 'Content-type: text/html; charset=utf-8' . "\n";
-									if ( 'custom' == $cntctfrm_options_for_this_plugin['cntctfrm_from_email'] )
-										$headers .= __( 'From: ', 'contact-form-to-db' ) . stripslashes( $cntctfrm_options_for_this_plugin['cntctfrm_from_field'] ) . ' <' . stripslashes( $cntctfrm_options_for_this_plugin['cntctfrm_custom_from_email'] ) . '>' . "\n";	
+									if ( 'custom' == $cntctfrm_options_for_this_plugin['from_email'] )
+										$headers .= __( 'From: ', 'contact-form-to-db' ) . stripslashes( $cntctfrm_options_for_this_plugin['from_field'] ) . ' <' . stripslashes( $cntctfrm_options_for_this_plugin['custom_from_email'] ) . '>' . "\n";	
 									else
-										$headers .= __( 'From: ', 'contact-form-to-db' ) . stripslashes( $cntctfrm_options_for_this_plugin['cntctfrm_from_field'] ) . ' <' . $data->user_email . '>' . "\n";
+										$headers .= __( 'From: ', 'contact-form-to-db' ) . stripslashes( $cntctfrm_options_for_this_plugin['from_field'] ) . ' <' . $data->user_email . '>' . "\n";
 									$headers .= __( 'To: ', 'contact-form-to-db' ) . $data->email . "\n";
 									$headers .= __( 'Subject: ', 'contact-form-to-db' ) . $data->subject . "\n";
 									$headers .= __( 'Date/Time: ', 'contact-form-to-db' ) . date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), strtotime( current_time( 'mysql' ) ) ) . "\n";
@@ -1044,14 +1042,14 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 										}
 									}
 								/* forming files in to "CSV" format */
-								} elseif ( 'csv' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) {
+								} elseif ( 'csv' == $cntctfrmtdb_options['format_save_messages'] ) {
 									$count_messages = count( $message_id ); /* number of messages which was chosen for downloading */
 									/* we get enclosure anf separator from option */
-									$enclosure = stripslashes( $cntctfrmtdb_options['cntctfrmtdb_csv_enclosure'] );
-									if ( 't' == $cntctfrmtdb_options['cntctfrmtdb_csv_separator'] )
-										$separator = "\\" . stripslashes( $cntctfrmtdb_options['cntctfrmtdb_csv_separator'] );
+									$enclosure = stripslashes( $cntctfrmtdb_options['csv_enclosure'] );
+									if ( 't' == $cntctfrmtdb_options['csv_separator'] )
+										$separator = "\\" . stripslashes( $cntctfrmtdb_options['csv_separator'] );
 									else
-										$separator = stripslashes( $cntctfrmtdb_options['cntctfrmtdb_csv_separator'] );
+										$separator = stripslashes( $cntctfrmtdb_options['csv_separator'] );
 									/* forming file content */
 									foreach ( $message_data as $data ) {
 										foreach ( $additional_fields as $field ) {
@@ -1065,10 +1063,10 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 										
 										if ( ! isset( $message ) ) 
 											$message = '';
-										if ( 'custom' == $cntctfrm_options_for_this_plugin['cntctfrm_from_email'] )
-											$message .= $enclosure . stripslashes( $cntctfrm_options_for_this_plugin['cntctfrm_from_field'] ) . ' <' . stripslashes( $cntctfrm_options_for_this_plugin['cntctfrm_custom_from_email'] ) . '>' . $enclosure . $separator ;
+										if ( 'custom' == $cntctfrm_options_for_this_plugin['from_email'] )
+											$message .= $enclosure . stripslashes( $cntctfrm_options_for_this_plugin['from_field'] ) . ' <' . stripslashes( $cntctfrm_options_for_this_plugin['custom_from_email'] ) . '>' . $enclosure . $separator ;
 										else
-											$message .= $enclosure . stripslashes( $cntctfrm_options_for_this_plugin['cntctfrm_from_field'] ) . ' <' . $data->user_email . '>' . $enclosure . $separator ; 
+											$message .= $enclosure . stripslashes( $cntctfrm_options_for_this_plugin['from_field'] ) . ' <' . $data->user_email . '>' . $enclosure . $separator ; 
 										$message .= $enclosure . $data->email . $enclosure . $separator;
 										if ( '' !=  $data->subject )
 											$message .= $enclosure . $data->subject . $enclosure . $separator;
@@ -1083,7 +1081,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 										if ( isset( $data_phone ) && '' !=  $data_phone )
 											$message .= $enclosure . $data_phone . $enclosure . $separator;
 										$message .= $enclosure . $data->site . $enclosure . $separator;
-										if ( 1 == $cntctfrm_options_for_this_plugin['cntctfrm_display_sent_from'] ) {
+										if ( 1 == $cntctfrm_options_for_this_plugin['display_sent_from'] ) {
 											$ip = '';
 											if ( isset( $_SERVER ) ) {
 												$sever_vars = array( 'HTTP_X_REAL_IP', 'HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'REMOTE_ADDR' );
@@ -1298,9 +1296,9 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 				/* create zip-archives is possible and one embodiment of the:
 				1) need to save several messages in "csv"-format
 				2) need to save several messages in "eml"-format */
-				if ( 'download_messages' == $action && ( 'csv' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] || 'eml' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) ) {
+				if ( 'download_messages' == $action && ( 'csv' == $cntctfrmtdb_options['format_save_messages'] || 'eml' == $cntctfrmtdb_options['format_save_messages'] ) ) {
 					if ( class_exists( 'ZipArchive' ) ) {
-						if ( 1 < count( $message_id ) && 'csv' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) {
+						if ( 1 < count( $message_id ) && 'csv' == $cntctfrmtdb_options['format_save_messages'] ) {
 							$file_name = 'messages.csv';
 							$zip->addFromString( $file_name, $message ); /* add file content to zip - archive */
 						}
@@ -1324,7 +1322,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 						$can_not_create_zip = 1;
 					}
 				} 
-				if ( 'download_messages' == $action && 1 < count( $message_id ) && 'csv' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) {
+				if ( 'download_messages' == $action && 1 < count( $message_id ) && 'csv' == $cntctfrmtdb_options['format_save_messages'] ) {
 					/* saving single chosen "csv"-file to local computer if content of attachment was include in csv */
 					$file_name = 'messages.csv';
 					if ( file_exists( $save_file_path . '/' . $file_name ) )
@@ -1350,7 +1348,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 					}
 				}
 				/* saving "xml"-file to local computer */
-				if ( in_array( $action, array( 'download_message', 'download_messages' ) ) && 'xml' == $cntctfrmtdb_options['cntctfrmtdb_format_save_messages'] ) {
+				if ( in_array( $action, array( 'download_message', 'download_messages' ) ) && 'xml' == $cntctfrmtdb_options['format_save_messages'] ) {
 					if ( 'download_message' == $action ) {
 						$random_prefix = $random_number; /* name prefix */
 						$file_name = 'message_' . 'ID_' . $id . '_' . $random_prefix . '.xml';
@@ -1434,10 +1432,9 @@ if ( ! function_exists( 'cntctfrmtdb_number_of_messages' ) ) {
 /*
 * create class Cntctfrmtdb_Manager to display list of messages 
 */
-if ( file_exists( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' ) ) {
-	if ( ! class_exists( 'WP_List_Table' ) ) {
+if ( ! class_exists( 'Cntctfrmtdb_Manager' ) ) {
+	if ( ! class_exists( 'WP_List_Table' ) )
 		require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
-	}
 
 	class Cntctfrmtdb_Manager extends WP_List_Table {
 		var $message_status;
@@ -2016,24 +2013,49 @@ if ( ! function_exists( 'cntctfrmtdb_register_plugin_links' ) ) {
 */
 if ( ! function_exists( 'cntctfrmtdb_show_notices' ) ) {
 	function cntctfrmtdb_show_notices() { 
-		global $hook_suffix, $cntctfrmtdb_contact_form_not_found, $cntctfrmtdb_contact_form_not_active, $cntctfrmtdb_options, $bstwbsftwppdtplgns_cookie_add, $cntctfrmtdb_plugin_info, $cntctfrmtdb_pages;
+		global $hook_suffix, $cntctfrmtdb_options, $bstwbsftwppdtplgns_cookie_add, $cntctfrmtdb_plugin_info, $cntctfrmtdb_pages;
+		
 		if ( $hook_suffix == 'plugins.php' || ( isset( $_REQUEST['page'] ) && in_array( $_REQUEST['page'], $cntctfrmtdb_pages ) ) ) {
-			if ( '' != $cntctfrmtdb_contact_form_not_found || '' != $cntctfrmtdb_contact_form_not_active ) { ?>
+			
+			if ( ! function_exists( 'is_plugin_active' ) )
+				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+			$all_plugins = get_plugins();
+			
+			if ( ! ( array_key_exists( 'contact-form-plugin/contact_form.php', $all_plugins ) || array_key_exists( 'contact-form-pro/contact_form_pro.php', $all_plugins ) ) ) {
+				$contact_form_notice = __( 'Contact Form Plugin is not found.</br>You need install and activate this plugin for correct  work with Contact Form to DB plugin.</br>You can download Contact Form Plugin from ', 'contact-form-to-db' ) . '<a href="' . esc_url( 'http://bestwebsoft.com/products/contact-form/' ) . '" title="' . __( 'Developers website', 'contact-form-to-db' ). '"target="_blank">' . __( 'website of plugin Authors ', 'contact-form-to-db' ) . '</a>' . __( 'or ', 'contact-form-to-db' ) . '<a href="' . esc_url( 'http://wordpress.org/plugins/contact-form-plugin/' ) .'" title="Wordpress" target="_blank">'. __( 'WordPress.', 'contact-form-to-db' ) . '</a>';
+			} else {
+				$contact_form_notice = '';
+				if ( ! ( is_plugin_active( 'contact-form-plugin/contact_form.php' ) || is_plugin_active( 'contact-form-pro/contact_form_pro.php' ) ) ) {
+					$contact_form_notice .= __( 'Contact Form Plugin is not active.</br>You need activate this plugin for correct work with Contact Form to DB plugin.', 'contact-form-to-db' );
+					if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array( 'cntctfrmtdb_manager', 'cntctfrmtdb_settings' ) ) )
+						$contact_form_notice .= '<br/><a href="plugins.php">' . __( 'Activate plugin', 'contact-form-to-db' ) . '</a>';
+				}
+				/* old version */
+				if ( ( is_plugin_active( 'contact-form-plugin/contact_form.php' ) && isset( $all_plugins['contact-form-plugin/contact_form.php']['Version'] ) && $all_plugins['contact-form-plugin/contact_form.php']['Version'] < '3.60' ) || 
+					( is_plugin_active( 'contact-form-pro/contact_form_pro.php' ) && isset( $all_plugins['contact-form-pro/contact_form_pro.php']['Version'] ) && $all_plugins['contact-form-pro/contact_form_pro.php']['Version'] < '1.12' ) ) {
+					$contact_form_notice .= __( 'Contact Form Plugin has old version.</br>You need update this plugin for correct work with Contact Form to DB plugin.', 'contact-form-to-db' );
+					if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array( 'cntctfrmtdb_manager', 'cntctfrmtdb_settings' ) ) )
+						$contact_form_notice .= '<br/><a href="plugins.php">' . __( 'Update plugin', 'contact-form-to-db' ) . '</a>';
+				}
+			}
+			if ( ! empty( $contact_form_notice ) ) { ?>
 				<div class="error below-h2">
-					<p><strong><?php _e( 'WARNING:', 'contact-form-to-db'); ?></strong> <?php echo $cntctfrmtdb_contact_form_not_found . $cntctfrmtdb_contact_form_not_active; ?></p>
+					<p><strong><?php _e( 'WARNING:', 'contact-form-to-db'); ?></strong> <?php echo $contact_form_notice; ?></p>
 				</div>
 			<?php }
 		}
+
 		/* chech plugin settings and add notice */
 		if ( isset( $_REQUEST['page'] ) && 'cntctfrmtdb_manager' == $_REQUEST['page'] ) {
-			if ( ! isset( $cntctfrmtdb_options['cntctfrmtdb_save_messages_to_db'] ) )
+			if ( ! isset( $cntctfrmtdb_options['save_messages_to_db'] ) )
 				$cntctfrmtdb_options = get_option( 'cntctfrmtdb_options' );
 			
-			if ( isset( $cntctfrmtdb_options['cntctfrmtdb_save_messages_to_db'] ) && 0 == $cntctfrmtdb_options['cntctfrmtdb_save_messages_to_db'] ) {
+			if ( isset( $cntctfrmtdb_options['save_messages_to_db'] ) && 0 == $cntctfrmtdb_options['save_messages_to_db'] ) {
 				if ( ! isset( $bstwbsftwppdtplgns_cookie_add ) ) {
 					echo '<script type="text/javascript" src="' . plugins_url( '/bws_menu/js/c_o_o_k_i_e.js', __FILE__ ) . '"></script>';
 					$bstwbsftwppdtplgns_cookie_add = true;
-				}?>
+				} ?>
 				<script type="text/javascript">		
 					(function($) {
 						$(document).ready( function() {		
@@ -2094,32 +2116,27 @@ if ( ! function_exists ( 'cntctfrmtdb_delete_options' ) ) {
 	function cntctfrmtdb_delete_options() {
 		global $wpdb;
 		$all_plugins = get_plugins();
-		if ( is_multisite() ) {
-			/* Get all blog ids */
-			$blogids = $wpdb->get_col( "SELECT `blog_id` FROM $wpdb->blogs" );
-			$old_blog = $wpdb->blogid;
-			foreach ( $blogids as $blog_id ) {
-				switch_to_blog( $blog_id );
-				if ( ! array_key_exists( 'contact-form-to-db-pro/contact_form_to_db_pro.php', $all_plugins ) ) {
+		
+		if ( ! array_key_exists( 'contact-form-to-db-pro/contact_form_to_db_pro.php', $all_plugins ) ) {	
+			if ( is_multisite() ) {
+				/* Get all blog ids */
+				$blogids = $wpdb->get_col( "SELECT `blog_id` FROM $wpdb->blogs" );
+				$old_blog = $wpdb->blogid;
+				foreach ( $blogids as $blog_id ) {
+					switch_to_blog( $blog_id );
 					$prefix = 1 == $blog_id ? $wpdb->base_prefix . 'cntctfrmtdb_' : $wpdb->base_prefix . $blog_id . '_cntctfrmtdb_';
-					$sql = "DROP TABLE `" . $prefix . "message_status`, `" . $prefix . "blogname`, `" . $prefix . "to_email`, `" . $prefix . "hosted_site`, `" . $prefix . "refer`, `" . $prefix . "field_selection`, `" . $prefix . "message`;";
-					$wpdb->query( $sql );
-				}
-				delete_option( "cntctfrmtdb_options" );
-			}
-			switch_to_blog( $old_blog );
-			delete_option( "cntctfrmtdb_options" );
-		} else {
-			if ( ! array_key_exists( 'contact-form-to-db-pro/contact_form_to_db_pro.php', $all_plugins ) ) {
-				$prefix = $wpdb->prefix . 'cntctfrmtdb_';
-				$sql = "DROP TABLE `" . $prefix . "message_status`, `" . $prefix . "blogname`, `" . $prefix . "to_email`, `" . $prefix . "hosted_site`, `" . $prefix . "refer`, `" . $prefix . "field_selection`;";
-				$wpdb->query( $sql );
-			}
-			delete_option( "cntctfrmtdb_options" );
-		}
+					$wpdb->query( "DROP TABLE `" . $prefix . "message_status`,`" . $prefix . "blogname`,`" . $prefix . "to_email`,`" . $prefix . "hosted_site`, `" . $prefix . "refer`, `" . $prefix . "message`,`" . $prefix . "field_selection`;" );
 
-		/* delete images */
-		if ( ! array_key_exists( 'contact-form-to-db-pro/contact_form_to_db_pro.php', $all_plugins ) ) {			
+					delete_option( "cntctfrmtdb_options" );
+				}
+				switch_to_blog( $old_blog );
+			} else {
+				$prefix = $wpdb->prefix . 'cntctfrmtdb_';
+				$wpdb->query( "DROP TABLE `" . $prefix . "message_status`,`" . $prefix . "blogname`,`" . $prefix . "to_email`,`" . $prefix . "hosted_site`, `" . $prefix . "refer`, `" . $prefix . "message`,`" . $prefix . "field_selection`;" );
+				delete_option( "cntctfrmtdb_options" );
+			}			
+
+			/* delete images */				
 			if ( is_multisite() ) {
 				switch_to_blog( 1 );
 				$upload_dir = wp_upload_dir();
@@ -2158,7 +2175,7 @@ add_filter( 'plugin_row_meta', 'cntctfrmtdb_register_plugin_links', 10, 2 );
 add_action( 'cntctfrm_get_mail_data', 'cntctfrmtdb_get_mail_data', 10, 11 );
 add_action( 'cntctfrm_get_attachment_data', 'cntctfrmtdb_get_attachment_data' );
 add_action( 'cntctfrm_check_dispatch', 'cntctfrmtdb_check_dispatch', 10, 1 );
-add_filter('set-screen-option', 'cntctfrmtdb_set_screen_option', 10, 3);
+add_filter( 'set-screen-option', 'cntctfrmtdb_set_screen_option', 10, 3 );
 /*hooks for ajax */
 add_action( 'wp_ajax_cntctfrmtdb_read_message', 'cntctfrmtdb_read_message' );
 add_action( 'wp_ajax_cntctfrmtdb_show_attachment', 'cntctfrmtdb_show_attachment' );

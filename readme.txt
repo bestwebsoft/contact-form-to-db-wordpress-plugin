@@ -3,12 +3,12 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: browse messages, cf add on, contact button, contact form add on, contact form parameters, contact form plugin, contact form to db, save messages, download messages, contact us form, web page feedback, delete messages
 Requires at least: 3.8
-Tested up to: 4.5.3
-Stable tag: 1.5.5
+Tested up to: 4.6
+Stable tag: 1.5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The plugin allows you to manage messages that have been sent via the contact form on your site.
+Save and manage contact form messages. Never lose important data.
 
 == Description ==
 
@@ -67,7 +67,7 @@ We can fix some things for free for the users who provide translation of our plu
 
 1. Upload the `contact-form-to-db` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
-3. You can adjust the necessary settings using your WordPress admin panel in "BWS Plugins" > "Contact Form to DB".
+3. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "Contact Form to DB".
 
 <a href="https://docs.google.com/document/d/1dx6MPGmZuHAcnrW_iCCpPmliITVahUSmlkOjxNikUwE/edit" target="_blank">View a Step-by-step Instruction on Contact Form to DB Installation</a>.
 
@@ -108,6 +108,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 4. Spam page on the Contact Form to DB manager page display.
 
 == Changelog ==
+
+= V1.5.6 - 15.08.2016 =
+* Bugfix : Email sending time in accordance with time zone of the site has been set.
+* Update : All functionality for Contact Form 4.0.2 was updated.
+* Update : All functionality for WordPress 4.6 was updated.
 
 = V1.5.5 - 04.07.2016 =
 * Update : BWS panel section was updated.
@@ -220,6 +225,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * NEW : Ability to manage messages that have been sent from website from Contact Form Plugin by BestWebSoft.
 
 == Upgrade Notice ==
+
+= V1.5.6 =
+* Bugs fixed.
+* The compatibility with new WordPress version updated.
 
 = V1.5.5 =
 BWS panel section was updated. The French language file is updated.
