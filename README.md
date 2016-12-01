@@ -1,40 +1,131 @@
-<a href="http://bestwebsoft.com/products/contact-form-to-db/" target=_blank>Contact Form to DB WordPress Plugin</a>
+<a href="http://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/" target=_blank>Contact Form to DB WordPress Plugin</a>
 ========================
 
-Contact Form to DB plugin is an exclusive add-on for the Contact Form plugin by BestWebSoft.
+Save and manage Contact Form messages. Never lose important data.
 
-<img src="http://bestwebsoft.com/wp-content/uploads/2014/09/contact-form-to-db-banner-website.jpg" />
+<p>Contact Form to DB plugin is an exclusive add-on for the Contact Form plugin by BestWebSoft.</p>
 
-<a href="http://bestwebsoft.com/products/contact-form-to-db/description/" target=_blank>Description</a> | 
-<a href="http://bestwebsoft.com/products/contact-form-to-db/installation/" target=_blank>Installation</a> | 
-<a href="http://bestwebsoft.com/products/contact-form-to-db/faq/" target=_blank>FAQ</a> | 
-<a href="http://bestwebsoft.com/products/contact-form-to-db/screenshots/" target=_blank>Screenshots</a> | 
-<a href="http://bestwebsoft.com/products/contact-form-to-db/changelog/" target=_blank>Changelog</a> | 
-<a href="http://bestwebsoft.com/products/contact-form-to-db/download/" target=_blank>Download</a>
+<p>Save and manage messages sent from your WordPress website via Contact Form plugin. Search, view, delete, download, and re-send messages quickly right from your WordPress admin dashboard.</p>
 
+<p>Install, activate, and never lose important messages anymore!</p>
 
-Features
------------------------------
-* Save messages that have been sent from the site via the Contact Form to your database.
-* Manage messages (browse, delete and download messages) from Dashboard.
+<blockquote>
+  <p><strong>NOTE:</strong> Contact Form to DB plugin is an exclusive add-on to the <a href="http://bestwebsoft.com/products/contact-form/?k=1f9b7d7895c20420af788d9413ed8562">Contact Form</a> plugin and it will not work without it.</p>
+</blockquote>
 
 
-Translation
------------------------------
-* French (fr_FR) (thanks to Capronnier luc)
-* Japanese (ja) (thanks to Foken)
-* Russian (ru_RU)
-* Serbian (sr_RS) (thanks to Ognjen Djuraskovic, www.firstsiteguide.com)
-* Spain (es_ES) (thanks to Ognjen Djuraskovic, www.firstsiteguide.com)
-* Ukrainian (uk)
-
-If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text of PO and MO files</a> for <a href="http://support.bestwebsoft.com" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
+<div class='video'></div>
 
 
-Technical support
------------------------------
-Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in other languages won't be accepted.
+<h4>Free Features</h4>
 
-If you notice any bugs in the plugins, you can notify us about it and we'll investigate and fix the issue then. Your request should contain URL of the website, issues description and WordPress admin panel credentials.
-Moreover we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and share with the other users then.
-We can fix some things for free for the users who provide translation of our plugin into their native language (this should be a new translation of a certain plugin, you can check available translations on the official plugin page).
+<ul>
+<li>Automatically save messages to database</li>
+<li>Download stored messages in the following formats:
+
+<ul>
+<li>.xml</li>
+<li>.csv</li>
+<li>.eml</li>
+</ul></li>
+<li>View the following information about each message right from WordPress dashboard:
+
+<ul>
+<li>From</li>
+<li>Message</li>
+<li>Attachment</li>
+<li>Send counter</li>
+<li>Date send</li>
+</ul></li>
+<li>Sort messages by:
+
+<ul>
+<li>All</li>
+<li>Sent</li>
+<li>Not sent</li>
+<li>Read</li>
+<li>Unread</li>
+<li>Has attachments</li>
+<li>Spam</li>
+<li>Trash</li>
+</ul></li>
+<li>Manage messages using the following options:
+
+<ul>
+<li>View</li>
+<li>Download</li>
+<li>Delete</li>
+<li>Search</li>
+<li>Mark as Spam</li>
+<li>Mark as Trash</li>
+<li>Restore</li>
+<li>Delete Permanently</li>
+<li>Filter </li>
+</ul></li>
+<li>Compatible with latest WordPress version</li>
+<li>Incredibly simple settings for fast setup without modifying code</li>
+<li>Detailed step-by-step documentation and videos</li>
+</ul>
+
+<blockquote>
+  <p><strong>Pro Features</strong></p>
+  
+  <p>All features from Free version included plus:</p>
+  
+  <ul>
+  <li>Save attachments to:
+  
+  <ul>
+  <li>Database</li>
+  <li>Uploads</li>
+  </ul></li>
+  <li>Re-send messages</li>
+  <li>Automatically delete old messages based on time settings</li>
+  <li>Show attachments</li>
+  <li>Display images using Fancybox</li>
+  <li>Configure all subsites on the network</li>
+  <li>Get answer to your question within one business day (<a href="http://bestwebsoft.com/support-policy/">Support Policy</a>)</li>
+  </ul>
+  
+  <p><a href="http://bestwebsoft.com/products/contact-form-to-db/?k=52c469c463ea3722c39dd9c5d9ef54b2">Upgrade to Pro Now</a></p>
+</blockquote>
+
+<p>If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new">Suggest a Feature</a></p>
+
+<h4>Documentation &#38; Videos</h4>
+
+<ul>
+<li><a href="https://docs.google.com/document/d/1dx6MPGmZuHAcnrW_iCCpPmliITVahUSmlkOjxNikUwE/">[Doc] Installation</a></li>
+<li><a href="https://docs.google.com/document/d/1LUMSv24jAdurhauwSuKEw-Ij8YC4FAhIIDWA4zmh3cQ/">[Doc] Purchase, Installation &#38; Configuration</a></li>
+<li><a href="https://www.youtube.com/watch?v=nm0JXK9ro9E">[Video] Installation Instruction</a></li>
+</ul>
+
+<h4>Help &#38; Support</h4>
+
+<p>Visit our Help Center if you have any questions, our friendly Support Team is happy to help &#8212; <a href="http://support.bestwebsoft.com/">http://support.bestwebsoft.com/</a></p>
+
+<h4>Translation</h4>
+
+<ul>
+<li>French (fr_FR) (thanks to <a href="mailto:lcapronnier@yahoo.com">Capronnier luc</a>)</li>
+<li>Japanese (ja) (thanks to Foken)</li>
+<li>Russian (ru_RU)</li>
+<li>Serbian (sr_RS) (thanks to <a href="mailto:ognjend@firstsiteguide.com">Ognjen Djuraskovic</a>, <a href="http://www.firstsiteguide.com" rel="nofollow">http://www.firstsiteguide.com</a>)</li>
+<li>Spain (es_ES) (thanks to <a href="mailto:ognjend@firstsiteguide.com">Ognjen Djuraskovic</a>, <a href="http://www.firstsiteguide.com" rel="nofollow">http://www.firstsiteguide.com</a>)</li>
+<li>Ukrainian (uk)</li>
+</ul>
+
+<p>Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress">the text of PO and MO files</a> to <a href="http://support.bestwebsoft.com/hc/en-us/requests/new">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO <a href="http://www.poedit.net/download.php">files Poedit</a>.</p>
+
+<h4>Recommended Plugins</h4>
+
+<ul>
+<li><a href="http://bestwebsoft.com/products/updater/?k=d76bbcf46476f5ab4bb7950255a738a6">Updater</a> - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.</li>
+<li><a href="http://bestwebsoft.com/products/contact-form/?k=1f9b7d7895c20420af788d9413ed8562">Contact Form</a> - Allow customers to reach you using secure contact form plugin any website must have.</li>
+</ul>
+
+<h4>Donate</h4>
+
+<p>Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.</p>
+
+<p><a href="http://bestwebsoft.com/donate/">Donate Now</a></p>

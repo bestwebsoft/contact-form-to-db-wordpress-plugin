@@ -3,65 +3,110 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: browse messages, cf add on, contact button, contact form add on, contact form parameters, contact form plugin, contact form to db, save messages, download messages, contact us form, web page feedback, delete messages
 Requires at least: 3.8
-Tested up to: 4.6
+Tested up to: 4.6.1
 Stable tag: 1.5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Save and manage contact form messages. Never lose important data.
+Save and manage Contact Form messages. Never lose important data.
 
 == Description ==
 
 Contact Form to DB plugin is an exclusive add-on for the Contact Form plugin by BestWebSoft.
 
-The plugin provides a unique opportunity to manage messages sent from your site via the contact form. The list of its features is really impressive: messages can be saved, browsed, deleted or downloaded from the Dashboard. In case you decide to deactivate the plugin, it will serve as a repository for your old messages. Once you install and activate it, not a single message will be lost!
+Save and manage messages sent from your WordPress website via Contact Form plugin. Search, view, delete, download, and re-send messages quickly right from your WordPress admin dashboard.
 
-Please pay attention, that this plugin is an add-on ONLY for Contact Form plugin by BestWebSoft, that's why it will not work with any other contact form plugins. Contact Form to DB is compatible both with a free and a PRO version of Contact Form. There is also a premium version of the plugin, allowing to re-send and periodically delete old messages, manage attachments and get detailed support and answers to your questions within one business day.
+Install, activate, and never lose important messages anymore!
+
+> **NOTE:** Contact Form to DB plugin is an exclusive add-on to the [Contact Form](http://bestwebsoft.com/products/contact-form/?k=1f9b7d7895c20420af788d9413ed8562) plugin and it will not work without it.
 
 http://www.youtube.com/watch?v=agEWy6Hc-fY
 
-<a href="http://wordpress.org/plugins/contact-form-to-db/faq/" target="_blank">Contact Form to DB by BestWebSoft FAQ</a>
+= Free Features =
 
-<a href="http://support.bestwebsoft.com" target="_blank">Contact Form to DB by BestWebSoft Support</a>
+* Automatically save messages to database
+* Download stored messages in the following formats:
+	* .xml
+	* .csv
+	* .eml
+* View the following information about each message right from WordPress dashboard:
+	* From
+	* Message
+	* Attachment
+	* Send counter
+	* Date send
+* Sort messages by:
+	* All
+	* Sent
+	* Not sent
+	* Read
+	* Unread
+	* Has attachments
+	* Spam
+	* Trash
+* Manage messages using the following options:
+	* View
+	* Download
+	* Delete
+	* Search
+	* Mark as Spam
+	* Mark as Trash
+	* Restore
+	* Delete Permanently
+	* Filter 
+* Compatible with latest WordPress version
+* Incredibly simple settings for fast setup without modifying code
+* Detailed step-by-step documentation and videos
 
-<a href="http://bestwebsoft.com/products/contact-form-to-db/?k=52c469c463ea3722c39dd9c5d9ef54b2" target="_blank">Upgrade to Contact Form to DB Pro by BestWebSoft</a>
+> **Pro Features**
+>
+> All features from Free version included plus:
+>
+> * Save attachments to:
+> 	* Database
+> 	* Uploads
+> * Re-send messages
+> * Automatically delete old messages based on time settings
+> * Show attachments
+> * Display images using Fancybox
+> * Configure all subsites on the network
+> * Get answer to your question within one business day ([Support Policy](http://bestwebsoft.com/support-policy/))
+>
+> [Upgrade to Pro Now](http://bestwebsoft.com/products/contact-form-to-db/?k=52c469c463ea3722c39dd9c5d9ef54b2)
 
-<a href="http://bestwebsoft.com/products/contact-form/?k=1f9b7d7895c20420af788d9413ed8562" target="_blank">Contact Form Pro</a> 
+If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](http://support.bestwebsoft.com/hc/en-us/requests/new)
 
-<a href="http://wordpress.org/plugins/contact-form-plugin" target="_blank">Contact Form Plugin</a>
+= Documentation & Videos =
 
-= Features =
+* [[Doc] Installation](https://docs.google.com/document/d/1dx6MPGmZuHAcnrW_iCCpPmliITVahUSmlkOjxNikUwE/)
+* [[Doc] Purchase, Installation & Configuration](https://docs.google.com/document/d/1LUMSv24jAdurhauwSuKEw-Ij8YC4FAhIIDWA4zmh3cQ/)
+* [[Video] Installation Instruction](https://www.youtube.com/watch?v=nm0JXK9ro9E)
 
-* Save messages that have been sent from the site via the Contact Form to your database.
-* Manage messages (browse, delete and download messages) from Dashboard.
+= Help & Support =
 
-If you have a feature, suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">Suggest a Feature</a>
-
-= Recommended Plugins =
-
-The author of the Contact Form to DB also recommends the following plugins:
-
-* <a href="http://wordpress.org/plugins/updater/">Updater</a> - This plugin updates WordPress core and the plugins to the recent versions. You can also use the auto mode or manual mode for updating and set email notifications.
-There is also a premium version of the plugin <a href="http://bestwebsoft.com/products/updater/?k=d76bbcf46476f5ab4bb7950255a738a6">Updater Pro</a> with more useful features available. It can make backup of all your files and database before updating. Also it can forbid some plugins or WordPress Core update.
+Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <http://support.bestwebsoft.com/>
 
 = Translation =
 
-* French (fr_FR) (thanks to <a href="mailto:lcapronnier@yahoo.com">Capronnier luc</a>)
+* French (fr_FR) (thanks to [Capronnier luc](mailto:lcapronnier@yahoo.com))
 * Japanese (ja) (thanks to Foken)
 * Russian (ru_RU)
-* Serbian (sr_RS) (thanks to <a href="mailto:ognjend@firstsiteguide.com">Ognjen Djuraskovic</a>, www.firstsiteguide.com)
-* Spain (es_ES) (thanks to <a href="mailto:ognjend@firstsiteguide.com">Ognjen Djuraskovic</a>, www.firstsiteguide.com)
+* Serbian (sr_RS) (thanks to [Ognjen Djuraskovic](mailto:ognjend@firstsiteguide.com), www.firstsiteguide.com)
+* Spain (es_ES) (thanks to [Ognjen Djuraskovic](mailto:ognjend@firstsiteguide.com), www.firstsiteguide.com)
 * Ukrainian (uk)
 
-Some of these translations are not complete. We are constantly adding new features which should be translated. If you create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text in PO and MO files</a> for <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
+Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](http://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
 
-= Technical support =
+= Recommended Plugins =
 
-Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in other languages won't be accepted.
+* [Updater](http://bestwebsoft.com/products/updater/?k=d76bbcf46476f5ab4bb7950255a738a6) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
+* [Contact Form](http://bestwebsoft.com/products/contact-form/?k=1f9b7d7895c20420af788d9413ed8562) - Allow customers to reach you using secure contact form plugin any website must have.
 
-If you notice any bugs in the plugins, you can notify us about it and we'll investigate and fix the issue then. Your request should contain URL of the website, issues description and WordPress admin panel credentials.
-Moreover we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and share with the other users then. 
-We can fix some things for free for the users who provide translation of our plugin into their native language (this should be a new translation of a certain plugin, you can check available translations on the official plugin page).
+= Donate =
+
+Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.
+
+[Donate Now](http://bestwebsoft.com/donate/)
 
 == Installation ==
 
@@ -69,7 +114,7 @@ We can fix some things for free for the users who provide translation of our plu
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
 3. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "Contact Form to DB".
 
-<a href="https://docs.google.com/document/d/1dx6MPGmZuHAcnrW_iCCpPmliITVahUSmlkOjxNikUwE/edit" target="_blank">View a Step-by-step Instruction on Contact Form to DB Installation</a>.
+[View a Step-by-step Instruction on Contact Form to DB Installation](https://docs.google.com/document/d/1dx6MPGmZuHAcnrW_iCCpPmliITVahUSmlkOjxNikUwE/)
 
 == Frequently Asked Questions ==
 
@@ -93,12 +138,12 @@ Click on "Screen Options" button in the right top corner on manager page and des
 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
-Please make sure that the problem hasn't been discussed yet on our forum (<a href="http://support.bestwebsoft.com" target="_blank">http://support.bestwebsoft.com</a>). If no, please provide the following data along with your problem's description:
+Please make sure that the problem hasn't been discussed yet on our forum (<http://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
 
 1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
-4. copy and paste into the message your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit" target="_blank">Instruction on System Status</a>
+4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit)
 
 == Screenshots ==
 
