@@ -1,16 +1,16 @@
 <?php 
 /*
 Plugin Name: Contact Form to DB by BestWebSoft
-Plugin URI: http://bestwebsoft.com/products/contact-form-to-db/
+Plugin URI: https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/
 Description: Save and manage contact form messages. Never lose important data.
 Author: BestWebSoft
 Text Domain: contact-form-to-db
 Domain Path: /languages
-Version: 1.5.6
-Author URI: http://bestwebsoft.com/
+Version: 1.5.7
+Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
-/*  @ Copyright 2016  BestWebSoft  ( http://support.bestwebsoft.com )
+/*  @ Copyright 2017  BestWebSoft  ( https://support.bestwebsoft.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
@@ -328,7 +328,7 @@ if ( ! function_exists( 'cntctfrmtdb_settings_page' ) ) {
 			<h1>Contact Form to DB <?php _e( "Settings", 'contact-form-to-db' ); ?></h1>
 			<h2 class="nav-tab-wrapper">
 				<a class="nav-tab<?php if ( isset( $_GET['page'] ) && 'cntctfrmtdb_settings' == $_GET['page'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=cntctfrmtdb_settings"><?php _e( 'Settings', 'contact-form-to-db' ); ?></a>
-				<a class="bws_plugin_menu_pro_version nav-tab" href="http://bestwebsoft.com/products/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=<?php echo $cntctfrmtdb_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="<?php _e( 'This setting is available in Pro version', 'contact-form-to-db' ); ?>"><?php _e( 'User guide', 'contact-form-to-db' ); ?></a>
+				<a class="bws_plugin_menu_pro_version nav-tab" href="https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=<?php echo $cntctfrmtdb_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="<?php _e( 'This setting is available in Pro version', 'contact-form-to-db' ); ?>"><?php _e( 'User guide', 'contact-form-to-db' ); ?></a>
 				<a class="nav-tab bws_go_pro_tab<?php if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=cntctfrmtdb_settings&amp;action=go_pro"><?php _e( 'Go PRO', 'contact-form-to-db' ); ?></a>
 			</h2>			
 			<div class="error below-h2 below-h2" <?php if ( "" == $error ) echo "style=\"display:none\""; ?>><p><strong><?php echo $error; ?></strong></p></div>
@@ -431,10 +431,7 @@ if ( ! function_exists( 'cntctfrmtdb_settings_page' ) ) {
 									</table>	
 								</div>
 								<div class="bws_pro_version_tooltip">
-									<div class="bws_info">
-										<?php _e( 'Unlock premium options by upgrading to Pro version', 'contact-form-to-db' ); ?> 
-									</div>
-									<a class="bws_button" href="http://bestwebsoft.com/products/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=<?php echo $cntctfrmtdb_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Contact Form to DB Pro"><?php _e( 'Learn More', 'contact-form-to-db' ); ?></a>
+									<a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=<?php echo $cntctfrmtdb_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Contact Form to DB Pro"><?php _e( 'Learn More', 'contact-form-to-db' ); ?></a>
 									<div class="clear"></div>					
 								</div>
 							</div>
@@ -1884,7 +1881,7 @@ if ( ! function_exists( 'cntctfrmtdb_manager_page' ) ) {
  		$cntctfrmtdb_manager->prepare_items();
  		if ( ! $bws_hide_premium_options_check ) { ?>
 			<div class="cntctfrmtdb-help-pages">
-				<a href="http://bestwebsoft.com/products/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=<?php echo $cntctfrmtdb_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" title="<?php _e( 'This option is available in Pro version', 'contact-form-to-db' ); ?>"><span class="user-guide-icon"></span><?php _e( 'User Guide', 'contact-form-to-db' ); ?></a>
+				<a href="https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=<?php echo $cntctfrmtdb_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" title="<?php _e( 'This option is available in Pro version', 'contact-form-to-db' ); ?>"><span class="user-guide-icon"></span><?php _e( 'User Guide', 'contact-form-to-db' ); ?></a>
 			</div>
 		<?php } ?>
 		<div class="wrap cntctfrmtdb">			
@@ -1933,7 +1930,7 @@ if ( ! function_exists( 'cntctfrmtdb_show_attachment' ) ) {
 		if ( isset( $_POST['action'] ) && 'cntctfrmtdb_show_attachment' == $_POST['action'] ) {
 			global $wp_version, $cntctfrmtdb_plugin_info;
 			echo '<td valign="middle" class="cntctfrmtdb-thumbnail">
-				<a href="http://bestwebsoft.com/products/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=' . $cntctfrmtdb_plugin_info["Version"] . '&wp_v=' . $wp_version . '" title="' . __( 'This option is available in Pro version', 'contact-form-to-db' ) . '">
+				<a href="https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=' . $cntctfrmtdb_plugin_info["Version"] . '&wp_v=' . $wp_version . '" title="' . __( 'This option is available in Pro version', 'contact-form-to-db' ) . '">
 					<img src="' . plugins_url( 'images/no-image.jpg', __FILE__ ) . '" title="' . __( 'This option is available in Pro version', 'contact-form-to-db' ) . '" alt="' . __( 'Can not display thumbnail','contact_form_to_db_plugin' ) . '" />
 				</a>
 			</td>';
@@ -2001,8 +1998,8 @@ if ( ! function_exists( 'cntctfrmtdb_register_plugin_links' ) ) {
 		if ( $file == $base ) {
 			if ( ! is_network_admin() )
 				$links[] = '<a href="admin.php?page=cntctfrmtdb_settings">' . __( 'Settings','contact-form-to-db' ) . '</a>';
-			$links[] = '<a href="http://wordpress.org/plugins/contact-form-to-db/faq/" target="_blank">' . __( 'FAQ','contact-form-to-db' ) . '</a>';
-			$links[] = '<a href="http://support.bestwebsoft.com">' . __( 'Support','contact-form-to-db' ) . '</a>';
+			$links[] = '<a href="https://support.bestwebsoft.com/hc/en-us/sections/200538679" target="_blank">' . __( 'FAQ','contact-form-to-db' ) . '</a>';
+			$links[] = '<a href="https://support.bestwebsoft.com">' . __( 'Support','contact-form-to-db' ) . '</a>';
 		}
 		return $links;
 	}
@@ -2023,7 +2020,7 @@ if ( ! function_exists( 'cntctfrmtdb_show_notices' ) ) {
 			$all_plugins = get_plugins();
 			
 			if ( ! ( array_key_exists( 'contact-form-plugin/contact_form.php', $all_plugins ) || array_key_exists( 'contact-form-pro/contact_form_pro.php', $all_plugins ) ) ) {
-				$contact_form_notice = __( 'Contact Form Plugin is not found.</br>You need install and activate this plugin for correct  work with Contact Form to DB plugin.</br>You can download Contact Form Plugin from ', 'contact-form-to-db' ) . '<a href="' . esc_url( 'http://bestwebsoft.com/products/contact-form/' ) . '" title="' . __( 'Developers website', 'contact-form-to-db' ). '"target="_blank">' . __( 'website of plugin Authors ', 'contact-form-to-db' ) . '</a>' . __( 'or ', 'contact-form-to-db' ) . '<a href="' . esc_url( 'http://wordpress.org/plugins/contact-form-plugin/' ) .'" title="Wordpress" target="_blank">'. __( 'WordPress.', 'contact-form-to-db' ) . '</a>';
+				$contact_form_notice = __( 'Contact Form Plugin is not found.</br>You need install and activate this plugin for correct  work with Contact Form to DB plugin.</br>You can download Contact Form Plugin from ', 'contact-form-to-db' ) . '<a href="' . esc_url( 'https://bestwebsoft.com/products/wordpress/plugins/contact-form/' ) . '" title="' . __( 'Developers website', 'contact-form-to-db' ). '"target="_blank">' . __( 'website of plugin Authors ', 'contact-form-to-db' ) . '</a>' . __( 'or ', 'contact-form-to-db' ) . '<a href="' . esc_url( 'http://wordpress.org/plugins/contact-form-plugin/' ) .'" title="Wordpress" target="_blank">'. __( 'WordPress.', 'contact-form-to-db' ) . '</a>';
 			} else {
 				$contact_form_notice = '';
 				if ( ! ( is_plugin_active( 'contact-form-plugin/contact_form.php' ) || is_plugin_active( 'contact-form-pro/contact_form_pro.php' ) ) ) {

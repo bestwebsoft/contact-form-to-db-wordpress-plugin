@@ -678,11 +678,11 @@ msgstr "Увімкніть її, щоб зберігати повідомлен�
 
 #~ msgid ""
 #~ "Something went wrong. Try again later. If the error will appear again, "
-#~ "please, contact us <a href=http://support.bestwebsoft.com>BestWebSoft</"
+#~ "please, contact us <a href=https://support.bestwebsoft.com>BestWebSoft</"
 #~ "a>. We are sorry for inconvenience."
 #~ msgstr ""
 #~ "Щось не так, спробуйте пізніше. Якщо помилка повториться, будь ласка, "
-#~ "повідомте нам <a href=http://support.bestwebsoft.com>BestWebSoft</a>. "
+#~ "повідомте нам <a href=https://support.bestwebsoft.com>BestWebSoft</a>. "
 #~ "Просимо вибачення за незручності"
 
 #~ msgid "This license key is bind to another site"
@@ -1988,9 +1988,9 @@ msgstr "Увімкніть її, щоб зберігати повідомлен�
 #~ msgstr "Пример: Date/Time:\tAugust 19, 2013 8:50 pm"
 
 #~ msgid ""
-#~ "Example: Sent from (referer):\thttp://bestwebsoft.com/contacts/contact-us/"
+#~ "Example: Sent from (referer):\thttps://bestwebsoft.com/contacts/contact-us/"
 #~ msgstr ""
-#~ "Пример: Sent from (referer):\thttp://bestwebsoft.com/contacts/contact-us/"
+#~ "Пример: Sent from (referer):\thttps://bestwebsoft.com/contacts/contact-us/"
 
 #~ msgid "Using (user agent)"
 #~ msgstr "Используя (user agent)"

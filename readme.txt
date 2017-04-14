@@ -1,10 +1,10 @@
 === Contact Form to DB by BestWebSoft ===
 Contributors: bestwebsoft
-Donate link: http://bestwebsoft.com/donate/
+Donate link: https://bestwebsoft.com/donate/
 Tags: browse messages, cf add on, contact button, contact form add on, contact form parameters, contact form plugin, contact form to db, save messages, download messages, contact us form, web page feedback, delete messages
 Requires at least: 3.8
-Tested up to: 4.6.1
-Stable tag: 1.5.6
+Tested up to: 4.7.3
+Stable tag: 1.5.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ Save and manage messages sent from your WordPress website via Contact Form plugi
 
 Install, activate, and never lose important messages anymore!
 
-> **NOTE:** Contact Form to DB plugin is an exclusive add-on to the [Contact Form](http://bestwebsoft.com/products/contact-form/?k=1f9b7d7895c20420af788d9413ed8562) plugin and it will not work without it.
+> **NOTE:** Contact Form to DB plugin is an exclusive add-on to the [Contact Form](https://bestwebsoft.com/products/wordpress/plugins/contact-form/?k=1f9b7d7895c20420af788d9413ed8562) plugin and it will not work without it.
 
 http://www.youtube.com/watch?v=agEWy6Hc-fY
 
@@ -57,6 +57,7 @@ http://www.youtube.com/watch?v=agEWy6Hc-fY
 * Compatible with latest WordPress version
 * Incredibly simple settings for fast setup without modifying code
 * Detailed step-by-step documentation and videos
+* Multilingual and RTL ready
 
 > **Pro Features**
 >
@@ -70,21 +71,21 @@ http://www.youtube.com/watch?v=agEWy6Hc-fY
 > * Show attachments
 > * Display images using Fancybox
 > * Configure all subsites on the network
-> * Get answer to your question within one business day ([Support Policy](http://bestwebsoft.com/support-policy/))
+> * Get answer to your question within one business day ([Support Policy](https://bestwebsoft.com/support-policy/))
 >
-> [Upgrade to Pro Now](http://bestwebsoft.com/products/contact-form-to-db/?k=52c469c463ea3722c39dd9c5d9ef54b2)
+> [Upgrade to Pro Now](https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=52c469c463ea3722c39dd9c5d9ef54b2)
 
-If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](http://support.bestwebsoft.com/hc/en-us/requests/new)
+If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](https://support.bestwebsoft.com/hc/en-us/requests/new)
 
 = Documentation & Videos =
 
-* [[Doc] Installation](https://docs.google.com/document/d/1dx6MPGmZuHAcnrW_iCCpPmliITVahUSmlkOjxNikUwE/)
-* [[Doc] Purchase, Installation & Configuration](https://docs.google.com/document/d/1LUMSv24jAdurhauwSuKEw-Ij8YC4FAhIIDWA4zmh3cQ/)
+* [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
+* [[Doc] Purchase](https://docs.google.com/document/d/1EUdBVvnm7IHZ6y0DNyldZypUQKpB8UVPToSc_LdOYQI/)
 * [[Video] Installation Instruction](https://www.youtube.com/watch?v=nm0JXK9ro9E)
 
 = Help & Support =
 
-Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <http://support.bestwebsoft.com/>
+Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <https://support.bestwebsoft.com/>
 
 = Translation =
 
@@ -95,18 +96,12 @@ Visit our Help Center if you have any questions, our friendly Support Team is ha
 * Spain (es_ES) (thanks to [Ognjen Djuraskovic](mailto:ognjend@firstsiteguide.com), www.firstsiteguide.com)
 * Ukrainian (uk)
 
-Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](http://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
+Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](https://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
 
 = Recommended Plugins =
 
-* [Updater](http://bestwebsoft.com/products/updater/?k=d76bbcf46476f5ab4bb7950255a738a6) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
-* [Contact Form](http://bestwebsoft.com/products/contact-form/?k=1f9b7d7895c20420af788d9413ed8562) - Allow customers to reach you using secure contact form plugin any website must have.
-
-= Donate =
-
-Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.
-
-[Donate Now](http://bestwebsoft.com/donate/)
+* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=d76bbcf46476f5ab4bb7950255a738a6) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
+* [Contact Form](https://bestwebsoft.com/products/wordpress/plugins/contact-form/?k=1f9b7d7895c20420af788d9413ed8562) - Allow customers to reach you using secure contact form plugin any website must have.
 
 == Installation ==
 
@@ -114,7 +109,7 @@ Donations play an important role in supporting open-source projects. We greatly 
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
 3. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "Contact Form to DB".
 
-[View a Step-by-step Instruction on Contact Form to DB Installation](https://docs.google.com/document/d/1dx6MPGmZuHAcnrW_iCCpPmliITVahUSmlkOjxNikUwE/)
+[View a Step-by-step Instruction on Contact Form to DB Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
 
 == Frequently Asked Questions ==
 
@@ -138,7 +133,7 @@ Click on "Screen Options" button in the right top corner on manager page and des
 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
-Please make sure that the problem hasn't been discussed yet on our forum (<http://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
+Please make sure that the problem hasn't been discussed yet on our forum (<https://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
 
 1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
@@ -153,6 +148,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 4. Spam page on the Contact Form to DB manager page display.
 
 == Changelog ==
+
+= V1.5.7 - 14.04.2017 =
+* Bugfix : Multiple Cross-Site Scripting (XSS) vulnerability was fixed.
 
 = V1.5.6 - 15.08.2016 =
 * Bugfix : Email sending time in accordance with time zone of the site has been set.
@@ -270,6 +268,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 * NEW : Ability to manage messages that have been sent from website from Contact Form Plugin by BestWebSoft.
 
 == Upgrade Notice ==
+
+= V1.5.7 =
+* Bugs fixed.
 
 = V1.5.6 =
 * Bugs fixed.

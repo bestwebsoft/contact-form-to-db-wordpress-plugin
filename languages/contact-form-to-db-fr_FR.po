@@ -1609,9 +1609,9 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ msgstr "Exemple: Date/Heure:\tAoût 19, 2013 8:50pm"
 
 #~ msgid ""
-#~ "Example: Sent from (referer):\thttp://bestwebsoft.com/contacts/contact-us/"
+#~ "Example: Sent from (referer):\thttps://bestwebsoft.com/contacts/contact-us/"
 #~ msgstr ""
-#~ "Exemple: Envoyer de (referer):\thttp://bestwebsoft.com/contacts/contact-"
+#~ "Exemple: Envoyer de (referer):\thttps://bestwebsoft.com/contacts/contact-"
 #~ "us/"
 
 #~ msgid "Using (user agent)"

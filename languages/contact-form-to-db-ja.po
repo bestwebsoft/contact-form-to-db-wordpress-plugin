@@ -687,11 +687,11 @@ msgstr "Contact Formからメッセージを保存するためには、有効に
 
 #~ msgid ""
 #~ "Something went wrong. Try again later. If the error will appear again, "
-#~ "please, contact us <a href=http://support.bestwebsoft.com>BestWebSoft</"
+#~ "please, contact us <a href=https://support.bestwebsoft.com>BestWebSoft</"
 #~ "a>. We are sorry for inconvenience."
 #~ msgstr ""
 #~ "何かおかしいようです。暫くして再度お試し下さい。もし、同じエラーが発生する"
-#~ "ようでしたら、<a href=http://support.bestwebsoft.com>BestWebSoft</a>.まで"
+#~ "ようでしたら、<a href=https://support.bestwebsoft.com>BestWebSoft</a>.まで"
 #~ "ご連絡下さい。大変申し訳ございません。"
 
 #~ msgid "This license key is bind to another site"
@@ -2047,9 +2047,9 @@ msgstr "Contact Formからメッセージを保存するためには、有効に
 #~ msgstr "Пример: Date/Time:\tAugust 19, 2013 8:50 pm"
 
 #~ msgid ""
-#~ "Example: Sent from (referer):\thttp://bestwebsoft.com/contacts/contact-us/"
+#~ "Example: Sent from (referer):\thttps://bestwebsoft.com/contacts/contact-us/"
 #~ msgstr ""
-#~ "Пример: Sent from (referer):\thttp://bestwebsoft.com/contacts/contact-us/"
+#~ "Пример: Sent from (referer):\thttps://bestwebsoft.com/contacts/contact-us/"
 
 #~ msgid "Using (user agent)"
 #~ msgstr "Используя (user agent)"
