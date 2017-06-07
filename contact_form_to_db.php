@@ -6,7 +6,7 @@ Description: Save and manage contact form messages. Never lose important data.
 Author: BestWebSoft
 Text Domain: contact-form-to-db
 Domain Path: /languages
-Version: 1.5.7
+Version: 1.5.8
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -64,7 +64,7 @@ if ( ! function_exists( 'cntctfrmtdb_init' ) ) {
 		}
 
 		/* Function check if plugin is compatible with current WP version  */
-		bws_wp_min_version_check( plugin_basename( __FILE__ ), $cntctfrmtdb_plugin_info, '3.8' );
+		bws_wp_min_version_check( plugin_basename( __FILE__ ), $cntctfrmtdb_plugin_info, '3.9' );
 
 		/* Call register settings function */
 		$cntctfrmtdb_pages = array(
@@ -122,23 +122,12 @@ if ( ! function_exists( 'cntctfrmtdb_settings' ) ) {
 
 		/* Array merge in case this version has added new options */
 		if ( ! isset( $cntctfrmtdb_options['plugin_option_version'] ) || $cntctfrmtdb_options['plugin_option_version'] != $cntctfrmtdb_plugin_info["Version"] ) {
-			/**
-			* @deprecated since 1.5.6
-			* @todo remove after 12.03.2017
-			*/
-			foreach ( $cntctfrmtdb_option_defaults as $key => $value ) {
-				if ( isset( $cntctfrmtdb_options['cntctfrmtdb_' . $key ] ) ) {
-					$cntctfrmtdb_options[ $key ] = $cntctfrmtdb_options['cntctfrmtdb_' . $key ];
-					unset( $cntctfrmtdb_options['cntctfrmtdb_' . $key ] );
-				}
-			}		
-
 			$cntctfrmtdb_options = array_merge( $cntctfrmtdb_option_defaults, $cntctfrmtdb_options );
 			$cntctfrmtdb_options['plugin_option_version'] = $cntctfrmtdb_plugin_info["Version"];
 			/* show pro features */
 			$cntctfrmtdb_options['hide_premium_options'] = array();
 			$update_option = true;
-		}	
+		}
 
 		/* create or update db table */
 		if ( ! isset( $cntctfrmtdb_options['plugin_db_version'] ) || $cntctfrmtdb_options['plugin_db_version'] != $cntctfrmtdb_db_version ) {
@@ -262,7 +251,7 @@ if ( ! function_exists ( 'cntctfrmtdb_admin_head' ) ) {
 
 		wp_enqueue_style( 'cntctfrmtdb_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
 
-		if ( isset( $_REQUEST['page'] ) && in_array( $_REQUEST['page'], $cntctfrmtdb_pages ) ) {			
+		if ( isset( $_REQUEST['page'] ) && in_array( $_REQUEST['page'], $cntctfrmtdb_pages ) ) {
 			$script_vars = array(
 				'letter'           => __( 'Letter' , 'contact-form-to-db' ),
 				'spam'             => __( 'Spam!' , 'contact-form-to-db' ),
@@ -272,6 +261,7 @@ if ( ! function_exists ( 'cntctfrmtdb_admin_head' ) ) {
 			);
 			wp_enqueue_script( 'cntctfrmtdb_script', plugins_url( 'js/script.js', __FILE__ ) );
 			wp_localize_script( 'cntctfrmtdb_script', 'cntctfrmtdb', $script_vars );
+			bws_enqueue_settings_scripts();
 		}
 	}
 }
@@ -328,7 +318,6 @@ if ( ! function_exists( 'cntctfrmtdb_settings_page' ) ) {
 			<h1>Contact Form to DB <?php _e( "Settings", 'contact-form-to-db' ); ?></h1>
 			<h2 class="nav-tab-wrapper">
 				<a class="nav-tab<?php if ( isset( $_GET['page'] ) && 'cntctfrmtdb_settings' == $_GET['page'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=cntctfrmtdb_settings"><?php _e( 'Settings', 'contact-form-to-db' ); ?></a>
-				<a class="bws_plugin_menu_pro_version nav-tab" href="https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=<?php echo $cntctfrmtdb_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="<?php _e( 'This setting is available in Pro version', 'contact-form-to-db' ); ?>"><?php _e( 'User guide', 'contact-form-to-db' ); ?></a>
 				<a class="nav-tab bws_go_pro_tab<?php if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=cntctfrmtdb_settings&amp;action=go_pro"><?php _e( 'Go PRO', 'contact-form-to-db' ); ?></a>
 			</h2>			
 			<div class="error below-h2 below-h2" <?php if ( "" == $error ) echo "style=\"display:none\""; ?>><p><strong><?php echo $error; ?></strong></p></div>
@@ -462,26 +451,7 @@ if ( ! function_exists( 'cntctfrm_options_for_this_plugin' ) ) {
 	function cntctfrm_options_for_this_plugin() {
 		global $cntctfrm_options_for_this_plugin;
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		/**
-		* @deprecated since 1.5.6
-		* @todo update after 12.03.2017
-		*/
-		if ( is_plugin_active( 'contact-form-plugin/contact_form.php' ) ) {
-			$cntctfrm_options_for_this_plugin = get_option( 'cntctfrm_options' );
-		} elseif ( is_plugin_active( 'contact-form-pro/contact_form_pro.php' ) ) {				
-			$cntctfrm_options_for_this_plugin = get_option( 'cntctfrmpr_options' );
-			if ( empty( $cntctfrm_options_for_this_plugin ) )
-				$cntctfrm_options_for_this_plugin = get_option( 'cntctfrm_options' );
-		}
-		/**
-		* @deprecated since 1.5.6
-		* @todo remove after 12.03.2017
-		*/
-		foreach ( $cntctfrm_options_for_this_plugin as $key => $value ) {
-			if ( ! is_array( $value ) ) {
-				$cntctfrm_options_for_this_plugin[ str_replace( 'cntctfrm_', '', $key ) ] = $value;
-			}
-		}
+		$cntctfrm_options_for_this_plugin = get_option( 'cntctfrm_options' );
 	}
 }
 
@@ -536,18 +506,6 @@ if ( ! function_exists( 'cntctfrmtdb_get_mail_data' ) ) {
 
 			if ( isset( $cntctfrm_options_for_this_plugin['departments']['name'][ $_POST['cntctfrm_department'] ] ) )
 				$cntctfrmtdb_mail_data['department'] = cntctfrmtdb_clear_data( $cntctfrm_options_for_this_plugin['departments']['name'][ $_POST['cntctfrm_department'] ] );
-		} else
-			/**
-			* @deprecated since 1.5.6
-			* @todo update after 12.03.2017
-			*/
-			if ( isset( $_POST['cntctfrmpr_department'] ) ) {			
-			global $cntctfrmpr_options;
-			if ( empty( $cntctfrmpr_options ) )
-				$cntctfrmpr_options = get_option( 'cntctfrmpr_options' );
-
-			if ( isset( $cntctfrmpr_options['departments']['name'][ $_POST['cntctfrmpr_department'] ] ) )
-				$cntctfrmtdb_mail_data['department'] = cntctfrmtdb_clear_data( $cntctfrmpr_options['departments']['name'][ $_POST['cntctfrmpr_department'] ] );
 		}  
 	}
 }
@@ -1756,13 +1714,13 @@ if ( ! class_exists( 'Cntctfrmtdb_Manager' ) ) {
 				/* fill "status" column */
 				$the_message_status = '<a href="' . wp_nonce_url( '?page=cntctfrmtdb_manager&action=change_status&status=' . $value->status_id . '&message_id[]=' . $value->id, $plugin_basename, 'cntctfrmtdb_manager_nonce_name' ) .  '">';
 				if ( '1' == $value->status_id )
-					$the_message_status .= '<div class="cntctfrmtdb-letter" title="'. __( 'Mark as Spam', 'contact-form-to-db' ) . '">' . $value->status_id . '</div>';
+					$the_message_status .= '<span class="cntctfrmtdb-letter" title="'. __( 'Mark as Spam', 'contact-form-to-db' ) . '">' . $value->status_id . '</span>';
 				elseif ( '2' == $value->status_id )
-					$the_message_status .= '<div class="cntctfrmtdb-spam" title="'. __( 'Mark as Trash', 'contact-form-to-db' ) . '">' . $value->status_id . '</div>';
+					$the_message_status .= '<span class="cntctfrmtdb-spam" title="'. __( 'Mark as Trash', 'contact-form-to-db' ) . '">' . $value->status_id . '</span>';
 				elseif ( '3' == $value->status_id )
-					$the_message_status .= '<div class="cntctfrmtdb-trash" title="'. __( 'in Trash', 'contact-form-to-db' ) . '">' . $value->status_id . '</div>';
+					$the_message_status .= '<span class="cntctfrmtdb-trash" title="'. __( 'in Trash', 'contact-form-to-db' ) . '">' . $value->status_id . '</span>';
 				else
-					$the_message_status .= '<div class="cntctfrmtdb-unknown" title="'. __( 'unknown status', 'contact-form-to-db' ) . '">' . $value->status_id . '</div>';
+					$the_message_status .= '<span class="cntctfrmtdb-unknown" title="'. __( 'unknown status', 'contact-form-to-db' ) . '">' . $value->status_id . '</span>';
 				$the_message_status .= '</a>';
 				
 				$from_data = '<a class="from-name';
@@ -1876,14 +1834,8 @@ if ( ! function_exists( 'cntctfrmtdb_set_screen_option' ) ) {
 */
 if ( ! function_exists( 'cntctfrmtdb_manager_page' ) ) {
 	function cntctfrmtdb_manager_page() {
- 		global $cntctfrmtdb_manager, $wp_version, $wpdb, $cntctfrmtdb_options, $cntctfrmtdb_done_message, $cntctfrmtdb_error_message, $cntctfrmtdb_plugin_info, $cntctfrmtdb_manager;
- 		$bws_hide_premium_options_check = bws_hide_premium_options_check( $cntctfrmtdb_options );
- 		$cntctfrmtdb_manager->prepare_items();
- 		if ( ! $bws_hide_premium_options_check ) { ?>
-			<div class="cntctfrmtdb-help-pages">
-				<a href="https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=<?php echo $cntctfrmtdb_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" title="<?php _e( 'This option is available in Pro version', 'contact-form-to-db' ); ?>"><span class="user-guide-icon"></span><?php _e( 'User Guide', 'contact-form-to-db' ); ?></a>
-			</div>
-		<?php } ?>
+ 		global $cntctfrmtdb_done_message, $cntctfrmtdb_error_message, $cntctfrmtdb_manager;
+ 		$cntctfrmtdb_manager->prepare_items(); ?>
 		<div class="wrap cntctfrmtdb">			
 			<h1>Contact Form to DB</h1>
 			<noscript>
@@ -1930,7 +1882,7 @@ if ( ! function_exists( 'cntctfrmtdb_show_attachment' ) ) {
 		if ( isset( $_POST['action'] ) && 'cntctfrmtdb_show_attachment' == $_POST['action'] ) {
 			global $wp_version, $cntctfrmtdb_plugin_info;
 			echo '<td valign="middle" class="cntctfrmtdb-thumbnail">
-				<a href="https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=' . $cntctfrmtdb_plugin_info["Version"] . '&wp_v=' . $wp_version . '" title="' . __( 'This option is available in Pro version', 'contact-form-to-db' ) . '">
+				<a href="https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=' . $cntctfrmtdb_plugin_info["Version"] . '&wp_v=' . $wp_version . '" title="' . __( 'This option is available in Pro version', 'contact-form-to-db' ) . '" target="_blank">
 					<img src="' . plugins_url( 'images/no-image.jpg', __FILE__ ) . '" title="' . __( 'This option is available in Pro version', 'contact-form-to-db' ) . '" alt="' . __( 'Can not display thumbnail','contact_form_to_db_plugin' ) . '" />
 				</a>
 			</td>';
@@ -2037,7 +1989,7 @@ if ( ! function_exists( 'cntctfrmtdb_show_notices' ) ) {
 				}
 			}
 			if ( ! empty( $contact_form_notice ) ) { ?>
-				<div class="error below-h2">
+				<div class="error notice">
 					<p><strong><?php _e( 'WARNING:', 'contact-form-to-db'); ?></strong> <?php echo $contact_form_notice; ?></p>
 				</div>
 			<?php }
@@ -2085,7 +2037,7 @@ if ( ! function_exists( 'cntctfrmtdb_show_notices' ) ) {
 			bws_plugin_banner_to_settings( $cntctfrmtdb_plugin_info, 'cntctfrmtdb_options', 'contact-form-to-db', 'admin.php?page=cntctfrmtdb_settings' );
 		}
 
-		if ( isset( $_REQUEST['page'] ) && in_array( $_REQUEST['page'], $cntctfrmtdb_pages ) ) {
+		if ( isset( $_REQUEST['page'] ) && 'cntctfrmtdb_settings' == $_REQUEST['page'] ) {
 			bws_plugin_suggest_feature_banner( $cntctfrmtdb_plugin_info, 'cntctfrmtdb_options', 'contact-form-to-db' );
 		}
 	}

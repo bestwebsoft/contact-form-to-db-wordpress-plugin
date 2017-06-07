@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Contact Form to DB\n"
+"Project-Id-Version: Contact Form to DB 1.5.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-04 13:29+0300\n"
-"PO-Revision-Date: 2016-07-04 13:29+0300\n"
+"POT-Creation-Date: 2017-05-26 15:49+0300\n"
+"PO-Revision-Date: 2017-05-26 15:49+0300\n"
 "Last-Translator: Luc Capronnier <lcapronnier@yahoo.com>\n"
 "Language-Team: Luc Capronnier <lcapronnier@yahoo.com>\n"
 "Language: fr_FR\n"
@@ -15,26 +15,534 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2;plural=n>2;\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: contact_form_to_db.php:257
+#: contact_form_to_db.php:256
 msgid "Letter"
 msgstr "Lettre"
 
-#: contact_form_to_db.php:258
+#: contact_form_to_db.php:257
 msgid "Spam!"
 msgstr "Spam!"
 
-#: contact_form_to_db.php:259 contact_form_to_db.php:1769
+#: contact_form_to_db.php:258 contact_form_to_db.php:1720
 msgid "in Trash"
 msgstr "dans la poubelle"
 
-#: contact_form_to_db.php:260
+#: contact_form_to_db.php:259
 msgid "Status was not changed"
 msgstr "L'état n'a pas été changé"
 
-#: contact_form_to_db.php:281
+#: contact_form_to_db.php:294
+msgid "Settings saved."
+msgstr "Options enregistrées."
+
+#: contact_form_to_db.php:304
+msgid "All plugin settings were restored."
+msgstr "Oui, remettre les valeurs par défaut"
+
+#: contact_form_to_db.php:317 contact_form_to_db.php:319
+#: contact_form_to_db.php:1935 contact_form_to_db.php:1951
+msgid "Settings"
+msgstr "Réglages"
+
+#: contact_form_to_db.php:320
+msgid "Go PRO"
+msgstr "Choisir la version PRO"
+
+#: contact_form_to_db.php:335
+msgid "Save messages to database"
+msgstr "Enregistrer les messages dans la base de données"
+
+#: contact_form_to_db.php:341
+msgid "Download messages in"
+msgstr "Télécharger les messages dans "
+
+#: contact_form_to_db.php:348
+msgid "format"
+msgstr "format"
+
+#: contact_form_to_db.php:350
+msgid "Input symbols for separator and enclosure"
+msgstr "Symboles de saisi pour les séparateurs et l'enveloppe"
+
+#: contact_form_to_db.php:356
+msgid " separator"
+msgstr "séparateur"
+
+#: contact_form_to_db.php:362
+msgid " enclosure"
+msgstr "enveloppe"
+
+#: contact_form_to_db.php:370
+msgid "Close"
+msgstr "Fermer"
+
+#: contact_form_to_db.php:374
+msgid "Save attachments"
+msgstr "Enregistrer les pièces jointes"
+
+#: contact_form_to_db.php:381
+msgid "Save attachments to database."
+msgstr "Enregistrer les pièces jointes dans la base de données."
+
+#: contact_form_to_db.php:383
+msgid "Save attachments to \"Uploads\"."
+msgstr "Enregistrer les pièces jointes dans \"Uploads\"."
+
+#: contact_form_to_db.php:389
+msgid "Periodically delete old messages"
+msgstr "Supprimer les vieux messages de manière périodique"
+
+#: contact_form_to_db.php:394
+msgid "every 24 hours"
+msgstr "toutes les 24 heures"
+
+#: contact_form_to_db.php:395
+msgid "every 3 days"
+msgstr "tous les 3 jours"
+
+#: contact_form_to_db.php:396
+msgid "every 1 week"
+msgstr "toutes les semaines"
+
+#: contact_form_to_db.php:397
+msgid "every 2 weeks"
+msgstr "toutes les 2  semaines"
+
+#: contact_form_to_db.php:398
+msgid "every 1 month"
+msgstr "tous les mois"
+
+#: contact_form_to_db.php:399
+msgid "every 6 months"
+msgstr "tous les 6 mois"
+
+#: contact_form_to_db.php:400
+msgid "every 1 year"
+msgstr "tous les ans"
+
+#: contact_form_to_db.php:402
+msgid ""
+"(All messages older than the specified period will be deleted at the end of "
+"the same period)"
+msgstr ""
+"(Tous les messages plus anciens que la période définie seront supprimés à la "
+"fin de la période)"
+
+#: contact_form_to_db.php:407
+msgid "Show attachments"
+msgstr "Montrer les pièces jointes"
+
+#: contact_form_to_db.php:411
+msgid "Use fancybox to image view"
+msgstr "Utiliser fancybox pour voir les images"
+
+#: contact_form_to_db.php:416
+msgid "If you upgrade to Pro version all your settings will be saved."
+msgstr ""
+"Si vous passez à  la version Pro, tous ces paramètres seront enregistrés."
+
+#: contact_form_to_db.php:422
+msgid "Learn More"
+msgstr "En savoir plus"
+
+#: contact_form_to_db.php:429
+msgid "Save Changes"
+msgstr "Enregistrer les modifications"
+
+#: contact_form_to_db.php:858
+msgid "Contact from to DB"
+msgstr "Contact de vers la base"
+
+#: contact_form_to_db.php:868
+msgid "This message was re-sent from "
+msgstr "Ce message a été ré-envoyé de"
+
+#: contact_form_to_db.php:871
+msgid "Name"
+msgstr "Nom"
+
+#: contact_form_to_db.php:876
+msgid "Address"
+msgstr "Adresse"
+
+#: contact_form_to_db.php:881
+msgid "Email"
+msgstr "E-mail"
+
+#: contact_form_to_db.php:886
+msgid "Phone"
+msgstr "Téléphone"
+
+#: contact_form_to_db.php:891
+msgid "Subject"
+msgstr "Sujet"
+
+#: contact_form_to_db.php:894 contact_form_to_db.php:1484
+msgid "Message"
+msgstr "Message"
+
+#: contact_form_to_db.php:897
+msgid "Site"
+msgstr "Site"
+
+#: contact_form_to_db.php:927
+msgid "Sent from (ip address)"
+msgstr "Envoyé de (adresse IP)"
+
+#: contact_form_to_db.php:932
+msgid "Date/Time"
+msgstr "Date/Heure"
+
+#: contact_form_to_db.php:937 contact_form_to_db.php:943
+msgid "Sent from (referer)"
+msgstr "Envoyer de (référence)"
+
+#: contact_form_to_db.php:956 contact_form_to_db.php:958
+msgid "From: "
+msgstr "De :"
+
+#: contact_form_to_db.php:959
+msgid "To: "
+msgstr "A :"
+
+#: contact_form_to_db.php:960
+msgid "Subject: "
+msgstr "Sujet :"
+
+#: contact_form_to_db.php:961
+msgid "Date/Time: "
+msgstr "Date/Heure :"
+
+#: contact_form_to_db.php:1057
+msgid "Sent from (ip address): "
+msgstr "Envoyé de (adresse IP) :"
+
+#: contact_form_to_db.php:1101
+msgid "Can not create XML-files."
+msgstr "Impossible de créer les fichiers XML."
+
+#: contact_form_to_db.php:1105
+msgid "Can not create ZIP-archive."
+msgstr "Impossible de créer l'archive ZIP."
+
+#: contact_form_to_db.php:1109
+msgid "Unknown format."
+msgstr "Format inconnu."
+
+#: contact_form_to_db.php:1129
+msgid "One message was deleted successfully."
+msgstr "Un message a été supprimé."
+
+#: contact_form_to_db.php:1129
+msgid "messages were deleted successfully."
+msgstr "des messages ont été supprimés."
+
+#: contact_form_to_db.php:1131
+msgid "There are some problems while deleting message."
+msgstr "Il y a des problèmes pour supprimer le message."
+
+#: contact_form_to_db.php:1150 contact_form_to_db.php:1226
+#: contact_form_to_db.php:1908
+msgid "One message was marked as Spam."
+msgstr "Un message a été marqué comme spam."
+
+#: contact_form_to_db.php:1150
+msgid "messages were marked as Spam."
+msgstr "des messages ont été marqués comme spam."
+
+#: contact_form_to_db.php:1151 contact_form_to_db.php:1173
+#: contact_form_to_db.php:1226 contact_form_to_db.php:1229
+#: contact_form_to_db.php:1908 contact_form_to_db.php:1911
+msgid "Undo"
+msgstr "Annuler"
+
+#: contact_form_to_db.php:1153
+msgid "Problems while marking messages as Spam."
+msgstr "Il y a des problèmes pour marquer les messages comme spam."
+
+#: contact_form_to_db.php:1172
+msgid "One message was moved to Trash."
+msgstr "Un message a été déplacé dans la poubelle."
+
+#: contact_form_to_db.php:1172
+msgid "messages were moved to Trash."
+msgstr "des messages ont été déplacés dans la poubelle."
+
+#: contact_form_to_db.php:1175
+msgid "Problems while moving messages to Trash."
+msgstr "Il y a des problèmes pour déplacer les messages dans la poubelle."
+
+#: contact_form_to_db.php:1175 contact_form_to_db.php:1846
+msgid "Please, try it later."
+msgstr "Merci d'essayer plus tard."
+
+#: contact_form_to_db.php:1191 contact_form_to_db.php:1207
+msgid "One message was restored."
+msgstr "Un message a été restauré."
+
+#: contact_form_to_db.php:1191 contact_form_to_db.php:1207
+msgid "messages were restored."
+msgstr "des messages ont été restaurés."
+
+#: contact_form_to_db.php:1193 contact_form_to_db.php:1209
+msgid "Problems during the restoration messages"
+msgstr "Il y a des problèmes pendant la restauration des messages."
+
+#: contact_form_to_db.php:1223 contact_form_to_db.php:1905
+msgid "One message was marked as Normal."
+msgstr "Un message a été marqué comme normal."
+
+#: contact_form_to_db.php:1229 contact_form_to_db.php:1911
+msgid "One message was marked as Trash."
+msgstr "Un message a été marqué supprimer."
+
+#: contact_form_to_db.php:1232 contact_form_to_db.php:1914
+msgid "Unknown result."
+msgstr "Résultat inconnu."
+
+#: contact_form_to_db.php:1236
+msgid "Problems while changing status of message."
+msgstr "Il y a des problèmes pour modifier l'état du message."
+
+#: contact_form_to_db.php:1245
+msgid "Unknown action."
+msgstr "Action inconnue."
+
+#: contact_form_to_db.php:1341
+msgid ""
+"Can not handle request. May be you need choose some messages to handle them."
+msgstr ""
+"Impossible de traiter la demande. Peut-être faut-il sélectionner quelques "
+"messages avant de faire l'action."
+
+#: contact_form_to_db.php:1402
+msgid "message"
+msgstr "message"
+
+#: contact_form_to_db.php:1403
+msgid "messages"
+msgstr "messages"
+
+#: contact_form_to_db.php:1440
+msgid "No messages that have been sent."
+msgstr "Aucun message envoyé."
+
+#: contact_form_to_db.php:1442
+msgid "No messages that have not been sent."
+msgstr "Aucun message non envoyé."
+
+#: contact_form_to_db.php:1444
+msgid "No messages that have was read."
+msgstr "Aucun message lu."
+
+#: contact_form_to_db.php:1446
+msgid "No messages that have was not read."
+msgstr "Aucun message non lu."
+
+#: contact_form_to_db.php:1448
+msgid "No messages that have attachments."
+msgstr "Aucun message avec pièce jointe."
+
+#: contact_form_to_db.php:1450
+msgid "No messages that was marked as Spam."
+msgstr "Aucun message marquer comme spam."
+
+#: contact_form_to_db.php:1452
+msgid "No messages that was marked as Trash."
+msgstr "Aucun message marquer comme supprimer."
+
+#: contact_form_to_db.php:1454
+msgid "No messages found."
+msgstr "Pas de messages trouvés."
+
+#: contact_form_to_db.php:1483
+msgid "From"
+msgstr "De"
+
+#: contact_form_to_db.php:1485
+msgid "Attachment"
+msgstr "Pièce-jointe"
+
+#: contact_form_to_db.php:1486
+msgid "Send Counter"
+msgstr "Compteur d'envoi"
+
+#: contact_form_to_db.php:1487
+msgid "Date"
+msgstr "Date"
+
+#: contact_form_to_db.php:1491
+msgid "Department"
+msgstr "Département"
+
+#: contact_form_to_db.php:1523
+msgid "All"
+msgstr "Tous"
+
+#: contact_form_to_db.php:1524
+msgid "Sent"
+msgstr "Envoyé"
+
+#: contact_form_to_db.php:1525
+msgid "Not sent"
+msgstr "Pas envoyé"
+
+#: contact_form_to_db.php:1526
+msgid "Read"
+msgstr "Lu"
+
+#: contact_form_to_db.php:1527
+msgid "Unread"
+msgstr "Non lu"
+
+#: contact_form_to_db.php:1528
+msgid "Has attachments"
+msgstr "A des pièces jointes"
+
+#: contact_form_to_db.php:1529 contact_form_to_db.php:1624
+msgid "Spam"
+msgstr "Spam"
+
+#: contact_form_to_db.php:1530 contact_form_to_db.php:1625
+#: contact_form_to_db.php:1634
+msgid "Trash"
+msgstr "Poubelle"
+
+#: contact_form_to_db.php:1573
+msgid "Filter by department"
+msgstr "Filtrer par département"
+
+#: contact_form_to_db.php:1575
+msgid "All departments"
+msgstr "Tous les départements"
+
+#: contact_form_to_db.php:1580
+msgid "Filter"
+msgstr "Filtrer"
+
+#: contact_form_to_db.php:1592
+msgid "Download messages"
+msgstr "Téléchargement des messages"
+
+#: contact_form_to_db.php:1593 contact_form_to_db.php:1716
+msgid "Mark as Spam"
+msgstr "Marquer comme un spam"
+
+#: contact_form_to_db.php:1596
+msgid "Not Spam"
+msgstr "Pas un spam"
+
+#: contact_form_to_db.php:1598 contact_form_to_db.php:1630
+msgid "Restore"
+msgstr "Restaurer"
+
+#: contact_form_to_db.php:1600 contact_form_to_db.php:1632
+msgid "Delete Permanently"
+msgstr "Supprimer définitivement"
+
+#: contact_form_to_db.php:1602 contact_form_to_db.php:1718
+msgid "Mark as Trash"
+msgstr "Mettre dans la poubelle"
+
+#: contact_form_to_db.php:1604
+msgid "Re-send messages"
+msgstr "Ré-envoyer les messages"
+
+#: contact_form_to_db.php:1605
+msgid "Download attachments"
+msgstr "Télécharger les pièces jointes"
+
+#: contact_form_to_db.php:1621 contact_form_to_db.php:1767
+#: contact_form_to_db.php:1768 contact_form_to_db.php:1774
+#: contact_form_to_db.php:1884 contact_form_to_db.php:1885
+msgid "This option is available in Pro version"
+msgstr "Cette option est disponible dans la version Pro"
+
+#: contact_form_to_db.php:1621
+msgid "Re-send Message"
+msgstr "Re-soumettre le message"
+
+#: contact_form_to_db.php:1623
+msgid "Download Message"
+msgstr "Téléchargement du message"
+
+#: contact_form_to_db.php:1628
+msgid "Not spam"
+msgstr "Pas un spam"
+
+#: contact_form_to_db.php:1722
+msgid "unknown status"
+msgstr "état inconnu"
+
+#: contact_form_to_db.php:1732
+msgid "Unknown name"
+msgstr "Nom inconnu"
+
+#: contact_form_to_db.php:1757
+msgid "No text in this message"
+msgstr "Pas de texte dans le message"
+
+#: contact_form_to_db.php:1767
+msgid "Download"
+msgstr "Téléchargement"
+
+#: contact_form_to_db.php:1768
+msgid "View"
+msgstr "Voir"
+
+#: contact_form_to_db.php:1781
+msgid "The number of dispatches"
+msgstr "Nombre d'envois"
+
+#: contact_form_to_db.php:1783
+msgid "This message was not sent"
+msgstr "Ce message n'a pas été envoyé"
+
+#: contact_form_to_db.php:1816
+msgid "Letters per page"
+msgstr "Nombre de messages par page"
+
+#: contact_form_to_db.php:1842 contact_form_to_db.php:1846
+#: contact_form_to_db.php:1914 contact_form_to_db.php:1918
+#: contact_form_to_db.php:1992
+msgid "WARNING:"
+msgstr "ATTENTION :"
+
+#: contact_form_to_db.php:1842
+msgid "For fully-functional work of plugin, please, enable javascript."
+msgstr ""
+"Pour avoir une extension avec toutes ses fonctions, merci d'activer le java-"
+"script."
+
+#: contact_form_to_db.php:1848
+#, php-format
+msgid "Search results for &#8220;%s&#8221;"
+msgstr "Résultats de la recherche pour &#8220;%s&#8221;"
+
+#: contact_form_to_db.php:1853
+msgid "Search mails"
+msgstr "Rechercher des messages"
+
+#: contact_form_to_db.php:1885
+msgid "Can not display thumbnail"
+msgstr "Impossible d'afficher les vignettes"
+
+#: contact_form_to_db.php:1918
+msgid "Problems while changing status of message. Please, try it later."
+msgstr "Problèmes lors du changement d'état d'un message. Merci de ré-essayer."
+
+#: contact_form_to_db.php:1952
+msgid "FAQ"
+msgstr "FAQ"
+
+#: contact_form_to_db.php:1953
+msgid "Support"
+msgstr "Support"
+
+#: contact_form_to_db.php:1974
 msgid ""
 "Contact Form Plugin is not found.</br>You need install and activate this "
 "plugin for correct  work with Contact Form to DB plugin.</br>You can "
@@ -45,23 +553,23 @@ msgstr ""
 "Contact Form to DB.<br />Vous pouvez télécharger l'extension Contact Form à "
 "partir de "
 
-#: contact_form_to_db.php:281
+#: contact_form_to_db.php:1974
 msgid "Developers website"
 msgstr "Site web des développeurs"
 
-#: contact_form_to_db.php:281
+#: contact_form_to_db.php:1974
 msgid "website of plugin Authors "
 msgstr "site web de l'auteur de l'extension"
 
-#: contact_form_to_db.php:281
+#: contact_form_to_db.php:1974
 msgid "or "
 msgstr "ou"
 
-#: contact_form_to_db.php:281
+#: contact_form_to_db.php:1974
 msgid "WordPress."
 msgstr "WordPress."
 
-#: contact_form_to_db.php:284
+#: contact_form_to_db.php:1978
 msgid ""
 "Contact Form Plugin is not active.</br>You need activate this plugin for "
 "correct work with Contact Form to DB plugin."
@@ -69,11 +577,11 @@ msgstr ""
 "L'extension Contact Form n'est pas active.<br />Vous devez activer cette "
 "extension pour que l'extension Contact Form to DB fonctionne correctement."
 
-#: contact_form_to_db.php:286
+#: contact_form_to_db.php:1980
 msgid "Activate plugin"
 msgstr "Activer l'extension"
 
-#: contact_form_to_db.php:291
+#: contact_form_to_db.php:1985
 msgid ""
 "Contact Form Plugin has old version.</br>You need update this plugin for "
 "correct work with Contact Form to DB plugin."
@@ -82,540 +590,15 @@ msgstr ""
 "mettre à jour cette extension pour que l'extension Contact Form to DB "
 "fonctionne correctement."
 
-#: contact_form_to_db.php:293
+#: contact_form_to_db.php:1987
 msgid "Update plugin"
 msgstr "Mettre à jour l'extension"
 
-#: contact_form_to_db.php:328
-msgid "Settings saved."
-msgstr "Options enregistrées."
-
-#: contact_form_to_db.php:338
-msgid "All plugin settings were restored."
-msgstr "Oui, remettre les valeurs par défaut"
-
-#: contact_form_to_db.php:351 contact_form_to_db.php:353
-#: contact_form_to_db.php:1990 contact_form_to_db.php:2006
-msgid "Settings"
-msgstr "Réglages"
-
-#: contact_form_to_db.php:354
-msgid "This setting is available in Pro version"
-msgstr "Cette option est disponible dans la version Pro de l'extension"
-
-#: contact_form_to_db.php:354
-msgid "User guide"
-msgstr "Guide de l'utilisateur"
-
-#: contact_form_to_db.php:355
-msgid "Go PRO"
-msgstr "Choisir la version PRO"
-
-#: contact_form_to_db.php:370
-msgid "Save messages to database"
-msgstr "Enregistrer les messages dans la base de données"
-
-#: contact_form_to_db.php:376
-msgid "Download messages in"
-msgstr "Télécharger les messages dans "
-
-#: contact_form_to_db.php:383
-msgid "format"
-msgstr "format"
-
-#: contact_form_to_db.php:385
-msgid "Input symbols for separator and enclosure"
-msgstr "Symboles de saisi pour les séparateurs et l'enveloppe"
-
-#: contact_form_to_db.php:391
-msgid " separator"
-msgstr "séparateur"
-
-#: contact_form_to_db.php:397
-msgid " enclosure"
-msgstr "enveloppe"
-
-#: contact_form_to_db.php:405
-msgid "Close"
-msgstr "Fermer"
-
-#: contact_form_to_db.php:409
-msgid "Save attachments"
-msgstr "Enregistrer les pièces jointes"
-
-#: contact_form_to_db.php:416
-msgid "Save attachments to database."
-msgstr "Enregistrer les pièces jointes dans la base de données."
-
-#: contact_form_to_db.php:418
-msgid "Save attachments to \"Uploads\"."
-msgstr "Enregistrer les pièces jointes dans \"Uploads\"."
-
-#: contact_form_to_db.php:424
-msgid "Periodically delete old messages"
-msgstr "Supprimer les vieux messages de manière périodique"
-
-#: contact_form_to_db.php:429
-msgid "every 24 hours"
-msgstr "toutes les 24 heures"
-
-#: contact_form_to_db.php:430
-msgid "every 3 days"
-msgstr "tous les 3 jours"
-
-#: contact_form_to_db.php:431
-msgid "every 1 week"
-msgstr "toutes les semaines"
-
-#: contact_form_to_db.php:432
-msgid "every 2 weeks"
-msgstr "toutes les 2  semaines"
-
-#: contact_form_to_db.php:433
-msgid "every 1 month"
-msgstr "tous les mois"
-
-#: contact_form_to_db.php:434
-msgid "every 6 months"
-msgstr "tous les 6 mois"
-
-#: contact_form_to_db.php:435
-msgid "every 1 year"
-msgstr "tous les ans"
-
-#: contact_form_to_db.php:437
-msgid ""
-"(All messages older than the specified period will be deleted at the end of "
-"the same period)"
-msgstr ""
-"(Tous les messages plus anciens que la période définie seront supprimés à la "
-"fin de la période)"
-
-#: contact_form_to_db.php:442
-msgid "Show attachments"
-msgstr "Montrer les pièces jointes"
-
-#: contact_form_to_db.php:446
-msgid "Use fancybox to image view"
-msgstr "Utiliser fancybox pour voir les images"
-
-#: contact_form_to_db.php:451
-msgid "If you upgrade to Pro version all your settings will be saved."
-msgstr ""
-"Si vous passez à  la version Pro, tous ces paramètres seront enregistrés."
-
-#: contact_form_to_db.php:458
-msgid "Unlock premium options by upgrading to Pro version"
-msgstr "Débloquer les options premium en migrant vers la version PRO"
-
-#: contact_form_to_db.php:460
-msgid "Learn More"
-msgstr "En savoir plus"
-
-#: contact_form_to_db.php:467
-msgid "Save Changes"
-msgstr "Enregistrer les modifications"
-
-#: contact_form_to_db.php:906
-msgid "Contact from to DB"
-msgstr "Contact de vers la base"
-
-#: contact_form_to_db.php:916
-msgid "This message was re-sent from "
-msgstr "Ce message a été ré-envoyé de"
-
-#: contact_form_to_db.php:919
-msgid "Name"
-msgstr "Nom"
-
-#: contact_form_to_db.php:924
-msgid "Address"
-msgstr "Adresse"
-
-#: contact_form_to_db.php:929
-msgid "Email"
-msgstr "E-mail"
-
-#: contact_form_to_db.php:934
-msgid "Phone"
-msgstr "Téléphone"
-
-#: contact_form_to_db.php:939
-msgid "Subject"
-msgstr "Sujet"
-
-#: contact_form_to_db.php:942 contact_form_to_db.php:1533
-msgid "Message"
-msgstr "Message"
-
-#: contact_form_to_db.php:945
-msgid "Site"
-msgstr "Site"
-
-#: contact_form_to_db.php:975
-msgid "Sent from (ip address)"
-msgstr "Envoyé de (adresse IP)"
-
-#: contact_form_to_db.php:980
-msgid "Date/Time"
-msgstr "Date/Heure"
-
-#: contact_form_to_db.php:985 contact_form_to_db.php:991
-msgid "Sent from (referer)"
-msgstr "Envoyer de (référence)"
-
-#: contact_form_to_db.php:1004 contact_form_to_db.php:1006
-msgid "From: "
-msgstr "De :"
-
-#: contact_form_to_db.php:1007
-msgid "To: "
-msgstr "A :"
-
-#: contact_form_to_db.php:1008
-msgid "Subject: "
-msgstr "Sujet :"
-
-#: contact_form_to_db.php:1009
-msgid "Date/Time: "
-msgstr "Date/Heure :"
-
-#: contact_form_to_db.php:1105
-msgid "Sent from (ip address): "
-msgstr "Envoyé de (adresse IP) :"
-
-#: contact_form_to_db.php:1149
-msgid "Can not create XML-files."
-msgstr "Impossible de créer les fichiers XML."
-
-#: contact_form_to_db.php:1153
-msgid "Can not create ZIP-archive."
-msgstr "Impossible de créer l'archive ZIP."
-
-#: contact_form_to_db.php:1157
-msgid "Unknown format."
-msgstr "Format inconnu."
-
-#: contact_form_to_db.php:1177
-msgid "One message was deleted successfully."
-msgstr "Un message a été supprimé."
-
-#: contact_form_to_db.php:1177
-msgid "messages were deleted successfully."
-msgstr "des messages ont été supprimés."
-
-#: contact_form_to_db.php:1179
-msgid "There are some problems while deleting message."
-msgstr "Il y a des problèmes pour supprimer le message."
-
-#: contact_form_to_db.php:1198 contact_form_to_db.php:1274
-#: contact_form_to_db.php:1963
-msgid "One message was marked as Spam."
-msgstr "Un message a été marqué comme spam."
-
-#: contact_form_to_db.php:1198
-msgid "messages were marked as Spam."
-msgstr "des messages ont été marqués comme spam."
-
-#: contact_form_to_db.php:1199 contact_form_to_db.php:1221
-#: contact_form_to_db.php:1274 contact_form_to_db.php:1277
-#: contact_form_to_db.php:1963 contact_form_to_db.php:1966
-msgid "Undo"
-msgstr "Annuler"
-
-#: contact_form_to_db.php:1201
-msgid "Problems while marking messages as Spam."
-msgstr "Il y a des problèmes pour marquer les messages comme spam."
-
-#: contact_form_to_db.php:1220
-msgid "One message was moved to Trash."
-msgstr "Un message a été déplacé dans la poubelle."
-
-#: contact_form_to_db.php:1220
-msgid "messages were moved to Trash."
-msgstr "des messages ont été déplacés dans la poubelle."
-
-#: contact_form_to_db.php:1223
-msgid "Problems while moving messages to Trash."
-msgstr "Il y a des problèmes pour déplacer les messages dans la poubelle."
-
-#: contact_form_to_db.php:1223 contact_form_to_db.php:1901
-msgid "Please, try it later."
-msgstr "Merci d'essayer plus tard."
-
-#: contact_form_to_db.php:1239 contact_form_to_db.php:1255
-msgid "One message was restored."
-msgstr "Un message a été restauré."
-
-#: contact_form_to_db.php:1239 contact_form_to_db.php:1255
-msgid "messages were restored."
-msgstr "des messages ont été restaurés."
-
-#: contact_form_to_db.php:1241 contact_form_to_db.php:1257
-msgid "Problems during the restoration messages"
-msgstr "Il y a des problèmes pendant la restauration des messages."
-
-#: contact_form_to_db.php:1271 contact_form_to_db.php:1960
-msgid "One message was marked as Normal."
-msgstr "Un message a été marqué comme normal."
-
-#: contact_form_to_db.php:1277 contact_form_to_db.php:1966
-msgid "One message was marked as Trash."
-msgstr "Un message a été marqué supprimer."
-
-#: contact_form_to_db.php:1280 contact_form_to_db.php:1969
-msgid "Unknown result."
-msgstr "Résultat inconnu."
-
-#: contact_form_to_db.php:1284
-msgid "Problems while changing status of message."
-msgstr "Il y a des problèmes pour modifier l'état du message."
-
-#: contact_form_to_db.php:1293
-msgid "Unknown action."
-msgstr "Action inconnue."
-
-#: contact_form_to_db.php:1389
-msgid ""
-"Can not handle request. May be you need choose some messages to handle them."
-msgstr ""
-"Impossible de traiter la demande. Peut-être faut-il sélectionner quelques "
-"messages avant de faire l'action."
-
-#: contact_form_to_db.php:1451
-msgid "message"
-msgstr "message"
-
-#: contact_form_to_db.php:1452
-msgid "messages"
-msgstr "messages"
-
-#: contact_form_to_db.php:1489
-msgid "No messages that have been sent."
-msgstr "Aucun message envoyé."
-
-#: contact_form_to_db.php:1491
-msgid "No messages that have not been sent."
-msgstr "Aucun message non envoyé."
-
-#: contact_form_to_db.php:1493
-msgid "No messages that have was read."
-msgstr "Aucun message lu."
-
-#: contact_form_to_db.php:1495
-msgid "No messages that have was not read."
-msgstr "Aucun message non lu."
-
-#: contact_form_to_db.php:1497
-msgid "No messages that have attachments."
-msgstr "Aucun message avec pièce jointe."
-
-#: contact_form_to_db.php:1499
-msgid "No messages that was marked as Spam."
-msgstr "Aucun message marquer comme spam."
-
-#: contact_form_to_db.php:1501
-msgid "No messages that was marked as Trash."
-msgstr "Aucun message marquer comme supprimer."
-
-#: contact_form_to_db.php:1503
-msgid "No messages found."
-msgstr "Pas de messages trouvés."
-
-#: contact_form_to_db.php:1532
-msgid "From"
-msgstr "De"
-
-#: contact_form_to_db.php:1534
-msgid "Attachment"
-msgstr "Pièce-jointe"
-
-#: contact_form_to_db.php:1535
-msgid "Send Counter"
-msgstr "Compteur d'envoi"
-
-#: contact_form_to_db.php:1536
-msgid "Date"
-msgstr "Date"
-
-#: contact_form_to_db.php:1540
-msgid "Department"
-msgstr "Département"
-
-#: contact_form_to_db.php:1572
-msgid "All"
-msgstr "Tous"
-
-#: contact_form_to_db.php:1573
-msgid "Sent"
-msgstr "Envoyé"
-
-#: contact_form_to_db.php:1574
-msgid "Not sent"
-msgstr "Pas envoyé"
-
-#: contact_form_to_db.php:1575
-msgid "Read"
-msgstr "Lu"
-
-#: contact_form_to_db.php:1576
-msgid "Unread"
-msgstr "Non lu"
-
-#: contact_form_to_db.php:1577
-msgid "Has attachments"
-msgstr "A des pièces jointes"
-
-#: contact_form_to_db.php:1578 contact_form_to_db.php:1673
-msgid "Spam"
-msgstr "Spam"
-
-#: contact_form_to_db.php:1579 contact_form_to_db.php:1674
-#: contact_form_to_db.php:1683
-msgid "Trash"
-msgstr "Poubelle"
-
-#: contact_form_to_db.php:1622
-msgid "Filter by department"
-msgstr "Filtrer par département"
-
-#: contact_form_to_db.php:1624
-msgid "All departments"
-msgstr "Tous les départements"
-
-#: contact_form_to_db.php:1629
-msgid "Filter"
-msgstr "Filtrer"
-
-#: contact_form_to_db.php:1641
-msgid "Download messages"
-msgstr "Téléchargement des messages"
-
-#: contact_form_to_db.php:1642 contact_form_to_db.php:1765
-msgid "Mark as Spam"
-msgstr "Marquer comme un spam"
-
-#: contact_form_to_db.php:1645
-msgid "Not Spam"
-msgstr "Pas un spam"
-
-#: contact_form_to_db.php:1647 contact_form_to_db.php:1679
-msgid "Restore"
-msgstr "Restaurer"
-
-#: contact_form_to_db.php:1649 contact_form_to_db.php:1681
-msgid "Delete Permanently"
-msgstr "Supprimer définitivement"
-
-#: contact_form_to_db.php:1651 contact_form_to_db.php:1767
-msgid "Mark as Trash"
-msgstr "Mettre dans la poubelle"
-
-#: contact_form_to_db.php:1653
-msgid "Re-send messages"
-msgstr "Ré-envoyer les messages"
-
-#: contact_form_to_db.php:1654
-msgid "Download attachments"
-msgstr "Télécharger les pièces jointes"
-
-#: contact_form_to_db.php:1670 contact_form_to_db.php:1816
-#: contact_form_to_db.php:1817 contact_form_to_db.php:1823
-#: contact_form_to_db.php:1890 contact_form_to_db.php:1939
-#: contact_form_to_db.php:1940
-msgid "This option is available in Pro version"
-msgstr "Cette option est disponible dans la version Pro"
-
-#: contact_form_to_db.php:1670
-msgid "Re-send Message"
-msgstr "Re-soumettre le message"
-
-#: contact_form_to_db.php:1672
-msgid "Download Message"
-msgstr "Téléchargement du message"
-
-#: contact_form_to_db.php:1677
-msgid "Not spam"
-msgstr "Pas un spam"
-
-#: contact_form_to_db.php:1771
-msgid "unknown status"
-msgstr "état inconnu"
-
-#: contact_form_to_db.php:1781
-msgid "Unknown name"
-msgstr "Nom inconnu"
-
-#: contact_form_to_db.php:1806
-msgid "No text in this message"
-msgstr "Pas de texte dans le message"
-
-#: contact_form_to_db.php:1816
-msgid "Download"
-msgstr "Téléchargement"
-
-#: contact_form_to_db.php:1817
-msgid "View"
-msgstr "Voir"
-
-#: contact_form_to_db.php:1830
-msgid "The number of dispatches"
-msgstr "Nombre d'envois"
-
-#: contact_form_to_db.php:1832
-msgid "This message was not sent"
-msgstr "Ce message n'a pas été envoyé"
-
-#: contact_form_to_db.php:1865
-msgid "Letters per page"
-msgstr "Nombre de messages par page"
-
-#: contact_form_to_db.php:1890
-msgid "User Guide"
-msgstr "Nom de l'utilisateur"
-
-#: contact_form_to_db.php:1897 contact_form_to_db.php:1901
-#: contact_form_to_db.php:1969 contact_form_to_db.php:1973
-#: contact_form_to_db.php:2023
-msgid "WARNING:"
-msgstr "ATTENTION :"
-
-#: contact_form_to_db.php:1897
-msgid "For fully-functional work of plugin, please, enable javascript."
-msgstr ""
-"Pour avoir une extension avec toutes ses fonctions, merci d'activer le java-"
-"script."
-
-#: contact_form_to_db.php:1903
-#, php-format
-msgid "Search results for &#8220;%s&#8221;"
-msgstr "Résultats de la recherche pour &#8220;%s&#8221;"
-
-#: contact_form_to_db.php:1908
-msgid "Search mails"
-msgstr "Rechercher des messages"
-
-#: contact_form_to_db.php:1940
-msgid "Can not display thumbnail"
-msgstr "Impossible d'afficher les vignettes"
-
-#: contact_form_to_db.php:1973
-msgid "Problems while changing status of message. Please, try it later."
-msgstr "Problèmes lors du changement d'état d'un message. Merci de ré-essayer."
-
-#: contact_form_to_db.php:2007
-msgid "FAQ"
-msgstr "FAQ"
-
-#: contact_form_to_db.php:2008
-msgid "Support"
-msgstr "Support"
-
-#: contact_form_to_db.php:2055
+#: contact_form_to_db.php:2025
 msgid "Notice:"
 msgstr "Avertissement :"
 
-#: contact_form_to_db.php:2055
+#: contact_form_to_db.php:2025
 msgid ""
 "Option \"Save messages to database\" was disabled on the plugin settings "
 "page."
@@ -623,9 +606,298 @@ msgstr ""
 "L'option \"Enregistrer les messages dans la base\" a été désactivée dans la "
 "page des paramètres de l'extension."
 
-#: contact_form_to_db.php:2055
+#: contact_form_to_db.php:2025
 msgid "Enable it for saving messages from Contact Form"
 msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
+
+#~ msgid "This setting is available in Pro version"
+#~ msgstr "Cette option est disponible dans la version Pro de l'extension"
+
+#~ msgid "User guide"
+#~ msgstr "Guide de l'utilisateur"
+
+#~ msgid "User Guide"
+#~ msgstr "Nom de l'utilisateur"
+
+#~ msgid "requires"
+#~ msgstr "obligatoire"
+
+#~ msgid ""
+#~ "or higher, that is why it has been deactivated! Please upgrade WordPress "
+#~ "and try again."
+#~ msgstr ""
+#~ "ou supérieure, c'est pourquoi il a été désactivé! Merci de faire la mise "
+#~ "à jour de WordPress puis de ré-essayer."
+
+#~ msgid "Back to the WordPress"
+#~ msgstr "Retourner à WordPress"
+
+#~ msgid "Plugins page"
+#~ msgstr "Page des extensions"
+
+#~ msgid "Like the plugin?"
+#~ msgstr "Vous aimez cette extension ?"
+
+#~ msgid "Rate it"
+#~ msgstr "Noter le"
+
+#~ msgid "Need help?"
+#~ msgstr "Besoin d'aide?"
+
+#~ msgid "Visit Help Center"
+#~ msgstr "Visiter le centre de support"
+
+#~ msgid "Want to support the plugin?"
+#~ msgstr "Vous voulez encourager cette extension ?"
+
+#~ msgid "Donate"
+#~ msgstr "Don"
+
+#~ msgid "WARNING: Illegal use notification"
+#~ msgstr "AVERTISSEMENT : Notification d'utilisation abusive"
+
+#~ msgid ""
+#~ "You can use one license of the Pro plugin for one domain only. Please "
+#~ "check and edit your license or domain if necessary using you personal "
+#~ "Client Area. We strongly recommend you to solve the problem within 24 "
+#~ "hours, otherwise the Pro plugin will be deactivated."
+#~ msgstr ""
+#~ "Vous ne pouvez utilisez qu'une licence de la version Pro de l'extension "
+#~ "pour un seul domaine. Merci de vérifier et de modifier votre licence ou "
+#~ "votre domaine si nécessaire en utilisant votre zone client. Nous vous "
+#~ "recommandons de résoudre ce problème dans les 24 heures, sinon "
+#~ "l'extension sera rendue inactive."
+
+#~ msgid ""
+#~ "Notice: Your Pro Trial license has expired. To continue using the plugin, "
+#~ "you should buy a Pro license"
+#~ msgstr ""
+#~ "Information : Votre licence d'évaluation est terminée. Pour continuer à "
+#~ "disposer des fonctions premium vous devez acheter une licence"
+
+#~ msgid ""
+#~ "Your license has expired. To continue getting top-priority support and "
+#~ "plugin updates, you should extend it."
+#~ msgstr ""
+#~ "Votre licence est terminée. Pour continuer à disposer du support rapide "
+#~ "et des mises à jour de l'extension vous devez la renouveler."
+
+#~ msgid "Learn more"
+#~ msgstr "En savoir plus"
+
+#~ msgid "Notice: You are using the Pro Trial license of %s plugin."
+#~ msgstr ""
+#~ "Avertissement : vous utilisez la version d'évaluation de l'extension %s."
+
+#~ msgid "Notice: You are using the Pro Trial license of plugin."
+#~ msgstr ""
+#~ "Avertissement : vous utilisez la version d'évaluation de l'extension."
+
+#~ msgid "The Pro Trial license will expire on"
+#~ msgstr "Votre licence se termine le "
+
+#~ msgid ""
+#~ "or higher! We do not guarantee that our plugin will work correctly. "
+#~ "Please upgrade to WordPress latest version."
+#~ msgstr ""
+#~ "ou plus! Nous ne garantissons pas que notre extension fonctionne "
+#~ "correctement. Merci de mettre à jour votre installation WordPress."
+
+#~ msgid "Thank you for installing %s plugin!"
+#~ msgstr "Merci d'avoir installé l'extension %s !"
+
+#~ msgid "Let's get started"
+#~ msgstr "C'est parti"
+
+#~ msgid "or"
+#~ msgstr "ou"
+
+#~ msgid "Add New"
+#~ msgstr "Ajouter un nouveau"
+
+#~ msgid "Close notice"
+#~ msgstr "Fermer l'avertissement"
+
+#~ msgid "Thank you for installing plugins by BestWebSoft!"
+#~ msgstr "Merci d'avoir installé une extension de BestWebSoft!"
+
+#~ msgid "More Details"
+#~ msgstr "Plus de détails"
+
+#~ msgid "Less Details"
+#~ msgstr "Moins de détails"
+
+#~ msgid "Deprecated function(-s) is used on the site here:"
+#~ msgstr "Une fonction qui n'est plus supportée est utlisée sur le site ici :"
+
+#~ msgid ""
+#~ "This function(-s) will be removed over time. Please update the product(-"
+#~ "s)."
+#~ msgstr ""
+#~ "Cette fonction sera supprimée dans une version future. Merci de mettre à "
+#~ "jour l'extension."
+
+#~ msgid "It’s time to upgrade your"
+#~ msgstr "C'est le moment de mettre à jour votre "
+
+#~ msgid "to"
+#~ msgstr "à"
+
+#~ msgid "version!"
+#~ msgstr "version!"
+
+#~ msgid "Extend standard plugin functionality with new great options."
+#~ msgstr ""
+#~ "Étend les fonctionnalités standard de l'extension avec de nouvelles "
+#~ "options."
+
+#~ msgid ""
+#~ "Your license key for %s expires on %s and you won't be granted TOP-"
+#~ "PRIORITY SUPPORT or UPDATES."
+#~ msgstr ""
+#~ "Votre clé de licence pour %s expire le %s et vous ne disposerez plus du "
+#~ "support rapide et des mises à jour."
+
+#~ msgid "Thank you for choosing %s plugin!"
+#~ msgstr "Merci d'avoir choisi l'extension %s !"
+
+#~ msgid ""
+#~ "If you have a feature, suggestion or idea you'd like to see in the "
+#~ "plugin, we'd love to hear about it!"
+#~ msgstr ""
+#~ "Si vous avez une fonctionnalité, une suggestion ou une idée que vous "
+#~ "souhaitez pour cette extension, nous serons ravis d'en parler avec vous !"
+
+#~ msgid "Suggest a Feature"
+#~ msgstr "Proposer une fonctionnalité"
+
+#~ msgid "Notice"
+#~ msgstr "Avertissement"
+
+#~ msgid "The plugin's settings have been changed."
+#~ msgstr "Les paramètres de l'extension ont été modifiés."
+
+#~ msgid ""
+#~ "You can always look at premium options by checking the \"Pro Options\" in "
+#~ "the \"Misc\" tab."
+#~ msgstr ""
+#~ "Vous pouvez toujours consulter les options premium en cliquant sur le "
+#~ "bouton \"Voir les fonctions Pro\" dans l'onglet \"Misc\"."
+
+#~ msgid "Add BWS Shortcode"
+#~ msgstr "Ajouter le code court des extensions BWS"
+
+#~ msgid "Add BWS Plugins Shortcode"
+#~ msgstr "Ajouter le code court des extensions BWS"
+
+#~ msgid "Add shortcode"
+#~ msgstr "Ajouter le code court"
+
+#~ msgid "Add BestWebSoft plugins' shortcodes using this button."
+#~ msgstr ""
+#~ "Ajouter les codes courts des extensions BestWebSoft en utilisant ce "
+#~ "bouton."
+
+#~ msgid "Are you sure you want to restore default settings?"
+#~ msgstr "Êtes vous sûr de vouloir remettre toutes les valeurs par défaut ?"
+
+#~ msgid "Yes, restore all settings"
+#~ msgstr "Oui, remettre les valeurs par défaut"
+
+#~ msgid "No, go back to the settings page"
+#~ msgstr "Non, retourner à la page des paramètres"
+
+#~ msgid "Plugin"
+#~ msgstr "Extension"
+
+#~ msgid "Shortcode settings"
+#~ msgstr "Paramètre du code court"
+
+#~ msgid "The shortcode will be inserted"
+#~ msgstr "Le code court va être inséré"
+
+#~ msgid "Insert"
+#~ msgstr "Insérer"
+
+#~ msgid "For more information:"
+#~ msgstr "Pour plus d'information&nbsp;:"
+
+#~ msgid "Documentation"
+#~ msgstr "Documentation"
+
+#~ msgid "Video Instructions"
+#~ msgstr "Mode d'emploi en vidéo"
+
+#~ msgid "Submit a Request"
+#~ msgstr "Envoyer une requête"
+
+#~ msgid "Wrong license key"
+#~ msgstr "Clé de licence incorrecte"
+
+#~ msgid ""
+#~ "Something went wrong. Please try again later. If the error appears again, "
+#~ "please contact us"
+#~ msgstr ""
+#~ "Il est survenu une erreur. Essayer de nouveau. Si l'erreur se produit de "
+#~ "nouveau, merci de nous contacter"
+
+#~ msgid "We are sorry for inconvenience."
+#~ msgstr "Nous sommes désolés pour le désagrément."
+
+#~ msgid "Wrong license key."
+#~ msgstr "Clé de licence incorrecte."
+
+#~ msgid ""
+#~ "This license key is bound to another site. Change it via personal Client "
+#~ "Area."
+#~ msgstr ""
+#~ "La clé de licence correspond à un autre site. Modifier là au travers de "
+#~ "la zone client."
+
+#~ msgid "Log in"
+#~ msgstr "Connexion"
+
+#~ msgid ""
+#~ "Unfortunately, you have exceeded the number of available tries per day."
+#~ msgstr ""
+#~ "Désoler mais vous avez dépassé le nombre d'essai de la journée. Merci de "
+#~ "télécharger l'extension manuellement."
+
+#~ msgid ""
+#~ "Unfortunately, Your license has expired. To continue getting top-priority "
+#~ "support and plugin updates, you should extend it in your %s"
+#~ msgstr ""
+#~ "Désoler, votre licence est terminée. Pour continuer à disposer du support "
+#~ "rapide et des mises à jour de l'extension vous devez la renouveler dans "
+#~ "votre %s"
+
+#~ msgid ""
+#~ "Unfortunately, the Pro licence was already installed to this domain. The "
+#~ "Pro Trial license can be installed only once."
+#~ msgstr ""
+#~ "Malheureusement la licence PRO a déjà été installée sur ce domaine. La "
+#~ "licence PRO d'évaluation peut être installée une seule fois."
+
+#~ msgid "The license key is valid."
+#~ msgstr "La clé de licence est valide."
+
+#~ msgid "Your license will expire on"
+#~ msgstr "Votre licence se termine le "
+
+#~ msgid "Congratulations! Pro Membership license is  activated successfully."
+#~ msgstr ""
+#~ "Félicitations! La version PRO de cette extension a été activée avec "
+#~ "succès."
+
+#~ msgid ""
+#~ "Something went wrong. Try again later or upload the plugin manually. We "
+#~ "are sorry for inconvenience."
+#~ msgstr ""
+#~ "Il est survenu une erreur. Essayer de nouveau ou bien télécharger "
+#~ "l'extension manuellement.Nous sommes désolés pour le désagrément."
+
+#~ msgid "Please enter your license key."
+#~ msgstr "Merci de saisir votre clé de licence."
 
 #~ msgid "Not set"
 #~ msgstr "Not set"
@@ -648,32 +920,50 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ msgid "No"
 #~ msgstr "No"
 
+#~ msgid "WordPress Environment"
+#~ msgstr "Environment WordPress"
+
+#~ msgid "Home URL"
+#~ msgstr "Home URL"
+
+#~ msgid "Website URL"
+#~ msgstr "Site URL"
+
+#~ msgid "WP Version"
+#~ msgstr "WP Version"
+
+#~ msgid "WP Multisite"
+#~ msgstr "WP Multisite"
+
+#~ msgid "WP Memory Limit"
+#~ msgstr "WP Memory Limit"
+
+#~ msgid "Active Theme"
+#~ msgstr "Active Theme"
+
+#~ msgid "by %s"
+#~ msgstr "par %s"
+
+#~ msgid "Server Environment"
+#~ msgstr "Environment serveur"
+
 #~ msgid "Operating System"
 #~ msgstr "Operating System"
 
 #~ msgid "Server"
 #~ msgstr "Server"
 
-#~ msgid "Memory usage"
-#~ msgstr "Memory usage"
-
-#~ msgid "MYSQL Version"
-#~ msgstr "MYSQL Version"
-
-#~ msgid "SQL Mode"
-#~ msgstr "SQL Mode"
-
 #~ msgid "PHP Version"
 #~ msgstr "PHP Version"
-
-#~ msgid "PHP Safe Mode"
-#~ msgstr "PHP Safe Mode"
 
 #~ msgid "PHP Allow URL fopen"
 #~ msgstr "PHP Allow URL fopen"
 
 #~ msgid "PHP Memory Limit"
 #~ msgstr "PHP Memory Limit"
+
+#~ msgid "Memory Usage"
+#~ msgstr "Memory Usage"
 
 #~ msgid "PHP Max Upload Size"
 #~ msgstr "PHP Max Upload Size"
@@ -693,28 +983,28 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ msgid "PHP XML support"
 #~ msgstr "PHP XML support"
 
-#~ msgid "Site URL"
-#~ msgstr "Site URL"
+#~ msgid "Database"
+#~ msgstr "Base de données"
 
-#~ msgid "Home URL"
-#~ msgstr "Home URL"
+#~ msgid "WP DB version"
+#~ msgstr "WP DB Version"
 
-#~ msgid "WordPress Version"
-#~ msgstr "WordPress Version"
+#~ msgid "MySQL version"
+#~ msgstr "MYSQL version"
 
-#~ msgid "WordPress DB Version"
-#~ msgstr "WordPress DB Version"
+#~ msgid "SQL Mode"
+#~ msgstr "SQL Mode"
 
-#~ msgid "Multisite"
-#~ msgstr "Multisite"
+#~ msgid "Active Plugins"
+#~ msgstr "Extensions actives"
 
-#~ msgid "Active Theme"
-#~ msgstr "Active Theme"
+#~ msgid "Inactive Plugins"
+#~ msgstr "Extensions inactives"
 
 #~ msgid "Please enter a valid email address."
 #~ msgstr "Merci de saisir une adresse e-mail valide."
 
-#~ msgid "Email with system info is sent to "
+#~ msgid "Email with system info is sent to"
 #~ msgstr "Le courriel avec les informations système est envoyé à"
 
 #~ msgid "Thank you for contacting us."
@@ -723,179 +1013,74 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ msgid "Sorry, email message could not be delivered."
 #~ msgstr "Désolé, votre e-mail n'a pas pu être envoyé."
 
-#~ msgid "Need help?"
-#~ msgstr "Besoin d'aide?"
-
-#~ msgid "Client area"
-#~ msgstr "Zone client"
-
-#~ msgid "System status"
-#~ msgstr "Etat système"
-
 #~ msgid "Plugins"
 #~ msgstr "Extensions"
 
 #~ msgid "Themes"
 #~ msgstr "Thèmes"
 
-#~ msgid "Installed"
-#~ msgstr "Installé"
+#~ msgid "System status"
+#~ msgstr "Etat système"
 
-#~ msgid "Recommended"
-#~ msgstr "Recommandés"
+#~ msgid "Manage purchased licenses & subscriptions"
+#~ msgstr "Gérer les licences achetées et les inscriptions"
 
-#~ msgid "Installed plugins"
-#~ msgstr "Extensions installées"
+#~ msgid "Get Access to %s+ Premium Plugins"
+#~ msgstr "Obtenir un accès au %s+ extensions Premium"
 
-#~ msgid "Learn more"
-#~ msgstr "En savoir plus"
+#~ msgid "Subscribe to Pro Membership"
+#~ msgstr "Souscrire un abonnement Pro"
 
-#~ msgid "Activate this plugin"
-#~ msgstr "Activer cette extension"
+#~ msgid "Check license key"
+#~ msgstr "Vérifier la clé de licence"
+
+#~ msgid "Enter your license key"
+#~ msgstr "Merci de saisir votre clé de licence"
 
 #~ msgid "Activate"
 #~ msgstr "Activé"
 
-#~ msgid "Go"
-#~ msgstr "Go"
-
-#~ msgid "DONATE"
-#~ msgstr "Faire un don"
-
-#~ msgid "Recommended plugins"
-#~ msgstr "Extensions recommandées"
-
-#~ msgid "Install now"
-#~ msgstr "Installer maintenant"
-
-#~ msgid "By %s"
-#~ msgstr "Par %s"
-
-#~ msgid "This theme is already installed and is up to date"
-#~ msgstr "Le thème est déjà en place et est à jour."
-
-#~ msgid "Already Installed"
-#~ msgstr "Déjà installé"
-
-#~ msgid "Browse Free WordPress Themes"
-#~ msgstr "Parcourir les thèmes gratuits de WordPress"
-
-#~ msgid "Environment"
-#~ msgstr "Environment"
-
-#~ msgid "Active Plugins"
-#~ msgstr "Extensions actives"
-
-#~ msgid "Inactive Plugins"
-#~ msgstr "Extensions inactives"
-
-#~ msgid "Send to support"
-#~ msgstr "Envoyé au support"
-
-#~ msgid "Send to custom email &#187;"
-#~ msgstr "Envoyer un e-mail spécifique &#187;"
-
-#~ msgid "requires"
-#~ msgstr "obligatoire"
+#~ msgid "Upload Plugin"
+#~ msgstr "Télécharger l'extension"
 
 #~ msgid ""
-#~ "or higher, that is why it has been deactivated! Please upgrade WordPress "
-#~ "and try again."
+#~ "The plugin generated %d characters of <strong>unexpected output</strong> "
+#~ "during activation. If you notice &#8220;headers already sent&#8221; "
+#~ "messages, problems with syndication feeds or other issues, try "
+#~ "deactivating or removing this plugin."
 #~ msgstr ""
-#~ "ou supérieure, c'est pourquoi il a été désactivé! Merci de faire la mise "
-#~ "à jour de WordPress puis de ré-essayer."
-
-#~ msgid "Back to the WordPress"
-#~ msgstr "Retourner à WordPress"
-
-#~ msgid "Plugins page"
-#~ msgstr "Page des extensions"
+#~ "Cette extension a produit %d caractères <strong>inattendus</strong> "
+#~ "durant l'activation. Si vous constatez le message &#8220;headers already "
+#~ "sent&#8221;, des problèmes avec les flux de syndication ou autres, "
+#~ "essayez de désactiver l'extension ou supprimer l'extension."
 
 #~ msgid ""
-#~ "or higher! We do not guarantee that our plugin will work correctly. "
-#~ "Please upgrade to WordPress latest version."
+#~ "Plugin could not be activated because it triggered a <strong>fatal error</"
+#~ "strong>."
 #~ msgstr ""
-#~ "ou plus! Nous ne garantissons pas que notre extension fonctionne "
-#~ "correctement. Merci de mettre à jour votre installation WordPress."
+#~ "L'extension ne peut pas être activée car une <strong>erreur fatale</"
+#~ "strong> a été détectée."
 
-#~ msgid "Close notice"
-#~ msgstr "Fermer l'avertissement"
+#~ msgid "Plugin <strong>activated</strong>."
+#~ msgstr "Extension <strong>activée</strong>"
 
-#~ msgid "It’s time to upgrade your"
-#~ msgstr "C'est le moment de mettre à jour votre "
+#~ msgid "Installing Plugin"
+#~ msgstr "Installer l'extension"
 
-#~ msgid "to"
-#~ msgstr "à"
-
-#~ msgid "version!"
-#~ msgstr "version!"
-
-#~ msgid "Extend standard plugin functionality with new great options."
-#~ msgstr ""
-#~ "Étend les fonctionnalités standard de l'extension avec de nouvelles "
-#~ "options."
-
-#~ msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
-#~ msgstr ""
-#~ "Si notre extension vous satisfait, merci de la notée avec 5 étoiles dans "
-#~ "Wordpress"
-
-#~ msgid "Rate the plugin"
-#~ msgstr "Noter l’extension"
-
-#~ msgid "If there is something wrong about it, please contact us"
-#~ msgstr "Si vous avez des questions, merci de nous contacter via "
-
-#~ msgid "Donations play an important role in supporting great projects"
-#~ msgstr "Les dons jouent un rôle important de le support des projets"
-
-#~ msgid "Check premium options on the plugin settings page!"
-#~ msgstr ""
-#~ "Vérifier les options premium sur la page des paramètres de l'extension!"
-
-#~ msgid "Wrong license key"
-#~ msgstr "Clé de licence incorrecte"
-
-#~ msgid ""
-#~ "Something went wrong. Please try again later. If the error appears again, "
-#~ "please contact us"
-#~ msgstr ""
-#~ "Il est survenu une erreur. Essayer de nouveau. Si l'erreur se produit de "
-#~ "nouveau, merci de nous contacter"
-
-#~ msgid "We are sorry for inconvenience."
-#~ msgstr "Nous sommes désolés pour le désagrément."
-
-#~ msgid "This license key is bind to another site"
-#~ msgstr "La clé de licence correspond à un autre site."
-
-#~ msgid ""
-#~ "Unfortunately, you have exceeded the number of available tries per day. "
-#~ "Please, upload the plugin manually."
-#~ msgstr ""
-#~ "Désoler mais vous avez dépassé le nombre d'essai de la journée. Merci de "
-#~ "télécharger l'extension manuellement."
-
-#~ msgid ""
-#~ "Unfortunately, Your license has expired. To continue getting top-priority "
-#~ "support and plugin updates you should extend it in your"
-#~ msgstr ""
-#~ "Désoler, votre licence est terminée. Pour continuer à disposer du support "
-#~ "rapide et des mises à jour de l'extension vous devez la renouveler dans "
-#~ "votre"
-
-#~ msgid ""
-#~ "Unfortunately, the Pro licence was already installed to this domain. The "
-#~ "Pro Trial license can be installed only once."
-#~ msgstr ""
-#~ "Malheureusement la licence PRO a déjà été installée sur ce domaine. La "
-#~ "licence PRO d'évaluation peut être installée une seule fois."
+#~ msgid "Downloading install package from"
+#~ msgstr "Télécharger le paquet d'installation depuis"
 
 #~ msgid ""
 #~ "Failed to download the zip archive. Please, upload the plugin manually"
 #~ msgstr ""
 #~ "Erreur de téléchargement de l'archive ZIP. Merci de télécharger "
 #~ "l'extension manuellement."
+
+#~ msgid "Unpacking the package"
+#~ msgstr "Décompresser le paquet"
+
+#~ msgid "Installing the plugin"
+#~ msgstr "Installation de l'extension"
 
 #~ msgid "Failed to open the zip archive. Please, upload the plugin manually"
 #~ msgstr ""
@@ -909,87 +1094,239 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ "Votre serveur n'a pas le support du format des archives ZIP ou Phar. "
 #~ "Merci de télécharger l'extension manuellement."
 
+#~ msgid "The plugin %s is successfully installed."
+#~ msgstr "L'extension %s a été installée avec succès."
+
 #~ msgid "UploadDir is not writable. Please, upload the plugin manually"
 #~ msgstr ""
 #~ "Erreur d'ouverture de l'archive zip. Merci de télécharger l'extension "
 #~ "manuellement."
 
+#~ msgid "Activate Plugin"
+#~ msgstr "Activer l'extension"
+
+#~ msgid "Return to BestWebSoft Panel"
+#~ msgstr "Retourner au panneau BestWebSoft"
+
+#~ msgid "Installed"
+#~ msgstr "Installé"
+
+#~ msgid "Not Installed"
+#~ msgstr "Pas installé"
+
+#~ msgid "Filter results"
+#~ msgstr "Résultats du filtre"
+
+#~ msgid "Category"
+#~ msgstr "Catégorie"
+
+#~ msgid "Not installed"
+#~ msgstr "Pas installé"
+
+#~ msgid "Renew to get updates"
+#~ msgstr "Renouveler pour obtenir les mises à jour"
+
+#~ msgid "Update to v %s"
+#~ msgstr "Mettre à jour pour la version %s"
+
+#~ msgid "Install Now"
+#~ msgstr "Installa Ora"
+
+#~ msgid "Upgrade to Pro"
+#~ msgstr "Passer à la version Pro"
+
+#~ msgid "Activate this plugin"
+#~ msgstr "Activer cette extension"
+
+#~ msgid "Install this plugin"
+#~ msgstr "Installer cette extension"
+
+#~ msgid "Nothing found. Try another criteria."
+#~ msgstr "Aucun résultat. Essayer un autre critère."
+
+#~ msgid "By %s"
+#~ msgstr "Par %s"
+
+#~ msgid "This theme is already installed and is up to date"
+#~ msgstr "Le thème est déjà en place et est à jour."
+
+#~ msgid "Already Installed"
+#~ msgstr "Déjà installé"
+
+#~ msgid "Browse Free WordPress Themes"
+#~ msgstr "Parcourir les thèmes gratuits de WordPress"
+
+#~ msgid "Send to support"
+#~ msgstr "Envoyé au support"
+
+#~ msgid "Send to custom email &#187;"
+#~ msgstr "Envoyer un e-mail spécifique &#187;"
+
+#~ msgid "Information"
+#~ msgstr "Information"
+
+#~ msgid "Inactive"
+#~ msgstr "Inactive"
+
+#~ msgid "Expired"
+#~ msgstr "Expirée"
+
+#~ msgid "%s day(-s) left"
+#~ msgstr "%s jour(s) restant"
+
+#~ msgid "Expired on %s"
+#~ msgstr "se termine le %s"
+
+#~ msgid "Renew Now"
+#~ msgstr "Renouveller maintenant"
+
+#~ msgid "Active"
+#~ msgstr "Activé"
+
+#~ msgid "License"
+#~ msgstr "License"
+
+#~ msgid "Status"
+#~ msgstr "Etat"
+
+#~ msgid "Version"
+#~ msgstr "Version"
+
+#~ msgid "Custom Code"
+#~ msgstr "Code personnaliser"
+
 #~ msgid ""
-#~ "Something went wrong. Try again later or upload the plugin manually. We "
-#~ "are sorry for inconvenience."
+#~ "You do not have sufficient permissions to edit plugins for this site."
 #~ msgstr ""
-#~ "Il est survenu une erreur. Essayer de nouveau ou bien télécharger "
-#~ "l'extension manuellement.Nous sommes désolés pour le désagrément."
+#~ "Vous n'avez pas assez de droits pour modifier l'extension pour ce site."
 
-#~ msgid "Please, enter Your license key"
-#~ msgstr "Merci de saisir votre clé de licence"
+#~ msgid "These styles will be added to the header on all pages of your site."
+#~ msgstr ""
+#~ "Ces styles seront ajoutés aux entêtes sur tous les pages de votre site."
 
 #~ msgid ""
-#~ "Congratulations! Pro version of the plugin is successfully installed and "
-#~ "activated."
+#~ "This PHP code will be hooked to the %s action and will be printed on "
+#~ "front end only."
 #~ msgstr ""
-#~ "Félicitations! La version PRO de cette extension a été téléchargée et "
-#~ "activée avec succès."
+#~ "Ce code PHP sera exécuté pour l'action %s et sera affiché dans le site "
+#~ "seulement."
 
-#~ msgid "Please, go to"
-#~ msgstr "Merci d'aller à"
-
-#~ msgid "the setting page"
-#~ msgstr "Options supplémentaires"
-
-#~ msgid "You will be redirected automatically in 5 seconds."
-#~ msgstr "Vous allez être redirigé automatiquement dans 5 secondes"
-
-#~ msgid "Show Pro features"
-#~ msgstr "Voir les fonctions PRO"
-
-#~ msgid "Enter your license key to install and activate"
-#~ msgstr "Saisissez votre clé de licence pour installer et activer"
-
-#~ msgid "version of the plugin."
-#~ msgstr "version de l'extension."
-
-#~ msgid "License key can be found in the"
-#~ msgstr "La clé de licence peut-être trouvée dans"
-
-#~ msgid "(your username is the email address specified during the purchase)."
+#~ msgid "These code will be added to the header on all pages of your site."
 #~ msgstr ""
-#~ "(votre nom d'utilisateur est l'adresse e-mail que vous avez donnée lors "
-#~ "de l'achat de l'extension)."
+#~ "Ce code sera ajouter dans l'entête de toutes les pages de votre site."
 
-#~ msgid "or"
-#~ msgstr "ou"
+#~ msgid ""
+#~ "You need to make this files writable before you can save your changes. "
+#~ "See %s the Codex %s for more information."
+#~ msgstr ""
+#~ "Vous devez rendre ce fichier modifiable avant de pouvoir enregistrer vos "
+#~ "modifications. Regarder %s du Codex %s pour plus d'informations."
+
+#~ msgid "Browsing"
+#~ msgstr "Parcourir"
+
+#~ msgid "Activate custom %s code."
+#~ msgstr "Activer le code personalisé %s."
+
+#~ msgid "Learn more about %s"
+#~ msgstr "En savoir plus sur %s"
+
+#~ msgid "Miscellaneous Settings"
+#~ msgstr "Paramètres divers"
+
+#~ msgid ""
+#~ "It is prohibited to change %s settings on this site in the %s network "
+#~ "settings."
+#~ msgstr ""
+#~ "Il est interdit de modifier les paramètres %s sur ce site dans les les "
+#~ "paramètres %s du réseau."
+
+#~ msgid ""
+#~ "It is prohibited to view %s settings on this site in the %s network "
+#~ "settings."
+#~ msgstr ""
+#~ "Il est interdit de voir les paramètres %s sur ce site dans les paramètres "
+#~ "%s du réseau."
+
+#~ msgid "Pro Options"
+#~ msgstr "Options  Pro"
+
+#~ msgid "Enable to display plugin Pro options."
+#~ msgstr "Activer pour voir les options PRO de l'extension."
+
+#~ msgid "Track Usage"
+#~ msgstr "Suivre les utilisations"
+
+#~ msgid ""
+#~ "Enable to allow tracking plugin usage anonymously in order to make it "
+#~ "better."
+#~ msgstr ""
+#~ "Activer pour autoriser l'utilisation de cette extension de manière "
+#~ "anonyme afin de la rendre meuilleure."
+
+#~ msgid "Default Settings"
+#~ msgstr "Paramètres par défaut"
+
+#~ msgid "Restore Settings"
+#~ msgstr "Remettre les paramètres"
+
+#~ msgid "This will restore plugin settings to defaults."
+#~ msgstr "Remettre les valeurs par défaut des paramètres de l'extension."
+
+#~ msgid "Import / Export"
+#~ msgstr "Importer / Exporter"
+
+#~ msgid "License Key"
+#~ msgstr "Clé de licence"
+
+#~ msgid "Congratulations! Pro license is activated successfully."
+#~ msgstr ""
+#~ "Félicitations! La version PRO de cette extension a été activée avec "
+#~ "succès."
+
+#~ msgid "You will be automatically redirected to the %s in %s seconds."
+#~ msgstr "Vous allez être redirigé automatiquement vers %s dans %s secondes."
+
+#~ msgid "Settings page"
+#~ msgstr "Page des paramètres"
+
+#~ msgid ""
+#~ "Enter your license key to activate %s and get premium plugin features."
+#~ msgstr ""
+#~ "Saisissez votre clé de licence pour activer %s et avoir accès aux "
+#~ "fonctionnalités premium."
+
+#~ msgid ""
+#~ "Unfortunately, you have exceeded the number of available tries per day. "
+#~ "Please, upload the plugin manually."
+#~ msgstr ""
+#~ "Désoler mais vous avez dépassé le nombre d'essai de la journée. Merci de "
+#~ "télécharger l'extension manuellement."
 
 #~ msgid "Start Your Free %s-Day Trial Now"
 #~ msgstr "Débuter votre licence d'évaluation gratuite de %s jours"
 
 #~ msgid ""
-#~ "In order to continue using the plugin it is necessary to buy a %s license."
+#~ "If necessary, you can check if the license key is correct or reenter it "
+#~ "in the field below."
 #~ msgstr ""
-#~ "Afin de pouvoir continuer à utiliser cette extension il est nécessaire "
-#~ "d'acheter une licence %s."
+#~ "Si nécessaire vous pouvez vérifier que la clé de licence est correcte ou "
+#~ "la saisir de nouveau dans le champ ci-dessous."
 
-#~ msgid "After that you can activate it by entering your license key."
-#~ msgstr ""
-#~ " Après vous pouvez activer cette extension en donnant votre clé de "
-#~ "licence."
+#~ msgid "Manage License Settings"
+#~ msgstr "Gérer les paramètres des licences"
+
+#~ msgid "Login to Client Area"
+#~ msgstr "Se connecter à la zone client"
 
 #~ msgid ""
-#~ "Unfortunately, you have exceeded the number of available tries per day."
+#~ "Manage active licenses, download BWS products, and view your payment "
+#~ "history using BestWebSoft Client Area."
 #~ msgstr ""
-#~ "Désoler mais vous avez dépassé le nombre d'essai de la journée. Merci de "
-#~ "télécharger l'extension manuellement."
+#~ "Gérer les licences, télécharger des produits BWS, voir l'historique des "
+#~ "règlements dans la zone client de BestWebSoft."
 
-#~ msgid ""
-#~ "Congratulations! The Pro license of the plugin is successfully activated."
-#~ msgstr ""
-#~ "Félicitations! La version PRO de cette extension a été téléchargée et "
-#~ "activée avec succès."
-
-#~ msgid "Wrong license key."
-#~ msgstr "Clé de licence incorrecte."
-
-#~ msgid "This license key is bind to another site."
+#~ msgid "This license key is bound to another site."
 #~ msgstr "La clé de licence correspond à un autre site."
 
 #~ msgid ""
@@ -1015,19 +1352,37 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ msgid "The Pro Trial license key is valid."
 #~ msgstr "La clé de licence d'évaluation est valide."
 
-#~ msgid "The license key is valid."
-#~ msgstr "La clé de licence est valide."
+#~ msgid ""
+#~ "In order to continue using the plugin it is necessary to buy a %s license."
+#~ msgstr ""
+#~ "Afin de pouvoir continuer à utiliser cette extension il est nécessaire "
+#~ "d'acheter une licence %s."
 
-#~ msgid "Your license will expire on"
-#~ msgstr "Votre licence se termine le "
+#~ msgid "Please, enter Your license key"
+#~ msgstr "Merci de saisir votre clé de licence"
+
+#~ msgid "Need Help?"
+#~ msgstr "Besoin d'aide?"
+
+#~ msgid "Read the Instruction"
+#~ msgstr "Lire le mode d'emploi"
+
+#~ msgid "Watch the Video"
+#~ msgstr "Voir la vidéo"
+
+#~ msgid "Start Your Free Trial"
+#~ msgstr "Débuter votre licence d'évaluation gratuite"
+
+#~ msgid "System Status"
+#~ msgstr "Etat système"
 
 #~ msgid "Please, enter your license key"
 #~ msgstr "Merci de saisir votre clé de licence"
 
 #~ msgid ""
-#~ "If needed you can check if the license key is correct or reenter it in "
-#~ "the field below. You can find your license key on your personal page - "
-#~ "Client area - on our website"
+#~ "If necessary, you can check if the license key is correct or reenter it "
+#~ "in the field below. You can find your license key on your personal page - "
+#~ "Client Area - on our website"
 #~ msgstr ""
 #~ "Si nécessaire vous pouvez vérifier que la clé de licence est correcte ou "
 #~ "la saisir de nouveau dans le champ ci-dessous. Vous pouvez trouver votre "
@@ -1042,109 +1397,37 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ "de l'achat de l'extension). Si nécessaire, utilisez la fonction \"mot de "
 #~ "passe perdu\" pour en avoir un nouveau."
 
-#~ msgid "Check license key"
-#~ msgstr "Vérifier la clé de licence"
+#~ msgid "After that, you can activate it by entering your license key."
+#~ msgstr ""
+#~ " Après vous pouvez activer cette extension en donnant votre clé de "
+#~ "licence."
 
-#~ msgid "WARNING: Illegal use notification"
-#~ msgstr "AVERTISSEMENT : Notification d'utilisation abusive"
+#~ msgid "License key can be found in the"
+#~ msgstr "La clé de licence peut-être trouvée dans"
+
+#~ msgid "(your username is the email address specified during the purchase)."
+#~ msgstr ""
+#~ "(votre nom d'utilisateur est l'adresse e-mail que vous avez donnée lors "
+#~ "de l'achat de l'extension)."
 
 #~ msgid ""
-#~ "You can use one license of the Pro plugin for one domain only. Please "
-#~ "check and edit your license or domain if necessary using you personal "
-#~ "Client Area. We strongly recommend you to solve the problem within 24 "
-#~ "hours, otherwise the Pro plugin will be deactivated."
+#~ "Congratulations! The Pro license of the plugin is activated successfully."
 #~ msgstr ""
-#~ "Vous ne pouvez utilisez qu'une licence de la version Pro de l'extension "
-#~ "pour un seul domaine. Merci de vérifier et de modifier votre licence ou "
-#~ "votre domaine si nécessaire en utilisant votre zone client. Nous vous "
-#~ "recommandons de résoudre ce problème dans les 24 heures, sinon "
-#~ "l'extension sera rendue inactive."
+#~ "Félicitations! La version PRO de cette extension a été activée avec "
+#~ "succès."
 
-#~ msgid ""
-#~ "Notice: Your Pro Trial license has expired. To continue using the plugin "
-#~ "you should buy a Pro license"
+#~ msgid "Please, go to"
+#~ msgstr "Merci d'aller à"
+
+#~ msgid "the setting page"
+#~ msgstr "Options supplémentaires"
+
+#~ msgid "You will be redirected automatically in 5 seconds."
+#~ msgstr "Vous allez être redirigé automatiquement dans 5 secondes"
+
+#~ msgid "Check premium options on the plugin settings page!"
 #~ msgstr ""
-#~ "Information : Votre licence d'évaluation est terminée. Pour continuer à "
-#~ "disposer des fonctions premium vous devez acheter une licence"
-
-#~ msgid ""
-#~ "Your license has expired. To continue getting top-priority support and "
-#~ "plugin updates you should extend it."
-#~ msgstr ""
-#~ "Votre licence est terminée. Pour continuer à disposer du support rapide "
-#~ "et des mises à jour de l'extension vous devez la renouveler."
-
-#~ msgid "Notice: You are using the Pro Trial license of %s plugin."
-#~ msgstr ""
-#~ "Avertissement : vous utilisez la version d'évaluation de l'extension %s."
-
-#~ msgid "Notice: You are using the Pro Trial license of plugin."
-#~ msgstr ""
-#~ "Avertissement : vous utilisez la version d'évaluation de l'extension."
-
-#~ msgid "The Pro Trial license will expire on"
-#~ msgstr "Votre licence se termine le "
-
-#~ msgid "You license for"
-#~ msgstr "Votre licence pour"
-
-#~ msgid "expires on"
-#~ msgstr "se termine le"
-
-#~ msgid "and you won't be granted TOP-PRIORITY SUPPORT or UPDATES."
-#~ msgstr "et vous ne disposerez plus du support rapide et des mises à jour."
-
-#~ msgid "Thank you for installing"
-#~ msgstr "Merci d'avoir installé"
-
-#~ msgid "Let's get started"
-#~ msgstr "C'est parti"
-
-#~ msgid "Configure Settings"
-#~ msgstr "Modifier les paramètres"
-
-#~ msgid "Add New"
-#~ msgstr "Ajouter un nouveau"
-
-#~ msgid "Thank you for choosing"
-#~ msgstr "Merci d'avoir choisi"
-
-#~ msgid ""
-#~ "If you have a feature, suggestion or idea you'd like to see in the "
-#~ "plugin, we'd love to hear about it!"
-#~ msgstr ""
-#~ "Si vous avez une fonctionnalité, une suggestion ou une idée que vous "
-#~ "souhaitez pour cette extension, nous serons ravis d'en parler avec vous !"
-
-#~ msgid "Suggest a Feature"
-#~ msgstr "Proposer une fonctionnalité"
-
-#~ msgid "Notice"
-#~ msgstr "Avertissement"
-
-#~ msgid "The plugin's settings have been changed."
-#~ msgstr "Les paramètres de l'extension ont été modifiés."
-
-#~ msgid ""
-#~ "You can always look at premium options by clicking on the \"Show Pro "
-#~ "features\" in the \"Go PRO\" tab"
-#~ msgstr ""
-#~ "Vous pouvez toujours consulter les options premium en cliquant sur le "
-#~ "bouton \"Voir les fonctions Pro\" dans l'onglet \"Passer PRO\""
-
-#~ msgid "Add BWS Shortcode"
-#~ msgstr "Ajouter le code court des extensions BWS"
-
-#~ msgid "Add BWS Plugins Shortcode"
-#~ msgstr "Ajouter le code court des extensions BWS"
-
-#~ msgid "Add shortcode"
-#~ msgstr "Ajouter le code court"
-
-#~ msgid "Add BestWebSoft plugins' shortcodes using this button."
-#~ msgstr ""
-#~ "Ajouter les codes courts des extensions BestWebSoft en utilisant ce "
-#~ "bouton."
+#~ "Vérifier les options premium sur la page des paramètres de l'extension!"
 
 #~ msgid "Restore all plugin settings to defaults"
 #~ msgstr "Remettre les valeurs par défaut des paramètres de l'extension"
@@ -1152,72 +1435,104 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ msgid "Restore settings"
 #~ msgstr "Remettre les paramètres"
 
-#~ msgid "Are you sure you want to restore all settings by default?"
-#~ msgstr "Êtes vous sûr de vouloir remettre toutes les valeurs par défaut ?"
-
-#~ msgid "Yes, restore all settings"
-#~ msgstr "Oui, remettre les valeurs par défaut"
-
-#~ msgid "No, go back to the settings page"
-#~ msgstr "Non, retourner à la page des paramètres"
-
-#~ msgid "Plugin"
-#~ msgstr "Extension"
-
-#~ msgid "Shortcode settings"
-#~ msgstr "Paramètre du code court"
-
-#~ msgid "The shortcode will be inserted"
-#~ msgstr "Le code court va être inséré"
-
-#~ msgid "Insert"
-#~ msgstr "Insérer"
-
-#~ msgid "Visit Help Center"
-#~ msgstr "Visiter le centre de support"
-
-#~ msgid "For more information:"
-#~ msgstr "Pour plus d'information&nbsp;:"
-
-#~ msgid "Documentation"
-#~ msgstr "Documentation"
-
-#~ msgid "Video Instructions"
-#~ msgstr "Mode d'emploi en vidéo"
-
-#~ msgid "Submit a Request"
-#~ msgstr "Envoyer une requête"
-
-#~ msgid ""
-#~ "You do not have sufficient permissions to edit plugins for this site."
-#~ msgstr ""
-#~ "Vous n'avez pas assez de droits pour modifier l'extension pour ce site."
-
-#~ msgid "File edited successfully."
-#~ msgstr "Le fichier a été modifié avec succès."
+#~ msgid "File %s edited successfully."
+#~ msgstr "Le fichier %s a été modifié avec succès."
 
 #~ msgid "Not enough permissions to create or update the file"
 #~ msgstr "Pas assez de droits pour créer ou modifier le fichier"
 
-#~ msgid "These styles will be added to the header on all pages of your site."
-#~ msgstr ""
-#~ "Ces styles seront ajoutés aux entêtes sur tous les pages de votre site."
+#~ msgid "Not enough permissions to create the file"
+#~ msgstr "Pas assez de droits pour créer le fichier"
 
 #~ msgid "Editing"
 #~ msgstr "Modifier"
 
-#~ msgid "Browsing"
-#~ msgstr "Parcourir"
-
-#~ msgid "Learn more about CSS"
-#~ msgstr "En savoir plus sur les CSS"
-
 #~ msgid ""
-#~ "You need to make this file writable before you can save your changes. See "
-#~ "%s the Codex %s for more information."
+#~ "Congratulations! Pro version of the plugin is  installed and activated "
+#~ "successfully."
 #~ msgstr ""
-#~ "Vous devez rendre ce fichier modifiable avant de pouvoir enregistrer vos "
-#~ "modifications. Regarder %s du Codex %s pour plus d'informations."
+#~ "Félicitations! La version PRO de cette extension a été téléchargée et "
+#~ "activée avec succès."
+
+#~ msgid "Show Pro features"
+#~ msgstr "Voir les fonctions PRO"
+
+#~ msgid "Enter your license key to install and activate"
+#~ msgstr "Saisissez votre clé de licence pour installer et activer"
+
+#~ msgid "version of the plugin."
+#~ msgstr "version de l'extension."
+
+#~ msgid "Advertisement"
+#~ msgstr "Publicité"
+
+#~ msgid "Content & Media"
+#~ msgstr "Contenu & média"
+
+#~ msgid "Management"
+#~ msgstr "Gestion"
+
+#~ msgid "Recommended"
+#~ msgstr "Recommandés"
+
+#~ msgid "Security"
+#~ msgstr "Sécurité"
+
+#~ msgid "Site Stats"
+#~ msgstr "Statistiques de site"
+
+#~ msgid "Social"
+#~ msgstr "Social"
+
+#~ msgid "Utilities"
+#~ msgstr "Utilitaires"
+
+#~ msgid "Other"
+#~ msgstr "Autres"
+
+#~ msgid "Unlock premium options by upgrading to Pro version"
+#~ msgstr "Débloquer les options premium en migrant vers la version PRO"
+
+#~ msgid "PHP Safe Mode"
+#~ msgstr "PHP Safe Mode"
+
+#~ msgid "WordPress Version"
+#~ msgstr "WordPress Version"
+
+#~ msgid "Successfully installed the plugin"
+#~ msgstr "Installation réussie de l'extension"
+
+#~ msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
+#~ msgstr ""
+#~ "Si notre extension vous satisfait, merci de la notée avec 5 étoiles dans "
+#~ "Wordpress"
+
+#~ msgid "If there is something wrong about it, please contact us"
+#~ msgstr "Si vous avez des questions, merci de nous contacter via "
+
+#~ msgid "Donations play an important role in supporting great projects"
+#~ msgstr "Les dons jouent un rôle important de le support des projets"
+
+#~ msgid "This license key is bind to another site"
+#~ msgstr "La clé de licence correspond à un autre site."
+
+#~ msgid "You license for"
+#~ msgstr "Votre licence pour"
+
+#~ msgid "Go"
+#~ msgstr "Go"
+
+#~ msgid "DONATE"
+#~ msgstr "Faire un don"
+
+#~ msgid "Recommended plugins"
+#~ msgstr "Extensions recommandées"
+
+#~ msgid "Install now"
+#~ msgstr "Installer maintenant"
+
+#~ msgid "Configure Settings"
+#~ msgstr "Modifier les paramètres"
 
 #~ msgid "Try again"
 #~ msgstr "Essayer de nouveau"
@@ -1228,12 +1543,6 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ msgid "Install %s"
 #~ msgstr "%s installé"
 
-#~ msgid "Install Now"
-#~ msgstr "Installa Ora"
-
-#~ msgid "Update to version %s"
-#~ msgstr "Mettre à jour pour la version %s"
-
 #~ msgid "Update"
 #~ msgstr "Mettre à jour"
 
@@ -1242,9 +1551,6 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 
 #~ msgid "Preview"
 #~ msgstr "Pré-visualiser"
-
-#~ msgid "Details"
-#~ msgstr "Détails"
 
 #~ msgid "You can download and activate"
 #~ msgstr "Vous pouvez la télécharger et l'activer"
@@ -1326,9 +1632,6 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ msgid "Switch to new interface"
 #~ msgstr "Basculer vers la nouvelle interface"
 
-#~ msgid "Pro plugins"
-#~ msgstr "Extensions Pro"
-
 #~ msgid "Read more"
 #~ msgstr "Lire la suite"
 
@@ -1344,14 +1647,8 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ msgid "Free themes"
 #~ msgstr "Thèmes gratuits"
 
-#~ msgid "Activated theme"
-#~ msgstr "Thème actif"
-
 #~ msgid "Customize &#8220;%s&#8221;"
 #~ msgstr "Personnaliser &#8220;%s&#8221;"
-
-#~ msgid "Customize"
-#~ msgstr "Personnaliser"
 
 #~ msgid "Installed themes"
 #~ msgstr "Thèmes installés"
@@ -1609,9 +1906,9 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 #~ msgstr "Exemple: Date/Heure:\tAoût 19, 2013 8:50pm"
 
 #~ msgid ""
-#~ "Example: Sent from (referer):\thttps://bestwebsoft.com/contacts/contact-us/"
+#~ "Example: Sent from (referer):\thttp://bestwebsoft.com/contacts/contact-us/"
 #~ msgstr ""
-#~ "Exemple: Envoyer de (referer):\thttps://bestwebsoft.com/contacts/contact-"
+#~ "Exemple: Envoyer de (referer):\thttp://bestwebsoft.com/contacts/contact-"
 #~ "us/"
 
 #~ msgid "Using (user agent)"
@@ -1696,9 +1993,6 @@ msgstr "Activer pour enregistrer les messages venant du formulaire de contact"
 
 #~ msgid "Text"
 #~ msgstr "Texte"
-
-#~ msgid "Redirect to the page"
-#~ msgstr "Rediriger vers la page"
 
 #~ msgid "Url"
 #~ msgstr "Url"

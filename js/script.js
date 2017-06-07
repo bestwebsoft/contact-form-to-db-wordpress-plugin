@@ -166,7 +166,7 @@
 		var lastClick = 0;
 		var oldStatus =0;
 		var nonceField = $( 'input#cntctfrmtdb_manager_nonce_name' ).val();
-		$( '.column-status div' ).click( function() {
+		$( '.column-status span' ).click( function() {
 			if ( firstClick == 0 ) { // remember old status
 				oldStatus = $(this).text();
 				oldsStatus = parseInt( oldStatus );

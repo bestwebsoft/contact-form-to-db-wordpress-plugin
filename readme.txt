@@ -2,17 +2,15 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: browse messages, cf add on, contact button, contact form add on, contact form parameters, contact form plugin, contact form to db, save messages, download messages, contact us form, web page feedback, delete messages
-Requires at least: 3.8
-Tested up to: 4.7.3
-Stable tag: 1.5.7
+Requires at least: 3.9
+Tested up to: 4.8.0
+Stable tag: 1.5.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Save and manage Contact Form messages. Never lose important data.
 
 == Description ==
-
-Contact Form to DB plugin is an exclusive add-on for the Contact Form plugin by BestWebSoft.
 
 Save and manage messages sent from your WordPress website via Contact Form plugin. Search, view, delete, download, and re-send messages quickly right from your WordPress admin dashboard.
 
@@ -53,7 +51,7 @@ http://www.youtube.com/watch?v=agEWy6Hc-fY
 	* Mark as Trash
 	* Restore
 	* Delete Permanently
-	* Filter 
+	* Filter
 * Compatible with latest WordPress version
 * Incredibly simple settings for fast setup without modifying code
 * Detailed step-by-step documentation and videos
@@ -113,32 +111,27 @@ Some of these translations are not complete. We are constantly adding new featur
 
 == Frequently Asked Questions ==
 
-= Why am I unable to see the file which is attached to the letter? =
+= Can Contact Form to DB work without regular Contact Form plugin? =
 
-Because the ability to save and manage attachments is available only in the PRO version of the plugin.
-
-= In what formats can the messages be saved? =
-
-You can save messages in "csv", "xml" and "eml" formats.
-
-= Why does Contact Form to DB pugin not work without Contact Form plugin? =
-
-This plugin was created especially as an extension for Contact Form plugin.
+This plugin was created specifically as an extension for [Contact Form](https://bestwebsoft.com/products/wordpress/plugins/contact-form/?k=1f9b7d7895c20420af788d9413ed8562) plugin.
 It can receive messages ONLY from Contact Form plugin.
 In case you used Contact Form plugin with Contact Form to DB plugin earlier and decide to delete or deactivate it, Contact Form to DB plugin will work as an archive for your old messages.
 
-= How can I remove the column "Send counter" from the list of messages? =
+= In which formats can I save the messages? =
+
+You can save messages in "csv", "xml", and "eml" formats.
+
+= I don't want the "Send counter" bar in my list of messages. How can I remove it? =
 
 Click on "Screen Options" button in the right top corner on manager page and deselect the item "Send counter".
 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
 Please make sure that the problem hasn't been discussed yet on our forum (<https://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
-
-1. the link to the page where the problem occurs
-2. the name of the plugin and its version. If you are using a pro version - your order number.
-3. the version of your WordPress installation
-4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit)
+- The link to the page where the problem occurs
+- The name of the plugin and its version. If you are using a pro version - your order number.
+- The version of your WordPress installation
+- Copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc).
 
 == Screenshots ==
 
@@ -148,6 +141,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 4. Spam page on the Contact Form to DB manager page display.
 
 == Changelog ==
+
+= V1.5.8 - 07.06.2017 =
+* Update : The French language file was updated.
+* Bugfix : HTML structure of Contact Form to DB admin page has been fixed.
 
 = V1.5.7 - 14.04.2017 =
 * Bugfix : Multiple Cross-Site Scripting (XSS) vulnerability was fixed.
@@ -268,6 +265,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : Ability to manage messages that have been sent from website from Contact Form Plugin by BestWebSoft.
 
 == Upgrade Notice ==
+
+= V1.5.8 =
+* Languages updated.
+* Bugs fixed.
 
 = V1.5.7 =
 * Bugs fixed.
