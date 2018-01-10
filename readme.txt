@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: browse messages, cf add on, contact button, contact form add on, contact form parameters, contact form plugin, contact form to db, save messages, download messages, contact us form, web page feedback, delete messages
 Requires at least: 3.9
-Tested up to: 4.8.0
-Stable tag: 1.5.8
+Tested up to: 4.9.1
+Stable tag: 1.5.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,7 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 
 * [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
 * [[Doc] Purchase](https://docs.google.com/document/d/1EUdBVvnm7IHZ6y0DNyldZypUQKpB8UVPToSc_LdOYQI/)
+* [[Doc] How to Use](https://docs.google.com/document/d/1s3U6x2LAMBoOSBoc8txyYhNKtLfF2iC5zj5Ik8Ndo9A)
 * [[Video] Installation Instruction](https://www.youtube.com/watch?v=nm0JXK9ro9E)
 
 = Help & Support =
@@ -91,15 +92,15 @@ Visit our Help Center if you have any questions, our friendly Support Team is ha
 * Japanese (ja) (thanks to Foken)
 * Russian (ru_RU)
 * Serbian (sr_RS) (thanks to [Ognjen Djuraskovic](mailto:ognjend@firstsiteguide.com), www.firstsiteguide.com)
-* Spain (es_ES) (thanks to [Ognjen Djuraskovic](mailto:ognjend@firstsiteguide.com), www.firstsiteguide.com)
+* Spanish (es_ES) (thanks to [Ognjen Djuraskovic](mailto:ognjend@firstsiteguide.com), www.firstsiteguide.com)
 * Ukrainian (uk)
 
 Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](https://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
 
 = Recommended Plugins =
 
-* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=d76bbcf46476f5ab4bb7950255a738a6) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
-* [Contact Form](https://bestwebsoft.com/products/wordpress/plugins/contact-form/?k=1f9b7d7895c20420af788d9413ed8562) - Allow customers to reach you using secure contact form plugin any website must have.
+* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=d76bbcf46476f5ab4bb7950255a738a6) - Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.
+* [Contact Form](https://bestwebsoft.com/products/wordpress/plugins/contact-form/?k=1f9b7d7895c20420af788d9413ed8562) - Simple contact form plugin any WordPress website must have.
 
 == Installation ==
 
@@ -141,6 +142,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 4. Spam page on the Contact Form to DB manager page display.
 
 == Changelog ==
+
+= V1.5.9 - 10.01.2018 =
+* Update : We updated all functionality for wordpress 4.9.1.
+* Bugfix : Options removal from the database when working on a multisite network has been fixed.
 
 = V1.5.8 - 07.06.2017 =
 * Update : The French language file was updated.
@@ -265,6 +270,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : Ability to manage messages that have been sent from website from Contact Form Plugin by BestWebSoft.
 
 == Upgrade Notice ==
+
+= V1.5.9 =
+* The compatibility with new WordPress version updated.
+* Bugs fixed.
 
 = V1.5.8 =
 * Languages updated.

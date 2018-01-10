@@ -10,7 +10,7 @@
 .cntctfrmtdb-preloader {
 	position: absolute;
 	width: 32px;
-	height: 32px; 
+	height: 32px;
 	z-index: 1000;
 	margin-top: 30px;
 }
@@ -105,7 +105,7 @@
 	display: block;
 	border: 1px solid #999;
 	-webkit-border-radius: 5px ;
-	-moz-border-radius: 5px; 
+	-moz-border-radius: 5px;
 	border-radius: 5px;
 }
 .cntctfrmtdb .wp-list-table .column-message .message-container .attachments-preview .attachment-img img {
@@ -113,7 +113,7 @@
 	max-height: 150px;
 	border: 2px solid #fff;
 	-webkit-border-radius: 3px ;
-	-moz-border-radius: 3px; 
+	-moz-border-radius: 3px;
 	border-radius: 3px;
 	-webkit-box-shadow: 1px 1px 5px rgba( 0, 0, 0, 0.8 );
 	-moz-box-shadow: 1px 1px 5px rgba( 0, 0, 0, 0.8 );
@@ -157,7 +157,7 @@
 	height: 19px;
 	padding-top: 1px;
 	-webkit-border-radius: 2px ;
-	-moz-border-radius: 2px; 
+	-moz-border-radius: 2px;
 	border-radius: 2px;
 	background: #dbdbdb;
 	color: #fff;
@@ -182,20 +182,32 @@
 	height: 16px;
 	background: url('../images/status-icons.png') -11px 0px;
 }
+.cntctfrmtdb_how_to_use {
+	float: right;
+}
+.rtl .cntctfrmtdb_how_to_use {
+	float: left;
+}
 /*
-* styles for pro_version settings and tooltip 
+* styles for pro_version settings and tooltip
 */
 a.bws_plugin_menu_pro_version,
 .bws_plugin_menu_pro_version:hover {
-    background: #B1B1B1;    
+	background: #B1B1B1;
 }
 table a.bws_plugin_menu_pro_version,
 table a.bws_plugin_menu_pro_version:hover {
-    background: transparent;
-    color: #666666;
+	background: transparent;
+	color: #666666;
 }
 
 @media screen and (max-width: 782px) {
+	.cntctfrmtdb_how_to_use {
+		float: none;
+	}
+	.cntctfrmtdb_how_to_use li {
+		white-space: normal;
+	}
 	.cntctfrmtdb .wp-list-table .column-status,
 	.cntctfrmtdb .wp-list-table .column-from,
 	.cntctfrmtdb .wp-list-table .column-department,

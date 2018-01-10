@@ -80,6 +80,7 @@
 <ul>
 <li><a href="https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/" rel="nofollow">[Doc] Installation</a></li>
 <li><a href="https://docs.google.com/document/d/1EUdBVvnm7IHZ6y0DNyldZypUQKpB8UVPToSc_LdOYQI/" rel="nofollow">[Doc] Purchase</a></li>
+<li><a href="https://docs.google.com/document/d/1s3U6x2LAMBoOSBoc8txyYhNKtLfF2iC5zj5Ik8Ndo9A" rel="nofollow">[Doc] How to Use</a></li>
 <li><a href="https://www.youtube.com/watch?v=nm0JXK9ro9E" rel="nofollow">[Video] Installation Instruction</a></li>
 </ul>
 <h4>Help &amp; Support</h4>
@@ -90,12 +91,12 @@
 <li>Japanese (ja) (thanks to Foken)</li>
 <li>Russian (ru_RU)</li>
 <li>Serbian (sr_RS) (thanks to <a href="mailto:&#111;&#x67;&#110;&#106;&#x65;&#110;&#100;&#x40;&#102;i&#x72;&#115;&#x74;&#x73;&#105;&#x74;&#x65;&#103;&#x75;&#105;&#100;&#x65;&#046;&#099;&#x6f;&#109;" rel="nofollow">Ognjen Djuraskovic</a>, www.firstsiteguide.com)</li>
-<li>Spain (es_ES) (thanks to <a href="mailto:&#111;&#x67;&#110;&#106;&#x65;&#110;&#100;&#x40;&#102;i&#x72;&#115;&#x74;&#x73;&#105;&#x74;&#x65;&#103;&#x75;&#105;&#100;&#x65;&#046;&#099;&#x6f;&#109;" rel="nofollow">Ognjen Djuraskovic</a>, www.firstsiteguide.com)</li>
+<li>Spanish (es_ES) (thanks to <a href="mailto:&#111;&#x67;&#110;&#106;&#x65;&#110;&#100;&#x40;&#102;i&#x72;&#115;&#x74;&#x73;&#105;&#x74;&#x65;&#103;&#x75;&#105;&#100;&#x65;&#046;&#099;&#x6f;&#109;" rel="nofollow">Ognjen Djuraskovic</a>, www.firstsiteguide.com)</li>
 <li>Ukrainian (uk)</li>
 </ul>
 <p>Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send <a href="https://codex.wordpress.org/Translating_WordPress" rel="nofollow">the text of PO and MO files</a> to <a href="https://support.bestwebsoft.com/hc/en-us/requests/new" rel="nofollow">BestWebSoft</a> and we&#8217;ll add it to the plugin. You can download the latest version of the program for work with PO and MO <a href="http://www.poedit.net/download.php" rel="nofollow">files Poedit</a>.</p>
 <h4>Recommended Plugins</h4>
 <ul>
-<li><a href="https://bestwebsoft.com/products/wordpress/plugins/updater/?k=d76bbcf46476f5ab4bb7950255a738a6" rel="nofollow">Updater</a> &#8211; Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.</li>
-<li><a href="https://bestwebsoft.com/products/wordpress/plugins/contact-form/?k=1f9b7d7895c20420af788d9413ed8562" rel="nofollow">Contact Form</a> &#8211; Allow customers to reach you using secure contact form plugin any website must have.</li>
+<li><a href="https://bestwebsoft.com/products/wordpress/plugins/updater/?k=d76bbcf46476f5ab4bb7950255a738a6" rel="nofollow">Updater</a> &#8211; Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.</li>
+<li><a href="https://bestwebsoft.com/products/wordpress/plugins/contact-form/?k=1f9b7d7895c20420af788d9413ed8562" rel="nofollow">Contact Form</a> &#8211; Simple contact form plugin any WordPress website must have.</li>
 </ul>
