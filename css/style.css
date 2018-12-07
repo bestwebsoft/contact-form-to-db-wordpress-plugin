@@ -222,3 +222,8 @@ table a.bws_plugin_menu_pro_version:hover {
 		display: none;
 	}
 }
+@media screen and (max-width: 486px) {
+	.cntctfrmtdb_save_to_block label{
+		width: 86%;
+	}
+}

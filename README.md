@@ -60,6 +60,7 @@
 <p><strong>Pro Features</strong></p>
 <p>All features from Free version included plus:</p>
 <ul>
+<li>Compatible with Contact Form 7</li>
 <li>Save attachments to:
 <ul>
 <li>Database</li>

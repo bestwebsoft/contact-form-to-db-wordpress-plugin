@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: browse messages, cf add on, contact button, contact form add on, contact form parameters, contact form plugin, contact form to db, save messages, download messages, contact us form, web page feedback, delete messages
 Requires at least: 3.9
-Tested up to: 4.9.1
-Stable tag: 1.5.9
+Tested up to: 4.9.8
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,7 @@ http://www.youtube.com/watch?v=agEWy6Hc-fY
 >
 > All features from Free version included plus:
 >
+> * Compatible with Contact Form 7
 > * Save attachments to:
 > 	* Database
 > 	* Uploads
@@ -142,6 +143,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 4. Spam page on the Contact Form to DB manager page display.
 
 == Changelog ==
+
+= V1.6.0  - 07.12.2018
+* Pro  : Ability to save the messages sent by Contact Form 7 has been added.
+* Update : French language file is updated.
 
 = V1.5.9 - 10.01.2018 =
 * Update : We updated all functionality for wordpress 4.9.1.
