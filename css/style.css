@@ -200,7 +200,9 @@ table a.bws_plugin_menu_pro_version:hover {
 	background: transparent;
 	color: #666666;
 }
-
+.bws_pro_version_bloc{
+	margin: 10px 10px 0 0;
+}
 @media screen and (max-width: 782px) {
 	.cntctfrmtdb_how_to_use {
 		float: none;
@@ -225,5 +227,10 @@ table a.bws_plugin_menu_pro_version:hover {
 @media screen and (max-width: 486px) {
 	.cntctfrmtdb_save_to_block label{
 		width: 86%;
+	}
+}
+@media screen and (max-width: 782px){
+	.wp-list-table tr:not(.inline-edit-row):not(.no-items) td:not(.check-column) {
+		min-width: 150px;
 	}
 }

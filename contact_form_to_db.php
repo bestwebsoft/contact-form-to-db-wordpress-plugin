@@ -6,7 +6,7 @@ Description: Save and manage contact form messages. Never lose important data.
 Author: BestWebSoft
 Text Domain: contact-form-to-db
 Domain Path: /languages
-Version: 1.6.0
+Version: 1.6.1
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -26,17 +26,22 @@ License: GPLv2 or later
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 */
-
+ 
 /*
 * Function for adding menu and submenu
 */
+
 if ( ! function_exists( 'cntctfrmtdb_admin_menu' ) ) {
 	function cntctfrmtdb_admin_menu() {
 		bws_general_menu();
+		$cntctfrmtdb_options = get_option('cntctfrmtdb_options');
+		$bws_hide_premium_options_check = bws_hide_premium_options_check( $cntctfrmtdb_options );
 		$settings = add_submenu_page( 'bws_panel', 'Contact Form to DB', 'Contact Form to DB', 'edit_themes', 'contact_form_to_db.php', 'cntctfrmtdb_settings_page' );
         $hook = add_menu_page( 'CF to DB', 'CF to DB', 'edit_posts', 'cntctfrmtdb_manager', 'cntctfrmtdb_manager_page', plugins_url( "images/menu_single.png", __FILE__ ), '56.1' );
-        $CF7=add_submenu_page('cntctfrmtdb_manager','CF7 to DB', __( 'CF7 to DB', 'contact-form-to-db' ),'manage_options', 'cntctfrmtdb_manager_cf7', 'cntctfrmtdb_manager_cf7');
-        add_action( 'load-' . $hook, 'cntctfrmtdb_add_options_manager' );
+		if( ! $bws_hide_premium_options_check ) {
+			$CF7 = add_submenu_page('cntctfrmtdb_manager', 'CF7 to DB', __('CF7 to DB', 'contact-form-to-db'), 'manage_options', 'cntctfrmtdb_manager_cf7', 'cntctfrmtdb_manager_cf7');
+		}
+		add_action( 'load-' . $hook, 'cntctfrmtdb_add_options_manager' );
         add_action( 'load-' . $settings, 'cntctfrmtdb_add_tabs' );
 	}
 }
@@ -47,7 +52,6 @@ if ( ! function_exists( 'cntctfrmtdb_plugins_loaded' ) ) {
 		load_plugin_textdomain( 'contact-form-to-db', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 }
-
 
 /*
 * Function initialisation plugin
@@ -97,7 +101,7 @@ if ( ! function_exists( 'cntctfrmtdb_admin_init' ) ) {
 if ( ! function_exists( 'cntctfrmtdb_settings' ) ) {
 	function cntctfrmtdb_settings() {
 		global $cntctfrmtdb_options, $cntctfrmtdb_option_defaults, $cntctfrmtdb_plugin_info;
-		$cntctfrmtdb_db_version = '1.3';
+		$cntctfrmtdb_db_version = '1.2';
 
 		/* set default settings */
 		$cntctfrmtdb_option_defaults = array(
@@ -353,6 +357,13 @@ if ( ! function_exists( 'cntctfrmtdb_settings_page' ) ) {
 				} else { ?>
 					<form class="bws_form" method="post" action="admin.php?page=contact_form_to_db.php">
 						<table class="form-table">
+							<noscript>
+								<div class="error">
+									<p>
+										<strong><?php printf( __( "Please enable JavaScript in your browser.", 'contact-form-to-db' ), __( "Form layout", 'contact-form-plugin' ), __( "Submit position", 'contact-form-plugin' ) ); ?></strong>
+									</p>
+								</div>
+							</noscript>
 							<tr valign="top">
 								<th scope="row"><label for="cntctfrmtdb_save_messages_to_db"><?php _e( 'Save messages to database', 'contact-form-to-db' ); ?></label></th>
 								<td>
@@ -1784,8 +1795,8 @@ if ( ! class_exists( 'Cntctfrmtdb_Manager' ) ) {
 							<tbody>
 								<tr class="attachment-img bws_pro_version" align="center">
 									<td class="attachment-info" valign="middle">
-										<span>Attachment name</span></br>
-										<span>Attachment size</span></br>
+										<span>' . __( 'Attachment name', 'contact-form-to-db' ) . '</span></br>
+										<span>' . __( 'Attachment size', 'contact-form-to-db' ) . '</span></br>
 										<span><a class="cntctfrmtdb-download-attachment bws_plugin_menu_pro_version" title="' . __( "This option is available in Pro version", "contact-form-to-db" ) . '" href="#">' . __( 'Download', 'contact-form-to-db' ) . '</a></span></br>
 										<span><a class="bws_plugin_menu_pro_version" title="' . __( "This option is available in Pro version", "contact-form-to-db" ) . '" href="#">' . __( 'View', 'contact-form-to-db' ) . '</a></span>
 									</td>
@@ -1805,7 +1816,7 @@ if ( ! class_exists( 'Cntctfrmtdb_Manager' ) ) {
 					$counter_sent_status .= '<span class="warning" title="' . __( 'This message was not sent', 'contact-form-to-db' ) . '"></span>';
 				/* display date */
 				$send_date = strtotime( $value->send_date );
-				$send_date = date( 'd M Y H:i', $send_date );
+				$send_date = date( 'd.m.Y H:i', $send_date );
 				/* forming massiv of messages */
 				$list_of_messages[ $i ] = array(
 					'id'         => $value->id,
@@ -1851,17 +1862,41 @@ if ( ! function_exists( 'cntctfrmtdb_set_screen_option' ) ) {
 }
 if ( ! function_exists( 'cntctfrmtdb_manager_cf7' ) ) {
     function cntctfrmtdb_manager_cf7() {
-        global $cntctfrmtdb_plugin_info, $wp_version;?>
-        <div class="bws_pro_version_bloc">
-            <div class="bws_pro_version_table_bloc">
-                <div class="bws_table_bg" style="top:0;"></div>
-                <div class="wrap cntctfrmtdb_manager_cf7" style="margin: 0 10px">
-                    <h1><span><?php _e( 'Contact Form 7 to DB Pro', 'contact-form-to-db' ); ?></span></h1>
-                    <ul class='subsubsub'>
-                        <li class='all'><a class="current" href="#"><?php _e( 'All', 'contact-form-to-db' ); ?><span> ( 3 )</span></a> |</li>
-                        <li class='spam'><a href="#"><?php _e( 'Spam', 'contact-form-to-db' ); ?><span> ( 0 )</span></a></li>
-                        <li class='trash'><a href="#"><?php _e( 'Trash', 'contact-form-to-db' ); ?><span> ( 0 )</span></a></li>
-                    </ul>
+        global $cntctfrmtdb_plugin_info, $wp_version, $cntctfrmtdb_option_defaults , $plugin_basename;
+		$cntctfrmtdb_options = get_option('cntctfrmtdb_options');
+		/* GO PRO */
+		if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) {
+			$go_pro_result = bws_go_pro_tab_check( $plugin_basename, 'cntctfrmtdb_options' );
+			if ( ! empty( $go_pro_result['error'] ) ) {
+				$error = $go_pro_result['error'];
+			}
+			elseif ( ! empty( $go_pro_result['message'] ) ) {
+				$message = $go_pro_result['message'];
+			}
+		}
+
+		/* add restore function */
+		if ( isset ( $_REQUEST['bws_hide_premium_options'] )  ) {
+			$result = bws_hide_premium_options( $cntctfrmtdb_options );
+			update_option( 'cntctfrmtdb_options', $result['options'] );?>
+			<div class="updated fade inline"><p><strong><?php _e('You can always look at premium options by checking the "Show Pro features" in the "Go PRO" tab.', 'contact-form-to-db'); ?></strong></p></div>
+		<?php } else {
+		$bws_hide_premium_options_check = bws_hide_premium_options_check( $cntctfrmtdb_options );
+		?>
+		<div class="wrap cntctfrmtdb_manager_cf7" style="margin: 0 10px">
+			<h1><span><?php _e( 'Contact Form 7 to DB Pro', 'contact-form-to-db' ); ?></span></h1>
+			<div class="bws_pro_version_bloc">
+				<div class="bws_pro_version_table_bloc">
+					<?php if( ! $bws_hide_premium_options_check ) { ?>
+					<form class="bws_form" method="post" action="">
+					<button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php _e( 'Close', 'contact-form-to-db' ); ?>"></button>
+					</form>
+					<ul class='subsubsub'>
+						<li class='all'><a class="current" href="#"><?php _e( 'All', 'contact-form-to-db' ); ?><span> ( 3 )</span></a> |</li>
+						<li class='spam'><a href="#"><?php _e( 'Spam', 'contact-form-to-db' ); ?><span> ( 0 )</span></a></li>
+						<li class='trash'><a href="#"><?php _e( 'Trash', 'contact-form-to-db' ); ?><span> ( 0 )</span></a></li>
+					</ul>
+					<div class="bws_table_bg"></div>
                     <div class="tablenav top">
                         <div class="alignleft actions bulkactions">
                             <select disabled>
@@ -2002,13 +2037,16 @@ if ( ! function_exists( 'cntctfrmtdb_manager_cf7' ) ) {
                         <div class='tablenav-pages one-page'><span class="displaying-num">3 <?php _e( 'items', 'contact-form-to-db' ); ?></span></div>
                         <br class="clear" />
                     </div>
-                </div><!-- .wrap -->
-            </div>
-            <div class="bws_pro_version_tooltip">
-                <a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=<?php echo $cntctfrmtdb_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Contact Form to DB Pro"><?php _e( 'Learn More', 'contact-form-to-db' ); ?></a>
-                <div class="clear"></div>
-            </div>
-        </div>
+
+            	</div>
+				<div class="bws_pro_version_tooltip">
+					<a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=<?php echo $cntctfrmtdb_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Contact Form to DB Pro"><?php _e( 'Learn More', 'contact-form-to-db' ); ?></a>
+					<div class="clear"></div>
+				</div>
+				<?php } ?>
+        	</div>
+		</div><!-- .wrap -->
+		<?php } ?>
     <?php }
 }
 /*
@@ -2159,15 +2197,17 @@ if ( ! function_exists( 'cntctfrmtdb_show_notices' ) ) {
 				$contact_form_notice = '';
 				if ( ! ( is_plugin_active( 'contact-form-plugin/contact_form.php' ) || is_plugin_active( 'contact-form-pro/contact_form_pro.php' ) ) ) {
 					$contact_form_notice .= __( 'Contact Form plugin is not active.</br>You need to activate this plugin for correct work with Contact Form to DB plugin.', 'contact-form-to-db' );
-					if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array( 'cntctfrmtdb_manager', 'contact_form_to_db.php' ) ) )
-						$contact_form_notice .= '<br/><a href="plugins.php">' . __( 'Activate plugin', 'contact-form-to-db' ) . '</a>';
+					if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array( 'cntctfrmtdb_manager', 'contact_form_to_db.php' ) ) ) {
+						$contact_form_notice .= '<br/><a href="plugins.php">' . __('Activate plugin', 'contact-form-to-db') . '</a>';
+					}
 				}
 				/* old version */
 				if ( ( is_plugin_active( 'contact-form-plugin/contact_form.php' ) && isset( $all_plugins['contact-form-plugin/contact_form.php']['Version'] ) && $all_plugins['contact-form-plugin/contact_form.php']['Version'] < '3.60' ) ||
 					( is_plugin_active( 'contact-form-pro/contact_form_pro.php' ) && isset( $all_plugins['contact-form-pro/contact_form_pro.php']['Version'] ) && $all_plugins['contact-form-pro/contact_form_pro.php']['Version'] < '1.12' ) ) {
 					$contact_form_notice .= __( 'Contact Form plugin has old version.</br>You need to update this plugin for correct work with Contact Form to DB plugin.', 'contact-form-to-db' );
-					if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array( 'cntctfrmtdb_manager', 'contact_form_to_db.php' ) ) )
-						$contact_form_notice .= '<br/><a href="plugins.php">' . __( 'Update plugin', 'contact-form-to-db' ) . '</a>';
+					if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array( 'cntctfrmtdb_manager', 'contact_form_to_db.php' ) ) ) {
+						$contact_form_notice .= '<br/><a href="plugins.php">' . __('Update plugin', 'contact-form-to-db') . '</a>';
+					}
 				}
 			}
 			if ( ! empty( $contact_form_notice ) ) { ?>
