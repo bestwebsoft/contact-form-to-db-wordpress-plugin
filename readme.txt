@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: browse messages, cf add on, contact button, contact form add on, contact form parameters, contact form plugin, contact form to db, save messages, download messages, contact us form, web page feedback, delete messages
 Requires at least: 3.9
-Tested up to: 5.0.3
-Stable tag: 1.6.1
+Tested up to: 5.2.2
+Stable tag: 1.6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -144,6 +144,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.6.2 - 08.08.2019 =
+* Update : The functionality of exporting messages to the CSV format has been improved.
+* Update : BWS menu has been updated.
+
 = V1.6.1 - 19.02.2019 =
 * Update : All functionality was updated for WordPress 5.0.3.
 
@@ -160,7 +164,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Bugfix : HTML structure of Contact Form to DB admin page has been fixed.
 
 = V1.5.7 - 14.04.2017 =
-* Bugfix : Multiple Cross-Site Scripting (XSS) vulnerability was fixed.
+* Bugfix : Multiple Cross-Site Scripting (XSS) vulnerability has been fixed.
 
 = V1.5.6 - 15.08.2016 =
 * Bugfix : Email sending time in accordance with time zone of the site has been set.
@@ -278,6 +282,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : Ability to manage messages that have been sent from website from Contact Form Plugin by BestWebSoft.
 
 == Upgrade Notice ==
+
+= V1.6.2 =
+* Functionality improved.
 
 = V1.6.1 =
 * The compatibility with new WordPress version updated.

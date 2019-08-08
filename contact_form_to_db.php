@@ -6,11 +6,11 @@ Description: Save and manage contact form messages. Never lose important data.
 Author: BestWebSoft
 Text Domain: contact-form-to-db
 Domain Path: /languages
-Version: 1.6.1
+Version: 1.6.2
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
-/*  @ Copyright 2018  BestWebSoft  ( https://support.bestwebsoft.com )
+/*  @ Copyright 2019  BestWebSoft  ( https://support.bestwebsoft.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
@@ -389,7 +389,7 @@ if ( ! function_exists( 'cntctfrmtdb_settings_page' ) ) {
 										<label for="cntctfrmtdb_csv_separator"><?php _e( ' separator', 'contact-form-to-db' ); ?></label><br/>
 										<select name="cntctfrmtdb_csv_enclosure" id="cntctfrmtdb_csv_enclosure">
 											<option value='"' <?php if ( "\"" == $cntctfrmtdb_options['csv_enclosure'] ) echo 'selected="selected" '; ?>><?php echo "\""; ?></option>
-											<option value="'" <?php if ( "'" == $cntctfrmtdb_options['csv_enclosure'] ) echo 'selected="selected" '; ?>><?php echo "'"; ?></option>
+											<option value="'" <?php if ( "\'" == $cntctfrmtdb_options['csv_enclosure'] ) echo 'selected="selected" '; ?>><?php echo "'"; ?></option>
 											<option value="`" <?php if ( "`" == $cntctfrmtdb_options['csv_enclosure'] ) echo 'selected="selected" '; ?>><?php echo "`"; ?></option>
 										</select>
 										<label for="cntctfrmtdb_csv_enclosure"><?php _e( ' enclosure', 'contact-form-to-db' ); ?></label><br/>
@@ -797,6 +797,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 					/* create main element <messages></messages> */
 					$messages = $xml->appendChild( $xml->createElement( 'cnttfrmtdb_messages' ) );
 				}
+				$messageArray = array();
 				foreach ( $message_id as $id ) {
 					if ( '' != $id ) {
 						switch ( $action ) {
@@ -1039,6 +1040,8 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 										$separator = stripslashes( $cntctfrmtdb_options['csv_separator'] );
 									/* forming file content */
 									foreach ( $message_data as $data ) {
+										$arrayRow = array();
+										$data_address = $data_phone = $data_user_agent = $data_location = '';
 										foreach ( $additional_fields as $field ) {
 											if ( 'address' == $field->name )
 												$data_address = $field->field_value;
@@ -1051,23 +1054,24 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 										if ( ! isset( $message ) )
 											$message = '';
 										if ( 'custom' == $cntctfrm_options_for_this_plugin['from_email'] )
-											$message .= $enclosure . stripslashes( $cntctfrm_options_for_this_plugin['from_field'] ) . ' <' . stripslashes( $cntctfrm_options_for_this_plugin['custom_from_email'] ) . '>' . $enclosure . $separator ;
+											$arrayRow['from'] = $enclosure . stripslashes( $cntctfrm_options_for_this_plugin['from_field'] ) . ' <' . stripslashes( $cntctfrm_options_for_this_plugin['custom_from_email'] ) . '>' . $enclosure . $separator ;
 										else
-											$message .= $enclosure . stripslashes( $cntctfrm_options_for_this_plugin['from_field'] ) . ' <' . $data->user_email . '>' . $enclosure . $separator ;
-										$message .= $enclosure . $data->email . $enclosure . $separator;
+											$arrayRow['from'] = $enclosure . stripslashes( $cntctfrm_options_for_this_plugin['from_field'] ) . ' <' . $data->user_email . '>' . $enclosure . $separator ;
+										$arrayRow['email_from'] = $enclosure . $data->email . $enclosure . $separator;
 										if ( '' != $data->subject )
-											$message .= $enclosure . $data->subject . $enclosure . $separator;
+											$arrayRow['subject'] = $enclosure . $data->subject . $enclosure . $separator;
 										if ( '' != $data->message_text )
-											$message .= $enclosure . $data->message_text . $enclosure . $separator;
-										$message .= $enclosure . date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), strtotime( $data->send_date ) ) . $enclosure . $separator;
-										$message .= $enclosure . $data->from_user . $enclosure . $separator;
+											$arrayRow['message_text'] = $enclosure . $data->message_text . $enclosure . $separator;
+										$arrayRow['send_date'] = $enclosure . date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), strtotime( $data->send_date ) ) . $enclosure . $separator;
+										$arrayRow['from_user'] = $enclosure . $data->from_user . $enclosure . $separator;
+
 										if ( isset( $data_address ) && '' != $data_address )
-											$message .= $enclosure . $data_address . $enclosure . $separator;
+											$arrayRow['data_address'] = $enclosure . $data_address . $enclosure . $separator;
 										if ( '' != $data->user_email )
-											$message .= $enclosure . $data->user_email . $enclosure . $separator;
+											$arrayRow['user_email'] = $enclosure . $data->user_email . $enclosure . $separator;
 										if ( isset( $data_phone ) && '' != $data_phone )
-											$message .= $enclosure . $data_phone . $enclosure . $separator;
-										$message .= $enclosure . $data->site . $enclosure . $separator;
+											$arrayRow['phone'] = $enclosure . $data_phone . $enclosure . $separator;
+										$arrayRow['site'] = $enclosure . $data->site . $enclosure . $separator;
 										if ( 1 == $cntctfrm_options_for_this_plugin['display_sent_from'] ) {
 											$ip = '';
 											if ( isset( $_SERVER ) ) {
@@ -1087,19 +1091,22 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 													}
 												}
 											}
-											$message .= $enclosure . __( 'Sent from (ip address): ', 'contact-form-to-db' ) . $ip . " ( " . @gethostbyaddr( $ip ) ." )" . $enclosure . $separator;
+											$arrayRow['sent_from_ip'] = $enclosure . $ip . " ( " . @gethostbyaddr( $ip ) ." )" . $enclosure . $separator;
 										}
 
 										if ( '' != $data->refer ) {
-											$message .= $enclosure . $data->refer . $enclosure . $separator;
+											$arrayRow['refer'] = $enclosure . $data->refer . $enclosure . $separator;
 										}
 										if ( isset( $data_user_agent ) && '' != $data_user_agent ) {
-											$message .= $enclosure . $data_user_agent . $enclosure . $separator;
+											$arrayRow['user_agent'] = $enclosure . $data_user_agent . $enclosure . $separator;
 										}
 										/* if was chosen only one message */
 										if ( 1 == $count_messages ) {
 											/* saving file to local computer */
 											$file_name = 'message_' . 'ID_' . $id . '_' . $random_number . '.csv';
+											$columns_row = array_keys( $arrayRow );
+											$message = implode( ',' , $columns_row ) . "\n";
+											$message .= implode( '' , $arrayRow );
 											if ( file_exists( $save_file_path . '/' . $file_name ) )
 												$file_name = time() . '_' . $file_name;
 											$fp = fopen( $save_file_path . '/' . $file_name, 'w');
@@ -1123,7 +1130,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 											}
 										/* if was chosen more then one message */
 										} elseif ( 1 < $count_messages ) {
-											$message .= "\n";
+											$messageArray[] = $arrayRow;
 										}
 									}
 								} else {
@@ -1279,6 +1286,33 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 								break;
 						}
 					}
+				}
+				/* Create columns in csv document*/
+				if ( 'csv' == $cntctfrmtdb_options['format_save_messages'] ) {
+					$all_columns  = array();
+					if ( 't' == $cntctfrmtdb_options['csv_separator'] ){
+						$separator = "\\" . stripslashes( $cntctfrmtdb_options['csv_separator'] );
+                    } else {
+						$separator = stripslashes( $cntctfrmtdb_options['csv_separator'] );
+					}
+					foreach ( $messageArray as $single_message ) {
+						$all_columns  = array_merge( $all_columns , $single_message );
+					}
+					$all_columns = array_keys( $all_columns );
+					$result_string = implode( $separator , $all_columns ) . "\n";
+
+					/* Create row with data */
+					foreach ( $messageArray as $single_message ) {
+						foreach ( $all_columns as $col_key ) {
+							if ( isset( $single_message[$col_key] ) ) {
+								$result_string .= $single_message[$col_key];
+							} else {
+								$result_string .= $separator;
+							}
+						}
+						$result_string .= "\n";
+					}
+					$message = $result_string;
 				}
 				/* create zip-archives is possible and one embodiment of the:
 				1) need to save several messages in "csv"-format
