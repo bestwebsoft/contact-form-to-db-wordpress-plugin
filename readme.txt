@@ -4,7 +4,7 @@ Donate link: https://bestwebsoft.com/donate/
 Tags: browse messages, cf add on, contact button, contact form add on, contact form parameters, contact form plugin, contact form to db, save messages, download messages, contact us form, web page feedback, delete messages
 Requires at least: 3.9
 Tested up to: 5.2.2
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -144,6 +144,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.6.3 - 04.09.2019 =
+* Update : The deactivation feedback has been changed. Misleading buttons have been removed.
+
 = V1.6.2 - 08.08.2019 =
 * Update : The functionality of exporting messages to the CSV format has been improved.
 * Update : BWS menu has been updated.
@@ -282,6 +285,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : Ability to manage messages that have been sent from website from Contact Form Plugin by BestWebSoft.
 
 == Upgrade Notice ==
+
+= V1.6.3 =
+* Usability improved.
 
 = V1.6.2 =
 * Functionality improved.
