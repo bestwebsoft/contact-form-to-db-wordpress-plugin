@@ -6,11 +6,11 @@ Description: Save and manage contact form messages. Never lose important data.
 Author: BestWebSoft
 Text Domain: contact-form-to-db
 Domain Path: /languages
-Version: 1.6.3
+Version: 1.6.4
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
-/*  @ Copyright 2019  BestWebSoft  ( https://support.bestwebsoft.com )
+/*  @ Copyright 2020  BestWebSoft  ( https://support.bestwebsoft.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
@@ -33,14 +33,35 @@ License: GPLv2 or later
 
 if ( ! function_exists( 'cntctfrmtdb_admin_menu' ) ) {
 	function cntctfrmtdb_admin_menu() {
-		bws_general_menu();
-		$cntctfrmtdb_options = get_option('cntctfrmtdb_options');
-		$bws_hide_premium_options_check = bws_hide_premium_options_check( $cntctfrmtdb_options );
-		$settings = add_submenu_page( 'bws_panel', 'Contact Form to DB', 'Contact Form to DB', 'edit_themes', 'contact_form_to_db.php', 'cntctfrmtdb_settings_page' );
-        $hook = add_menu_page( 'CF to DB', 'CF to DB', 'edit_posts', 'cntctfrmtdb_manager', 'cntctfrmtdb_manager_page', plugins_url( "images/menu_single.png", __FILE__ ), '56.1' );
-		if( ! $bws_hide_premium_options_check ) {
-			$CF7 = add_submenu_page('cntctfrmtdb_manager', 'CF7 to DB', __('CF7 to DB', 'contact-form-to-db'), 'manage_options', 'cntctfrmtdb_manager_cf7', 'cntctfrmtdb_manager_cf7');
+		global $submenu, $wp_version, $cntctfrmtdb_plugin_info;
+
+		$hook = add_menu_page( 'CF to DB', 'CF to DB', 'edit_posts', 'cntctfrmtdb_manager', 'cntctfrmtdb_manager_page', 'none', '56.1' );
+		add_submenu_page('cntctfrmtdb_manager', 'CF7 to DB', 'CF7 to DB', 'manage_options', 'cntctfrmtdb_manager_cf7', 'cntctfrmtdb_manager_cf7');
+
+		$settings = add_submenu_page(
+			'cntctfrmtdb_manager',
+			__( 'Contact Form to DB Settings', 'contact-form-to-db' ),
+			__( 'Settings', 'contact-form-to-db' ),
+			'manage_options',
+			'contact_form_to_db.php',
+			'cntctfrmtdb_settings_page'
+		);
+		add_submenu_page(
+			'cntctfrmtdb_manager',
+			'BWS Panel',
+			'BWS Panel',
+			'manage_options',
+			'cntctfrmtdb-bws-panel',
+			'bws_add_menu_render'
+		);
+
+		if ( isset( $submenu['cntctfrmtdb_manager'] ) ) {
+			$submenu['cntctfrmtdb_manager'][] = array(
+				'<span style="color:#d86463"> ' . __('Upgrade to Pro', 'contact-form-to-db' ) . '</span>',
+				'manage_options',
+				'https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=' . $cntctfrmtdb_plugin_info["Version"] . '&wp_v=' . $wp_version );
 		}
+
 		add_action( 'load-' . $hook, 'cntctfrmtdb_add_options_manager' );
         add_action( 'load-' . $settings, 'cntctfrmtdb_add_tabs' );
 	}
@@ -70,7 +91,7 @@ if ( ! function_exists( 'cntctfrmtdb_init' ) ) {
 		}
 
 		/* Function check if plugin is compatible with current WP version  */
-		bws_wp_min_version_check( plugin_basename( __FILE__ ), $cntctfrmtdb_plugin_info, '3.9' );
+		bws_wp_min_version_check( plugin_basename( __FILE__ ), $cntctfrmtdb_plugin_info, '4.5' );
 
 		/* Call register settings function */
 		$cntctfrmtdb_pages = array(
@@ -78,13 +99,13 @@ if ( ! function_exists( 'cntctfrmtdb_init' ) ) {
 			'contact_form_to_db.php'
 		);
 		if ( isset( $_REQUEST['page'] ) && 'contact_form_to_db.php' == $_REQUEST['page'] )
-		cntctfrmtdb_settings();
+		    cntctfrmtdb_settings();
 	}
 }
 
 if ( ! function_exists( 'cntctfrmtdb_admin_init' ) ) {
 	function cntctfrmtdb_admin_init() {
-		global $bws_plugin_info, $cntctfrmtdb_plugin_info;
+		global $bws_plugin_info, $cntctfrmtdb_plugin_info, $pagenow, $cntctfrmtdb_options;
 
 		/* Add variable for bws_menu */
 		if ( empty( $bws_plugin_info ) )
@@ -92,21 +113,23 @@ if ( ! function_exists( 'cntctfrmtdb_admin_init' ) ) {
 
 		if ( isset( $_REQUEST['page'] ) && 'cntctfrmtdb_manager' == $_REQUEST['page'] )
 			cntctfrmtdb_action_links();
+
+		if ( 'plugins.php' == $pagenow ) {
+			/* Install the option defaults */
+			if ( function_exists( 'bws_plugin_banner_go_pro' ) ) {
+				cntctfrmtdb_settings();
+				bws_plugin_banner_go_pro( $cntctfrmtdb_options, $cntctfrmtdb_plugin_info, 'cntctfrmtdb', 'contact-form-to-db', 'a0297729ff05dc9a4dee809c8b8e94bf', '91', 'contact-form-to-db' );
+			}
+		}
 	}
 }
 
-/*
-* Function to register default settings of plugin
-*/
-if ( ! function_exists( 'cntctfrmtdb_settings' ) ) {
-	function cntctfrmtdb_settings() {
-		global $cntctfrmtdb_options, $cntctfrmtdb_option_defaults, $cntctfrmtdb_plugin_info;
-		$cntctfrmtdb_db_version = '1.2';
+if ( ! function_exists( 'cntctfrmtdb_get_options_default' ) ) {
+	function cntctfrmtdb_get_options_default() {
+		global $cntctfrmtdb_plugin_info;
 
-		/* set default settings */
-		$cntctfrmtdb_option_defaults = array(
+		$default_options = array(
 			'plugin_option_version'     => $cntctfrmtdb_plugin_info["Version"],
-			'plugin_db_version'         => $cntctfrmtdb_db_version,
 			'save_messages_to_db'   	=> 1,
 			'format_save_messages'  	=> 'xml',
 			'csv_separator'         	=> ",",
@@ -118,14 +141,26 @@ if ( ! function_exists( 'cntctfrmtdb_settings' ) ) {
 			'display_settings_notice'	=> 1,
 			'suggest_feature_banner'	=> 1,
 		);
+
+		return $default_options;
+	}
+}
+
+/*
+* Function to register default settings of plugin
+*/
+if ( ! function_exists( 'cntctfrmtdb_settings' ) ) {
+	function cntctfrmtdb_settings() {
+		global $cntctfrmtdb_options, $cntctfrmtdb_plugin_info;
+		$cntctfrmtdb_db_version = '1.2';
+
 		/* add options to database */
 		if ( ! get_option( 'cntctfrmtdb_options' ) )
-			add_option( 'cntctfrmtdb_options', $cntctfrmtdb_option_defaults );
+			add_option( 'cntctfrmtdb_options', cntctfrmtdb_get_options_default() );
 
 		/* get options from database to operate with them */
 		$cntctfrmtdb_options = get_option( 'cntctfrmtdb_options' );
 
-		$is_old_pro = strpos( "pro-", $cntctfrmtdb_options['plugin_option_version'] === false ) ? false : true;
 		/* Array merge in case this version has added new options */
 		if ( ! isset( $cntctfrmtdb_options['plugin_option_version'] ) || $cntctfrmtdb_options['plugin_option_version'] != $cntctfrmtdb_plugin_info["Version"] ) {
 
@@ -137,7 +172,7 @@ if ( ! function_exists( 'cntctfrmtdb_settings' ) ) {
 				register_uninstall_hook( __FILE__, 'cntctfrmtdb_delete_options' );
 			}
 
-			$cntctfrmtdb_options = array_merge( $cntctfrmtdb_option_defaults, $cntctfrmtdb_options );
+			$cntctfrmtdb_options = array_merge( cntctfrmtdb_get_options_default(), $cntctfrmtdb_options );
 			$cntctfrmtdb_options['plugin_option_version'] = $cntctfrmtdb_plugin_info["Version"];
 			/* show pro features */
 			$cntctfrmtdb_options['hide_premium_options'] = array();
@@ -270,6 +305,7 @@ if ( ! function_exists ( 'cntctfrmtdb_admin_head' ) ) {
 	function cntctfrmtdb_admin_head() {
 		global $cntctfrmtdb_pages;
 
+		wp_enqueue_style( 'cntctfrmtdb_icon_stylesheet', plugins_url( 'css/icon.css', __FILE__ ) );
 		wp_enqueue_style( 'cntctfrmtdb_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
 
 		if ( isset( $_REQUEST['page'] ) && in_array( $_REQUEST['page'], $cntctfrmtdb_pages ) ) {
@@ -292,185 +328,16 @@ if ( ! function_exists ( 'cntctfrmtdb_admin_head' ) ) {
 */
 if ( ! function_exists( 'cntctfrmtdb_settings_page' ) ) {
 	function cntctfrmtdb_settings_page() {
-		global $cntctfrmtdb_options, $cntctfrmtdb_option_defaults, $wp_version, $cntctfrmtdb_plugin_info;
-		$message = $error = "";
-		$plugin_basename = plugin_basename( __FILE__ );
-		/* set value of input type="hidden" when options is changed */
-		if ( isset( $_POST['cntctfrmtdb_form_submit'] ) && check_admin_referer( $plugin_basename, 'cntctfrmtdb_nonce_name' ) ) {
-			if ( isset( $_POST['bws_hide_premium_options'] ) && check_admin_referer( $plugin_basename, 'cntctfrmtdb_nonce_name' ) ) {
-				$hide_result  = bws_hide_premium_options( $cntctfrmtdb_options );
-				$cntctfrmtdb_options = $hide_result['options'];
-				$message      = $hide_result['message'];
-				update_option( '$cntctfrmtdb_options', $cntctfrmtdb_options );
-			}
-			$cntctfrmtdb_options['save_messages_to_db'] = isset( $_POST['cntctfrmtdb_save_messages_to_db'] ) ? 1 : 0;
-			$cntctfrmtdb_options['format_save_messages'] = $_POST['cntctfrmtdb_format_save_messages'];
-			if ( 'csv' == $cntctfrmtdb_options['format_save_messages'] ) {
-				$cntctfrmtdb_options['csv_separator'] = $_POST['cntctfrmtdb_csv_separator'];
-				$cntctfrmtdb_options['csv_enclosure'] = $_POST['cntctfrmtdb_csv_enclosure'];
-			} else {
-				$cntctfrmtdb_options['csv_separator'] = ",";
-				$cntctfrmtdb_options['csv_enclosure'] = '"';
-			}
-			/* update options of plugin in database */
-			update_option( 'cntctfrmtdb_options', $cntctfrmtdb_options );
-			$message = __( 'Settings saved.', 'contact-form-to-db' );
-		}
-
-		/* check banner */
-		$bws_hide_premium_options_check = bws_hide_premium_options_check( $cntctfrmtdb_options );
-
-		/* add restore function */
-		if ( isset( $_REQUEST['bws_restore_confirm'] ) && check_admin_referer( $plugin_basename, 'bws_settings_nonce_name' ) ) {
-			$cntctfrmtdb_options = $cntctfrmtdb_option_defaults;
-			update_option( 'cntctfrmtdb_options', $cntctfrmtdb_options );
-			$message = __( 'All plugin settings were restored.', 'contact-form-to-db' );
-		}
-
-		/* GO PRO */
-		if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) {
-			$go_pro_result = bws_go_pro_tab_check( $plugin_basename, 'cntctfrmtdb_options' );
-			if ( ! empty( $go_pro_result['error'] ) )
-				$error = $go_pro_result['error'];
-			elseif ( ! empty( $go_pro_result['message'] ) )
-				$message = $go_pro_result['message'];
-		} ?>
-		<!-- creating page of options -->
-		<div class="wrap">
-			<h1>Contact Form to DB <?php _e( "Settings", 'contact-form-to-db' ); ?></h1>
-			<ul class="subsubsub cntctfrmtdb_how_to_use">
-				<li><a href="https://docs.google.com/document/d/1s3U6x2LAMBoOSBoc8txyYhNKtLfF2iC5zj5Ik8Ndo9A/" target="_blank"><?php _e( 'How to Use Step-by-step Instruction', 'contact-form-to-db' ); ?></a></li>
-			</ul>
-			<h2 class="nav-tab-wrapper">
-				<a class="nav-tab<?php if ( isset( $_GET['page'] ) && 'contact_form_to_db.php' == $_GET['page'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=contact_form_to_db.php"><?php _e( 'Settings', 'contact-form-to-db' ); ?></a>
-				<a class="nav-tab bws_go_pro_tab<?php if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=contact_form_to_db.php&amp;action=go_pro"><?php _e( 'Go PRO', 'contact-form-to-db' ); ?></a>
-			</h2>
-			<div class="error below-h2 below-h2" <?php if ( "" == $error ) echo "style=\"display:none\""; ?>><p><strong><?php echo $error; ?></strong></p></div>
-			<div class="updated fade below-h2" <?php if ( "" == $message || "" != $error ) echo "style=\"display:none\""; ?>><p><strong><?php echo $message; ?></strong></p></div>
-			<?php bws_show_settings_notice();
-			if ( ! empty( $hide_result['message'] ) ) { ?>
-				<div class="updated fade below-h2"><p><strong><?php echo $hide_result['message']; ?></strong></p></div>
-			<?php }
-			if ( ! isset( $_GET['action'] ) ) {
-				if ( isset( $_REQUEST['bws_restore_default'] ) && check_admin_referer( $plugin_basename, 'bws_settings_nonce_name' ) ) {
-					bws_form_restore_default_confirm( $plugin_basename );
-				} else { ?>
-					<form class="bws_form" method="post" action="admin.php?page=contact_form_to_db.php">
-						<table class="form-table">
-							<noscript>
-								<div class="error">
-									<p>
-										<strong><?php printf( __( "Please enable JavaScript in your browser.", 'contact-form-to-db' ), __( "Form layout", 'contact-form-plugin' ), __( "Submit position", 'contact-form-plugin' ) ); ?></strong>
-									</p>
-								</div>
-							</noscript>
-							<tr valign="top">
-								<th scope="row"><label for="cntctfrmtdb_save_messages_to_db"><?php _e( 'Save messages to database', 'contact-form-to-db' ); ?></label></th>
-								<td>
-									<input type="checkbox" id="cntctfrmtdb_save_messages_to_db" name="cntctfrmtdb_save_messages_to_db" value="1" <?php if ( 1 == $cntctfrmtdb_options['save_messages_to_db'] ) echo "checked=\"checked\" "; ?>/>
-								</td>
-							</tr>
-							<tr valign="top" class="cntctfrmtdb_options" <?php if ( ! 1 == $cntctfrmtdb_options['save_messages_to_db'] ) echo 'style="display: none;"' ;?>>
-								<th scope="row"><?php _e( 'Download messages in', 'contact-form-to-db' ); ?></th>
-								<td>
-									<select name="cntctfrmtdb_format_save_messages" id="cntctfrmtdb_format_save_messages">
-										<option value='xml' <?php if ( 'xml' == $cntctfrmtdb_options['format_save_messages'] ) echo 'selected="selected" '; ?>><?php echo '.xml'; ?></option>
-										<option value='eml' <?php if ( 'eml' == $cntctfrmtdb_options['format_save_messages'] ) echo 'selected="selected" '; ?>><?php echo '.eml'; ?></option>
-										<option value='csv' <?php if ( 'csv' == $cntctfrmtdb_options['format_save_messages'] ) echo 'selected="selected" '; ?>><?php echo '.csv'; ?></option>
-									</select>
-									<label> <?php _e( 'format', 'contact-form-to-db' ); ?></label><br/>
-									<div class="cntctfrmtdb_csv_separators" <?php if ( 'csv' != $cntctfrmtdb_options['format_save_messages'] ) echo 'style="display: none;"'; ?>>
-										<label><?php _e( 'Choose separator and enclosure symbols', 'contact-form-to-db' ); ?></label></br>
-										<select name="cntctfrmtdb_csv_separator" id="cntctfrmtdb_csv_separator">
-											<option value="," <?php if ( "," == $cntctfrmtdb_options['csv_separator'] ) echo 'selected="selected" '; ?>><?php echo ","; ?></option>
-											<option value=";" <?php if ( ";" == $cntctfrmtdb_options['csv_separator'] ) echo 'selected="selected" '; ?>><?php echo ";"; ?></option>
-											<option value="t" <?php if ( "t" == $cntctfrmtdb_options['csv_separator'] ) echo 'selected="selected" '; ?>><?php echo "\\t"; ?></option>
-										</select>
-										<label for="cntctfrmtdb_csv_separator"><?php _e( ' separator', 'contact-form-to-db' ); ?></label><br/>
-										<select name="cntctfrmtdb_csv_enclosure" id="cntctfrmtdb_csv_enclosure">
-											<option value='"' <?php if ( "\"" == $cntctfrmtdb_options['csv_enclosure'] ) echo 'selected="selected" '; ?>><?php echo "\""; ?></option>
-											<option value="'" <?php if ( "\'" == $cntctfrmtdb_options['csv_enclosure'] ) echo 'selected="selected" '; ?>><?php echo "'"; ?></option>
-											<option value="`" <?php if ( "`" == $cntctfrmtdb_options['csv_enclosure'] ) echo 'selected="selected" '; ?>><?php echo "`"; ?></option>
-										</select>
-										<label for="cntctfrmtdb_csv_enclosure"><?php _e( ' enclosure', 'contact-form-to-db' ); ?></label><br/>
-									</div><!-- .cntctfrmtdb_csv_separators -->
-								</td>
-							</tr>
-						</table>
-						<?php if ( ! $bws_hide_premium_options_check ) { ?>
-							<div class="bws_pro_version_bloc">
-								<div class="bws_pro_version_table_bloc">
-									<button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php _e( 'Close', 'contact-form-to-db' ); ?>"></button>
-									<div class="bws_table_bg"></div>
-									<table class="form-table bws_pro_version">
-										<tr valign="top">
-											<th scope="row"><label for="cntctfrmtdb_save_attachments"><?php _e( 'Save attachments', 'contact-form-to-db' ); ?></label></th>
-											<td>
-												<fieldset>
-													<input disabled="disabled" checked="checked" type="checkbox" id="cntctfrmtdb_save_attachments" name="cntctfrmtdb_save_attachments" value="1" />
-													<br/>
-													<div class="cntctfrmtdb_save_to_block">
-														<input disabled="disabled" type="radio" id="cntctfrmtdb_save_to_database" name="cntctfrmtdb_save_attachments_to" value="database" />
-														<label for="cntctfrmtdb_save_to_database"><?php _e( 'Save attachments to database.', 'contact-form-to-db' ); ?></label><br/>
-														<input disabled="disabled" type="radio" id="cntctfrmtdb_save_to_uploads" name="cntctfrmtdb_save_attachments_to" value="uploads" />
-														<label for="cntctfrmtdb_save_to_uploads"><?php _e( 'Save attachments to "Uploads".', 'contact-form-to-db' ); ?></label>
-													</div>
-												</fieldset>
-											</td>
-										</tr>
-										<tr valign="top">
-											<th scope="row"><label for="cntctfrmtdb_delete_messages"><?php _e( 'Periodically delete old messages', 'contact-form-to-db' ); ?></label></th>
-											<td>
-												<input disabled="disabled" checked="checked" type="checkbox" id="cntctfrmtdb_delete_messages" name="cntctfrmtdb_delete_messages"/>
-												<div class="cntctfrmtdb_delete_block">
-													<select disabled="disabled" name="cntctfrmtdb_delete_messages_after" id="cntctfrmtdb_delete_messages_after">
-														<option value='daily'><?php _e( 'every 24 hours', 'contact-form-to-db' ); ?></option>
-														<option value='every_three_days'><?php _e( 'every 3 days', 'contact-form-to-db' ); ?></option>
-														<option value='weekly'><?php _e( 'every 1 week', 'contact-form-to-db' ); ?></option>
-														<option value='every_two_weeks'><?php _e( 'every 2 weeks', 'contact-form-to-db' ); ?></option>
-														<option value='monthly'><?php _e( 'every 1 month', 'contact-form-to-db' ); ?></option>
-														<option value='every_six_months'><?php _e( 'every 6 months', 'contact-form-to-db' ); ?></option>
-														<option value='yearly'><?php _e( 'every 1 year', 'contact-form-to-db' ); ?></option>
-													</select><br/>
-													<span class="bws_info"><?php _e( '(All messages older than the specified period will be deleted at the end of the same period)', 'contact-form-to-db' ); ?></span>
-												</div>
-											</td>
-										</tr>
-										<tr valign="top">
-											<th scope="row"><label for="cntctfrmtdb_show_attachments"><?php _e( 'Show attachments', 'contact-form-to-db' ); ?></label></th>
-											<td><input disabled="disabled" type="checkbox" id="cntctfrmtdb_show_attachments" name="cntctfrmtdb_show_attachments" value="1" /></td>
-										</tr>
-										<tr valign="top">
-											<th><label for="cntctfrmtdb_use_fancybox"><?php _e( 'Use fancybox to image view', 'contact-form-to-db' ); ?></label></th>
-											<td><input disabled="disabled" type="checkbox" id="cntctfrmtdb_use_fancybox" name="cntctfrmtdb_use_fancybox" value="1" /></td>
-										</tr>
-										<tr valign="top">
-											<th scope="row" colspan="2">
-												* <?php _e( 'If you upgrade to Pro version all your settings will be saved.', 'contact-form-to-db' ); ?>
-											</th>
-										</tr>
-									</table>
-								</div>
-								<div class="bws_pro_version_tooltip">
-									<a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=<?php echo $cntctfrmtdb_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Contact Form to DB Pro"><?php _e( 'Learn More', 'contact-form-to-db' ); ?></a>
-									<div class="clear"></div>
-								</div>
-							</div>
-						<?php } ?>
-						<p class="submit">
-							<input type="hidden" name="cntctfrmtdb_form_submit" value="submit" />
-							<input id="bws-submit-button" type="submit" class="button-primary" value="<?php _e( 'Save Changes', 'contact-form-to-db' ); ?>" />
-							<?php wp_nonce_field( $plugin_basename, 'cntctfrmtdb_nonce_name' ); ?>
-						</p>
-					</form>
-					<?php bws_form_restore_default_settings( $plugin_basename );
-				}
-			} elseif ( 'go_pro' == $_GET['action'] ) {
-				bws_go_pro_tab_show( $bws_hide_premium_options_check, $cntctfrmtdb_plugin_info, $plugin_basename, 'contact_form_to_db.php', 'contact_form_to_db_pro.php', 'contact-form-to-db-pro/contact_form_to_db_pro.php', 'contact-form-to-db', '5906020043c50e2eab1528d63b126791', '91', isset( $go_pro_result['pro_plugin_is_activated'] ) );
-			}
-			bws_plugin_reviews_block( $cntctfrmtdb_plugin_info['Name'], 'contact-form-to-db' ); ?>
-		</div>
-	<?php }
+		if ( ! class_exists( 'Bws_Settings_Tabs' ) )
+			require_once( dirname( __FILE__ ) . '/bws_menu/class-bws-settings.php' );
+		require_once( dirname( __FILE__ ) . '/includes/class-cntctfrmtdb-settings.php' );
+		$page = new Cntctfrmtdb_Settings_Tabs( plugin_basename( __FILE__ ) ); ?>
+        <div class="wrap">
+            <h1><?php _e( 'Contact Form to DB Settings', 'contact-form-to-db' ); ?></h1>
+            <noscript><div class="error below-h2"><p><strong><?php _e( "Please enable JavaScript in your browser.", 'contact-form-to-db' ); ?></strong></p></div></noscript>
+			<?php $page->display_content(); ?>
+        </div>
+    <?php }
 }
 
 if ( ! function_exists( 'cntctfrmtdb_clear_data' ) ) {
@@ -731,7 +598,7 @@ if ( ! function_exists( 'cntctfrmtdb_save_message' ) ) {
 */
 if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 	function cntctfrmtdb_action_links() {
-		global $wpdb, $cntctfrm_options_for_this_plugin, $cntctfrmtdb_done_message, $cntctfrmtdb_error_message;
+		global $wpdb, $cntctfrm_options_for_this_plugin, $cntctfrmtdb_done_message, $cntctfrmtdb_error_message, $cntctfrmtdb_options;
 
 		if ( ! empty( $_REQUEST['_wp_http_referer'] ) ) {
 			wp_redirect( remove_query_arg( array( '_wp_http_referer', '_wpnonce' ), wp_unslash( $_SERVER['REQUEST_URI'] ) ) );
@@ -741,7 +608,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 		if ( ( isset( $_REQUEST['action'] ) || isset( $_REQUEST['action2'] ) ) && check_admin_referer( plugin_basename( __FILE__ ), 'cntctfrmtdb_manager_nonce_name' ) ) {
 
 			if ( empty( $cntctfrmtdb_options ) )
-				$cntctfrmtdb_options = get_option( 'cntctfrmtdb_options' );
+				cntctfrmtdb_settings();
 
 			/* get option from Contact form or Contact form PRO */
 			if ( ! $cntctfrm_options_for_this_plugin )
@@ -1484,7 +1351,7 @@ if ( ! class_exists( 'Cntctfrmtdb_Manager' ) ) {
 			global $cntctfrmtdb_options;
 
 			$columns               = $this->get_columns();
-			$hidden                = get_hidden_columns( $this->screen );			
+			$hidden                = get_hidden_columns( $this->screen );
 			$sortable              = $this->get_sortable_columns();
 			$primary               = 'message';
 			$this->_column_headers = array( $columns, $hidden, $sortable, $primary );
@@ -1637,14 +1504,14 @@ if ( ! class_exists( 'Cntctfrmtdb_Manager' ) ) {
 				$departments = $wpdb->get_results( "SELECT DISTINCT `field_value` FROM `" . $wpdb->prefix . "cntctfrmtdb_field_selection`, `" . $wpdb->prefix . "cntctfrm_field` WHERE `cntctfrm_field_id`=`id` AND `name`='department_selectbox'", ARRAY_A );
 				if ( ! empty( $departments ) ) { ?>
 					<div class="alignleft actions">
-						<label class="screen-reader-text" for="filter-by-department"><?php _e( 'Filter by department', 'contact-form-to-db-pro' ); ?></label>
+						<label class="screen-reader-text" for="filter-by-department"><?php _e( 'Filter by department', 'contact-form-to-db' ); ?></label>
 						<select id="filter-by-department" name="cntctfrmtdb_department">
 							<option value=""><?php _e( 'All departments', 'contact-form-to-db' ); ?></option>
 							<?php foreach ( $departments as $department ) { ?>
 								<option value="<?php echo $department['field_value']; ?>"<?php selected( $cntctfrmtdb_department, $department['field_value'], true ); ?>><?php echo $department['field_value']; ?></option>
 							<?php } ?>
 						</select>
-						<?php submit_button( __( 'Filter', 'contact-form-to-db-pro' ), 'button', 'filter_action', false, array( 'id' => 'post-query-submit' ) ); ?>
+						<?php submit_button( __( 'Filter', 'contact-form-to-db' ), 'button', 'filter_action', false, array( 'id' => 'post-query-submit' ) ); ?>
 					</div>
 				<?php }
 			}
@@ -1685,7 +1552,7 @@ if ( ! class_exists( 'Cntctfrmtdb_Manager' ) ) {
 			if ( in_array( $this->message_status, array( 'all', 'sent', 'not_sent', 'read_messages', 'not_read_messages', 'has_attachment' ) ) ) {
 				$bws_hide_premium_options_check = bws_hide_premium_options_check( $cntctfrmtdb_options );
 				if ( ! $bws_hide_premium_options_check )
-					$actions['re_send_message'] = sprintf( '<a href="#" class="bws_plugin_menu_pro_version" title="' . __( "This option is available in Pro version", "contact-form-to-db" ) . '" >' . __( 'Re-send Message', 'contact-form-to-db' ) . '</a>', $item['id'] );
+					$actions['re_send_message'] = sprintf( '<a style="cursor: default;" class="bws_plugin_menu_pro_version" title="' . __( "This option is available in Pro version", "contact-form-to-db" ) . '" >' . __( 'Re-send Message', 'contact-form-to-db' ) . '</a>', $item['id'] );
 
 				$actions['download_message'] = '<a href="' . wp_nonce_url( sprintf( '?page=cntctfrmtdb_manager&action=download_message&message_id[]=%s', $item['id'] ), $plugin_basename, 'cntctfrmtdb_manager_nonce_name' ) . '">' . __( 'Download Message', 'contact-form-to-db' ) . '</a>';
 				$actions['spam'] = '<a href="' . wp_nonce_url( sprintf( '?page=cntctfrmtdb_manager&action=spam&message_id[]=%s', $item['id'] ), $plugin_basename, 'cntctfrmtdb_manager_nonce_name' ) . '">' . __( 'Spam', 'contact-form-to-db' ) . '</a>';
@@ -1811,7 +1678,7 @@ if ( ! class_exists( 'Cntctfrmtdb_Manager' ) ) {
 					}
 				}
 				$to_email = $wpdb->get_var( "SELECT `email` FROM `" . $prefix . "to_email` WHERE `id`='" . $value->to_id . "'" );
-				$add_from_data .= '<strong>to: </strong>' . $to_email;
+				$add_from_data .= '<strong>' . __( 'to', 'contact-form-to-db' ) . ': </strong>' . $to_email;
 				if ( '' !=  $add_from_data ) {
 					$from_data .= '<div class="from-info">' . $add_from_data . '</div>';
 				}
@@ -1896,193 +1763,159 @@ if ( ! function_exists( 'cntctfrmtdb_set_screen_option' ) ) {
 }
 if ( ! function_exists( 'cntctfrmtdb_manager_cf7' ) ) {
     function cntctfrmtdb_manager_cf7() {
-        global $cntctfrmtdb_plugin_info, $wp_version, $cntctfrmtdb_option_defaults , $plugin_basename;
+        global $cntctfrmtdb_plugin_info, $wp_version;
+
 		$cntctfrmtdb_options = get_option('cntctfrmtdb_options');
-		/* GO PRO */
-		if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) {
-			$go_pro_result = bws_go_pro_tab_check( $plugin_basename, 'cntctfrmtdb_options' );
-			if ( ! empty( $go_pro_result['error'] ) ) {
-				$error = $go_pro_result['error'];
-			}
-			elseif ( ! empty( $go_pro_result['message'] ) ) {
-				$message = $go_pro_result['message'];
-			}
-		}
-
-		/* add restore function */
-		if ( isset ( $_REQUEST['bws_hide_premium_options'] )  ) {
-			$result = bws_hide_premium_options( $cntctfrmtdb_options );
-			update_option( 'cntctfrmtdb_options', $result['options'] );?>
-			<div class="updated fade inline"><p><strong><?php _e('You can always look at premium options by checking the "Show Pro features" in the "Go PRO" tab.', 'contact-form-to-db'); ?></strong></p></div>
-		<?php } else {
-		$bws_hide_premium_options_check = bws_hide_premium_options_check( $cntctfrmtdb_options );
-		?>
-		<div class="wrap cntctfrmtdb_manager_cf7" style="margin: 0 10px">
-			<h1><span><?php _e( 'Contact Form 7 to DB Pro', 'contact-form-to-db' ); ?></span></h1>
-			<div class="bws_pro_version_bloc">
-				<div class="bws_pro_version_table_bloc">
-					<?php if( ! $bws_hide_premium_options_check ) { ?>
-					<form class="bws_form" method="post" action="">
-					<button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php _e( 'Close', 'contact-form-to-db' ); ?>"></button>
-					</form>
-					<ul class='subsubsub'>
-						<li class='all'><a class="current" href="#"><?php _e( 'All', 'contact-form-to-db' ); ?><span> ( 3 )</span></a> |</li>
-						<li class='spam'><a href="#"><?php _e( 'Spam', 'contact-form-to-db' ); ?><span> ( 0 )</span></a></li>
-						<li class='trash'><a href="#"><?php _e( 'Trash', 'contact-form-to-db' ); ?><span> ( 0 )</span></a></li>
-					</ul>
-					<div class="bws_table_bg"></div>
-                    <div class="tablenav top">
-                        <div class="alignleft actions bulkactions">
-                            <select disabled>
-                                <option value='-1' selected='selected'><?php _e( 'Bulk Actions', 'contact-form-to-db' ); ?></option>
-                            </select>
-                            <input disabled type="submit" class="button action" value="<?php _e( 'Apply', 'contact-form-to-db' ); ?>"  />
+		$bws_hide_premium_options_check = bws_hide_premium_options_check( $cntctfrmtdb_options ); ?>
+        <div class="wrap cntctfrmtdb_manager_cf7">
+            <h1><span><?php _e( 'Contact Form 7 to DB Pro', 'contact-form-to-db' ); ?></span></h1>
+            <?php if ( ! $bws_hide_premium_options_check ) { ?>
+                <div class="bws_pro_version_bloc">
+                    <div class="bws_pro_version_table_bloc">
+                        <div class="bws_table_bg"></div>
+                        <div class="bws_pro_version">
+                            <ul class='subsubsub'>
+                                <li class='all'><a class="current" href="#"><?php _e( 'All', 'contact-form-to-db' ); ?><span> ( 3 )</span></a> |</li>
+                                <li class='spam'><a href="#"><?php _e( 'Spam', 'contact-form-to-db' ); ?><span> ( 0 )</span></a></li>
+                                <li class='trash'><a href="#"><?php _e( 'Trash', 'contact-form-to-db' ); ?><span> ( 0 )</span></a></li>
+                            </ul>
+                            <div class="tablenav top">
+                                <div class="alignleft actions bulkactions">
+                                    <select disabled>
+                                        <option value='-1' selected='selected'><?php _e( 'Bulk Actions', 'contact-form-to-db' ); ?></option>
+                                    </select>
+                                    <input disabled type="submit" class="button action" value="<?php _e( 'Apply', 'contact-form-to-db' ); ?>"  />
+                                </div>
+                                <div class='tablenav-pages one-page'><span class="displaying-num">3 <?php _e( 'items', 'contact-form-to-db' ); ?></span></div>
+                                <br class="clear" />
+                            </div>
+                            <table class="wp-list-table widefat fixed striped letters">
+                                <thead>
+                                <tr>
+                                    <td id="cb" class='manage-column column-cb check-column'>
+                                        <label class="screen-reader-text"><?php _e( 'Select All', 'contact-form-to-db' ); ?></label>
+                                        <input disabled type="checkbox" />
+                                    </td>
+                                    <th scope='col' id="from" class='manage-column column-from column sortable desc'>
+                                        <a href="#"><span><?php _e( 'From', 'contact-form-to-db' ); ?></span><span class="sorting-indicator"></span></a>
+                                    </th>
+                                    <th scope='col' id="message" class='manage-column column-message sortable desc'>
+                                        <a href="#"><span><?php _e( 'Message', 'contact-form-to-db' ); ?></span><span class="sorting-indicator"></span></a>
+                                    </th>
+                                    <th scope='col' id="date" class='manage-column column-date sortable desc'>
+                                        <a href="#"><span><?php _e( 'Date', 'contact-form-to-db' ); ?></span><span class="sorting-indicator"></span></a>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody id="the-list" data-wp-lists='list:cntctfrmtdb_cf7'>
+                                <tr class="alternate">
+                                    <th scope="row" class="check-column">
+                                        <input disabled type="checkbox"/>
+                                    </th>
+                                    <td class="message column-message column has-row-actions column-primary" data-colname="From">
+                                        <strong><a href="#">lorem.impus@lorem.impus</a></strong>
+                                        <button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button>
+                                    </td>
+                                    <td class="from column-from column has-row-actions column-primary" data-colname="From">
+                                        <strong><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></strong>
+                                        <div class="row-actions" style="position: static;">
+                                            <span class='re_send'><a href="#"><?php _e( 'Re-send Message', 'contact-form-to-db' ); ?></a> | </span>
+                                            <span class='download'><a href="#"><?php _e( 'Download Message', 'contact-form-to-db' ); ?></a>|</span>
+                                            <span class='spam'><a href="#"><?php _e( 'Spam', 'contact-form-to-db' ); ?></a> | </span>
+                                            <span class='trash'><a href="#"><?php _e( 'Trash', 'contact-form-to-db' ); ?></a></span>
+                                        </div>
+                                    </td>
+                                    <td class='date column-date' data-colname="Date">2018-11-27 14:26:47</td>
+                                </tr>
+                                <tr class="alternate">
+                                    <th scope="row" class="check-column">
+                                        <input disabled type="checkbox"/>
+                                    </th>
+                                    <td class="from column-from column has-row-actions column-primary" data-colname="From">
+                                        <strong><a href="#">lorem.impus@lorem.impus</a></strong>
+                                        <button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button>
+                                    </td>
+                                    <td class="message column-message column has-row-actions column-primary" data-colname="From">
+                                        <strong><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></strong>
+                                        <div class="row-actions" style="position: static;">
+                                            <span class='re_send'><a href="#"><?php _e( 'Re-send Message', 'contact-form-to-db' ); ?></a> | </span>
+                                            <span class='download'><a href="#"><?php _e( 'Download Message', 'contact-form-to-db' ); ?></a>|</span>
+                                            <span class='spam'><a href="#"><?php _e( 'Spam', 'contact-form-to-db' ); ?></a> | </span>
+                                            <span class='trash'><a href="#"><?php _e( 'Trash', 'contact-form-to-db' ); ?></a></span>
+                                        </div>
+                                    </td>
+                                    <td class='date column-date' data-colname="Date">2018-11-27 14:26:47</td>
+                                </tr>
+                                <tr class="alternate">
+                                    <th scope="row" class="check-column">
+                                        <input disabled type="checkbox"/>
+                                    </th>
+                                    <td class="from column-from column has-row-actions column-primary" data-colname="From">
+                                        <strong><a href="#">lorem.impus@lorem.impus</a></strong>
+                                        <button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button>
+                                    </td>
+                                    <td class="from column-from column has-row-actions column-primary" data-colname="From">
+                                        <strong><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></strong>
+                                        <div class="row-actions" style="position: static;">
+                                            <span class='re_send'><a href="#"><?php _e( 'Re-send Message', 'contact-form-to-db' ); ?></a> | </span>
+                                            <span class='download'><a href="#"><?php _e( 'Download Message', 'contact-form-to-db' ); ?></a>|</span>
+                                            <span class='spam'><a href="#"><?php _e( 'Spam', 'contact-form-to-db' ); ?></a> | </span>
+                                            <span class='trash'><a href="#"><?php _e( 'Trash', 'contact-form-to-db' ); ?></a></span>
+                                        </div>
+                                    </td>
+                                    <td class='date column-date' data-colname="Date">2018-11-27 14:26:47</td>
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td class='manage-column column-cb check-column'>
+                                        <label class="screen-reader-text"><?php _e( 'Select All', 'sender' ); ?></label>
+                                        <input disabled type="checkbox" />
+                                    </td>
+                                    <th scope='col' id="from" class='manage-column column-from column sortable desc'>
+                                        <a href="#"><span><?php _e( 'From', 'contact-form-to-db' ); ?></span><span class="sorting-indicator"></span></a>
+                                    </th>
+                                    <th scope='col' id="message" class='manage-column column-message sortable desc'>
+                                        <a href="#"><span><?php _e( 'Message', 'contact-form-to-db' ); ?></span><span class="sorting-indicator"></span></a>
+                                    </th>
+                                    <th scope='col' id="date" class='manage-column column-date sortable desc'>
+                                        <a href="#"><span><?php _e( 'Date', 'contact-form-to-db' ); ?></span><span class="sorting-indicator"></span></a>
+                                    </th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                            <div class="tablenav bottom">
+                                <div class="alignleft actions bulkactions">
+                                    <select disabled name='action2'>
+                                        <option value='-1' selected='selected'><?php _e( 'Bulk Actions', 'contact-form-to-db' ); ?></option>
+                                        <option value='trash_letters'><?php _e( 'Trash', 'sender' ); ?></option>
+                                    </select>
+                                    <input disabled type="submit" name="" id="doaction2" class="button action" value="<?php _e( 'Apply', 'contact-form-to-db' ); ?>"  />
+                                </div>
+                                <div class='tablenav-pages one-page'><span class="displaying-num">3 <?php _e( 'items', 'contact-form-to-db' ); ?></span></div>
+                                <br class="clear" />
+                            </div>
                         </div>
-                        <div class='tablenav-pages one-page'><span class="displaying-num">3 <?php _e( 'items', 'contact-form-to-db' ); ?></span></div>
-                        <br class="clear" />
                     </div>
-                    <table class="wp-list-table widefat fixed striped letters">
-                        <thead>
-                        <tr>
-                            <?php if ( $wp_version > '4.2') { ?>
-                                <td id="cb" class='manage-column column-cb check-column'>
-                                    <label class="screen-reader-text"><?php _e( 'Select All', 'contact-form-to-db' ); ?></label>
-                                    <input disabled type="checkbox" />
-                                </td>
-                            <?php } else { ?>
-                                <th scope='col' class='manage-column column-cb check-column'>
-                                    <label class="screen-reader-text"><?php _e( 'Select All', 'contact-form-to-db' ); ?></label>
-                                    <input disabled type="checkbox" />
-                                </th>
-                                <th scope='col' class='manage-column column-cb check-column'>
-                                    <label class="screen-reader-text"><?php _e( 'Select All', 'contact-form-to-db' ); ?></label>
-                                    <input disabled type="checkbox" />
-                                </th>
-                            <?php } ?>
-                            <th scope='col' id="from" class='manage-column column-from column sortable desc'>
-                                <a href="#"><span><?php _e( 'From', 'contact-form-to-db' ); ?></span><span class="sorting-indicator"></span></a>
-                            </th>
-                            <th scope='col' id="message" class='manage-column column-message sortable desc'>
-                                <a href="#"><span><?php _e( 'Message', 'contact-form-to-db' ); ?></span><span class="sorting-indicator"></span></a>
-                            </th>
-                            <th scope='col' id="date" class='manage-column column-date sortable desc'>
-                                <a href="#"><span><?php _e( 'Date', 'contact-form-to-db' ); ?></span><span class="sorting-indicator"></span></a>
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody id="the-list" data-wp-lists='list:cntctfrmtdb_cf7'>
-                        <tr class="alternate">
-                            <th scope="row" class="check-column">
-                                <input disabled type="checkbox"/>
-                            </th>
-                            <td class="message column-message column has-row-actions column-primary" data-colname="From">
-                                <strong><a href="#">lorem.impus@lorem.impus</a></strong>
-                                <?php if ( $wp_version > '4.2') { ?>
-                                    <button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button>
-                                <?php } ?>
-                            </td>
-                            <td class="from column-from column has-row-actions column-primary" data-colname="From">
-                                <strong><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></strong>
-                                <div class="row-actions" style="position: static;">
-                                    <span class='re_send'><a href="#"><?php _e( 'Re-send Message', 'contact-form-to-db' ); ?></a> | </span>
-                                    <span class='download'><a href="#"><?php _e( 'Download Message', 'contact-form-to-db' ); ?></a>|</span>
-                                    <span class='spam'><a href="#"><?php _e( 'Spam', 'contact-form-to-db' ); ?></a> | </span>
-                                    <span class='trash'><a href="#"><?php _e( 'Trash', 'contact-form-to-db' ); ?></a></span>
-                                </div>
-                            </td>
-                            <td class='date column-date' data-colname="Date">2018-11-27 14:26:47</td>
-                        </tr>
-                        <tr class="alternate">
-                            <th scope="row" class="check-column">
-                                <input disabled type="checkbox"/>
-                            </th>
-                            <td class="from column-from column has-row-actions column-primary" data-colname="From">
-                                <strong><a href="#">lorem.impus@lorem.impus</a></strong>
-                                <?php if ( $wp_version > '4.2') { ?>
-                                    <button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button>
-                                <?php } ?>
-                            </td>
-                            <td class="message column-message column has-row-actions column-primary" data-colname="From">
-                                <strong><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></strong>
-                                <div class="row-actions" style="position: static;">
-                                    <span class='re_send'><a href="#"><?php _e( 'Re-send Message', 'contact-form-to-db' ); ?></a> | </span>
-                                    <span class='download'><a href="#"><?php _e( 'Download Message', 'contact-form-to-db' ); ?></a>|</span>
-                                    <span class='spam'><a href="#"><?php _e( 'Spam', 'contact-form-to-db' ); ?></a> | </span>
-                                    <span class='trash'><a href="#"><?php _e( 'Trash', 'contact-form-to-db' ); ?></a></span>
-                                </div>
-                            </td>
-                            <td class='date column-date' data-colname="Date">2018-11-27 14:26:47</td>
-                        </tr>
-                        <tr class="alternate">
-                            <th scope="row" class="check-column">
-                                <input disabled type="checkbox"/>
-                            </th>
-                            <td class="from column-from column has-row-actions column-primary" data-colname="From">
-                                <strong><a href="#">lorem.impus@lorem.impus</a></strong>
-                                <?php if ( $wp_version > '4.2') { ?>
-                                    <button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button>
-                                <?php } ?>
-                            </td>
-                            <td class="from column-from column has-row-actions column-primary" data-colname="From">
-                                <strong><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></strong>
-                                <div class="row-actions" style="position: static;">
-                                    <span class='re_send'><a href="#"><?php _e( 'Re-send Message', 'contact-form-to-db' ); ?></a> | </span>
-                                    <span class='download'><a href="#"><?php _e( 'Download Message', 'contact-form-to-db' ); ?></a>|</span>
-                                    <span class='spam'><a href="#"><?php _e( 'Spam', 'contact-form-to-db' ); ?></a> | </span>
-                                    <span class='trash'><a href="#"><?php _e( 'Trash', 'contact-form-to-db' ); ?></a></span>
-                                </div>
-                            </td>
-                            <td class='date column-date' data-colname="Date">2018-11-27 14:26:47</td>
-                        </tr>
-                        </tbody>
-                        <tfoot>
-                        <tr>
-                            <?php if ( $wp_version > '4.2') { ?>
-                                <td class='manage-column column-cb check-column'>
-                                    <label class="screen-reader-text"><?php _e( 'Select All', 'sender' ); ?></label>
-                                    <input disabled type="checkbox" />
-                                </td>
-                            <?php } else { ?>
-                                <th scope='col' class='manage-column column-cb check-column'>
-                                    <label class="screen-reader-text"><?php _e( 'Select All', 'sender' ); ?></label>
-                                    <input disabled type="checkbox" />
-                                </th>
-                            <?php } ?>
-                            <th scope='col' id="from" class='manage-column column-from column sortable desc'>
-                                <a href="#"><span><?php _e( 'From', 'contact-form-to-db' ); ?></span><span class="sorting-indicator"></span></a>
-                            </th>
-                            <th scope='col' id="message" class='manage-column column-message sortable desc'>
-                                <a href="#"><span><?php _e( 'Message', 'contact-form-to-db' ); ?></span><span class="sorting-indicator"></span></a>
-                            </th>
-                            <th scope='col' id="date" class='manage-column column-date sortable desc'>
-                                <a href="#"><span><?php _e( 'Date', 'contact-form-to-db' ); ?></span><span class="sorting-indicator"></span></a>
-                            </th>
-                        </tr>
-                        </tfoot>
-                    </table>
-                    <div class="tablenav bottom">
-                        <div class="alignleft actions bulkactions">
-                            <select disabled name='action2'>
-                                <option value='-1' selected='selected'><?php _e( 'Bulk Actions', 'contact-form-to-db' ); ?></option>
-                                <option value='trash_letters'><?php _e( 'Trash', 'sender' ); ?></option>
-                            </select>
-                            <input disabled type="submit" name="" id="doaction2" class="button action" value="<?php _e( 'Apply', 'contact-form-to-db' ); ?>"  />
-                        </div>
-                        <div class='tablenav-pages one-page'><span class="displaying-num">3 <?php _e( 'items', 'contact-form-to-db' ); ?></span></div>
-                        <br class="clear" />
+                    <div class="bws_pro_version_tooltip">
+                        <a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=<?php echo $cntctfrmtdb_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Contact Form to DB Pro"><?php _e( 'Learn More', 'contact-form-to-db' ); ?></a>
+                        <div class="clear"></div>
                     </div>
-
-            	</div>
-				<div class="bws_pro_version_tooltip">
-					<a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=<?php echo $cntctfrmtdb_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Contact Form to DB Pro"><?php _e( 'Learn More', 'contact-form-to-db' ); ?></a>
-					<div class="clear"></div>
-				</div>
-				<?php } ?>
-        	</div>
-		</div><!-- .wrap -->
-		<?php } ?>
+                </div>
+            <?php } else { ?>
+                <p>
+		            <?php _e( 'This tab contains Pro options only.', 'contact-form-to-db' );
+		            echo ' ' . sprintf(
+				            __( '%sChange the settings%s to view the Pro options.', 'contact-form-to-db' ),
+				            '<a href="admin.php?page=contact_form_to_db.php&bws_active_tab=misc">',
+				            '</a>'
+			            ); ?>
+                </p>
+            <?php } ?>
+        </div><!-- .wrap -->
     <?php }
 }
+
 /*
 * Function to display plugin page
 */
@@ -2226,7 +2059,7 @@ if ( ! function_exists( 'cntctfrmtdb_show_notices' ) ) {
 			$all_plugins = get_plugins();
 
 			if ( ! ( array_key_exists( 'contact-form-plugin/contact_form.php', $all_plugins ) || array_key_exists( 'contact-form-pro/contact_form_pro.php', $all_plugins ) ) ) {
-				$contact_form_notice = __( 'Contact Form plugin is not found.</br>You need to install and activate this plugin for correct work with Contact Form to DB plugin.</br>You can download Contact Form plugin from ', 'contact-form-to-db' ) . '<a href="' . esc_url( 'https://bestwebsoft.com/products/wordpress/plugins/contact-form/' ) . '" title="' . __( 'Developers website', 'contact-form-to-db' ). '"target="_blank">' . __( 'website of plugin Authors ', 'contact-form-to-db' ) . '</a>' . __( 'or ', 'contact-form-to-db' ) . '<a href="' . esc_url( 'http://wordpress.org/plugins/contact-form-plugin/' ) .'" title="Wordpress" target="_blank">'. __( 'WordPress.', 'contact-form-to-db' ) . '</a>';
+				$contact_form_notice = __( 'Contact Form plugin is not found.</br>You need to install and activate this plugin for correct work with Contact Form to DB plugin.</br>You can download Contact Form plugin from ', 'contact-form-to-db' ) . '<a href="' . esc_url( 'https://bestwebsoft.com/products/wordpress/plugins/contact-form/' ) . '" title="' . __( 'Developers website', 'contact-form-to-db' ). '"target="_blank">' . __( 'website of plugin Authors ', 'contact-form-to-db' ) . '</a>&nbsp;' . __( 'or', 'contact-form-to-db' ) . '&nbsp;<a href="' . esc_url( 'http://wordpress.org/plugins/contact-form-plugin/' ) .'" title="Wordpress" target="_blank">'. __( 'WordPress.', 'contact-form-to-db' ) . '</a>';
 			} else {
 				$contact_form_notice = '';
 				if ( ! ( is_plugin_active( 'contact-form-plugin/contact_form.php' ) || is_plugin_active( 'contact-form-pro/contact_form_pro.php' ) ) ) {
@@ -2253,30 +2086,33 @@ if ( ! function_exists( 'cntctfrmtdb_show_notices' ) ) {
 
 		/* chech plugin settings and add notice */
 		if ( isset( $_REQUEST['page'] ) && 'cntctfrmtdb_manager' == $_REQUEST['page'] ) {
-			if ( ! isset( $cntctfrmtdb_options['save_messages_to_db'] ) )
-				$cntctfrmtdb_options = get_option( 'cntctfrmtdb_options' );
+
+		    if ( empty( $cntctfrmtdb_options ) )
+				cntctfrmtdb_settings();
 
 			if ( isset( $cntctfrmtdb_options['save_messages_to_db'] ) && 0 == $cntctfrmtdb_options['save_messages_to_db'] ) {
 				if ( ! isset( $bstwbsftwppdtplgns_cookie_add ) ) {
-					echo '<script type="text/javascript" src="' . plugins_url( '/bws_menu/js/c_o_o_k_i_e.js', __FILE__ ) . '"></script>';
+					wp_enqueue_script( 'bstwbsftwppdtplgns_cookie_add', plugins_url( 'bws_menu/js/c_o_o_k_i_e.js', __FILE__ ) );
 					$bstwbsftwppdtplgns_cookie_add = true;
-				} ?>
-				<script type="text/javascript">
-					(function($) {
-						$(document).ready( function() {
-							var hide_message = $.cookie( "cntctfrmtdb_save_messages_to_db" );
-							if ( hide_message == "true" ) {
-								$( ".cntctfrmtdb_save_messages_to_db" ).css( "display", "none" );
-							} else {
-								$( ".cntctfrmtdb_save_messages_to_db" ).css( "display", "block" );
-							}
-							$( ".cntctfrmtdb_close_icon" ).click( function() {
-								$( ".cntctfrmtdb_save_messages_to_db" ).css( "display", "none" );
-								$.cookie( "cntctfrmtdb_save_messages_to_db", "true", { expires: 7 } );
-							});
-						});
-					})(jQuery);
-				</script>
+				}
+				$script = "(function($) {
+                    $(document).ready( function() {
+                        var hide_message = $.cookie( 'cntctfrmtdb_save_messages_to_db' );
+                        if ( hide_message == 'true' ) {
+                            $( 'cntctfrmtdb_save_messages_to_db' ).css( 'display', 'none' );
+                        } else {
+                            $( 'cntctfrmtdb_save_messages_to_db' ).css( 'display', 'block' );
+                        };
+                        $( 'cntctfrmtdb_close_icon' ).click( function() {
+                            $( 'cntctfrmtdb_save_messages_to_db' ).css( 'display', 'none' );
+                            $.cookie( 'cntctfrmtdb_save_messages_to_db', 'true', { expires: 7 } );
+                        });
+                    });
+                })(jQuery);";
+
+				wp_register_script( 'cntctfrmtdb_hide_banner_on_plugin_page', '' );
+				wp_enqueue_script( 'cntctfrmtdb_hide_banner_on_plugin_page' );
+				wp_add_inline_script( 'cntctfrmtdb_hide_banner_on_plugin_page', sprintf( $script ) ); ?>
 				<div class="updated fade cntctfrmtdb_save_messages_to_db" style="display: none;">
 					<img style="float: right;cursor: pointer;" class="cntctfrmtdb_close_icon" title="" src="<?php echo plugins_url( '/bws_menu/images/close_banner.png', __FILE__ ); ?>" alt=""/>
 					<div style="float: left;margin: 5px;"><strong><?php _e( 'Notice:', 'contact-form-to-db'); ?></strong> <?php _e( 'Option "Save messages to database" was disabled on the plugin settings page.', 'contact-form-to-db'); ?> <a href="admin.php?page=contact_form_to_db.php"><?php _e( 'Enable it for saving messages from Contact Form', 'contact-form-to-db'); ?></a></div>
@@ -2285,11 +2121,6 @@ if ( ! function_exists( 'cntctfrmtdb_show_notices' ) ) {
 			<?php }
 		}
 		if ( $hook_suffix == 'plugins.php' ) {
-			if ( ! $cntctfrmtdb_options )
-				$cntctfrmtdb_options = get_option( 'cntctfrmtdb_options' );
-			if ( isset( $cntctfrmtdb_options['first_install'] ) && strtotime( '-1 week' ) > $cntctfrmtdb_options['first_install'] )
-				bws_plugin_banner( $cntctfrmtdb_plugin_info, 'cntctfrmtdb', 'contact-form-to-db', 'a0297729ff05dc9a4dee809c8b8e94bf', '91', '//ps.w.org/contact-form-to-db/assets/icon-128x128.png' );
-
 			bws_plugin_banner_to_settings( $cntctfrmtdb_plugin_info, 'cntctfrmtdb_options', 'contact-form-to-db', 'admin.php?page=contact_form_to_db.php' );
 		}
 

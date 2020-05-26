@@ -2,9 +2,9 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: browse messages, cf add on, contact button, contact form add on, contact form parameters, contact form plugin, contact form to db, save messages, download messages, contact us form, web page feedback, delete messages
-Requires at least: 3.9
-Tested up to: 5.2.2
-Stable tag: 1.6.3
+Requires at least: 4.5
+Tested up to: 5.4.1
+Stable tag: 1.6.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -143,6 +143,12 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 4. Spam page on the Contact Form to DB manager page display.
 
 == Changelog ==
+
+= V1.6.4 - 26.05.2020 =
+* Update : The plugin settings page was changed.
+* Update : Plugin tabs were merged into one in the Dashboard menu.
+* Update : All functionality was updated for WordPress 5.4.1.
+* Update : BWS panel section was updated.
 
 = V1.6.3 - 04.09.2019 =
 * Update : The deactivation feedback has been changed. Misleading buttons have been removed.
@@ -285,6 +291,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : Ability to manage messages that have been sent from website from Contact Form Plugin by BestWebSoft.
 
 == Upgrade Notice ==
+
+= V1.6.4 =
+* Usability improved.
 
 = V1.6.3 =
 * Usability improved.

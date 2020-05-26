@@ -1,6 +1,3 @@
-#adminmenu #toplevel_page_cntctfrmtdb_manager.current .wp-menu-image img {
-	opacity: 1;
-}
 /*
 * styles for manager page
 */
@@ -48,7 +45,7 @@
 	width: 16px;
 	height: 16px;
 	background: url('../images/status-icons.png') 0px -28px;
-	text-indent: 9999px;
+	color: transparent;
 	display: inline-block;
 }
 .cntctfrmtdb .wp-list-table .column-status .cntctfrmtdb-spam:hover {
@@ -58,7 +55,7 @@
 	width: 14px;
 	height: 16px;
 	background: url('../images/status-icons.png') 0 -44px;
-	text-indent: 9999px;
+	color: transparent;
 	display: inline-block;
 }
 .cntctfrmtdb .wp-list-table .column-status .cntctfrmtdb-trash:hover {
@@ -68,7 +65,7 @@
 	width: 16px;
 	height: 16px;
 	background: url('../images/status-icons.png') 0 -60px;
-	text-indent: 9999px;
+	color: transparent;
 	display: inline-block;
 }
 .cntctfrmtdb .wp-list-table .column-status .cntctfrmtdb-unknown:hover {
@@ -199,9 +196,6 @@ table a.bws_plugin_menu_pro_version,
 table a.bws_plugin_menu_pro_version:hover {
 	background: transparent;
 	color: #666666;
-}
-.bws_pro_version_bloc{
-	margin: 10px 10px 0 0;
 }
 @media screen and (max-width: 782px) {
 	.cntctfrmtdb_how_to_use {
