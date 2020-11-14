@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: browse messages, cf add on, contact button, contact form add on, contact form parameters, contact form plugin, contact form to db, save messages, download messages, contact us form, web page feedback, delete messages
 Requires at least: 4.5
-Tested up to: 5.4.1
-Stable tag: 1.6.4
+Tested up to: 5.5.3
+Stable tag: 1.6.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,9 +78,9 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 
 = Documentation & Videos =
 
+* [[Doc] User Guide](https://docs.google.com/document/d/1s3U6x2LAMBoOSBoc8txyYhNKtLfF2iC5zj5Ik8Ndo9A/)
 * [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
 * [[Doc] Purchase](https://docs.google.com/document/d/1EUdBVvnm7IHZ6y0DNyldZypUQKpB8UVPToSc_LdOYQI/)
-* [[Doc] How to Use](https://docs.google.com/document/d/1s3U6x2LAMBoOSBoc8txyYhNKtLfF2iC5zj5Ik8Ndo9A)
 * [[Video] Installation Instruction](https://www.youtube.com/watch?v=nm0JXK9ro9E)
 
 = Help & Support =
@@ -107,7 +107,7 @@ Some of these translations are not complete. We are constantly adding new featur
 
 1. Upload the `contact-form-to-db` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
-3. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "Contact Form to DB".
+3. You can adjust the necessary settings using your WordPress admin panel in "Contact Form to DB" > "Settings".
 
 [View a Step-by-step Instruction on Contact Form to DB Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
 
@@ -143,6 +143,13 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 4. Spam page on the Contact Form to DB manager page display.
 
 == Changelog ==
+
+= V1.6.5 - 13.11.2020 =
+* Pro    : Support for attachments from Contact Form 7 has been added.
+* NEW    : Support for Custom Fields from Contact Form has been added.
+* Pro    : Bug with saving multi-attachments from Contact Form has been fixed.
+* Update : The plugin settings page was changed.
+* Update : BWS Panel section was updated.
 
 = V1.6.4 - 26.05.2020 =
 * Update : The plugin settings page was changed.
@@ -291,6 +298,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : Ability to manage messages that have been sent from website from Contact Form Plugin by BestWebSoft.
 
 == Upgrade Notice ==
+
+= V1.6.5 =
+* New function.
+* Bugs fixed.
+* Plugin optimization completed.
 
 = V1.6.4 =
 * Usability improved.

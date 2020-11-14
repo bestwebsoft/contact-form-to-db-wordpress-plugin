@@ -34,10 +34,9 @@ if ( ! class_exists( 'Cntctfrmtdb_Settings_Tabs' ) ) {
 				'is_network_options'		=> is_network_admin(),
 				'tabs'						=> $tabs,
 				'wp_slug'					=> 'contact-form-to-db',
-				'pro_page'                  => 'admin.php?page=contact_form_to_db_pro.php',
-				'bws_license_plugin'        => 'contact-form-to-db-pro/contact_form_to_db_pro.php',
 				'link_key'                  => '5906020043c50e2eab1528d63b126791',
-				'link_pn'                   => '91'
+				'link_pn'                   => '91',
+				'doc_link'                  => 'https://docs.google.com/document/d/1s3U6x2LAMBoOSBoc8txyYhNKtLfF2iC5zj5Ik8Ndo9A/'
 			) );
 
 			$this->periods = array(
@@ -150,18 +149,6 @@ if ( ! class_exists( 'Cntctfrmtdb_Settings_Tabs' ) ) {
                                         <?php } ?>
                                     </select><br />
                                     <span class="bws_info"><?php _e( 'All messages older than the specified period will be deleted at the end of the same period.', 'contact-form-to-db' ); ?></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><?php _e( 'Show Attachments', 'contact-form-to-db' ); ?></th>
-                                <td>
-                                    <input disabled="disabled" type="checkbox" name="cntctfrmtdb_show_attachments" value="1" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th><?php _e( 'Use Fancybox to Image View', 'contact-form-to-db' ); ?></th>
-                                <td>
-                                    <input disabled="disabled" type="checkbox" name="cntctfrmtdb_use_fancybox" value="1" />
                                 </td>
                             </tr>
                         </table>

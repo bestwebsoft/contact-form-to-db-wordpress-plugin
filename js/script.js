@@ -27,9 +27,9 @@
 			var nonceField = $( 'input#cntctfrmtdb_manager_nonce_name' ).val();
 			// click on author's message name
 			fromName.click( function() {
-				if ( messageContainer .children().children().children().is( '.attachment-img' ) ) { // if attachment exists
-					var attachmentImg = messageContainer .children().children().children( '.attachment-img' );
-					height += 8 - messageContainer .children( '.attachments-preview' ).height() ;
+				if ( messageContainer .children().children().children().is( '.cntctfrmtdb-attachment-img' ) ) { // if attachment exists
+					var attachmentImg = messageContainer .children().children().children( '.cntctfrmtdb-attachment-img' );
+					height += 8 - messageContainer .children( '.cntctfrmtdb-attachments-preview' ).height() ;
 					 // if attachment is image  and thumbnail is not loaded yet, we set request to get thumbnail and  original image by message id
 					if( ! attachmentImg.children().is( '.cntctfrmtdb-thumbnail' ) ) {
 						$.ajax({
@@ -133,63 +133,6 @@
 				}
 				return false;
 			});
-		});
-
-		/*
-		* Function to change message status 
-		*/
-		var firstClick = 0;
-		var lastClick = 0;
-		var oldStatus =0;
-		var nonceField = $( 'input#cntctfrmtdb_manager_nonce_name' ).val();
-		$( '.column-status span' ).click( function() {
-			if ( firstClick == 0 ) { // remember old status
-				oldStatus = $(this).text();
-				oldsStatus = parseInt( oldStatus );
-				firstClick ++;
-			}
-			// change text of block during clicking
-			var previousStatus = $(this).text(); 
-			var messageID = $(this).parent().parent().parent().children( '.check-column' ).children( 'input[type="checkbox"]' ).val();
-			previousStatus = parseInt( previousStatus );
-			var newStatus = previousStatus;
-			if ( previousStatus <= 2 ) {
-				newStatus++;
-			} else { 
-				previousStatus = 1;
-				newStatus = 1;
-			}
-			$(this).text( newStatus );
-			// change status icon  
-			switch( newStatus ) {
-				case 1:
-					$(this).removeClass( 'cntctfrmtdb-trash' ).addClass( 'cntctfrmtdb-letter' );
-					$(this).attr({ title: cntctfrmtdb.letter });
-					break;
-				case 2:
-					$(this).removeClass( 'cntctfrmtdb-letter' ).addClass( 'cntctfrmtdb-spam' );
-					$(this).attr({ title: cntctfrmtdb.spam });
-					break;
-				case 3:
-					$(this).removeClass( 'cntctfrmtdb-spam' ).addClass( 'cntctfrmtdb-trash' );
-					$(this).attr({ title: cntctfrmtdb.trash });
-					break;
-			}
-			var messageId = $(this).parent().parent().children().children( 'input:checkbox' ).val();
-			lastClick = new Date().getTime();
-			setTimeout( 
-				function() {
-					var controlTime = new Date().getTime();
-					var betweenTime = controlTime - lastClick;
-					if ( betweenTime > 470  ) { // make ajax request if passed about 470 milliseconds after the last click
-						if ( newStatus != oldStatus  ) {
-							cntctfrmtdb_change_status( oldStatus, newStatus, messageID, nonceField );
-							firstClick = 0;
-						}						
-					}
-				}, 500
-			);
-			return false;
 		});
 	});
 })(jQuery);
