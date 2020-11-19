@@ -4,7 +4,7 @@ Donate link: https://bestwebsoft.com/donate/
 Tags: browse messages, cf add on, contact button, contact form add on, contact form parameters, contact form plugin, contact form to db, save messages, download messages, contact us form, web page feedback, delete messages
 Requires at least: 4.5
 Tested up to: 5.5.3
-Stable tag: 1.6.5
+Stable tag: 1.6.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -107,7 +107,7 @@ Some of these translations are not complete. We are constantly adding new featur
 
 1. Upload the `contact-form-to-db` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
-3. You can adjust the necessary settings using your WordPress admin panel in "Contact Form to DB" > "Settings".
+3. You can adjust the necessary settings using your WordPress admin panel in "Contact Form to DB Pro" > "Settings".
 
 [View a Step-by-step Instruction on Contact Form to DB Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
 
@@ -144,7 +144,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
-= V1.6.5 - 13.11.2020 =
+= V1.6.6 - 18.11.2020 =
+* Bugfix : The issue with submitting the form from the Contact Form Free has been fixed.
+
+= V1.6.5 - 11.11.2020 =
 * Pro    : Support for attachments from Contact Form 7 has been added.
 * NEW    : Support for Custom Fields from Contact Form has been added.
 * Pro    : Bug with saving multi-attachments from Contact Form has been fixed.
@@ -298,6 +301,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : Ability to manage messages that have been sent from website from Contact Form Plugin by BestWebSoft.
 
 == Upgrade Notice ==
+
+= V1.6.6 =
+* Bugs fixed.
 
 = V1.6.5 =
 * New function.

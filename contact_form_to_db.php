@@ -6,7 +6,7 @@ Description: Save and manage contact form messages. Never lose important data.
 Author: BestWebSoft
 Text Domain: contact-form-to-db
 Domain Path: /languages
-Version: 1.6.5
+Version: 1.6.6
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -402,7 +402,7 @@ if ( ! function_exists( 'cntctfrmtdb_get_attachment_data' ) ) {
 /* Function for CF save new message in database */
 if ( ! function_exists( 'cntctfrmtdb_get_mail_data' ) ) {
 	function cntctfrmtdb_get_mail_data( $to ) {
-		global $wpdb, $cntctfrmtdb_options, $path_of_uploaded_file_cf, $message_id;
+		global $wpdb, $cntctfrmtdb_options, $path_of_uploaded_file_cf, $message_id, $cntctfrm_options_for_this_plugin;
 
 		if ( empty( $cntctfrmtdb_options ) )
 			cntctfrmtdb_settings();
@@ -444,20 +444,22 @@ if ( ! function_exists( 'cntctfrmtdb_get_mail_data' ) ) {
 				$refer_id = $wpdb->insert_id;
 			}
 
-			/* Get an array with custom fields */
-			$cf_id = ( isset( $_POST['cntctfrmmlt_shortcode_id'] ) ? stripslashes( esc_html( $_POST['cntctfrmmlt_shortcode_id'] ) ) : ( cntctfrm_check_cf_multi_active() ? cntctfrm_get_first_form_id() : '1' ) );
-			$cf_class      = new CustomField( $args = array(
-				'prefix' => 'cntctfrm',
-				'domain' => 'contact-form-pro'
-			) );
-			$custom_fields = $cf_class->cstmfld_get_these_custom_fields( false, $cf_id );
+			/* Get an array with custom fields from CF Pro */
 			$custom_fields_cf = array();
-			foreach ( $custom_fields as $single_field ) {
-				if ( $single_field['is_used'] ) {
-					$custom_field_title = ( ! empty( $single_field['title'] ) ) ? $single_field['title'] : __( "Custom Field", 'contact-form-to-db-pro' );
-					$value              = isset( $_POST[ 'cntctfrm_contact_custom_field_' . $single_field['id'] ] ) ? sanitize_text_field( $_POST[ 'cntctfrm_contact_custom_field_' . $single_field['id'] ] ) : "";
-					$custom_fields_cf[ $custom_field_title ] = $value;
-				}
+			if ( class_exists( 'CustomField' ) ) {
+				$cf_id = ( isset( $_POST['cntctfrmmlt_shortcode_id'] ) ? stripslashes( esc_html( $_POST['cntctfrmmlt_shortcode_id'] ) ) : ( cntctfrm_check_cf_multi_active() ? cntctfrm_get_first_form_id() : '1' ) );
+                $cf_class      = new CustomField( $args = array(
+                    'prefix' => 'cntctfrm',
+                    'domain' => 'contact-form-pro'
+                ) );
+                $custom_fields = $cf_class->cstmfld_get_these_custom_fields( false, $cf_id );
+                foreach ( $custom_fields as $single_field ) {
+                    if ( $single_field['is_used'] ) {
+                        $custom_field_title = ( ! empty( $single_field['title'] ) ) ? $single_field['title'] : __( "Custom Field", 'contact-form-to-db-pro' );
+                        $value              = isset( $_POST[ 'cntctfrm_contact_custom_field_' . $single_field['id'] ] ) ? sanitize_text_field( $_POST[ 'cntctfrm_contact_custom_field_' . $single_field['id'] ] ) : "";
+                        $custom_fields_cf[ $custom_field_title ] = $value;
+                    }
+                }
 			}
 
 			$wpdb->insert(
@@ -482,6 +484,31 @@ if ( ! function_exists( 'cntctfrmtdb_get_mail_data' ) ) {
 			);
 
 			$message_id = $wpdb->insert_id;
+
+			if ( isset( $_POST['cntctfrm_department'] ) ) {
+				if ( function_exists( 'cntctfrm_check_cf_multi_active' ) && cntctfrm_check_cf_multi_active() ) {
+					if ( isset( $_POST['cntctfrmmlt_shortcode_id'] ) ) {
+						$cntctfrm_options_for_multi = get_option( 'cntctfrmmlt_options_' . intval( $_POST['cntctfrmmlt_shortcode_id'] ) );
+					} else {
+						$cntctfrm_options_for_multi = get_option( 'cntctfrmmlt_options_1' );
+					}
+					$value = $cntctfrm_options_for_multi['departments']['name'][ $_POST['cntctfrm_department'] ];
+				} else {
+					if ( empty( $cntctfrm_options_for_this_plugin ) )
+						cntctfrm_options_for_this_plugin();
+
+					$value = $cntctfrm_options_for_this_plugin['departments']['name'][ $_POST['cntctfrm_department'] ];
+				}
+
+				$field_id = $wpdb->get_var( 'SELECT `id` FROM `' . $wpdb->prefix . "cntctfrm_field` WHERE `name`='department_selectbox'");
+				$wpdb->insert( $prefix . 'field_selection',
+					array(
+						'cntctfrm_field_id' => $field_id,
+						'message_id'        => $message_id,
+						'field_value'       => $value
+					)
+				);
+			}
 
 			if ( ! empty( $path_of_uploaded_file_cf ) ) {
 				$wpdb->update( $prefix . 'message',
