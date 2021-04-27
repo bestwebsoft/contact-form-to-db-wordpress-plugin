@@ -6,11 +6,11 @@ Description: Save and manage contact form messages. Never lose important data.
 Author: BestWebSoft
 Text Domain: contact-form-to-db
 Domain Path: /languages
-Version: 1.6.6
+Version: 1.6.7
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
-/*  @ Copyright 2020  BestWebSoft  ( https://support.bestwebsoft.com )
+/*  @ Copyright 2021  BestWebSoft  ( https://support.bestwebsoft.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
@@ -36,7 +36,8 @@ if ( ! function_exists( 'cntctfrmtdb_admin_menu' ) ) {
 		global $submenu, $wp_version, $cntctfrmtdb_plugin_info;
 
 		$hook = add_menu_page( 'CF to DB', 'CF to DB', 'edit_posts', 'cntctfrmtdb_manager', 'cntctfrmtdb_manager_page', 'none', '56.1' );
-		add_submenu_page('cntctfrmtdb_manager', 'CF7 to DB', 'CF7 to DB', 'manage_options', 'cntctfrmtdb_manager_cf7', 'cntctfrmtdb_manager_cf7');
+		add_submenu_page( 'cntctfrmtdb_manager', __( 'Contact Form 7 to DB Pro', 'contact-form-to-db' ), 'CF7 to DB', 'manage_options', 'cntctfrmtdb_manager_cf7', 'cntctfrmtdb_manager_pro' );
+        add_submenu_page( 'cntctfrmtdb_manager', __( 'Pojo Form to DB Pro', 'contact-form-to-db' ), 'POJO to DB', 'manage_options', 'cntctfrmtdb_manager_pojo', 'cntctfrmtdb_manager_pro' );
 
 		if ( isset( $submenu['wpcf7'] ) ) {
 			$submenu['wpcf7'][] = array(
@@ -45,6 +46,14 @@ if ( ! function_exists( 'cntctfrmtdb_admin_menu' ) ) {
 				admin_url( 'admin.php?page=cntctfrmtdb_manager_cf7' )
 			);
 		}
+
+        if ( isset( $submenu['edit.php?post_type=pojo_forms'] ) ) {
+            $submenu['edit.php?post_type=pojo_forms'][] = array(
+                'POJO to DB',
+                'manage_options',
+                admin_url( 'admin.php?page=cntctfrmtdb_manager_pojo' )
+            );
+        }
 		$settings = add_submenu_page(
 			'cntctfrmtdb_manager',
 			__( 'Contact Form to DB Settings', 'contact-form-to-db' ),
@@ -350,7 +359,10 @@ if ( ! function_exists( 'cntctfrmtdb_settings_page' ) ) {
 		if ( ! class_exists( 'Bws_Settings_Tabs' ) )
 			require_once( dirname( __FILE__ ) . '/bws_menu/class-bws-settings.php' );
 		require_once( dirname( __FILE__ ) . '/includes/class-cntctfrmtdb-settings.php' );
-		$page = new Cntctfrmtdb_Settings_Tabs( plugin_basename( __FILE__ ) ); ?>
+		$page = new Cntctfrmtdb_Settings_Tabs( plugin_basename( __FILE__ ) );
+        if ( method_exists( $page, 'add_request_feature' ) )
+            $page->add_request_feature();
+        ?>
         <div class="wrap">
             <h1><?php _e( 'Contact Form to DB Settings', 'contact-form-to-db' ); ?></h1>
             <noscript><div class="error below-h2"><p><strong><?php _e( "Please enable JavaScript in your browser.", 'contact-form-to-db' ); ?></strong></p></div></noscript>
@@ -1520,7 +1532,7 @@ if ( ! class_exists( 'Cntctfrmtdb_Manager' ) ) {
 			if ( 'trash' == $this->message_status )
 				$actions['untrash'] = '<a style="color:#006505" href="' . wp_nonce_url( sprintf( '?page=cntctfrmtdb_manager&action=restore&message_id[]=%s', $item['id'] ), $plugin_basename, 'cntctfrmtdb_manager_nonce_name' ) . '">' . __( 'Restore', 'contact-form-to-db' ) . '</a>';
 			if ( in_array( $this->message_status, array( 'spam', 'trash' ) ) )
-				$actions['delete_message'] = '<a style="color:#BC0B0B" href="' . wp_nonce_url( sprintf( '?page=cntctfrmtdb_manager&action=delete_message&message_id[]=%s', $item['id'] ), $plugin_basename, 'cntctfrmtdb_manager_nonce_name' ) . '">' . __( 'Delete Permanently', 'contact-form-to-db' ) . '</a>';
+				$actions['delete_message'] = '<a style="color:#bc0b0b" href="' . wp_nonce_url( sprintf( '?page=cntctfrmtdb_manager&action=delete_message&message_id[]=%s', $item['id'] ), $plugin_basename, 'cntctfrmtdb_manager_nonce_name' ) . '">' . __( 'Delete Permanently', 'contact-form-to-db' ) . '</a>';
 			else
 				$actions['trash'] = '<a href="' . wp_nonce_url( sprintf( '?page=cntctfrmtdb_manager&action=trash&message_id[]=%s', $item['id'] ), $plugin_basename, 'cntctfrmtdb_manager_nonce_name' ) . '">' . __( 'Trash', 'contact-form-to-db' ) . '</a>';
 			return sprintf( '%1$s %2$s', $item['message'], $this->row_actions( $actions ) );
@@ -1719,14 +1731,14 @@ if ( ! function_exists( 'cntctfrmtdb_set_screen_option' ) ) {
 			return $value;
 	}
 }
-if ( ! function_exists( 'cntctfrmtdb_manager_cf7' ) ) {
-    function cntctfrmtdb_manager_cf7() {
+if ( ! function_exists( 'cntctfrmtdb_manager_pro' ) ) {
+    function cntctfrmtdb_manager_pro() {
         global $cntctfrmtdb_plugin_info, $wp_version;
 
 		$cntctfrmtdb_options = get_option('cntctfrmtdb_options');
 		$bws_hide_premium_options_check = bws_hide_premium_options_check( $cntctfrmtdb_options ); ?>
-        <div class="wrap cntctfrmtdb_manager_cf7">
-            <h1><span><?php _e( 'Contact Form 7 to DB Pro', 'contact-form-to-db' ); ?></span></h1>
+        <div class="wrap">
+            <h1><span><?php echo get_admin_page_title(); ?></span></h1>
             <?php if ( ! $bws_hide_premium_options_check ) { ?>
                 <div class="bws_pro_version_bloc">
                     <div class="bws_pro_version_table_bloc">
@@ -1856,7 +1868,7 @@ if ( ! function_exists( 'cntctfrmtdb_manager_cf7' ) ) {
                         </div>
                     </div>
                     <div class="bws_pro_version_tooltip">
-                        <a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=<?php echo $cntctfrmtdb_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Contact Form to DB Pro"><?php _e( 'Learn More', 'contact-form-to-db' ); ?></a>
+                        <a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=5906020043c50e2eab1528d63b126791&pn=91&v=<?php echo $cntctfrmtdb_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Contact Form to DB Pro"><?php _e( 'Upgrade to Pro', 'contact-form-to-db' ); ?></a>
                         <div class="clear"></div>
                     </div>
                 </div>

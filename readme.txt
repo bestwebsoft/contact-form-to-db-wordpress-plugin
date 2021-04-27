@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: browse messages, cf add on, contact button, contact form add on, contact form parameters, contact form plugin, contact form to db, save messages, download messages, contact us form, web page feedback, delete messages
 Requires at least: 4.5
-Tested up to: 5.5.3
-Stable tag: 1.6.6
+Tested up to: 5.7
+Stable tag: 1.6.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,11 @@ Save and manage messages sent from your WordPress website via Contact Form plugi
 
 Install, activate, and never lose important messages anymore!
 
+[View Demo](https://bestwebsoft.com/demo-for-contact-form-to-db-plugin/?ref=readme)
+
 > **NOTE:** Contact Form to DB plugin is an exclusive add-on to the [Contact Form](https://bestwebsoft.com/products/wordpress/plugins/contact-form/?k=1f9b7d7895c20420af788d9413ed8562) plugin and it will not work without it.
+
+[View Demo](https://bestwebsoft.com/demo-for-contact-form-to-db-plugin/?ref=readme)
 
 http://www.youtube.com/watch?v=agEWy6Hc-fY
 
@@ -62,6 +66,7 @@ http://www.youtube.com/watch?v=agEWy6Hc-fY
 > All features from Free version included plus:
 >
 > * Compatible with Contact Form 7
+> * Compatible with Pojo Form [NEW]
 > * Save attachments to:
 > 	* Database
 > 	* Uploads
@@ -107,7 +112,7 @@ Some of these translations are not complete. We are constantly adding new featur
 
 1. Upload the `contact-form-to-db` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
-3. You can adjust the necessary settings using your WordPress admin panel in "Contact Form to DB Pro" > "Settings".
+3. You can adjust the necessary settings using your WordPress admin panel in "CF to DB" > "Settings".
 
 [View a Step-by-step Instruction on Contact Form to DB Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
 
@@ -143,6 +148,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 4. Spam page on the Contact Form to DB manager page display.
 
 == Changelog ==
+
+= V1.6.7 - 26.04.2021 =
+* Pro  	 : Ability to save the messages sent by Pojo Form has been added.
+* Update : BWS panel section was updated.
+* Update : All functionality was updated for WordPress 5.7.
 
 = V1.6.6 - 18.11.2020 =
 * Bugfix : The issue with submitting the form from the Contact Form Free has been fixed.
@@ -301,6 +311,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : Ability to manage messages that have been sent from website from Contact Form Plugin by BestWebSoft.
 
 == Upgrade Notice ==
+
+= V1.6.7 =
+* New function.
+* The compatibility with new WordPress version updated.
 
 = V1.6.6 =
 * Bugs fixed.
