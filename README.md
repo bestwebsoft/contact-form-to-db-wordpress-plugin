@@ -87,6 +87,8 @@
 </ul>
 <h4>Help &amp; Support</h4>
 <p>Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <a href="https://support.bestwebsoft.com/" rel="nofollow ugc">https://support.bestwebsoft.com/</a></p>
+<h4>Affiliate Program</h4>
+<p>Earn 20% commission by selling the premium WordPress plugins and themes by BestWebSoft — <a href="https://bestwebsoft.com/affiliate/" rel="nofollow">https://bestwebsoft.com/affiliate/</a></p>
 <h4>Translation</h4>
 <ul>
 <li>French (fr_FR) (thanks to <a href="mailto:&#x6c;c&#097;&#112;&#x72;&#x6f;&#110;&#110;&#x69;&#x65;&#114;&#064;&#x79;&#x61;h&#111;&#111;&#x2e;&#x63;&#111;&#109;" rel="nofollow ugc">Capronnier luc</a>)</li>
