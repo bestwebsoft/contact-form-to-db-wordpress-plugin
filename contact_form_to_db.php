@@ -6,7 +6,7 @@ Description: Save and manage contact form messages. Never lose important data.
 Author: BestWebSoft
 Text Domain: contact-form-to-db
 Domain Path: /languages
-Version: 1.6.7
+Version: 1.6.9
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -168,7 +168,7 @@ if ( ! function_exists( 'cntctfrmtdb_get_options_default' ) ) {
 if ( ! function_exists( 'cntctfrmtdb_settings' ) ) {
 	function cntctfrmtdb_settings() {
 		global $cntctfrmtdb_options, $cntctfrmtdb_plugin_info, $wpdb;
-		$cntctfrmtdb_db_version = '1.3';
+		$cntctfrmtdb_db_version = '1.4';
 
 		/* add options to database */
 		if ( ! get_option( 'cntctfrmtdb_options' ) )
@@ -183,12 +183,13 @@ if ( ! function_exists( 'cntctfrmtdb_settings' ) ) {
 			$cntctfrmtdb_options['plugin_db_version'] = $cntctfrmtdb_db_version;
 
 			/**
-			 * @deprecated since 1.6.5
-			 * @todo remove after 22.04.2021
+			 * @deprecated since 1.6.8
+			 * @todo remove after 28.03.2022
 			 */
-			if ( isset( $cntctfrmtdb_options['plugin_option_version'] ) && version_compare( $cntctfrmtdb_options['plugin_option_version'] , '1.6.5', '<' ) ) {
+			if ( isset( $cntctfrmtdb_options['plugin_option_version'] ) && version_compare( $cntctfrmtdb_options['plugin_option_version'] , '1.6.8', '<' ) ) {
+
 				$prefix = $wpdb->prefix . 'cntctfrmtdb_';
-				$wpdb->query( "ALTER TABLE `" . $prefix . "message` ADD COLUMN `custom_fields` TEXT NOT NULL" );
+                $wpdb->query( "ALTER TABLE `" . $prefix . "to_email` MODIFY COLUMN `email` CHAR(255)" );
 			}
 			/* end deprecated */
 
@@ -241,7 +242,7 @@ if ( ! function_exists( 'cntctfrmtdb_create_table' ) ) {
 		dbDelta( $sql );
 		$sql = "CREATE TABLE IF NOT EXISTS `" . $prefix . "to_email` (
 			`id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-			`email` CHAR(50) NOT NULL,
+			`email` CHAR(255) NOT NULL,
 			PRIMARY KEY (`id`)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 		dbDelta( $sql );

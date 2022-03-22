@@ -1,10 +1,10 @@
-=== Contact Form to DB by BestWebSoft ===
+=== Contact Form to DB by BestWebSoft - Messages Database Plugin For WordPress ===
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: browse messages, cf add on, contact button, contact form add on, contact form parameters, contact form plugin, contact form to db, save messages, download messages, contact us form, web page feedback, delete messages
 Requires at least: 4.5
-Tested up to: 5.7
-Stable tag: 1.6.7
+Tested up to: 5.9
+Stable tag: 1.6.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,7 +66,7 @@ http://www.youtube.com/watch?v=agEWy6Hc-fY
 > All features from Free version included plus:
 >
 > * Compatible with Contact Form 7
-> * Compatible with Pojo Form [NEW]
+> * Compatible with Pojo Form
 > * Save attachments to:
 > 	* Database
 > 	* Uploads
@@ -83,14 +83,18 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 
 = Documentation & Videos =
 
-* [[Doc] User Guide](https://docs.google.com/document/d/1s3U6x2LAMBoOSBoc8txyYhNKtLfF2iC5zj5Ik8Ndo9A/)
-* [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
-* [[Doc] Purchase](https://docs.google.com/document/d/1EUdBVvnm7IHZ6y0DNyldZypUQKpB8UVPToSc_LdOYQI/)
+* [[Doc] User Guide](https://bestwebsoft.com/documentation/contact-form-to-db/contact-form-to-db-user-guide/)
+* [[Doc] Installation](https://bestwebsoft.com/documentation/how-to-install-a-wordpress-product/how-to-install-a-wordpress-plugin/)
+* [[Doc] Purchase](https://bestwebsoft.com/documentation/how-to-purchase-a-wordpress-plugin/how-to-purchase-wordpress-plugin-from-bestwebsoft/)
 * [[Video] Installation Instruction](https://www.youtube.com/watch?v=nm0JXK9ro9E)
 
 = Help & Support =
 
 Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <https://support.bestwebsoft.com/>
+
+= Affiliate Program =
+
+Earn 20% commission by selling the premium WordPress plugins and themes by BestWebSoft — https://bestwebsoft.com/affiliate/
 
 = Translation =
 
@@ -114,7 +118,7 @@ Some of these translations are not complete. We are constantly adding new featur
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
 3. You can adjust the necessary settings using your WordPress admin panel in "CF to DB" > "Settings".
 
-[View a Step-by-step Instruction on Contact Form to DB Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
+[View a Step-by-step Instruction on Contact Form to DB Installation](https://bestwebsoft.com/documentation/how-to-install-a-wordpress-product/how-to-install-a-wordpress-plugin/)
 
 == Frequently Asked Questions ==
 
@@ -138,7 +142,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 - The link to the page where the problem occurs
 - The name of the plugin and its version. If you are using a pro version - your order number.
 - The version of your WordPress installation
-- Copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc).
+- Copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://bestwebsoft.com/documentation/admin-panel-issues/system-status/).
 
 == Screenshots ==
 
@@ -148,6 +152,14 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 4. Spam page on the Contact Form to DB manager page display.
 
 == Changelog ==
+
+= V1.6.9 - 21.03.2022 =
+* Update : BWS panel section was updated.
+* Update : All functionality was updated for WordPress 5.9.
+
+= V1.6.8 - 28.09.2021 =
+* Update : BWS panel section was updated.
+* Update : All functionality was updated for WordPress 5.8.1.
 
 = V1.6.7 - 26.04.2021 =
 * Pro  	 : Ability to save the messages sent by Pojo Form has been added.
@@ -311,6 +323,14 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : Ability to manage messages that have been sent from website from Contact Form Plugin by BestWebSoft.
 
 == Upgrade Notice ==
+
+= V1.6.9 =
+* The compatibility with new WordPress version updated.
+* Usability improved.
+
+= V1.6.8 =
+* The compatibility with new WordPress version updated.
+* Usability improved.
 
 = V1.6.7 =
 * New function.

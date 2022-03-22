@@ -3,9 +3,11 @@
 
 <p>Save and manage messages sent from your WordPress website via Contact Form plugin. Search, view, delete, download, and re-send messages quickly right from your WordPress admin dashboard.</p>
 <p>Install, activate, and never lose important messages anymore!</p>
+<p><a href="https://bestwebsoft.com/demo-for-contact-form-to-db-plugin/?ref=readme" rel="nofollow ugc">View Demo</a></p>
 <blockquote>
 <p><strong>NOTE:</strong> Contact Form to DB plugin is an exclusive add-on to the <a href="https://bestwebsoft.com/products/wordpress/plugins/contact-form/?k=1f9b7d7895c20420af788d9413ed8562" rel="nofollow ugc">Contact Form</a> plugin and it will not work without it.</p>
 </blockquote>
+<p><a href="https://bestwebsoft.com/demo-for-contact-form-to-db-plugin/?ref=readme" rel="nofollow ugc">View Demo</a></p>
 <p><span class="embed-youtube" style="text-align:center; display: block;"></span></p>
 <h4>Free Features</h4>
 <ul>
@@ -61,7 +63,7 @@
 <p>All features from Free version included plus:</p>
 <ul>
 <li>Compatible with Contact Form 7</li>
-<li>Compatible with Pojo Form [NEW]</li>  
+<li>Compatible with Pojo Form</li>
 <li>Save attachments to:
 <ul>
 <li>Database</li>
@@ -88,7 +90,7 @@
 <h4>Help &amp; Support</h4>
 <p>Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <a href="https://support.bestwebsoft.com/" rel="nofollow ugc">https://support.bestwebsoft.com/</a></p>
 <h4>Affiliate Program</h4>
-<p>Earn 20% commission by selling the premium WordPress plugins and themes by BestWebSoft — <a href="https://bestwebsoft.com/affiliate/" rel="nofollow">https://bestwebsoft.com/affiliate/</a></p>
+<p>Earn 20% commission by selling the premium WordPress plugins and themes by BestWebSoft — https://bestwebsoft.com/affiliate/</p>
 <h4>Translation</h4>
 <ul>
 <li>French (fr_FR) (thanks to <a href="mailto:&#x6c;c&#097;&#112;&#x72;&#x6f;&#110;&#110;&#x69;&#x65;&#114;&#064;&#x79;&#x61;h&#111;&#111;&#x2e;&#x63;&#111;&#109;" rel="nofollow ugc">Capronnier luc</a>)</li>

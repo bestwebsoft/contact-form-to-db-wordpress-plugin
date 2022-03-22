@@ -36,7 +36,7 @@ if ( ! class_exists( 'Cntctfrmtdb_Settings_Tabs' ) ) {
 				'wp_slug'					=> 'contact-form-to-db',
 				'link_key'                  => '5906020043c50e2eab1528d63b126791',
 				'link_pn'                   => '91',
-				'doc_link'                  => 'https://docs.google.com/document/d/1s3U6x2LAMBoOSBoc8txyYhNKtLfF2iC5zj5Ik8Ndo9A/'
+				'doc_link'                  => 'https://bestwebsoft.com/documentation/contact-form-to-db/contact-form-to-db-user-guide/'
 			) );
 
 			$this->periods = array(
