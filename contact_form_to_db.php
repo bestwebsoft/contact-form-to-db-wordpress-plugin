@@ -6,7 +6,7 @@ Description: Save and manage contact form messages. Never lose important data.
 Author: BestWebSoft
 Text Domain: contact-form-to-db
 Domain Path: /languages
-Version: 1.6.9
+Version: 1.7.0
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
