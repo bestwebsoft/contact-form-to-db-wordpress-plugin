@@ -14,7 +14,7 @@ if ( ! class_exists( 'Cntctfrmtdb_Settings_Tabs' ) ) {
 		 *
 		 * @see Bws_Settings_Tabs::__construct() for more information on default arguments.
 		 *
-		 * @param string $plugin_basename
+		 * @param string $plugin_basename Plugin basename.
 		 */
 		public function __construct( $plugin_basename ) {
 			global $cntctfrmtdb_options, $cntctfrmtdb_plugin_info;
@@ -52,15 +52,20 @@ if ( ! class_exists( 'Cntctfrmtdb_Settings_Tabs' ) ) {
 			);
 		}
 
+		/**
+		 * Save options
+		 */
 		public function save_options() {
 
-			$message = $notice = $error = '';
+			$message = '';
+			$notice  = '';
+			$error   = '';
 
 			if ( isset( $_POST['cntctfrmtdb_nonce_field'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['cntctfrmtdb_nonce_field'] ) ), 'cntctfrmtdb_action' ) ) {
 				$this->options['save_messages_to_db']  = isset( $_POST['cntctfrmtdb_save_messages_to_db'] ) ? 1 : 0;
-				$this->options['format_save_messages'] = in_array( sanitize_text_field( wp_unslash( $_POST['cntctfrmtdb_format_save_messages'] ) ), array( 'xml', 'eml', 'csv' ) ) ? sanitize_text_field( wp_unslash( $_POST['cntctfrmtdb_format_save_messages'] ) ) : $this->options['format_save_messages'];
-				$this->options['csv_separator']        = in_array( sanitize_text_field( wp_unslash( $_POST['cntctfrmtdb_csv_separator'] ) ), array( ',', ';', 't' ) ) ? sanitize_text_field( wp_unslash( $_POST['cntctfrmtdb_csv_separator'] ) ) : $this->options['csv_separator'];
-				$this->options['csv_enclosure']        = in_array( sanitize_text_field( wp_unslash( $_POST['cntctfrmtdb_csv_enclosure'] ) ), array( '\"', "\'", '`' ) ) ? sanitize_text_field( wp_unslash( $_POST['cntctfrmtdb_csv_enclosure'] ) ) : $this->options['csv_enclosure'];
+				$this->options['format_save_messages'] = isset( $_POST['cntctfrmtdb_format_save_messages'] ) && in_array( sanitize_text_field( wp_unslash( $_POST['cntctfrmtdb_format_save_messages'] ) ), array( 'xml', 'eml', 'csv' ) ) ? sanitize_text_field( wp_unslash( $_POST['cntctfrmtdb_format_save_messages'] ) ) : $this->options['format_save_messages'];
+				$this->options['csv_separator']        = isset( $_POST['cntctfrmtdb_csv_separator'] ) && in_array( sanitize_text_field( wp_unslash( $_POST['cntctfrmtdb_csv_separator'] ) ), array( ',', ';', 't' ) ) ? sanitize_text_field( wp_unslash( $_POST['cntctfrmtdb_csv_separator'] ) ) : $this->options['csv_separator'];
+				$this->options['csv_enclosure']        = isset( $_POST['cntctfrmtdb_csv_enclosure'] ) && in_array( sanitize_text_field( wp_unslash( $_POST['cntctfrmtdb_csv_enclosure'] ) ), array( '\"', "\'", '`' ) ) ? sanitize_text_field( wp_unslash( $_POST['cntctfrmtdb_csv_enclosure'] ) ) : $this->options['csv_enclosure'];
 
 				update_option( 'cntctfrmtdb_options', $this->options );
 				$message = __( 'Settings saved.', 'contact-form-to-db' );
@@ -69,6 +74,9 @@ if ( ! class_exists( 'Cntctfrmtdb_Settings_Tabs' ) ) {
 			return compact( 'message', 'notice', 'error' );
 		}
 
+		/**
+		 * Display tab Settings
+		 */
 		public function tab_settings() { ?>
 			<h3 class="bws_tab_label"><?php esc_html_e( 'Contact Form to DB Settings', 'contact-form-to-db' ); ?></h3>
 			<?php $this->help_phrase(); ?>
@@ -83,7 +91,7 @@ if ( ! class_exists( 'Cntctfrmtdb_Settings_Tabs' ) ) {
 				<tr id="cntctfrmtdb-options">
 					<th scope="row"><?php esc_html_e( 'Download Messages in', 'contact-form-to-db' ); ?></th>
 					<td>
-						<select<?php echo $this->change_permission_attr; ?> name="cntctfrmtdb_format_save_messages">
+						<select<?php echo esc_html( $this->change_permission_attr ); ?> name="cntctfrmtdb_format_save_messages">
 							<option value='xml' <?php selected( 'xml', $this->options['format_save_messages'] ); ?>>.xml</option>
 							<option value='eml' <?php selected( 'eml', $this->options['format_save_messages'] ); ?>>.eml</option>
 							<option class="bws_option_affect" data-affect-show="#cntctfrmtdb-csv-separators" value='csv' <?php selected( 'csv', $this->options['format_save_messages'] ); ?>>.csv</option>
@@ -91,13 +99,13 @@ if ( ! class_exists( 'Cntctfrmtdb_Settings_Tabs' ) ) {
 						<span><?php esc_html_e( 'format', 'contact-form-to-db' ); ?></span><br />
 						<div id="cntctfrmtdb-csv-separators">
 							<span><?php esc_html_e( 'Choose separator and enclosure symbols', 'contact-form-to-db' ); ?></span><br /><br />
-							<select<?php echo $this->change_permission_attr; ?> name="cntctfrmtdb_csv_separator" id="cntctfrmtdb_csv_separator">
+							<select<?php echo esc_html( $this->change_permission_attr ); ?> name="cntctfrmtdb_csv_separator" id="cntctfrmtdb_csv_separator">
 								<option value="," <?php selected( ',', $this->options['csv_separator'] ); ?>>,</option>
 								<option value=";" <?php selected( ';', $this->options['csv_separator'] ); ?>>;</option>
 								<option value="t" <?php selected( 't', $this->options['csv_separator'] ); ?>>\t</option>
 							</select>
 							<span><?php esc_html_e( 'separator', 'contact-form-to-db' ); ?></span><br /><br />
-							<select<?php echo $this->change_permission_attr; ?> name="cntctfrmtdb_csv_enclosure" id="cntctfrmtdb_csv_enclosure">
+							<select<?php echo esc_html( $this->change_permission_attr ); ?> name="cntctfrmtdb_csv_enclosure" id="cntctfrmtdb_csv_enclosure">
 								<option value='"' <?php selected( '\"', $this->options['csv_enclosure'] ); ?>>"</option>
 								<option value="'" <?php selected( "\'", $this->options['csv_enclosure'] ); ?>>'</option>
 								<option value="`" <?php selected( '`', $this->options['csv_enclosure'] ); ?>>`</option>
