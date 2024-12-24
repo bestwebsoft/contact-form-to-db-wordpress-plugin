@@ -6,7 +6,7 @@ Description: Save and manage contact form messages. Never lose important data.
 Author: BestWebSoft
 Text Domain: contact-form-to-db
 Domain Path: /languages
-Version: 1.7.3
+Version: 1.7.4
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
  */
@@ -192,7 +192,7 @@ if ( ! function_exists( 'cntctfrmtdb_settings' ) ) {
 	 */
 	function cntctfrmtdb_settings() {
 		global $cntctfrmtdb_options, $cntctfrmtdb_plugin_info, $wpdb;
-		$cntctfrmtdb_db_version = '1.4';
+		$cntctfrmtdb_db_version = '1.6';
 
 		/* add options to database */
 		if ( ! get_option( 'cntctfrmtdb_options' ) ) {
@@ -201,6 +201,13 @@ if ( ! function_exists( 'cntctfrmtdb_settings' ) ) {
 
 		/* get options from database to operate with them */
 		$cntctfrmtdb_options = get_option( 'cntctfrmtdb_options' );
+
+		if ( empty( $cntctfrmtdb_plugin_info ) ) {
+			if ( ! function_exists( 'get_plugin_data' ) ) {
+				require_once ABSPATH . 'wp-admin/includes/plugin.php';
+			}
+			$cntctfrmtdb_plugin_info = get_plugin_data( __FILE__ );
+		}
 
 		/* create or update db table */
 		if ( ! isset( $cntctfrmtdb_options['plugin_db_version'] ) || $cntctfrmtdb_options['plugin_db_version'] != $cntctfrmtdb_db_version ) {
@@ -302,12 +309,28 @@ if ( ! function_exists( 'cntctfrmtdb_create_table' ) ) {
 			PRIMARY KEY (`id`)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;';
 		dbDelta( $sql );
+
+		$column_exists = $wpdb->query( 'SHOW COLUMNS FROM `' . $wpdb->prefix . 'cntctfrmtdb_message` LIKE "user_address";' );
+		if ( 0 == $column_exists ) {
+			$wpdb->query( 'ALTER TABLE `' . $wpdb->prefix . 'cntctfrmtdb_message` ADD `user_address` CHAR(120) NOT NULL AFTER `user_email`;' );
+		}
+
+		$column_exists = $wpdb->query( 'SHOW COLUMNS FROM `' . $wpdb->prefix . 'cntctfrmtdb_message` LIKE "user_phone";' );
+		if ( 0 == $column_exists ) {
+			$wpdb->query( 'ALTER TABLE `' . $wpdb->prefix . 'cntctfrmtdb_message` ADD `user_phone` CHAR(15) NOT NULL AFTER `user_address`;' );
+		}
+
 		$sql = 'CREATE TABLE IF NOT EXISTS `' . $wpdb->prefix . 'cntctfrmtdb_field_selection` (
 			`cntctfrm_field_id` INT NOT NULL,
 			`message_id` MEDIUMINT(6) UNSIGNED NOT NULL,
 			`field_value` CHAR(50) NOT NULL
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;';
 		dbDelta( $sql );
+
+		$column_exists = $wpdb->query( 'SHOW COLUMNS FROM `' . $wpdb->prefix . 'cntctfrmtdb_field_selection` LIKE "field_selection_id";' );
+		if ( 0 == $column_exists ) {
+			$wpdb->query( 'ALTER TABLE `' . $wpdb->prefix . 'cntctfrmtdb_field_selection` ADD `field_selection_id` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`field_selection_id`);' );
+		}
 
 		$status = array(
 			'normal',
@@ -468,6 +491,9 @@ if ( ! function_exists( 'cntctfrmtdb_get_mail_data' ) ) {
 		$from_user    = isset( $_POST['cntctfrm_contact_name'] ) ? sanitize_text_field( wp_unslash( $_POST['cntctfrm_contact_name'] ) ) : '';
 		$message_text = isset( $_POST['cntctfrm_contact_message'] ) ? sanitize_text_field( wp_unslash( $_POST['cntctfrm_contact_message'] ) ) : '';
 
+		$address = isset( $_POST['cntctfrm_contact_address'] ) ? sanitize_text_field( wp_unslash( $_POST['cntctfrm_contact_address'] ) ) : '';
+		$phone = isset( $_POST['cntctfrm_contact_phone'] ) ? sanitize_text_field( wp_unslash( $_POST['cntctfrm_contact_phone'] ) ) : '';
+
 		if ( ! cntctfrmtdb_is_duplicate_message( $from_user, $message_text ) ) {
 			$user_email = isset( $_POST['cntctfrm_contact_email'] ) ? sanitize_email( wp_unslash( $_POST['cntctfrm_contact_email'] ) ) : '';
 			$subject    = isset( $_POST['cntctfrm_contact_subject'] ) ? sanitize_text_field( wp_unslash( $_POST['cntctfrm_contact_subject'] ) ) : '';
@@ -480,7 +506,7 @@ if ( ! function_exists( 'cntctfrmtdb_get_mail_data' ) ) {
 				)
 			);
 			if ( ! isset( $to_email_id ) ) {
-				$wpdb->insert( $wpdb->prefix . 'to_email', array( 'email' => $to['sendto'] ) );
+				$wpdb->insert( $wpdb->prefix . 'cntctfrmtdb_to_email', array( 'email' => $to['sendto'] ) );
 				$to_email_id = $wpdb->insert_id;
 			}
 
@@ -492,7 +518,7 @@ if ( ! function_exists( 'cntctfrmtdb_get_mail_data' ) ) {
 				)
 			);
 			if ( ! isset( $blogname_id ) ) {
-				$wpdb->insert( $wpdb->prefix . 'blogname', array( 'blogname' => get_bloginfo( 'name' ) ) );
+				$wpdb->insert( $wpdb->prefix . 'cntctfrmtdb_blogname', array( 'blogname' => get_bloginfo( 'name' ) ) );
 				$blogname_id = $wpdb->insert_id;
 			}
 
@@ -504,7 +530,7 @@ if ( ! function_exists( 'cntctfrmtdb_get_mail_data' ) ) {
 				)
 			);
 			if ( ! isset( $blogurl_id ) ) {
-				$wpdb->insert( $wpdb->prefix . 'hosted_site', array( 'site' => get_bloginfo( 'url' ) ) );
+				$wpdb->insert( $wpdb->prefix . 'cntctfrmtdb_hosted_site', array( 'site' => get_bloginfo( 'url' ) ) );
 				$blogurl_id = $wpdb->insert_id;
 			}
 
@@ -516,7 +542,7 @@ if ( ! function_exists( 'cntctfrmtdb_get_mail_data' ) ) {
 				)
 			);
 			if ( ! isset( $refer_id ) ) {
-				$wpdb->insert( $wpdb->prefix . 'refer', array( 'refer' => $to['refer'] ) );
+				$wpdb->insert( $wpdb->prefix . 'cntctfrmtdb_refer', array( 'refer' => $to['refer'] ) );
 				$refer_id = $wpdb->insert_id;
 			}
 
@@ -550,10 +576,12 @@ if ( ! function_exists( 'cntctfrmtdb_get_mail_data' ) ) {
 			}
 
 			$wpdb->insert(
-				$wpdb->prefix . 'message',
+				$wpdb->prefix . 'cntctfrmtdb_message',
 				array(
 					'from_user'         => $from_user,
 					'user_email'        => $user_email,
+					'user_address'      => $address,
+					'user_phone'        => $phone,
 					'send_date'         => current_time( 'mysql' ),
 					'subject'           => $subject,
 					'message_text'      => $message_text,
@@ -595,7 +623,26 @@ if ( ! function_exists( 'cntctfrmtdb_get_mail_data' ) ) {
 					)
 				);
 				$wpdb->insert(
-					$wpdb->prefix . 'field_selection',
+					$wpdb->prefix . 'cntctfrmtdb_field_selection',
+					array(
+						'cntctfrm_field_id' => $field_id,
+						'message_id'        => $message_id,
+						'field_value'       => $value,
+					)
+				);
+			}
+
+			if ( isset( $_POST['cntctfrm_location'] ) ) {
+				$value = sanitize_text_field( wp_unslash( $_POST['cntctfrm_location'] ) );
+
+				$field_id = $wpdb->get_var(
+					$wpdb->prepare(
+						'SELECT `id` FROM `' . $wpdb->prefix . 'cntctfrm_field` WHERE `name`= %s',
+						'location'
+					)
+				);
+				$wpdb->insert(
+					$wpdb->prefix . 'cntctfrmtdb_field_selection',
 					array(
 						'cntctfrm_field_id' => $field_id,
 						'message_id'        => $message_id,
@@ -606,7 +653,7 @@ if ( ! function_exists( 'cntctfrmtdb_get_mail_data' ) ) {
 
 			if ( ! empty( $path_of_uploaded_file_cf ) ) {
 				$wpdb->update(
-					$wpdb->prefix . 'message',
+					$wpdb->prefix . 'cntctfrmtdb_message',
 					array( 'attachment_status' => 1 ),
 					array( 'id' => $message_id )
 				);
@@ -721,7 +768,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 								$message_text      = '';
 								$message_data      = $wpdb->get_results(
 									$wpdb->prepare(
-										'SELECT `from_user`, `user_email`, `send_date`, `subject`, `message_text`, `blogname`, `site`, `refer`, `email`, `custom_fields`
+										'SELECT `from_user`, `user_email`, `send_date`, `subject`, `message_text`, `user_address`, `user_phone`, `blogname`, `site`, `refer`, `email`, `custom_fields`
 										FROM `' . $wpdb->prefix . 'cntctfrmtdb_message`
 										LEFT JOIN `' . $wpdb->prefix . 'cntctfrmtdb_blogname` ON ' . $wpdb->prefix . 'cntctfrmtdb_message.blogname_id=' . $wpdb->prefix . 'cntctfrmtdb_blogname.id
 										LEFT JOIN `' . $wpdb->prefix . 'cntctfrmtdb_hosted_site` ON ' . $wpdb->prefix . 'cntctfrmtdb_message.hosted_site_id=' . $wpdb->prefix . 'cntctfrmtdb_hosted_site.id
@@ -740,18 +787,23 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 										absint( $id )
 									)
 								);
+
 								/* forming file in "XML" format */
 								if ( 'xml' == $cntctfrmtdb_options['format_save_messages'] ) {
 									foreach ( $message_data as $data ) {
 										foreach ( $additional_fields as $field ) {
-											if ( 'address' == $field->name ) {
-												$data_address = $field->field_value;
-											} elseif ( 'phone' == $field->name ) {
-												$data_phone = $field->field_value;
-											} elseif ( 'user_agent' == $field->name ) {
+											if ( 'user_agent' == $field->name ) {
 												$data_user_agent = $field->field_value;
 											}
+											if ( 'location' == $field->name ) {
+												$data_location = $field->field_value;
+											}
+											if ( 'department_selectbox' == $field->name ) {
+												$data_department = $field->field_value;
+											}
 										}
+										$data_address = $data->user_address;
+										$data_phone = $data->user_phone;
 
 										$message   = $messages->appendChild( $xml->createElement( 'cnttfrmtdb_message' ) ); /* creation main element for single message <message></message> */
 										$from      = $message->appendChild( $xml->createElement( 'cnttfrmtdb_from' ) ); /* insert <from></from> in to <message></messsage> */
@@ -785,6 +837,14 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 											$text         = $content->appendChild( $xml->createElement( 'cnttfrmtdb_text' ) ); /* insert <text></text> in to <content></content> */
 											$message_text = $text->appendChild( $xml->createTextNode( $data->message_text ) ); /*insert message text in to <text></text> */
 										}
+										if ( isset( $data_location ) && '' != $data_location ) {
+											$user_location      = $content->appendChild( $xml->createElement( 'cnttfrmtdb_location' ) ); /* insert <user_agent></user_agent> in to <content></content> */
+											$user_location_text = $user_location->appendChild( $xml->createTextNode( $data_location ) ); /* insert text in to <user_agent></user_agent> */
+										}
+										if ( isset( $data_department ) && '' != $data_department ) {
+											$user_department      = $content->appendChild( $xml->createElement( 'cnttfrmtdb_department' ) ); /* insert <user_agent></user_agent> in to <content></content> */
+											$user_department_text = $user_department->appendChild( $xml->createTextNode( $data_department ) ); /* insert text in to <user_agent></user_agent> */
+										}
 										if ( ! empty( $data->custom_fields ) ) {
 											$custom_fields_element = $content->appendChild( $xml->createElement( 'cnttfrmtdb_custom_fields' ) );
 											$custom_fields         = unserialize( $data->custom_fields );
@@ -800,21 +860,25 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 										if ( isset( $data_user_agent ) && '' != $data_user_agent ) {
 											$user_agent      = $content->appendChild( $xml->createElement( 'cnttfrmtdb_user_agent' ) ); /* insert <user_agent></user_agent> in to <content></content> */
 											$user_agent_text = $user_agent->appendChild( $xml->createTextNode( $data_user_agent ) ); /* insert text in to <user_agent></user_agent> */
-										}
+										}										
 									}
 
 									/* forming file in "EML" format */
 								} elseif ( 'eml' == $cntctfrmtdb_options['format_save_messages'] ) {
 									foreach ( $message_data as $data ) {
 										foreach ( $additional_fields as $field ) {
-											if ( 'address' == $field->name ) {
-												$data_address = $field->field_value;
-											} elseif ( 'phone' == $field->name ) {
-												$data_phone = $field->field_value;
-											} elseif ( 'user_agent' == $field->name ) {
+											if ( 'user_agent' == $field->name ) {
 												$data_user_agent = $field->field_value;
 											}
+											if ( 'location' == $field->name ) {
+												$data_location = $field->field_value;
+											}
+											if ( 'department_selectbox' == $field->name ) {
+												$data_department = $field->field_value;
+											}
 										}
+										$data_address = $data->user_address;
+										$data_phone = $data->user_phone;
 
 										$message_text .=
 											'<html>
@@ -860,6 +924,18 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 											<tr>
 												<td>' . __( 'Site', 'contact-form-to-db' ) . '</td><td>' . $data->site . '</td>
 											</tr>';
+										if ( isset( $data_location ) && '' != $data_location ) {
+											$message_text .=
+											'<tr>
+												<td>' . __( 'Location', 'contact_form' ) . ':</td><td>' . $data_location . '</td>
+											</tr>';
+										}
+										if ( isset( $data_department ) && '' != $data_department ) {
+											$message_text .=
+											'<tr>
+												<td>' . __( 'Department', 'contact_form' ) . ':</td><td>' . $data_department . '</td>
+											</tr>';
+										}
 										if ( ! empty( $data->custom_fields ) ) {
 											$message_text .= '<tr><td>' . __( 'Custom Fields', 'contact-form-to-db' ) . '</td><td>';
 											$custom_fields = unserialize( $data->custom_fields );
@@ -917,7 +993,6 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 									/* get headers */
 									$headers  = '';
 									$headers .= 'MIME-Version: 1.0' . "\n";
-									$headers .= 'Content-type: text/html; charset=utf-8' . "\n";
 									if ( 'custom' == $cntctfrm_options_for_this_plugin['from_email'] ) {
 										$headers .= __( 'From: ', 'contact-form-to-db' ) . wp_unslash( $cntctfrm_options_for_this_plugin['from_field'] ) . ' <' . wp_unslash( $cntctfrm_options_for_this_plugin['custom_from_email'] ) . '>' . "\n";
 									} else {
@@ -926,7 +1001,8 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 									$headers .= __( 'To: ', 'contact-form-to-db' ) . $data->email . "\n";
 									$headers .= __( 'Subject: ', 'contact-form-to-db' ) . $data->subject . "\n";
 									$headers .= __( 'Date/Time: ', 'contact-form-to-db' ) . date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), strtotime( current_time( 'mysql' ) ) ) . "\n";
-
+									$headers .= 'Content-type: text/html; charset=utf-8' . "\n\n";
+									
 									$message = $headers . $message_text;
 									/* generate a file name */
 									$random_prefix = $random_number + $i; /* add numeric prefix to file name */
@@ -960,6 +1036,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 											if ( $file_downloaded ) {
 												unlink( $save_file_path . '/' . $file_name );
 											}
+											die();
 										} else {
 											$error_counter ++;
 										}
@@ -985,14 +1062,19 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 										$data_user_agent = '';
 										$data_location   = '';
 										foreach ( $additional_fields as $field ) {
-											if ( 'address' == $field->name ) {
-												$data_address = $field->field_value;
-											} elseif ( 'phone' == $field->name ) {
-												$data_phone = $field->field_value;
-											} elseif ( 'user_agent' == $field->name ) {
+											if ( 'user_agent' == $field->name ) {
 												$data_user_agent = $field->field_value;
 											}
+											if ( 'location' == $field->name ) {
+												$data_location = $field->field_value;
+											}
+											if ( 'department_selectbox' == $field->name ) {
+												$data_department = $field->field_value;
+											}
 										}
+
+										$data_address = $data->user_address;
+										$data_phone = $data->user_phone;
 
 										if ( ! isset( $message ) ) {
 											$message = '';
@@ -1022,7 +1104,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 										$array_row['from_user'] = $enclosure . $data->from_user . $enclosure . $separator;
 
 										if ( isset( $data_address ) && '' != $data_address ) {
-											$array_row['data_address'] = $enclosure . $data_address . $enclosure . $separator;
+											$array_row['address'] = $enclosure . $data_address . $enclosure . $separator;
 										}
 										if ( '' != $data->user_email ) {
 											$array_row['user_email'] = $enclosure . $data->user_email . $enclosure . $separator;
@@ -1031,6 +1113,12 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 											$array_row['phone'] = $enclosure . $data_phone . $enclosure . $separator;
 										}
 										$array_row['site'] = $enclosure . $data->site . $enclosure . $separator;
+										if ( isset( $data_location ) && '' != $data_location ) {
+											$array_row['location'] = $enclosure . $data_location . $enclosure . $separator;
+										}
+										if ( isset( $data_department ) && '' != $data_department ) {
+											$array_row['department'] = $enclosure . $data_department . $enclosure . $separator;
+										}
 										if ( 1 == $cntctfrm_options_for_this_plugin['display_sent_from'] ) {
 											$ip = '';
 											if ( isset( $_SERVER ) ) {
@@ -1058,13 +1146,13 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 										}
 										if ( isset( $data_user_agent ) && '' != $data_user_agent ) {
 											$array_row['user_agent'] = $enclosure . $data_user_agent . $enclosure . $separator;
-										}
+										}										
 										/* If was chosen only one message */
 										if ( 1 == $count_messages ) {
 											/* Saving file to local computer */
 											$file_name   = 'message_' . 'ID_' . $id . '_' . $random_number . '.csv';
 											$columns_row = array_keys( $array_row );
-											$message     = implode( ',', $columns_row ) . "\n";
+											$message     = implode( $separator, $columns_row ) . "\n";
 											$message    .= implode( '', $array_row );
 											if ( file_exists( $save_file_path . '/' . $file_name ) ) {
 												$file_name = time() . '_' . $file_name;
@@ -1086,6 +1174,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 												if ( $file_downloaded ) {
 													unlink( $save_file_path . '/' . $file_name );
 												}
+												die();
 											} else {
 												$error_counter ++;
 											}
@@ -1355,6 +1444,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 							if ( $file_downloaded ) {
 								unlink( $zip_name );
 							}
+							die();
 						}
 					} else {
 						$can_not_create_zip = 1;
@@ -1383,6 +1473,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 						if ( $file_downloaded ) {
 							unlink( $save_file_path . '/' . $file_name );
 						}
+						die();
 					} else {
 						$error_counter ++;
 					}
@@ -1417,6 +1508,7 @@ if ( ! function_exists( 'cntctfrmtdb_action_links' ) ) {
 							if ( $file_downloaded ) {
 								unlink( $save_file_path . '/' . $file_name );
 							}
+							die();
 						} else {
 							$error_counter ++;
 						}
@@ -1451,7 +1543,7 @@ if ( ! function_exists( 'cntctfrmtdb_number_of_messages' ) ) {
 			} elseif ( 'not_sent' == $message_status ) {
 				$sql_query .= 'WHERE ' . $wpdb->prefix . 'cntctfrmtdb_message.sent=0 AND ' . $wpdb->prefix . 'cntctfrmtdb_message.status_id NOT IN (2,3)';
 			} elseif ( 'read_messages' == $message_status ) {
-				$sql_query .= 'WHERE ' . $wpdb->prefix . 'cntctfrmtdb_"message.was_read=1 AND ' . $wpdb->prefix . 'cntctfrmtdb_message.status_id NOT IN (2,3)';
+				$sql_query .= 'WHERE ' . $wpdb->prefix . 'cntctfrmtdb_message.was_read=1 AND ' . $wpdb->prefix . 'cntctfrmtdb_message.status_id NOT IN (2,3)';
 			} elseif ( 'not_read_messages' == $message_status ) {
 				$sql_query .= 'WHERE ' . $wpdb->prefix . 'cntctfrmtdb_message.was_read=0 AND ' . $wpdb->prefix . 'cntctfrmtdb_message.status_id NOT IN (2,3)';
 			} elseif ( 'has_attachment' == $message_status ) {
@@ -1846,6 +1938,12 @@ if ( ! class_exists( 'Cntctfrmtdb_Manager' ) ) {
 				if ( '' != $value->user_email ) {
 					$add_from_data .= '<strong>email: </strong>' . $value->user_email . '</br>';
 				}
+				if ( '' != $value->user_address ) {
+					$add_from_data .= '<strong>address: </strong>' . $value->user_address . '</br>';
+				}
+				if ( '' != $value->user_phone ) {
+					$add_from_data .= '<strong>phone: </strong>' . $value->user_phone . '</br>';
+				}
 				$additional_filelds = $wpdb->get_results(
 					$wpdb->prepare(
 						'SELECT `cntctfrm_field_id`, `field_value`, `name` 
@@ -1872,7 +1970,7 @@ if ( ! class_exists( 'Cntctfrmtdb_Manager' ) ) {
 				}
 				$to_email       = $wpdb->get_var(
 					$wpdb->prepare(
-						'SELECT `email` FROM `' . $wpdb->prefix . 'to_email` WHERE `id`= %d',
+						'SELECT `email` FROM `' . $wpdb->prefix . 'cntctfrmtdb_to_email` WHERE `id`= %d',
 						$value->to_id
 					)
 				);
@@ -1966,7 +2064,7 @@ if ( ! function_exists( 'cntctfrmtdb_add_options_manager' ) ) {
 			'option'  => 'cntctfrmtdb_letters_per_page',
 		);
 		add_screen_option( 'per_page', $args );
-		$cntctfrmtdb_manager = new cntctfrmtdb_Manager();
+		$cntctfrmtdb_manager = new Cntctfrmtdb_Manager();
 	}
 }
 
@@ -2203,7 +2301,7 @@ if ( ! function_exists( 'cntctfrmtdb_read_message' ) ) {
 		global $wpdb;
 		check_ajax_referer( plugin_basename( __FILE__ ), 'cntctfrmtdb_ajax_nonce_field' );
 		if ( isset( $_POST['cntctfrmtdb_ajax_read_status'] ) && isset( $_POST['cntctfrmtdb_ajax_message_id'] ) ) {
-			$wpdb->update( $wpdb->prefix . 'message', array( 'was_read' => sanitize_text_field( wp_unslash( $_POST['cntctfrmtdb_ajax_read_status'] ) ) ), array( 'id' => absint( $_POST['cntctfrmtdb_ajax_message_id'] ) ) );
+			$wpdb->update( $wpdb->prefix . 'cntctfrmtdb_message', array( 'was_read' => sanitize_text_field( wp_unslash( $_POST['cntctfrmtdb_ajax_read_status'] ) ) ), array( 'id' => absint( $_POST['cntctfrmtdb_ajax_message_id'] ) ) );
 		}
 		die();
 	}

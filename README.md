@@ -8,7 +8,7 @@
 <p><strong>NOTE:</strong> Contact Form to DB plugin is an exclusive add-on to the <a href="https://bestwebsoft.com/products/wordpress/plugins/contact-form/?k=1f9b7d7895c20420af788d9413ed8562" rel="nofollow ugc">Contact Form</a> plugin and it will not work without it.</p>
 </blockquote>
 <p><a href="https://bestwebsoft.com/demo-for-contact-form-to-db-plugin/?ref=readme" rel="nofollow ugc">View Demo</a></p>
-<p><span class="embed-youtube" style="text-align:center; display: block;"></span></p>
+<p></p>
 <h4>Free Features</h4>
 <ul>
 <li>Automatically save messages to database</li>
